@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Searchresults on </title>
+    <link>http://w20-framework.github.io/sections/searchresults/index.xml</link>
+    <description>Recent content in Searchresults on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/sections/searchresults/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Results</title>
+      <link>http://w20-framework.github.io/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/search/</guid>
+      <description>&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col-md-9&#34;&gt;
+        &lt;div class=&#34;content-wrapper&#34;&gt;
+            &lt;div class=&#34;inner-results&#34;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-md-3 filter-column&#34;&gt;
+        &lt;h4 class=&#34;filter-column-header&#34;&gt;Showing 50 first results of &lt;span id=&#34;result-count&#34;&gt;&lt;/span&gt;&lt;/h4&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    document.addEventListener(&#39;w20&#39;, function () {
+        var $inner = $(&#39;.inner-results&#39;),
+                query = w20.strings.parseQueryString(location);
+
+        function displaySearchAgain(currentQuery) {
+            $inner.append(
+                    &#39;&lt;form method=&#34;GET&#34; action=&#34;/search&#34;&gt;&#39; +
+                    &#39;&lt;div class=&#34;input-group animated fadeInDown&#34;&gt;&#39; +
+                    &#39;&lt;input id=&#34;search-again-field&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;Search again&#34; name=&#34;q&#34;&gt;&#39; +
+                    &#39;&lt;span class=&#34;input-group-btn&#34;&gt;&#39; +
+                    &#39;&lt;button class=&#34;btn-u&#34; type=&#34;submit&#34;&gt;Go&lt;/button&gt;&#39; +
+                    &#39;&lt;/span&gt;&#39; +
+                    &#39;&lt;/div&gt;&#39; +
+                    &#39;&lt;/form&gt;&#39; +
+                    &#39;&lt;br&gt;&#39;
+            );
+            $(&#39;#search-again-field&#39;).focus().val(currentQuery);
+        }
+
+        function displayMessage(message) {
+            $inner.append(&#39;&lt;h3&gt;&#39; + message + &#39;&lt;/h3&gt;&#39;);
+        }
+
+        if (!(query.q) || query.q.length &lt; 1 || query.q[0] === &#34;&#34;) {
+            displayMessage(&#39;No query specified.&#39;);
+            displaySearchAgain(&#34;&#34;);
+            return;
+        }
+
+        w20.searchService.search(query.q[0], function (results) {
+            if (!results.length) {
+                displayMessage(&#39;No search results.&#39;);
+                displaySearchAgain(&#34;&#34;);
+            } else {
+                $(&#39;.title-subheader h3 &gt; a&#39;).text(&#39;Most relevant results for « &#39; + query.q + &#39; »&#39;);
+                displaySearchAgain(query.q);
+
+                // compute highlight params
+                var highlight = &#39;&#39;;
+                query.q[0].replace(/[^\w\s]/g, &#39;&#39;).split(&#39; &#39;).forEach(function (term) {
+                    highlight += encodeURIComponent(term) + &#39;&amp;h=&#39;
+                });
+                if (highlight) {
+                    highlight = highlight.substring(0, highlight.length - 3);
+                }
+
+                // Only show the ten first results
+                results.slice(0, 50).forEach(function (result) {
+                    var sectionHref = result.zone.path + &#39;/&#39; + result.section.path,
+                        highlightParams = highlight ? &#39;?h=&#39; + highlight + &#39;&amp;scroll&#39; : &#39;&#39;;
+
+                    if (sectionHref.lastIndexOf(&#34;/&#34;) !== sectionHref.length - 1) {
+                        sectionHref += &#34;/&#34;;
+                    }
+
+                    $(&#39;.inner-results&#39;).append(
+                            &#39;&lt;h3&gt;&lt;img src=&#34;http://w20-framework.github.io/img/logos/&#39; + result.zone.logo + &#39;&#34;&gt;&#39; +
+                            (result.section.label ? &#39; &lt;a href=&#34;&#39; + sectionHref + highlightParams + &#39;&#34;&gt;&#39; + result.section.label + &#39;&lt;/a&gt;&#39; : &#39;&#39;) +
+                            (result.href !== sectionHref ? ((result.section.label ? &#39; &lt;i class=&#34;fa fa-caret-right&#34;&gt;&lt;/i&gt;&#39; : &#39;&#39;) + &#39; &lt;a href=&#34;&#39; + result.href + highlightParams + &#39;&#34;&gt;&#39; + result.title + &#39;&lt;/a&gt;&#39;) : &#39;&#39;) +
+                            &#39;&lt;/h3&gt;&#39; +
+                            &#39;&lt;ul class=&#34;list-inline up-ul&#34;&gt;&#39; +
+                            &#39;&lt;li&gt;&#39; +
+                            &#39;In &lt;a href=&#34;&#39; + result.zone.path + &#39;&#34;&gt;&#39; + result.zone.label + &#39;&lt;/a&gt;&#39; +
+                            &#39;&lt;/li&gt;&#39; +
+                            &#39;&lt;/ul&gt;&#39; +
+                            &#39;&lt;p&gt;&#39; + result.summary + &#39;&lt;/p&gt;&#39; +
+                            &#39;&lt;div class=&#34;tags&#34;&gt;&#39; +
+                            (result.tags ? result.tags.map(function (tag) {
+                                return &#39;&lt;a class=&#34;label label-default&#34; href=&#34;http://w20-framework.github.io/tags/&#39; + tag.replace(/ /g, &#39;-&#39;) + &#39;&#34;&gt;&#39; + w20.strings.toTitleCase(tag) + &#39;&lt;/a&gt;&lt;/span&gt;&#39;;
+                            }).join(&#34; &#34;) : &#39;&#39;) +
+                            &#39;&lt;/div&gt;&#39; +
+                            &#39;&lt;hr&gt;&#39;
+                    );
+                });
+
+                $(&#39;#result-count&#39;).text(results.length);
+            }
+        }, function () {
+            displayMessage(&#39;An error occurred during search, please try again later.&#39;);
+        });
+    });
+&lt;/script&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+
+
+<title>
+    AngularJS directive design
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/unify/css/style.css">
+<link rel="stylesheet" href="/assets/unify/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLF968Z');</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "W20 framework",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "Open-Source Software"
+  },
+  "applicationCategory" : "web framework"
+}
+</script>
+
+
+
+<meta property="og:title" content="AngularJS directive design" />
+<meta property="og:description" content="AngularJS is a web application framework that makes creating complicated web applications much simpler. One of its best
+features is the ability to create directives, or reusable web components. It gives you the ability to create new HTML
+tags and attributes, which can dynamically display content in response to data changes, as well as update the data when
+appropriate." />
+<meta property="og:url" content="http://w20-framework.github.io/guides/angularjs-directive-design/" />
+<meta property="og:site_name" content="W20 framework" />
+<meta property="og:image" content="http://w20-framework.github.io/img/opengraph-default.png" />
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://w20-framework.github.io/opensearch.xml" title="W20 framework" />
+
+
+
+<script type="text/javascript">
+    window.w20 = {
+        state: {}
+    };
+</script>
+
+
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLF968Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div id="header">
+    <div class="header">
+    <div class="container">
+        <a class="logo" href="/">W20 framework</a>
+        <div class="topbar hidden-xs hidden-sm">
+            <ul class="loginbar pull-right">
+                <li><i class="fa fa-stack-overflow"></i> <a target="_blank" href="http://stackoverflow.com/questions/ask?tags=w20">Ask a question</a></li>
+                <li class="topbar-devider"></li>
+                <li><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></li>
+            </ul>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" data-role="navigation" style="pointer-events: none;">
+        <div class="container">
+            <ul class="nav navbar-nav" style="pointer-events: auto;">
+                <li>
+                    <a href="/docs">Documentation</a>
+                </li>
+                <li>
+                    <a href="/addons">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/themes">Themes</a>
+                </li>
+                <li>
+                    <a href="/posts">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/project/community">Community</a></li>
+                        <li><a href="/project/roadmap">Roadmap</a></li>
+                        <li><a href="/project/faq">FAQ</a></li>
+                        <li><a href="/tags">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <form method="GET" action="/search">
+                            <div class="input-group animated fadeInDown">
+                                <input id="search-field" type="text" class="form-control" placeholder="Search" name="q">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="title-header small">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h2>Guides</h2>
+                <p class="hidden-xs">Hands-on instructions and detailed insight applicable to W20-based projects.</p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-image-wrapper">
+                    <img class="header-image" src="/img/logos/guides-logo.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="title-subheader">
+        <div class="container">
+            <ul>
+                <li><h3><i class="fa fa-list"></i> <a href="/guides">All guides</a></h3></li>
+                <li><h3 class="active"><i class="fa fa-book"></i> <a href="">AngularJS directive design</a></h3></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="content" class="container">
+    <div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="doc-content">
+                <p>AngularJS is a web application framework that makes creating complicated web applications much simpler. One of its best
+features is the ability to create directives, or reusable web components. It gives you the ability to create new HTML
+tags and attributes, which can dynamically display content in response to data changes, as well as update the data when
+appropriate.</p>
+
+<p>They’re a big productivity booster because they let you wrap up a complicated interaction with the DOM in a nice,
+reusable package.</p>
+
+<h1 id="making-directives-can-be-confusing-at-first">Making directives can be confusing at first</h1>
+
+<p>It doesn’t take long to realize that directives are useful, and the ones that are bundled with AngularJS are well
+designed, but making directives can feel overwhelming at first. The Angular team has done a good job making directives
+extremely powerful and flexible, but all that power comes with some complexity.</p>
+
+<p>Specifically, it’s difficult to understand how to create a directive that responds to data changes, updates data,
+responds to events, or exposes events. Basically it boils down to this:</p>
+
+<blockquote>How do I talk to a directive?</blockquote>
+
+<p>This article aims to explain and simplify some of the most common problems you will run in to when creating directives.</p>
+
+<h1 id="directive-design-principles">Directive design principles</h1>
+
+<p>Directives make our lives easier when you can reuse them without needing to read or edit the source code. Then we can
+forget how they work, and just remember what they do.</p>
+
+<p>If you’re coming from a view-centric framework, you may be tempted to separate your application into view-like directive
+chunks. For example, if you want to display a list of users, you might create a directive that reads $scope.users and
+prints them all out:</p>
+
+<pre><code>&lt;user-list/&gt;
+</code></pre>
+
+<p>The <code>user-list</code> directive works. I mean, look how DRY it is! However, contrast it with ng-repeat, which handles only the
+repetition. Which one could be used in more places? What if you need to display users differently in two places?</p>
+
+<blockquote>A good directive only does one job</blockquote>
+
+<p><code>ng-repeat</code> is better than <code>user-list</code> because it does only one job: It only does the repetition part, so you can reuse
+it many more situations. It’s job is easy to understand. Instead of making one directive that solves everything, split
+it up into several focused directives and glue them together.</p>
+
+<blockquote>A good directive is not application specific</blockquote>
+
+<p>Directives are more widely useful the fewer assumptions they make about your application. A directive that allows the
+user to say which property to observe, like ng-model is more useful than one that assumes that $scope.users exists.
+As a general rule, if your directive could be useful in a completely different application, it’s more likely to be well
+designed and useful even if you never publish it.</p>
+
+<p>That’s enough theory for now. Let’s dive in to some specific examples of common ways you can interact with directives.</p>
+
+<h1 id="how-to-display-bindings">How to display bindings</h1>
+
+<p>The first thing to learn is how to make a directive that respects a binding: the ones with double curly braces. For
+example, let’s make a directive that displays a photo and a caption.</p>
+
+<p>The first step in any directive design is to choose the names of the attributes that will make up your interface.
+I’ve chosen to use photo-src for the image src, and caption for the text. Be careful not to use names that other
+directives use, like ng-src unless you know how they work.</p>
+
+<p>Secondly, decide if you want to support only attributes and class names, or elements too. In this case we decide we
+want photo to be an element.</p>
+
+<pre><code>&lt;photo photo-src=&quot;{{photo.url}}&quot;
+         caption=&quot;Taken on: {{photo.date}}&quot;/&gt;
+</code></pre>
+
+<p>Note that I did not give the directive the whole photo object. It’s better design to allow the directive to work with
+any data structure.</p>
+
+<p>To read a binding, use <code>attrs.$observe</code>. This will call your callback any time the binding changes. We then use element
+to make changes to the DOM.</p>
+
+<pre><code>app.directive('photo', function() {
+    return {
+        // required to make it work as an element
+        restrict: 'E',
+
+        // replace &lt;photo&gt; with this html
+        template: '&lt;figure&gt;&lt;img/&gt;&lt;figcaption/&gt;&lt;/figure&gt;',
+        replace: true,
+
+        // observe and manipulate the DOM
+        link: function($scope, element, attrs) {
+            attrs.$observe('caption', function(value) {
+                element.find('figcaption').text(value)
+            })
+
+            // attribute names change to camel case
+            attrs.$observe('photoSrc', function(value) {
+                element.find('img').attr('src', value)
+            })
+        }
+    }
+});
+</code></pre>
+
+<p>Alternatively, if your component has its own template, you can do all of this with an isolate scope.</p>
+
+<pre><code>app.directive('photo', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'photo.html',
+        replace: true,
+        // pass these two names from attrs into the template scope
+        scope: {
+            caption: '@',
+            photoSrc: '@'
+        }
+    }
+});
+</code></pre>
+
+<p>HTML:</p>
+
+<pre><code>&lt;figure&gt;
+    &lt;img ng-src=&quot;{{photoSrc}}&quot;/&gt;
+    &lt;figcaption&gt;{{caption}}&lt;/figcaption&gt;
+&lt;/figure&gt;
+</code></pre>
+
+<h1 id="how-to-read-and-write-data">How to read and write data</h1>
+
+<p>Some directives need to write data too, like <code>ng-model</code>.</p>
+
+<p>Let’s make a button toggle directive. This directive will automatically set its toggle state based on some boolean in
+the scope, and when clicked, it will set the boolean.</p>
+
+<p>When passing data this way, you don’t use curly braces, you use an “Expression”. An Expression is any JS code that would
+run if it were on the scope. Use expressions whenever you need to write data, or when passing in an Object or Array
+into the directive instead of a string.</p>
+
+<pre><code>&lt;!-- no double curly braces here --&gt;
+&lt;button toggle=&quot;preferences.showDetails&quot;&gt;Show Details&lt;/button&gt;
+</code></pre>
+
+<p>First we use <code>=</code> on the <code>scope:</code> settings to make <code>scope.toggle</code> available within our directive. Anywhere in our directive,
+<code>scope.toggle</code> reads and writes to whatever the user set in the attribute.</p>
+
+<pre><code>app.directive('toggle', function() {
+    return {
+        scope: {
+            toggle: '=',
+        },
+        link: function($scope, element, attrs) {
+</code></pre>
+
+<p>Next we use scope.$watch, which calls your function whenever the expression changes. We’ll add and remove the active css
+class whenever it changes.</p>
+
+<pre><code>            $scope.$watch(&quot;toggle&quot;, function(value) {
+                element.toggleClass('active', value)
+            })
+</code></pre>
+
+<p>Finally, let’s listen to the jQuery click event and update the scope. We need to use <code>scope.$apply</code> any time we respond
+to changes from outside of Angular.</p>
+
+<pre><code>            element.click(function() {
+                $scope.$apply(function() {
+                    $scope.toggle = !$scope.toggle
+                })
+            })
+        }
+    }
+});
+</code></pre>
+
+<h1 id="how-to-expose-events">How to expose events</h1>
+
+<p>Sometimes you want to allow a controller to respond to events from within a directive, like ng-click. Let’s make a
+scroll directive, that can call a function whenever a user scrolls that element. In addition, let’s expose the scroll
+offset too.</p>
+
+<pre><code>&lt;textarea scroll=&quot;onScroll(offset)&quot;&gt;...&lt;/textarea&gt;
+</code></pre>
+
+<p>Similar to the toggle button, we map whatever function they specify in the attribute to <code>scroll</code> in our directive’s scope.</p>
+
+<pre><code>app.directive('scroll', function() {
+    return {
+        scope: {
+            scroll: &quot;&amp;&quot;
+        },
+        link: function($scope, element, attrs) {
+</code></pre>
+
+<p>We’ll use jQuery’s scroll event to get what we need. We still need to call <code>scope.$apply</code> here, because even though it
+calls the handler either way, the handler on the controller might set data.</p>
+
+<pre><code>            element.scroll(function() {
+                $scope.apply(function() {
+                    var offset = element.scrollTop()
+                    $scope.scroll({offset:offset})
+                })
+            })
+        }
+    }
+});
+</code></pre>
+
+<p>Notice that we don’t pass the offset in as the first parameter, we pass a hash of available parameters, and make them
+available to the expression <code>onScroll(offset)</code> that they passed in to the attribute. This is much more flexible than
+passing parameters directly, because they can pass other scope variables into their functions, like the current
+item in an <code>ng-repeat</code>.</p>
+
+<h1 id="how-to-have-html-content">How to have HTML content</h1>
+
+<p>Directives can have html content by default, but the minute you specify a template the content is replaced by the
+template.</p>
+
+<p>Let’s make a <code>modal</code> component: a popup window with a close button, and we would like to set the body as html.</p>
+
+<pre><code>&lt;modal&gt;
+  &lt;p&gt;Some contents&lt;/p&gt;
+  &lt;p&gt;Put whatever you want in here&lt;/p&gt;
+&lt;/modal&gt;
+</code></pre>
+
+<p>Our modal is more than just one element though. When we make the template, we include everything we need, then we put a
+special ng-transclude directive in the div that is supposed to take back over and get all the contents.</p>
+
+<pre><code>&lt;div class=&quot;modal&quot;&gt;
+    &lt;header&gt;
+        &lt;button&gt;Close&lt;/button&gt;
+        &lt;h2&gt;Modal&lt;/h2&gt;
+    &lt;/header&gt;
+    &lt;div class=&quot;body&quot; ng-transclude&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Wiring things up is pretty simple. Just set transclude: true to get this to work:</p>
+
+<pre><code>app.directive('modal', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'modal.html',
+        replace: true,
+        transclude: true,
+    }
+});
+</code></pre>
+
+<p>You can combine this with any of the other techniques in this article to make something more complicated.</p>
+
+<h1 id="how-to-respond-to-events">How to respond to events</h1>
+
+<p>Sometimes you might want to call a function on your directive, in response to an event in your scope. For example, you
+might want to close the open modal if the user hits the escape key.</p>
+
+<p>This is almost always an indication that you are stuck on events, when you should be thinking about data flow.
+Controllers don’t just contain data, they hold view state too. It’s totally fine to have a windowShown boolean on
+your controller, and use ng-show or pass a boolean into your directive as described above.</p>
+
+<p>There are cases where it does make sense to use <code>$scope.$on</code> in a directive, but for beginners, try to think about the
+problem in terms of changing state instead. Things get much easier in Angular if you focus on data and state instead of
+events.</p>
+
+<h1 id="more-information">More Information</h1>
+
+<p>There is a lot more to directives. This article doesn’t nearly cover everything they can do. Please visit the <a href="http://docs.angularjs.org/guide/directive">directive
+documentation</a> page for more information.</p>
+
+<h1 id="source-article">Source article</h1>
+
+<p>Article copied from <a href="http://seanhess.github.io/2013/10/14/angularjs-directive-design.html">http://seanhess.github.io/2013/10/14/angularjs-directive-design.html</a>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+<div class="side-menu">
+    
+    
+    <div class="list-group">
+        <ul class="nav">
+            
+                <li><a class="list-group-item" href="https://github.com/w20-framework/website/edit/master/content/guides/angularjs-directive-design/index.md" target="_blank"><i class="fa fa-edit"></i> Contribute to this page</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+    </div>
+</div>
+
+</div>
+<div id="footer">
+    <div class="footer-v3">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="headline"><h2>About</h2></div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">W20 is a Web framework to create modular and composable enterprise-ready applications.</p>
+                </div>
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><h2>License</h2></div>
+                        <p>
+                            Code licensed under the <a href="https://www.mozilla.org/MPL/2.0" target="_blank">Mozilla Public License 2.0</a>.
+                            <br/>
+                            Documentation licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 map-img">
+                    <div class="headline"><h2>Contact us</h2></div>
+                    <address>
+                        <p>
+                            StackOverflow <a href="https://stackoverflow.com/questions/tagged/w20">W20 on StackOverflow</a>
+                        </p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js"></script>
+<script src="/assets/unify/plugins/smoothScroll.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/w20.js"></script>
+<script>
+    $(document).ready(function () {
+        var $search = $('.search-btn');
+
+        $('.search').click(function () {
+            if ($search.hasClass('fa-search')) {
+                w20.ui.openSearch();
+            } else {
+                w20.ui.closeSearch();
+            }
+        });
+
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $('.side-menu').affix({
+            offset: {
+                top: $('#header').height() + 20,
+                bottom: $('#footer').height() + 40
+            }
+        });
+
+        Mousetrap.bind('/', function () {
+            w20.ui.openSearch();
+            return false;
+        });
+
+        Mousetrap.bind('alt+up', function () {
+            if (w20.state.previousPage) {
+                window.location = w20.state.previousPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('alt+down', function () {
+            if (w20.state.nextPage) {
+                window.location = w20.state.nextPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('esc', function () {
+            w20.ui.closeSearch();
+            return false;
+        });
+
+        var originalCallback = Mousetrap.stopCallback;
+        Mousetrap.stopCallback = function (e, element, combo) {
+            if (combo === 'esc') {
+                return false;
+            }
+
+            return originalCallback(e, element, combo);
+        };
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#hotkeys-modal, #versions-modal').bind('hidden.bs.modal', function () {
+            $("html").css("margin-right", "0px");
+        }).bind('show.bs.modal', function () {
+            $("html").css("margin-right", "-15px");
+        });
+
+        var query = w20.strings.parseQueryString(location);
+        if (query.h && query.h.length > 0) {
+            $('.doc-content').highlight(query.h);
+            if (query.scroll) {
+                $('html, body').animate({
+                    scrollTop: $('span[class=highlight]:first').offset().top - 20
+                }, 250);
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

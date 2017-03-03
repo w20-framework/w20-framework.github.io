@@ -1,0 +1,2538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+
+
+<title>
+    Nvd3
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/unify/css/style.css">
+<link rel="stylesheet" href="/assets/unify/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLF968Z');</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "W20 framework",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "Open-Source Software"
+  },
+  "applicationCategory" : "web framework"
+}
+</script>
+
+
+
+<meta property="og:title" content="Nvd3" />
+<meta property="og:description" content="Nvd3 Nvd3 is a data visualization library build on top of the popular d3 library. It offers several chart types for common visualization needs. The web framework add an AngularJS integration in the form of directives, along with sensible defaults for these different charts.
+Live demo  Multibar The multibar chart is used to compare different series in a bar representation following the X axis.
+Configuration &quot;multibar&quot;:{},  The w20MultibarChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller." />
+<meta property="og:url" content="http://w20-framework.github.io/addons/dataviz/nvd3/" />
+<meta property="og:site_name" content="W20 framework" />
+<meta property="og:image" content="http://w20-framework.github.io/img/opengraph-default.png" />
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://w20-framework.github.io/opensearch.xml" title="W20 framework" />
+
+
+
+<script type="text/javascript">
+    window.w20 = {
+        state: {}
+    };
+</script>
+
+
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLF968Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div id="header">
+    <div class="header">
+    <div class="container">
+        <a class="logo" href="/">W20 framework</a>
+        <div class="topbar hidden-xs hidden-sm">
+            <ul class="loginbar pull-right">
+                <li><i class="fa fa-stack-overflow"></i> <a target="_blank" href="http://stackoverflow.com/questions/ask?tags=w20">Ask a question</a></li>
+                <li class="topbar-devider"></li>
+                <li><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></li>
+            </ul>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" data-role="navigation" style="pointer-events: none;">
+        <div class="container">
+            <ul class="nav navbar-nav" style="pointer-events: auto;">
+                <li>
+                    <a href="/docs">Documentation</a>
+                </li>
+                <li>
+                    <a href="/addons">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/themes">Themes</a>
+                </li>
+                <li>
+                    <a href="/posts">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/project/community">Community</a></li>
+                        <li><a href="/project/roadmap">Roadmap</a></li>
+                        <li><a href="/project/faq">FAQ</a></li>
+                        <li><a href="/tags">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <form method="GET" action="/search">
+                            <div class="input-group animated fadeInDown">
+                                <input id="search-field" type="text" class="form-control" placeholder="Search" name="q">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="title-header small">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h2>Add-ons</h2>
+                <p class="hidden-xs">Extend W20 framework capabilities with the add-ons below.</p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-image-wrapper">
+                    <img class="header-image" src="/img/logos/addons-logo.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="title-subheader">
+        <div class="container">
+            <ul>
+                <li><h3><i class="fa fa-list"></i> <a href="/addons">All add-ons</a></h3></li>
+                <li><h3 class="active"><i class="fa fa-plug"></i> <a href="">W20 dataviz add-on</a></h3></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="content" class="container">
+    <div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="doc-content">
+                
+
+<h1 id="nvd3">Nvd3</h1>
+
+<p><a href="http://nvd3.org/">Nvd3</a> is a data visualization library build on top of the popular <a href="https://d3js.org/">d3</a> library. It offers several chart types for
+common visualization needs. The web framework add an AngularJS integration in the form of directives, along with sensible defaults for these different charts.</p>
+
+<div class="margin-top-20 margin-bottom-20">
+    <a href='http://w20-framework.github.io/w20-dataviz' class="btn btn-u">Live demo</a>
+</div>
+
+
+<h1 id="multibar">Multibar</h1>
+
+<p>The multibar chart is used to compare different series in a bar representation following the X axis.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<pre><code>&quot;multibar&quot;:{},
+</code></pre>
+
+<p>The w20MultibarChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.</p>
+
+<div class="callout callout-warning">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+            
+                <i class="fa fa-exclamation-triangle icon-2x"></i>
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>You must indicate a unique id for the chart</p>
+
+        </div>
+    </div>
+</div>
+
+<pre><code>&lt;div id=&quot;multibar&quot; data-w20-multibar-chart=&quot;multibarConfig&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<h2 id="data-format">Data format</h2>
+
+<p>Data fed to the multibar chart should follow a default format. This format can be overridden by the use of personal function (See &laquo;x&raquo; and &laquo;y&raquo; properties below).</p>
+
+<p>Default data format exemple :</p>
+
+<pre><code>  [
+   {
+      &quot;key&quot;: &quot;Series 1&quot;,
+      &quot;values&quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &quot;key&quot;: &quot;Series 2&quot;,
+      &quot;values&quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+</code></pre>
+
+<p>The <code>key</code> property defines the name of the series. The <code>values</code> defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.</p>
+
+<h2 id="multibar-configuration">Multibar configuration</h2>
+
+<p>The multibar chart is configured by the configuration object passed to the directive declaration (see Directives).</p>
+
+<p>Exemple :</p>
+
+<pre><code>  $scope.multibarConfig = {
+      data: $scope.multibarData,
+      yAxisShowMaxMin: true,
+      xAxisShowMaxMin: true,
+      showLegend: true,
+      showControls: true,
+      tooltips: true,
+      yaxislabel: 'The Y axis title',
+      xaxislabel: 'The X axis title',
+      xaxistickformat: xAxisTickFormatMultibar // custom function to configure X axis
+  }
+</code></pre>
+
+<p>Available properties :</p>
+
+<table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+    <tr>
+        <th>Properties</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>data</td>
+        <td>Array</td>
+        <td>Data to display using the multibar chart (mandatory if you don't define the "noData" property.).
+            Generally it would be a property of $scope
+        </td>
+    </tr>
+    <tr>
+        <td>x</td>
+        <td>function</td>
+        <td>Providing a function to the x property allows configuration of the data on the X axis.
+            Consider this example : say we want to double the data value displayed on the X axis in comparison
+            to the data provided to the "data" property.
+            We can achieve this by providing the following function to the x property :
+            <code>function(d){
+                return d[0]*2;
+                };
+            </code>
+            where "d[0]" is all the values at index 0 of all sub arrays of the array at property "values" of
+            all objects in the array provided to the "data" property.
+        </td>
+    </tr>
+    <tr>
+            <td>y</td>
+            <td>function</td>
+            <td>See "x" property above. Applied to the Y axis instead.</td>
+    </tr>
+      <tr>
+                  <td>forceY</td>
+                  <td>Array</td>
+                  <td>Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie.
+                      Use it to force special values such as 0.
+                  </td>
+              </tr>
+              <tr>
+                  <td>showLegend</td>
+                  <td>Boolean</td>
+                  <td>Display or hide legend.</td>
+              </tr>
+              <tr>
+                  <td>showControls</td>
+                  <td>Boolean</td>
+                  <td>Display or hide controls.</td>
+              </tr>
+              <tr>
+                  <td>tooltips</td>
+                  <td>Boolean</td>
+                  <td>Enable or disable tooltips when hovering the chart.</td>
+              </tr>
+              <tr>
+                  <td>reduceXTicks</td>
+                  <td>Boolean</td>
+                  <td>Reduce the number of ticks on the X axis</td>
+              </tr>
+              <tr>
+                  <td>staggerLabels</td>
+                  <td>Boolean</td>
+                  <td>Create a gap between labels so that they don't overlap on each other if they are too many</td>
+              </tr>
+              <tr>
+                  <td>noData</td>
+                  <td>String</td>
+                  <td>Message to display when there is no data (default to "No data available")</td>
+              </tr>
+              <tr>
+                  <td>rotateLabels</td>
+                  <td>integer</td>
+                  <td>Rotation to apply to X axis labels (0 : horizontal(default), 90 : vertical)</td>
+              </tr>
+              <tr>
+                  <td>color</td>
+                  <td>Array</td>
+                  <td> Color of series in the corresponding order. Can be hexadecimal, named or RGB.
+                      Ex. <code>['#4D9FF2', 'yellow', 'rgb(151,109,165)']</code>. Note that you can also
+                      specify the value of the color in the "data" array by providing a "color" attribute to each object.
+                  </td>
+              </tr>
+              <tr>
+                  <td>stacked</td>
+                  <td>Boolean</td>
+                  <td>Indicate whether the series should be stacked on each other or not.</td>
+              </tr>
+              <tr>
+                      <td> tooltipContent</td>
+                      <td>function</td>
+                      <td>Customize tooltip content.
+                          Ex.
+                           function(key, x, y, e, graph) { return '&lth1&gt Tooltip Title &lt/h1&gt &ltp&gt'+ y
+                              +'&lt/p&gt';}
+                          where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart
+                          object.
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>transitionDuration</td>
+                      <td>integer</td>
+                      <td>Duration of transition effect (Default to 500).</td>
+                  </tr>
+    </tbody>
+</table>
+
+<h2 id="axis-configuration">Axis Configuration</h2>
+
+<p>Axis are configured in the same configuration object.</p>
+
+<h3 id="x-axis">X axis :</h3>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>xAxisTickValues</td>
+            <td>Array</td>
+            <td> Specify explicitly the values to plot on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickSubdivide</td>
+            <td>Integer</td>
+            <td> Specify the number of intermediate ticks to show on the X axis </td>
+        </tr>
+         <tr>
+            <td>xAxisTickPadding</td>
+            <td>Integer</td>
+            <td>Specify ticks padding on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickFormat</td>
+            <td>function</td>
+            <td> Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : <code> d3.format(&lsquo;.2f&rsquo;)</code>. Or format Date object to
+            a readable format as <code> d3.time.format(&lsquo;%Y&rsquo;)</code> which shows the year only. See
+            <a href="https://github.com/mbostock/d3/wiki/Formatting" target="_blank">d3.js documentation</a>
+            for a list of all format available
+            </td>
+        </tr>
+         <tr>
+            <td>xAxisLabel</td>
+            <td>String</td>
+            <td>Label of the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisDomain</td>
+            <td>Array [start, end]</td>
+            <td> Specify the domain on the X axis (min to max value)</td>
+        </tr>
+         <tr>
+            <td>xAxisShowMaxMin</td>
+            <td>Boolean</td>
+            <td> Show or hide maximum and minimum value in bold</td>
+        </tr>
+        <tr>
+            <td>xAxisRotateLabels</td>
+            <td>Integer</td>
+            <td> 0 to 180° rotation of X axis tick label</td>
+        </tr>
+         <tr>
+            <td>xAxisStaggerLabels</td>
+            <td>Integer</td>
+            <td>Size of the gap between labels to resolve overlapping issue</td>
+        </tr>
+    </tbody>
+  </table></p>
+
+<h3 id="y-axis">Y axis :</h3>
+
+<p>See X axis. Replace property &laquo;xName&raquo; by &laquo;yName&raquo;.</p>
+
+<h1 id="pie">Pie</h1>
+
+<p>The pie chart is used to represent proportion between series.</p>
+
+<h2 id="configuration-1">Configuration</h2>
+
+<pre><code> &quot;pie&quot;:{},
+</code></pre>
+
+<p>The w20PieChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.</p>
+
+<div class="callout callout-warning">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+            
+                <i class="fa fa-exclamation-triangle icon-2x"></i>
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>You must indicate a unique id for the chart</p>
+
+        </div>
+    </div>
+</div>
+
+<pre><code>&lt;div id=&quot;pie&quot; data-w20-pie-chart=&quot;pieConfig&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<h2 id="data-format-1">Data format</h2>
+
+<p>Data fed to the pie chart should follow a default format. This format can be overridden by the use of personal function (See &laquo;x&raquo; and &laquo;y&raquo; properties below).</p>
+
+<p>Default data format exemple :</p>
+
+<pre><code>     [
+      {
+         &quot;key&quot;: &quot;Series 1&quot;,
+         &quot;value&quot;: 10
+      },
+      {
+         &quot;key&quot;: &quot;Series 2&quot;,
+         &quot;value&quot;: 20
+      }
+     ]
+</code></pre>
+
+<div class="callout callout-tips">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+                <i class="fa fa-lightbulb-o icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>Note that the pie/donut chart has &laquo;value&raquo; by default instead of &laquo;values&raquo; as it can only represent one single value</p>
+
+        </div>
+    </div>
+</div>
+
+<p>The <code>key</code> property defines the name of the series. The <code>value</code> defines the data of the series.</p>
+
+<h2 id="pie-chart-configuration">Pie chart configuration</h2>
+
+<p>The pie chart is configured by the configuration object passed to the directive declaration (see Directives).</p>
+
+<p>Exemple :</p>
+
+<pre><code>    $scope.pieConfig = {
+      data:$scope.pieData,
+      showLabels:true,
+      pieLabelsOutside:true,
+      showValues:true,
+      tooltips:true,
+      labelType:'percent',
+      showLegend:true
+    }
+</code></pre>
+
+<p>Available properties :</p>
+
+<table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+   <thead>
+       <tr>
+           <th>Properties</th>
+           <th>Type</th>
+           <th>Description</th>
+       </tr>
+   </thead>
+   <tbody>
+       <tr>
+           <td>data</td>
+           <td>Numeric</td>
+           <td>Data to display using the pie chart (mandatory if you don't define the "noData" property.).</td>
+       </tr>
+       <tr>
+           <td>x</td>
+           <td>function</td>
+           <td>Providing a function to the x property allows configuration of the data on the "X" axis.
+            Consider this example : say we want to customize the key value displayed on the "X" axis (X refer to the key and Y to the value)
+            in comparison to the data provided to the "data" property.
+           We can achieve this by providing the following function to the x property :
+           function(){
+                           return d.key+" a custom string appended";
+                  };
+             where "d.key" is all the values of key in the array passed to property "data".
+           </td>
+       </tr>
+       <tr>
+           <td>y</td>
+           <td>function</td>
+           <td>See "x" property above. Applied to the Y axis instead. (Exemple : double value :
+               function(){
+                      return d.value*2;
+                  }
+           </td>
+       </tr>
+       <tr>
+           <td>showLegend</td>
+           <td>Boolean</td>
+           <td>Display or hide legend.</td>
+       </tr>
+       <tr>
+           <td>tooltips</td>
+           <td>Boolean</td>
+           <td>Enable or disable tooltips when hovering the chart.</td>
+       </tr>
+         <tr>
+           <td>noData</td>
+           <td>String</td>
+           <td>Message to display when there is no data (default to "No data available") </td>
+       </tr>
+         <tr>
+           <td>color</td>
+           <td>Array</td>
+           <td> Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  ['#4D9FF2', 'yellow', 'rgb(151,109,165)']. Note that you can also
+           specify the value of the color in the "data" array by providing a "color" attribute to each object. </td>
+       </tr>
+          <tr>
+           <td> tooltipContent</td>
+           <td>function</td>
+           <td>Customize tooltip content. Ex. function(key, x, y, e, graph) { return '&lth1&gt Tooltip Title &lt/h1&gt &ltp&gt'+ y +'&lt/p&gt';}
+           where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.</td>
+       </tr>
+        <tr>
+           <td>transitionDuration</td>
+           <td>integer</td>
+           <td>Duration of transition effect (Default to 500).</td>
+       </tr>
+        <tr>
+           <td>showLabels</td>
+           <td>Boolean</td>
+           <td>Show or hide labels.</td>
+       </tr>
+       <tr>
+           <td>labelType</td>
+           <td>String</td>
+           <td>What the label would display : 'key', 'value' or 'percent'.</td>
+       </tr>
+       <tr>
+           <td>pieLabelsOutside</td>
+           <td>Boolean</td>
+           <td>Should the label be inside or outside the chart.</td>
+       </tr>
+        <tr>
+           <td>valueFormat</td>
+           <td>function</td>
+           <td>Custom formating of values. For instance one can print values in .2f decimal
+           by passing d3.format(',.2f') to this property. See <a href="https://github.com/mbostock/d3/wiki/Formatting" target="_blank">d3.js documentation</a>
+           for a list of format value.</td>
+       </tr>
+        <tr>
+           <td>donut</td>
+           <td>Boolean</td>
+           <td>Display the chart as a donut</td>
+       </tr>
+          <tr>
+           <td>donutLabelsOutside</td>
+           <td>Boolean</td>
+           <td>Should the label be inside or outside the chart</td>
+       </tr>
+            </tr>
+          <tr>
+           <td>donutRatio</td>
+           <td>Numeric</td>
+           <td>Ratio between the hole and edge of donut (Default 0.5)</td>
+       </tr>
+   </tbody>
+</table>
+
+<h1 id="scatter-bubble-chart">Scatter/Bubble chart</h1>
+
+<p>The scatter chart is used to compare different series between 3 values : X and Y axis + size of data.</p>
+
+<h2 id="configuration-2">Configuration</h2>
+
+<pre><code>&quot;scatter&quot;:{}
+</code></pre>
+
+<p>The w20ScatterChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.</p>
+
+<div class="callout callout-warning">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+            
+                <i class="fa fa-exclamation-triangle icon-2x"></i>
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>You must indicate a unique id for the chart</p>
+
+        </div>
+    </div>
+</div>
+
+<pre><code>&lt;div id=&quot;scatter&quot; data-w20-scatter-chart=&quot;scatterConfig&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<h2 id="fragment-definition-sections">Fragment definition sections</h2>
+
+<p>This module has no fragment definition section.</p>
+
+<h2 id="data-format-2">Data format</h2>
+
+<p>Data fed to the scatter chart should follow a default format.</p>
+
+<p>Default data format exemple :</p>
+
+<pre><code>      [
+       {
+          &quot;key&quot;: &quot;Series 1&quot;,
+          &quot;values&quot;: [ {
+                    x: 10,
+                    y: 20,
+                    size: 0.5
+                    },
+                    {
+                    x: 12,
+                    y: 13,
+                    size: 0.9
+                    }
+                    ]
+       },
+       {
+          &quot;key&quot;: &quot;Series 2&quot;,
+          &quot;values&quot;:  [ {
+                     x: 15,
+                     y: 2,
+                     size: 0.5
+                     },
+                     {
+                     x: 15,
+                     y: 13,
+                     size: 0.6
+                     }
+                     ]
+       }
+      ]
+</code></pre>
+
+<p>The <code>key</code> property defines the name of the series. The <code>values</code> defines the data of the series.</p>
+
+<h2 id="scatter-chart-configuration">Scatter chart configuration</h2>
+
+<p>The scatter chart is configured by the configuration object passed to the directive declaration (see Directives).</p>
+
+<p>Exemple :</p>
+
+<pre><code>     $scope.scatterConfig = {
+       data: $scope.scatterChartData,
+       tooltips: true,
+       showLegend: true,
+       showControls: true,
+     }
+</code></pre>
+
+<p>Available properties :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>data</td>
+            <td>Array</td>
+            <td>Data to display using the scatter chart (mandatory if you don&rsquo;t define the &laquo;noData&raquo; property.). Generally it would be a property of $scope</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>function</td>
+            <td>Providing a function to the x property allows configuration of the data on the X axis. Consider this example :
+            say we want to double the data value displayed on the X axis in comparison to the data provided to the &laquo;data&raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &laquo;d[0]&raquo; is all the values at index 0 of all sub arrays of the array at property &laquo;values&raquo; of all objects in the array provided to the &laquo;data&raquo; property.
+            </td>
+        </tr>
+        <tr>
+            <td>tooltipXContent</td>
+            <td>function</td>
+            <td>Customize tooltip content on the X axis (require tooltips to be true). Ex :
+                function (key, x, y) {
+                                   return &lsquo;&amp;ltstrong&amp;gt&rsquo; + x + &lsquo;&amp;lt/strong&amp;gt&rsquo;;
+                               })
+             </td>
+        </tr>
+        <tr>
+            <td>tooltipYContent</td>
+            <td>function</td>
+            <td>Customize tooltip content on the X axis (require tooltips to be true). Ex :
+                function (key, x, y) {
+                                   return &lsquo;&amp;ltstrong&amp;gt&rsquo; + y + &lsquo;&amp;lt/strong&amp;gt&rsquo;;
+                               })
+            </td>
+        </tr>
+        <tr>
+            <td>showLegend</td>
+            <td>Boolean</td>
+            <td>Display or hide legend.</td>
+        </tr>
+        <tr>
+            <td>showControls</td>
+            <td>Boolean</td>
+            <td>Display or hide controls.</td>
+        </tr>
+        <tr>
+            <td>tooltips</td>
+            <td>Boolean</td>
+            <td>Enable or disable tooltips when hovering the chart.</td>
+        </tr>
+        <tr>
+            <td>showDistX</td>
+            <td>Boolean</td>
+            <td>Show/hide a line marker to the X value when hovering the point</td>
+        </tr>
+        <tr>
+            <td>showDistY</td>
+            <td>Boolean</td>
+            <td>Show/hide a line marker to the Y value when hovering the point</td>
+        </tr>
+          <tr>
+            <td>noData</td>
+            <td>String</td>
+            <td>Message to display when there is no data (default to &laquo;No data available&raquo;) </td>
+        </tr>
+          <tr>
+            <td>xPadding</td>
+            <td>Numeric</td>
+            <td>distance between ticks on the X axis</td>
+        </tr>
+         <tr>
+            <td>yPadding</td>
+            <td>Numeric</td>
+            <td>distance between ticks on the Y axis</td>
+        </tr>
+          <tr>
+            <td>color</td>
+            <td>Array</td>
+            <td> Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  <code>[&lsquo;#4D9FF2&rsquo;, &lsquo;yellow&rsquo;, &lsquo;rgb(151,109,165)&rsquo;]</code>. Note that you can also
+            specify the value of the color in the &laquo;data&raquo; array by providing a &laquo;color&raquo; attribute to each object. </td>
+        </tr>
+         <tr>
+            <td>transitionDuration</td>
+            <td>integer</td>
+            <td>Duration of transition effect (Default to 500).</td>
+        </tr>
+          <tr>
+            <td>fisheye</td>
+            <td>Numeric</td>
+            <td>Magnifying factor (when showControls is true)</td>
+        </tr>
+    </tbody>
+ </table></p>
+
+<h2 id="axis-configuration-1">Axis Configuration</h2>
+
+<p>Axis are configured in the same configuration object.</p>
+
+<p>X axis :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>xAxisTickValues</td>
+            <td>Array</td>
+            <td> Specify explicitly the values to plot on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickSubdivide</td>
+            <td>Integer</td>
+            <td> Specify the number of intermediate ticks to show on the X axis </td>
+        </tr>
+         <tr>
+            <td>xAxisTickPadding</td>
+            <td>Integer</td>
+            <td>Specify ticks padding on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickFormat</td>
+            <td>function</td>
+            <td> Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : <code> d3.format(&lsquo;.2f&rsquo;)</code>. Or format Date object to
+            a readable format as <code> d3.time.format(&lsquo;%Y&rsquo;)</code> which shows the year only. See
+            <a href="https://github.com/mbostock/d3/wiki/Formatting" target="_blank">d3.js documentation</a>
+            for a list of all format available
+            </td>
+        </tr>
+         <tr>
+            <td>xAxisLabel</td>
+            <td>String</td>
+            <td>Label of the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisDomain</td>
+            <td>Array [start, end]</td>
+            <td> Specify the domain on the X axis (min to max value)</td>
+        </tr>
+         <tr>
+            <td>xAxisShowMaxMin</td>
+            <td>Boolean</td>
+            <td> Show or hide maximum and minimum value in bold</td>
+        </tr>
+        <tr>
+            <td>xAxisRotateLabels</td>
+            <td>Integer</td>
+            <td> 0 to 180° rotation of X axis tick label</td>
+        </tr>
+         <tr>
+            <td>xAxisStaggerLabels</td>
+            <td>Integer</td>
+            <td>Size of the gap between labels to resolve overlapping issue</td>
+        </tr>
+    </tbody>
+  </table></p>
+
+<p>Y axis :</p>
+
+<p>See X axis. Replace property &laquo;xName&raquo; by &laquo;yName&raquo;.</p>
+
+<h1 id="discrete-bar">Discrete bar</h1>
+
+<p>The discretebar chart is used to compare different series in a bar representation.</p>
+
+<h2 id="configuration-3">Configuration</h2>
+
+<pre><code>&quot;discretebar&quot;:{}
+</code></pre>
+
+<p>The w20DiscreteBarChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.</p>
+
+<div class="callout callout-warning">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+            
+                <i class="fa fa-exclamation-triangle icon-2x"></i>
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>You must indicate a unique id for the chart</p>
+
+        </div>
+    </div>
+</div>
+
+<pre><code>&lt;div id=&quot;discretebar&quot; data-w20-discrete-bar-chart=&quot;discreteConfig&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<h2 id="data-format-3">Data format</h2>
+
+<p>Data fed to the discretebar chart should follow a default format. This format can be overridden by the use of personal function (See &laquo;x&raquo; and &laquo;y&raquo; properties below).</p>
+
+<p>Default data format exemple :</p>
+
+<pre><code>  [
+   {
+      &quot;key&quot;: &quot;Series 1&quot;,
+      &quot;values&quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &quot;key&quot;: &quot;Series 2&quot;,
+      &quot;values&quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+</code></pre>
+
+<p>The <code>key</code> property defines the name of the series. The <code>values</code> defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.</p>
+
+<p>## Discretebar configuration</p>
+
+<p>The discretebar chart is configured by the configuration object passed to the directive declaration (see Directives).</p>
+
+<p>Exemple :</p>
+
+<pre><code>   $scope.discreteBarConfig = {
+           data: $scope.discreteBarData,
+           tooltips: true,
+           showValues: true
+
+   }
+</code></pre>
+
+<p>Available properties :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>data</td>
+            <td>Array</td>
+            <td>Data to display using the discretebar chart (mandatory if you don&rsquo;t define the &laquo;noData&raquo; property.). Generally it would be a property of $scope</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>function</td>
+            <td>Providing a function to the x property allows configuration of the data on the X axis. Consider this example : say we want to double the data value displayed on the X axis in comparison to the data provided to the &laquo;data&raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &laquo;d[0]&raquo; is all the values at index 0 of all sub arrays of the array at property &laquo;values&raquo; of all objects in the array provided to the &laquo;data&raquo; property.
+            </td>
+        </tr>
+        <tr>
+            <td>y</td>
+            <td>function</td>
+            <td>See &laquo;x&raquo; property above. Applied to the Y axis instead.</td>
+        </tr>
+        <tr>
+            <td>forceY</td>
+            <td>Array</td>
+            <td>Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie. Use it to force special values such as 0.</td>
+        </tr>
+        <tr>
+            <td>showValues</td>
+            <td>Boolean</td>
+            <td>Display the value of the bar on top of them.</td>
+        </tr>
+       <tr>
+            <td>valueFormat</td>
+            <td>function</td>
+            <td>Format the value displayed when showValues is true. Ex: <code> d3.format(&lsquo;.2f&rsquo;)</code></td>
+        </tr>
+        <tr>
+            <td>tooltips</td>
+            <td>Boolean</td>
+            <td>Enable or disable tooltips when hovering the chart.</td>
+        </tr>
+        <tr>
+            <td>staggerLabels</td>
+            <td>Boolean</td>
+            <td>Create a gap between labels so that they don&rsquo;t overlap on each other if they are too many </td>
+        </tr>
+          <tr>
+            <td>noData</td>
+            <td>String</td>
+            <td>Message to display when there is no data (default to &laquo;No data available&raquo;) </td>
+        </tr>
+          <tr>
+            <td>color</td>
+            <td>Array</td>
+            <td> Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  [&lsquo;#4D9FF2&rsquo;, &lsquo;yellow&rsquo;, &lsquo;rgb(151,109,165)&rsquo;]. Note that you can also
+            specify the value of the color in the &laquo;data&raquo; array by providing a &laquo;color&raquo; attribute to each object. </td>
+        </tr>
+           <tr>
+            <td> tooltipContent</td>
+            <td>function</td>
+            <td>Customize tooltip content. Ex.  function(key, x, y, e, graph) { return &lsquo;&amp;lth1&amp;gt Tooltip Title &amp;lt/h1&amp;gt &amp;ltp&amp;gt&rsquo;+ y +&rsquo;&amp;lt/p&amp;gt&rsquo;;}
+            where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.</td>
+        </tr>
+         <tr>
+            <td>transitionDuration</td>
+            <td>integer</td>
+            <td>Duration of transition effect (Default to 500).</td>
+        </tr>
+    </tbody>
+ </table></p>
+
+<h2 id="axis-configuration-2">Axis Configuration</h2>
+
+<p>Axis are configured in the same configuration object.</p>
+
+<p>X axis :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>xAxisTickValues</td>
+            <td>Array</td>
+            <td> Specify explicitly the values to plot on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickSubdivide</td>
+            <td>Integer</td>
+            <td> Specify the number of intermediate ticks to show on the X axis </td>
+        </tr>
+         <tr>
+            <td>xAxisTickPadding</td>
+            <td>Integer</td>
+            <td>Specify ticks padding on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickFormat</td>
+            <td>function</td>
+            <td> Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : <code> d3.format(&lsquo;.2f&rsquo;)</code>. Or format Date object to
+            a readable format as <code> d3.time.format(&lsquo;%Y&rsquo;)</code> which shows the year only. See
+            <a href="https://github.com/mbostock/d3/wiki/Formatting" target="_blank">d3.js documentation</a>
+            for a list of all format available
+            </td>
+        </tr>
+         <tr>
+            <td>xAxisLabel</td>
+            <td>String</td>
+            <td>Label of the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisDomain</td>
+            <td>Array [start, end]</td>
+            <td> Specify the domain on the X axis (min to max value)</td>
+        </tr>
+         <tr>
+            <td>xAxisShowMaxMin</td>
+            <td>Boolean</td>
+            <td> Show or hide maximum and minimum value in bold</td>
+        </tr>
+        <tr>
+            <td>xAxisRotateLabels</td>
+            <td>Integer</td>
+            <td> 0 to 180° rotation of X axis tick label</td>
+        </tr>
+         <tr>
+            <td>xAxisStaggerLabels</td>
+            <td>Integer</td>
+            <td>Size of the gap between labels to resolve overlapping issue</td>
+        </tr>
+    </tbody>
+  </table></p>
+
+<p>Y axis :</p>
+
+<p>See X axis. Replace property &laquo;xName&raquo; by &laquo;yName&raquo;.</p>
+
+<h1 id="line-with-focus">Line with focus</h1>
+
+<p>The line with focus chart is used to explore series on a long range of values. You can restrict the range with
+the chart below the main chart to render data in a more precise way.</p>
+
+<h2 id="configuration-4">Configuration</h2>
+
+<pre><code>&quot;linewithfocus&quot;:{}
+</code></pre>
+
+<p>The w20LineWithFocusChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.</p>
+
+<div class="callout callout-warning">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+            
+                <i class="fa fa-exclamation-triangle icon-2x"></i>
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>You must indicate a unique id for the chart</p>
+
+        </div>
+    </div>
+</div>
+
+<pre><code>&lt;div id=&quot;linewithfocus&quot; data-w20-line-with-focus-chart=&quot;lineWithFocusConfig&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<h2 id="fragment-definition-sections-1">Fragment definition sections</h2>
+
+<p>This module has no fragment definition section.</p>
+
+<h2 id="data-format-4">Data format</h2>
+
+<p>Data fed to the line with focus chart should follow a default format. This format can be overridden by the use of personal function (See &laquo;x&raquo; and &laquo;y&raquo; properties below).</p>
+
+<p>Default data format exemple :</p>
+
+<pre><code>  [
+   {
+      &quot;key&quot;: &quot;Series 1&quot;,
+      &quot;values&quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &quot;key&quot;: &quot;Series 2&quot;,
+      &quot;values&quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+</code></pre>
+
+<p>The <code>key</code> property defines the name of the series. The <code>values</code> defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.</p>
+
+<h2 id="line-with-focus-configuration">Line with focus configuration</h2>
+
+<p>The line with focus chart is configured by the configuration object passed to the directive declaration (see Directives).</p>
+
+<p>Exemple :</p>
+
+<pre><code>   $scope.lineWithFocusConfig = {
+   data: $scope.linefocusdata,
+   tooltips: true
+   }
+</code></pre>
+
+<p>Available properties :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>data</td>
+            <td>Array</td>
+            <td>Data to display using the line with focus chart (mandatory if you don&rsquo;t define the &laquo;noData&raquo; property.). Generally it would be a property of $scope</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>function</td>
+            <td>Providing a function to the x property allows configuration of the data on the X axis. Consider this example : say we want to double the data value displayed on the X axis in comparison to the data provided to the &laquo;data&raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &laquo;d[0]&raquo; is all the values at index 0 of all sub arrays of the array at property &laquo;values&raquo; of all objects in the array provided to the &laquo;data&raquo; property.
+            </td>
+        </tr>
+        <tr>
+            <td>y</td>
+            <td>function</td>
+            <td>See &laquo;x&raquo; property above. Applied to the Y axis instead.</td>
+        </tr>
+        <tr>
+            <td>forceY</td>
+            <td>Array</td>
+            <td>Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie. Use it to force special values such as 0.</td>
+        </tr>
+        <tr>
+            <td>showLegend</td>
+            <td>Boolean</td>
+            <td>Display or hide legend.</td>
+        </tr>
+        <tr>
+            <td>tooltips</td>
+            <td>Boolean</td>
+            <td>Enable or disable tooltips when hovering the chart.</td>
+        </tr>
+          <tr>
+            <td>noData</td>
+            <td>String</td>
+            <td>Message to display when there is no data (default to &laquo;No data available&raquo;) </td>
+        </tr>
+          <tr>
+            <td>color</td>
+            <td>Array</td>
+            <td> Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  <code>[&lsquo;#4D9FF2&rsquo;, &lsquo;yellow&rsquo;, &lsquo;rgb(151,109,165)&rsquo;]</code>. Note that you can also
+            specify the value of the color in the &laquo;data&raquo; array by providing a &laquo;color&raquo; attribute to each object. </td>
+        </tr>
+         <tr>
+            <td>transitionDuration</td>
+            <td>integer</td>
+            <td>Duration of transition effect (Default to 500).</td>
+        </tr>
+    </tbody>
+ </table></p>
+
+<h2 id="axis-configuration-3">Axis Configuration</h2>
+
+<p>Axis are configured in the same configuration object.</p>
+
+<p>X axis main chart:</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>xAxisTickValues</td>
+            <td>Array</td>
+            <td> Specify explicitly the values to plot on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickSubdivide</td>
+            <td>Integer</td>
+            <td> Specify the number of intermediate ticks to show on the X axis </td>
+        </tr>
+         <tr>
+            <td>xAxisTickPadding</td>
+            <td>Integer</td>
+            <td>Specify ticks padding on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickFormat</td>
+            <td>function</td>
+            <td> Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : <code> d3.format(&lsquo;.2f&rsquo;)</code>. Or format Date object to
+            a readable format as <code> d3.time.format(&lsquo;%Y&rsquo;)</code> which shows the year only. See
+            <a href="https://github.com/mbostock/d3/wiki/Formatting" target="_blank">d3.js documentation</a>
+            for a list of all format available
+            </td>
+        </tr>
+         <tr>
+            <td>xAxisLabel</td>
+            <td>String</td>
+            <td>Label of the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisDomain</td>
+            <td>Array [start, end]</td>
+            <td> Specify the domain on the X axis (min to max value)</td>
+        </tr>
+         <tr>
+            <td>xAxisShowMaxMin</td>
+            <td>Boolean</td>
+            <td> Show or hide maximum and minimum value in bold</td>
+        </tr>
+        <tr>
+            <td>xAxisRotateLabels</td>
+            <td>Integer</td>
+            <td> 0 to 180° rotation of X axis tick label</td>
+        </tr>
+         <tr>
+            <td>xAxisStaggerLabels</td>
+            <td>Integer</td>
+            <td>Size of the gap between labels to resolve overlapping issue</td>
+        </tr>
+    </tbody>
+  </table></p>
+
+<p>Y axis :</p>
+
+<p>See X axis. Replace property &laquo;xName&raquo; by &laquo;yName&raquo;.</p>
+
+<p>X2 axis :</p>
+
+<p>For the small focusin chart. See X axis. Replace property &lsquo;xName&rsquo; with &lsquo;x2Name&rsquo;.</p>
+
+<p>Y2 axis :</p>
+
+<p>For the small focusing chart. See X axis. Replace property &lsquo;xName&rsquo; with &lsquo;y2Name&rsquo;.</p>
+
+<h1 id="stacked-area">Stacked area</h1>
+
+<p>The stacked area chart is used to compare different series according to their surface area.</p>
+
+<h2 id="configuration-5">Configuration</h2>
+
+<pre><code>&quot;stackedarea&quot;:{}
+</code></pre>
+
+<p>The w20StackedAreaChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.</p>
+
+<div class="callout callout-warning">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+            
+                <i class="fa fa-exclamation-triangle icon-2x"></i>
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>You must indicate a unique id for the chart</p>
+
+        </div>
+    </div>
+</div>
+
+<pre><code>&lt;div id=&quot;stackedArea&quot; data-w20-stacked-area-chart=&quot;stackedAreaConfig&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<h2 id="data-format-5">Data format</h2>
+
+<p>Data fed to the stacked area chart should follow a default format. This format can be overridden by the use of personal function (See &laquo;x&raquo; and &laquo;y&raquo; properties below).</p>
+
+<p>Default data format exemple :</p>
+
+<pre><code>  [
+   {
+      &quot;key&quot;: &quot;Series 1&quot;,
+      &quot;values&quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &quot;key&quot;: &quot;Series 2&quot;,
+      &quot;values&quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+</code></pre>
+
+<p>The <code>key</code> property defines the name of the series. The <code>values</code> defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.</p>
+
+<h2 id="stacked-area-chart-configuration">Stacked area chart configuration</h2>
+
+<p>The stacked area chart is configured by the configuration object passed to the directive declaration (see Directives).</p>
+
+<p>Exemple :</p>
+
+<pre><code>    $scope.stackedAreaConfig = {
+           data: $scope.stackedareadata,
+           tooltips: true,
+           showControls: true,
+           showLegend: true
+   };
+</code></pre>
+
+<p>Available properties :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>data</td>
+            <td>Array</td>
+            <td>Data to display using the multibar chart (mandatory if you don&rsquo;t define the &laquo;noData&raquo; property.). Generally it would be a property of $scope</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>function</td>
+            <td>Providing a function to the x property allows configuration of the data on the X axis. Consider this example :
+             say we want to double the data value displayed on the X axis in comparison to the data provided to the &laquo;data&raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &laquo;d[0]&raquo; is all the values at index 0 of all sub arrays of the array at property &laquo;values&raquo; of all objects in the array provided to the &laquo;data&raquo; property.
+            </td>
+        </tr>
+        <tr>
+            <td>y</td>
+            <td>function</td>
+            <td>See &laquo;x&raquo; property above. Applied to the Y axis instead.</td>
+        </tr>
+        <tr>
+            <td>forceY</td>
+            <td>Array</td>
+            <td>Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie. Use it to force special values such as 0.</td>
+        </tr>
+        <tr>
+            <td>showLegend</td>
+            <td>Boolean</td>
+            <td>Display or hide legend.</td>
+        </tr>
+        <tr>
+            <td>showControls</td>
+            <td>Boolean</td>
+            <td>Display or hide controls.</td>
+        </tr>
+        <tr>
+            <td>tooltips</td>
+            <td>Boolean</td>
+            <td>Enable or disable tooltips when hovering the chart.</td>
+        </tr>
+          <tr>
+            <td>noData</td>
+            <td>String</td>
+            <td>Message to display when there is no data (default to &laquo;No data available&raquo;) </td>
+        </tr>
+          <tr>
+            <td>color</td>
+            <td>Array</td>
+            <td> Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  [&lsquo;#4D9FF2&rsquo;, &lsquo;yellow&rsquo;, &lsquo;rgb(151,109,165)&rsquo;]. Note that you can also
+            specify the value of the color in the &laquo;data&raquo; array by providing a &laquo;color&raquo; attribute to each object. </td>
+        </tr>
+           <tr>
+            <td> tooltipContent</td>
+            <td>function</td>
+            <td>Customize tooltip content. Ex. function(key, x, y, e, graph) { return &lsquo;&amp;lth1&amp;gt Tooltip Title &amp;lt/h1&amp;gt &amp;ltp&amp;gt&rsquo;+ y +&rsquo;&amp;lt/p&amp;gt&rsquo;;}
+            where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.</td>
+        </tr>
+         <tr>
+            <td>transitionDuration</td>
+            <td>integer</td>
+            <td>Duration of transition effect (Default to 500).</td>
+        </tr>
+    </tbody>
+ </table></p>
+
+<h2 id="axis-configuration-4">Axis Configuration</h2>
+
+<p>Axis are configured in the same configuration object.</p>
+
+<p>X axis :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>xAxisTickValues</td>
+            <td>Array</td>
+            <td> Specify explicitly the values to plot on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickSubdivide</td>
+            <td>Integer</td>
+            <td> Specify the number of intermediate ticks to show on the X axis </td>
+        </tr>
+         <tr>
+            <td>xAxisTickPadding</td>
+            <td>Integer</td>
+            <td>Specify ticks padding on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickFormat</td>
+            <td>function</td>
+            <td> Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : <code> d3.format(&lsquo;.2f&rsquo;)</code>. Or format Date object to
+            a readable format as <code> d3.time.format(&lsquo;%Y&rsquo;)</code> which shows the year only. See
+            <a href="https://github.com/mbostock/d3/wiki/Formatting" target="_blank">d3.js documentation</a>
+            for a list of all format available
+            </td>
+        </tr>
+         <tr>
+            <td>xAxisLabel</td>
+            <td>String</td>
+            <td>Label of the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisDomain</td>
+            <td>Array [start, end]</td>
+            <td> Specify the domain on the X axis (min to max value)</td>
+        </tr>
+         <tr>
+            <td>xAxisShowMaxMin</td>
+            <td>Boolean</td>
+            <td> Show or hide maximum and minimum value in bold</td>
+        </tr>
+        <tr>
+            <td>xAxisRotateLabels</td>
+            <td>Integer</td>
+            <td> 0 to 180° rotation of X axis tick label</td>
+        </tr>
+         <tr>
+            <td>xAxisStaggerLabels</td>
+            <td>Integer</td>
+            <td>Size of the gap between labels to resolve overlapping issue</td>
+        </tr>
+    </tbody>
+  </table></p>
+
+<p>Y axis :</p>
+
+<p>See X axis. Replace property &laquo;xName&raquo; by &laquo;yName&raquo;.</p>
+
+<h1 id="multibar-horizontal">Multibar horizontal</h1>
+
+<p>The multibar horizontal chart is used to compare different series in a horizontal bar representation.</p>
+
+<h2 id="configuration-6">Configuration</h2>
+
+<pre><code>&quot;multibarhorizontal&quot;:{}
+</code></pre>
+
+<p>The w20MultiBarHorizontalChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.</p>
+
+<div class="callout callout-warning">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+            
+                <i class="fa fa-exclamation-triangle icon-2x"></i>
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>You must indicate a unique id for the chart</p>
+
+        </div>
+    </div>
+</div>
+
+<pre><code>&lt;div id=&quot;multibarhorizontal&quot; data-w20-multi-bar-horizontal-chart=&quot;multibarHorizontalConfig&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<h2 id="fragment-definition-sections-2">Fragment definition sections</h2>
+
+<p>This module has no fragment definition section.</p>
+
+<h2 id="data-format-6">Data format</h2>
+
+<p>Data fed to the multibar horizontal chart should follow a default format. This format can be overridden by the use of personal function (See &laquo;x&raquo; and &laquo;y&raquo; properties below).</p>
+
+<p>Default data format exemple :</p>
+
+<pre><code> [
+  {
+     &quot;key&quot;: &quot;Series 1&quot;,
+     &quot;values&quot;: [ [1, 10], [2, 20], [3, 5] ]
+  },
+  {
+     &quot;key&quot;: &quot;Series 2&quot;,
+     &quot;values&quot;: [ [1, 8], [2, 10], [3, 15] ]
+  }
+ ]
+</code></pre>
+
+<p>The <code>key</code> property defines the name of the series. The <code>values</code> defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.</p>
+
+<h2 id="multibar-configuration-1">Multibar configuration</h2>
+
+<p>The multibar chart is configured by the configuration object passed to the directive declaration (see Directives).</p>
+
+<p>Exemple :</p>
+
+<pre><code>   $scope.multibarHorizontalConfig = {
+          data: $scope.multibarhorizontaldata,
+          showXAxis: true,
+          showYAxis: true,
+          tooltips: true,
+          showControls: true,
+          showLegend: true
+    }
+</code></pre>
+
+<p>Available properties :</p>
+
+<table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+   <thead>
+       <tr>
+           <th>Properties</th>
+           <th>Type</th>
+           <th>Description</th>
+       </tr>
+   </thead>
+   <tbody>
+       <tr>
+           <td>data</td>
+           <td>Array</td>
+           <td>Data to display using the multibar horizontal chart (mandatory if you don't define the "noData" property.). Generally it would be a property of $scope</td>
+       </tr>
+       <tr>
+           <td>x</td>
+           <td>function</td>
+           <td>Providing a function to the x property allows configuration of the data on the X axis. Consider this example : say we want to double the data value displayed on the X axis in comparison to the data provided to the "data" property.
+           We can achieve this by providing the following function to the x property :
+           function(){
+                      return function(d){
+                           return d[0]*2;
+                       };
+                  };
+             where "d[0]" is all the values at index 0 of all sub arrays of the array at property "values" of all objects in the array provided to the "data" property.
+           </td>
+       </tr>
+       <tr>
+           <td>y</td>
+           <td>function</td>
+           <td>See "x" property above. Applied to the Y axis instead.</td>
+       </tr>
+       <tr>
+           <td>forceY</td>
+           <td>Array</td>
+           <td>Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie. Use it to force special values such as 0.</td>
+       </tr>
+       <tr>
+           <td>showLegend</td>
+           <td>Boolean</td>
+           <td>Display or hide legend.</td>
+       </tr>
+       <tr>
+           <td>showControls</td>
+           <td>Boolean</td>
+           <td>Display or hide controls.</td>
+       </tr>
+       <tr>
+           <td>tooltips</td>
+           <td>Boolean</td>
+           <td>Enable or disable tooltips when hovering the chart.</td>
+       </tr>
+         <tr>
+           <td>noData</td>
+           <td>String</td>
+           <td>Message to display when there is no data (default to "No data available") </td>
+       </tr>
+         <tr>
+           <td>color</td>
+           <td>Array</td>
+           <td> Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  ['#4D9FF2', 'yellow', 'rgb(151,109,165)']. Note that you can also
+           specify the value of the color in the "data" array by providing a "color" attribute to each object. </td>
+       </tr>
+        <tr>
+           <td>stacked</td>
+           <td>Boolean</td>
+           <td>Indicate whether the series should be stacked on each other or not. </td>
+       </tr>
+          <tr>
+           <td> tooltipContent</td>
+           <td>function</td>
+           <td>Customize tooltip content. Ex.function(key, x, y, e, graph) { return '&lth1&gt Tooltip Title &lt/h1&gt &ltp&gt'+ y +'&lt/p&gt';}
+           where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.</td>
+       </tr>
+        <tr>
+           <td>transitionDuration</td>
+           <td>integer</td>
+           <td>Duration of transition effect (Default to 500).</td>
+       </tr>
+   </tbody>
+</table>
+
+<h2 id="axis-configuration-5">Axis Configuration</h2>
+
+<p>Axis are configured in the same configuration object.</p>
+
+<p>X axis :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+   <thead>
+       <tr>
+           <th>Properties</th>
+           <th>Type</th>
+           <th>Description</th>
+       </tr>
+   </thead>
+   <tbody>
+       <tr>
+           <td>xAxisTickValues</td>
+           <td>Array</td>
+           <td> Specify explicitly the values to plot on the X axis</td>
+       </tr>
+        <tr>
+           <td>xAxisTickSubdivide</td>
+           <td>Integer</td>
+           <td> Specify the number of intermediate ticks to show on the X axis </td>
+       </tr>
+        <tr>
+           <td>xAxisTickPadding</td>
+           <td>Integer</td>
+           <td>Specify ticks padding on the X axis</td>
+       </tr>
+        <tr>
+           <td>xAxisTickFormat</td>
+           <td>function</td>
+           <td> Specify how data should be formatted. For instance you can format number on the X axis to
+           have exactly two digit after the decimal point : <code> d3.format(&lsquo;.2f&rsquo;)</code>. Or format Date object to
+           a readable format as <code> d3.time.format(&lsquo;%Y&rsquo;)</code> which shows the year only. See
+           <a href="https://github.com/mbostock/d3/wiki/Formatting" target="_blank">d3.js documentation</a>
+           for a list of all format available
+           </td>
+       </tr>
+        <tr>
+           <td>xAxisLabel</td>
+           <td>String</td>
+           <td>Label of the X axis</td>
+       </tr>
+        <tr>
+           <td>xAxisDomain</td>
+           <td>Array [start, end]</td>
+           <td> Specify the domain on the X axis (min to max value)</td>
+       </tr>
+        <tr>
+           <td>xAxisShowMaxMin</td>
+           <td>Boolean</td>
+           <td> Show or hide maximum and minimum value in bold</td>
+       </tr>
+       <tr>
+           <td>xAxisRotateLabels</td>
+           <td>Integer</td>
+           <td> 0 to 180° rotation of X axis tick label</td>
+       </tr>
+        <tr>
+           <td>xAxisStaggerLabels</td>
+           <td>Integer</td>
+           <td>Size of the gap between labels to resolve overlapping issue</td>
+       </tr>
+   </tbody>
+ </table></p>
+
+<p>Y axis :</p>
+
+<p>See X axis. Replace property &laquo;xName&raquo; by &laquo;yName&raquo;.</p>
+
+<h1 id="line">Line</h1>
+
+<p>The line chart is used to plot series as line function.</p>
+
+<h2 id="configuration-7">Configuration</h2>
+
+<pre><code>&quot;line&quot;:{}
+</code></pre>
+
+<p>The w20MultibarChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.</p>
+
+<div class="callout callout-warning">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+            
+                <i class="fa fa-exclamation-triangle icon-2x"></i>
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>You must indicate a unique id for the chart</p>
+
+        </div>
+    </div>
+</div>
+
+<pre><code>&lt;div id=&quot;multibar&quot; data-w20-multibar-chart=&quot;multibarConfig&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<h2 id="data-format-7">Data format</h2>
+
+<p>Data fed to the line chart should follow a default format. This format can be overridden by the use of personal function (See &laquo;x&raquo; and &laquo;y&raquo; properties below).</p>
+
+<p>Default data format exemple :</p>
+
+<pre><code>  [
+   {
+      &quot;key&quot;: &quot;Series 1&quot;,
+      &quot;values&quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &quot;key&quot;: &quot;Series 2&quot;,
+      &quot;values&quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+</code></pre>
+
+<p>The <code>key</code> property defines the name of the series. The <code>values</code> defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.</p>
+
+<h2 id="line-chart-configuration">Line chart configuration</h2>
+
+<p>The line chart is configured by the configuration object passed to the directive declaration (see Directives).</p>
+
+<p>Exemple :</p>
+
+<pre><code>    $scope.lineConfig = {
+           data: $scope.lineData,
+           xAxisTickSubdivide: 10,
+           xAxisTickFormat: d3.format('.2f'),
+           showControls: true,
+           showLabels: true,
+           showLegend: true,
+           tooltips: true,
+           showXAxis: true,
+           showYAxis: true,
+           xAxisHighlightZero: true,
+           xAxisLabel: 'W label',
+           yAxisLabel: 'y label',
+           xAxisRotateLabels: 90,
+           xAxisScale: d3.scale.linear(),
+           xAxisDomain: [0, 10],
+           yAxisDomain: [0, 100]
+       }
+</code></pre>
+
+<p>Available properties :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>data</td>
+            <td>Array</td>
+            <td>Data to display using the line chart (mandatory if you don&rsquo;t define the &laquo;noData&raquo; property.). Generally it would be a property of $scope</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>function</td>
+            <td>Providing a function to the x property allows configuration of the data on the X axis. Consider this example : say we want to double the data value displayed on the X axis in comparison to the data provided to the &laquo;data&raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &laquo;d[0]&raquo; is all the values at index 0 of all sub arrays of the array at property &laquo;values&raquo; of all objects in the array provided to the &laquo;data&raquo; property.
+            </td>
+        </tr>
+        <tr>
+            <td>y</td>
+            <td>function</td>
+            <td>See &laquo;x&raquo; property above. Applied to the Y axis instead.</td>
+        </tr>
+        <tr>
+            <td>forceY</td>
+            <td>Array</td>
+            <td>Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie. Use it to force special values such as 0.</td>
+        </tr>
+        <tr>
+            <td>showLegend</td>
+            <td>Boolean</td>
+            <td>Display or hide legend.</td>
+        </tr>
+        <tr>
+            <td>tooltips</td>
+            <td>Boolean</td>
+            <td>Enable or disable tooltips when hovering the chart.</td>
+        </tr>
+         <tr>
+            <td>isArea</td>
+            <td>Boolean</td>
+            <td>Color integral of series</td>
+        </tr>
+          <tr>
+            <td>noData</td>
+            <td>String</td>
+            <td>Message to display when there is no data (default to &laquo;No data available&raquo;) </td>
+        </tr>
+          <tr>
+            <td>color</td>
+            <td>Array</td>
+            <td> Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex. [&lsquo;#4D9FF2&rsquo;, &lsquo;yellow&rsquo;, &lsquo;rgb(151,109,165)&rsquo;]. Note that you can also
+            specify the value of the color in the &laquo;data&raquo; array by providing a &laquo;color&raquo; attribute to each object. </td>
+        </tr>
+           <tr>
+            <td> tooltipContent</td>
+            <td>function</td>
+            <td>Customize tooltip content. Ex. function(key, x, y, e, graph) { return &lsquo;&amp;lth1&amp;gt Tooltip Title &amp;lt/h1&amp;gt &amp;ltp&amp;gt&rsquo;+ y +&rsquo;&amp;lt/p&amp;gt&rsquo;;}
+            where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.</td>
+        </tr>
+         <tr>
+            <td>transitionDuration</td>
+            <td>integer</td>
+            <td>Duration of transition effect (Default to 500).</td>
+        </tr>
+         <tr>
+            <td>showXAxis</td>
+            <td>Boolean</td>
+            <td>Show/hide X axis</td>
+        </tr>
+         <tr>
+            <td>showYAxis</td>
+            <td>Boolean</td>
+            <td>Show/hide Y axis</td>
+        </tr>
+         <tr>
+            <td>interpolate</td>
+            <td>String</td>
+            <td>Define the interpolation mode :
+              <ul>
+                    <li>linear - piecewise linear segments, as in a polyline.</li>
+                    <li>linear-closed - close the linear segments to form a polygon.</li>
+                    <li>step-before - alternate between vertical and horizontal segments, as in a step function.</li>
+                    <li>step-after - alternate between horizontal and vertical segments, as in a step function.</li>
+                    <li>basis - a B-spline, with control point duplication on the ends.</li>
+                    <li>basis-open - an open B-spline; may not intersect the start or end.</li>
+                    <li>basis-closed - a closed B-spline, as in a loop.</li>
+                    <li>bundle - equivalent to basis, except the tension parameter is used to straighten the spline.</li>
+                    <li>cardinal - a Cardinal spline, with control point duplication on the ends.</li>
+                    <li>cardinal-open - an open Cardinal spline; may not intersect the start or end, but will intersect other control points.</li>
+                    <li>cardinal-closed - a closed Cardinal spline, as in a loop.</li>
+                    <li>monotone - cubic interpolation that preserves monotonicity in y.</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+ </table></p>
+
+<h2 id="axis-configuration-6">Axis Configuration</h2>
+
+<p>Axis are configured in the same configuration object.</p>
+
+<p>X axis :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>xAxisTickValues</td>
+            <td>Array</td>
+            <td> Specify explicitly the values to plot on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickSubdivide</td>
+            <td>Integer</td>
+            <td> Specify the number of intermediate ticks to show on the X axis </td>
+        </tr>
+         <tr>
+            <td>xAxisTickPadding</td>
+            <td>Integer</td>
+            <td>Specify ticks padding on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickFormat</td>
+            <td>function</td>
+            <td> Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : <code> d3.format(&lsquo;.2f&rsquo;)</code>. Or format Date object to
+            a readable format as <code> d3.time.format(&lsquo;%Y&rsquo;)</code> which shows the year only. See
+            <a href="https://github.com/mbostock/d3/wiki/Formatting" target="_blank">d3.js documentation</a>
+            for a list of all format available
+            </td>
+        </tr>
+         <tr>
+            <td>xAxisLabel</td>
+            <td>String</td>
+            <td>Label of the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisDomain</td>
+            <td>Array [start, end]</td>
+            <td> Specify the domain on the X axis (min to max value)</td>
+        </tr>
+         <tr>
+            <td>xAxisShowMaxMin</td>
+            <td>Boolean</td>
+            <td> Show or hide maximum and minimum value in bold</td>
+        </tr>
+        <tr>
+            <td>xAxisRotateLabels</td>
+            <td>Integer</td>
+            <td> 0 to 180° rotation of X axis tick label</td>
+        </tr>
+         <tr>
+            <td>xAxisStaggerLabels</td>
+            <td>Integer</td>
+            <td>Size of the gap between labels to resolve overlapping issue</td>
+        </tr>
+    </tbody>
+  </table></p>
+
+<p>Y axis :</p>
+
+<p>See X axis. Replace property &laquo;xName&raquo; by &laquo;yName&raquo;.</p>
+
+<h1 id="line-plus-bar">Line plus bar</h1>
+
+<p>The line plus bar chart is used to represent series by lines and bars on the same area..</p>
+
+<h2 id="configuration-8">Configuration</h2>
+
+<pre><code>&quot;lineplusbar&quot;:{}
+</code></pre>
+
+<p>The w20LinePlusBarChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.</p>
+
+<div class="callout callout-warning">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+            
+                <i class="fa fa-exclamation-triangle icon-2x"></i>
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>You must indicate a unique id for the chart</p>
+
+        </div>
+    </div>
+</div>
+
+<pre><code>&lt;div id=&quot;LinePlusBarChart&quot; data-w20-line-plus-bar-chart=&quot;lineplusbarConfig&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<h2 id="fragment-definition-sections-3">Fragment definition sections</h2>
+
+<p>This module has no fragment definition section.</p>
+
+<h2 id="data-format-8">Data format</h2>
+
+<p>Data fed to the line plus bar chart should follow a default format. This format can be overridden by the use of personal function (See &laquo;x&raquo; and &laquo;y&raquo; properties below).</p>
+
+<p>Default data format exemple :</p>
+
+<pre><code>  [
+   {
+      &quot;key&quot;: &quot;Series 1&quot;,
+      &quot;bar&quot;: true,
+      &quot;values&quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &quot;key&quot;: &quot;Series 2&quot;,
+      &quot;values&quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+</code></pre>
+
+<p>The <code>key</code> property defines the name of the series. The <code>values</code> defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.
+ By default data are plotted as line. The &laquo;bar&raquo; property specify if the series should be plotted with bars.</p>
+
+<h2 id="line-plus-bar-configuration">line plus bar configuration</h2>
+
+<p>The line plus bar chart is configured by the configuration object passed to the directive declaration (see Directives).</p>
+
+<p>Exemple :</p>
+
+<pre><code>  $scope.linePlusBarConfig = {
+   data: $scope.lineplusbardata,
+   showLegend: true
+   }
+</code></pre>
+
+<p>Available properties :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>data</td>
+            <td>Array</td>
+            <td>Data to display using the multibar chart (mandatory if you don&rsquo;t define the &laquo;noData&raquo; property.). Generally it would be a property of $scope</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>function</td>
+            <td>Providing a function to the x property allows configuration of the data on the X axis. Consider this example : say we want to double the data value displayed on the X axis in comparison to the data provided to the &laquo;data&raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &laquo;d[0]&raquo; is all the values at index 0 of all sub arrays of the array at property &laquo;values&raquo; of all objects in the array provided to the &laquo;data&raquo; property.
+            </td>
+        </tr>
+        <tr>
+            <td>y</td>
+            <td>function</td>
+            <td>See &laquo;x&raquo; property above. Applied to the Y axis instead.</td>
+        </tr>
+        <tr>
+            <td>showLegend</td>
+            <td>Boolean</td>
+            <td>Display or hide legend.</td>
+        </tr>
+        <tr>
+            <td>tooltips</td>
+            <td>Boolean</td>
+            <td>Enable or disable tooltips when hovering the chart.</td>
+        </tr>
+          <tr>
+            <td>noData</td>
+            <td>String</td>
+            <td>Message to display when there is no data (default to &laquo;No data available&raquo;) </td>
+        </tr>
+          <tr>
+            <td>color</td>
+            <td>Array</td>
+            <td> Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  [&lsquo;#4D9FF2&rsquo;, &lsquo;yellow&rsquo;, &lsquo;rgb(151,109,165)&rsquo;]. Note that you can also
+            specify the value of the color in the &laquo;data&raquo; array by providing a &laquo;color&raquo; attribute to each object. </td>
+        </tr>
+           <tr>
+            <td>tooltipContent</td>
+            <td>function</td>
+            <td>Customize tooltip content. Ex. function(key, x, y, e, graph) { return &lsquo;&amp;lth1&amp;gt Tooltip Title &amp;lt/h1&amp;gt &amp;ltp&amp;gt&rsquo;+ y +&rsquo;&amp;lt/p&amp;gt&rsquo;;}
+            where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.</td>
+        </tr>
+         <tr>
+            <td>transitionDuration</td>
+            <td>integer</td>
+            <td>Duration of transition effect (Default to 500).</td>
+        </tr>
+    </tbody>
+ </table></p>
+
+<h2 id="axis-configuration-7">Axis Configuration</h2>
+
+<p>Axis are configured in the same configuration object.</p>
+
+<p>X axis :</p>
+
+<p><table style="width: 100%; text-align: left;" class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Properties</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>xAxisTickValues</td>
+            <td>Array</td>
+            <td> Specify explicitly the values to plot on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickSubdivide</td>
+            <td>Integer</td>
+            <td> Specify the number of intermediate ticks to show on the X axis </td>
+        </tr>
+         <tr>
+            <td>xAxisTickPadding</td>
+            <td>Integer</td>
+            <td>Specify ticks padding on the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisTickFormat</td>
+            <td>function</td>
+            <td> Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : <code> d3.format(&lsquo;.2f&rsquo;)</code>. Or format Date object to
+            a readable format as <code> d3.time.format(&lsquo;%Y&rsquo;)</code> which shows the year only. See
+            <a href="https://github.com/mbostock/d3/wiki/Formatting" target="_blank">d3.js documentation</a>
+            for a list of all format available
+            </td>
+        </tr>
+         <tr>
+            <td>xAxisLabel</td>
+            <td>String</td>
+            <td>Label of the X axis</td>
+        </tr>
+         <tr>
+            <td>xAxisDomain</td>
+            <td>Array [start, end]</td>
+            <td> Specify the domain on the X axis (min to max value)</td>
+        </tr>
+         <tr>
+            <td>xAxisShowMaxMin</td>
+            <td>Boolean</td>
+            <td> Show or hide maximum and minimum value in bold</td>
+        </tr>
+        <tr>
+            <td>xAxisRotateLabels</td>
+            <td>Integer</td>
+            <td> 0 to 180° rotation of X axis tick label</td>
+        </tr>
+         <tr>
+            <td>xAxisStaggerLabels</td>
+            <td>Integer</td>
+            <td>Size of the gap between labels to resolve overlapping issue</td>
+        </tr>
+    </tbody>
+  </table></p>
+
+<p>Y axis :</p>
+
+<p>See X axis. Replace property &laquo;xName&raquo; by &laquo;yName&raquo;.</p>
+
+<p>Y2 axis :</p>
+
+<p>For the right axis. Replace property &laquo;xName&raquo; by &laquo;y2Name&raquo;</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+<div class="side-menu">
+    
+        
+        <div class="list-group">
+            <ul class="nav">
+                
+                
+                
+                    
+                    <li>
+                        <a href="/addons/dataviz/" class="list-group-item ">
+                            Basics
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/addons/dataviz/nvd3/" class="list-group-item  active ">
+                            Nvd3
+                        </a>
+                        
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#nvd3">Nvd3</a></li>
+<li><a href="#multibar">Multibar</a>
+<ul>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#data-format">Data format</a></li>
+<li><a href="#multibar-configuration">Multibar configuration</a></li>
+<li><a href="#axis-configuration">Axis Configuration</a>
+<ul>
+<li><a href="#x-axis">X axis :</a></li>
+<li><a href="#y-axis">Y axis :</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#pie">Pie</a>
+<ul>
+<li><a href="#configuration-1">Configuration</a></li>
+<li><a href="#data-format-1">Data format</a></li>
+<li><a href="#pie-chart-configuration">Pie chart configuration</a></li>
+</ul></li>
+<li><a href="#scatter-bubble-chart">Scatter/Bubble chart</a>
+<ul>
+<li><a href="#configuration-2">Configuration</a></li>
+<li><a href="#fragment-definition-sections">Fragment definition sections</a></li>
+<li><a href="#data-format-2">Data format</a></li>
+<li><a href="#scatter-chart-configuration">Scatter chart configuration</a></li>
+<li><a href="#axis-configuration-1">Axis Configuration</a></li>
+</ul></li>
+<li><a href="#discrete-bar">Discrete bar</a>
+<ul>
+<li><a href="#configuration-3">Configuration</a></li>
+<li><a href="#data-format-3">Data format</a></li>
+<li><a href="#axis-configuration-2">Axis Configuration</a></li>
+</ul></li>
+<li><a href="#line-with-focus">Line with focus</a>
+<ul>
+<li><a href="#configuration-4">Configuration</a></li>
+<li><a href="#fragment-definition-sections-1">Fragment definition sections</a></li>
+<li><a href="#data-format-4">Data format</a></li>
+<li><a href="#line-with-focus-configuration">Line with focus configuration</a></li>
+<li><a href="#axis-configuration-3">Axis Configuration</a></li>
+</ul></li>
+<li><a href="#stacked-area">Stacked area</a>
+<ul>
+<li><a href="#configuration-5">Configuration</a></li>
+<li><a href="#data-format-5">Data format</a></li>
+<li><a href="#stacked-area-chart-configuration">Stacked area chart configuration</a></li>
+<li><a href="#axis-configuration-4">Axis Configuration</a></li>
+</ul></li>
+<li><a href="#multibar-horizontal">Multibar horizontal</a>
+<ul>
+<li><a href="#configuration-6">Configuration</a></li>
+<li><a href="#fragment-definition-sections-2">Fragment definition sections</a></li>
+<li><a href="#data-format-6">Data format</a></li>
+<li><a href="#multibar-configuration-1">Multibar configuration</a></li>
+<li><a href="#axis-configuration-5">Axis Configuration</a></li>
+</ul></li>
+<li><a href="#line">Line</a>
+<ul>
+<li><a href="#configuration-7">Configuration</a></li>
+<li><a href="#data-format-7">Data format</a></li>
+<li><a href="#line-chart-configuration">Line chart configuration</a></li>
+<li><a href="#axis-configuration-6">Axis Configuration</a></li>
+</ul></li>
+<li><a href="#line-plus-bar">Line plus bar</a>
+<ul>
+<li><a href="#configuration-8">Configuration</a></li>
+<li><a href="#fragment-definition-sections-3">Fragment definition sections</a></li>
+<li><a href="#data-format-8">Data format</a></li>
+<li><a href="#line-plus-bar-configuration">line plus bar configuration</a></li>
+<li><a href="#axis-configuration-7">Axis Configuration</a></li>
+</ul></li>
+</ul>
+</nav>
+                            <script>
+                                w20.state.previousPage = '\/addons\/dataviz\/';
+                            </script>
+                            
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/addons/dataviz/dygraphs/" class="list-group-item ">
+                            Dygraphs
+                        </a>
+                        
+                            <script>
+                                w20.state.nextPage = '\/addons\/dataviz\/dygraphs\/';
+                            </script>
+                            
+                        
+                        
+                    </li>
+                    
+                
+            </ul>
+        </div>
+        
+    
+    
+    <div class="list-group">
+        <ul class="nav">
+            <li class="list-group-item"><div style="margin-bottom: 10px;"><i class="fa fa-tag"></i> Tags</div>
+                <div class="tags">
+                    
+                    <a class="label label-default" href="/tags/w20">W20</a>
+                    
+                    <a class="label label-default" href="/tags/frontend">Frontend</a>
+                    
+                    <a class="label label-default" href="/tags/chart">Chart</a>
+                    
+                    <a class="label label-default" href="/tags/pie">Pie</a>
+                    
+                    <a class="label label-default" href="/tags/bar">Bar</a>
+                    
+                    <a class="label label-default" href="/tags/visualization">Visualization</a>
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="list-group">
+        <ul class="nav">
+            
+                
+            
+        </ul>
+    </div>
+</div>
+
+    </div>
+</div>
+
+</div>
+<div id="footer">
+    <div class="footer-v3">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="headline"><h2>About</h2></div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">W20 is a Web framework to create modular and composable enterprise-ready applications.</p>
+                </div>
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><h2>License</h2></div>
+                        <p>
+                            Code licensed under the <a href="https://www.mozilla.org/MPL/2.0" target="_blank">Mozilla Public License 2.0</a>.
+                            <br/>
+                            Documentation licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 map-img">
+                    <div class="headline"><h2>Contact us</h2></div>
+                    <address>
+                        <p>
+                            StackOverflow <a href="https://stackoverflow.com/questions/tagged/w20">W20 on StackOverflow</a>
+                        </p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js"></script>
+<script src="/assets/unify/plugins/smoothScroll.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/w20.js"></script>
+<script>
+    $(document).ready(function () {
+        var $search = $('.search-btn');
+
+        $('.search').click(function () {
+            if ($search.hasClass('fa-search')) {
+                w20.ui.openSearch();
+            } else {
+                w20.ui.closeSearch();
+            }
+        });
+
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $('.side-menu').affix({
+            offset: {
+                top: $('#header').height() + 20,
+                bottom: $('#footer').height() + 40
+            }
+        });
+
+        Mousetrap.bind('/', function () {
+            w20.ui.openSearch();
+            return false;
+        });
+
+        Mousetrap.bind('alt+up', function () {
+            if (w20.state.previousPage) {
+                window.location = w20.state.previousPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('alt+down', function () {
+            if (w20.state.nextPage) {
+                window.location = w20.state.nextPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('esc', function () {
+            w20.ui.closeSearch();
+            return false;
+        });
+
+        var originalCallback = Mousetrap.stopCallback;
+        Mousetrap.stopCallback = function (e, element, combo) {
+            if (combo === 'esc') {
+                return false;
+            }
+
+            return originalCallback(e, element, combo);
+        };
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#hotkeys-modal, #versions-modal').bind('hidden.bs.modal', function () {
+            $("html").css("margin-right", "0px");
+        }).bind('show.bs.modal', function () {
+            $("html").css("margin-right", "-15px");
+        });
+
+        var query = w20.strings.parseQueryString(location);
+        if (query.h && query.h.length > 0) {
+            $('.doc-content').highlight(query.h);
+            if (query.scroll) {
+                $('html, body').animate({
+                    scrollTop: $('span[class=highlight]:first').offset().top - 20
+                }, 250);
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

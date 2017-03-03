@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>W20 framework</ShortName>
+    <Description>Search W20 documentation.</Description>
+    <Tags>w20 web framework javascript</Tags>
+    <Language>en</Language>
+    <InputEncoding>UTF-8</InputEncoding>
+    <Url rel="results" type="text/html" method="get" template="http://w20-framework.github.io/search/?q={searchTerms}&amp;from=osd"/>
+    <Url rel="self" type="application/opensearchdescription+xml" template="http://w20-framework.github.io/opensearch.xml" />
+</OpenSearchDescription>

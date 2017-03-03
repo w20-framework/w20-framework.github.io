@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+
+
+<title>
+    Basics
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/unify/css/style.css">
+<link rel="stylesheet" href="/assets/unify/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLF968Z');</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "W20 framework",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "Open-Source Software"
+  },
+  "applicationCategory" : "web framework"
+}
+</script>
+
+
+
+<meta property="og:title" content="Basics" />
+<meta property="og:description" content="Material Theme The material theme is a based on Google Material design and implemented with W20 Angular Material add-on.
+  Running demo available here.
+   Installation $ bower install w20-material-theme --save  Configuration In #/modules/main/theme, primaryPalette and accentPalette properties MUST be defined. Each defined *Palette property MUST have at least their name properties defined. The hues property follows Material Angular color intentions syntax. A list of color palettes is present on the Material Design Specification." />
+<meta property="og:url" content="http://w20-framework.github.io/themes/material/" />
+<meta property="og:site_name" content="W20 framework" />
+<meta property="og:image" content="http://w20-framework.github.io/img/opengraph-default.png" />
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://w20-framework.github.io/opensearch.xml" title="W20 framework" />
+
+
+
+<script type="text/javascript">
+    window.w20 = {
+        state: {}
+    };
+</script>
+
+
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLF968Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div id="header">
+    <div class="header">
+    <div class="container">
+        <a class="logo" href="/">W20 framework</a>
+        <div class="topbar hidden-xs hidden-sm">
+            <ul class="loginbar pull-right">
+                <li><i class="fa fa-stack-overflow"></i> <a target="_blank" href="http://stackoverflow.com/questions/ask?tags=w20">Ask a question</a></li>
+                <li class="topbar-devider"></li>
+                <li><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></li>
+            </ul>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" data-role="navigation" style="pointer-events: none;">
+        <div class="container">
+            <ul class="nav navbar-nav" style="pointer-events: auto;">
+                <li>
+                    <a href="/docs">Documentation</a>
+                </li>
+                <li>
+                    <a href="/addons">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/themes">Themes</a>
+                </li>
+                <li>
+                    <a href="/posts">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/project/community">Community</a></li>
+                        <li><a href="/project/roadmap">Roadmap</a></li>
+                        <li><a href="/project/faq">FAQ</a></li>
+                        <li><a href="/tags">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <form method="GET" action="/search">
+                            <div class="input-group animated fadeInDown">
+                                <input id="search-field" type="text" class="form-control" placeholder="Search" name="q">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="title-header small">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h2>Themes</h2>
+                <p class="hidden-xs">Ready-to-use graphical themes for customizing your W20 application.</p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-image-wrapper">
+                    <img class="header-image" src="/img/logos/themes-logo.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="title-subheader">
+        <div class="container">
+            <ul>
+                <li><h3><i class="fa fa-list"></i> <a href="/themes">All themes</a></h3></li>
+                <li><h3 class="active"><i class="fa fa-plug"></i> <a href="">Material theme</a></h3></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="content" class="container">
+    <div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="doc-content">
+                
+
+<h1 id="material-theme">Material Theme</h1>
+
+<p>The material theme is a based on <a href="https://www.google.com/design/spec/material-design/introduction.html">Google Material design</a> and implemented
+with <a href="http://seedstack.org/addons/w20-material/">W20 Angular Material add-on</a>.</p>
+
+<div class="callout callout-tips">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+                <i class="fa fa-lightbulb-o icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>Running demo available <a href="http://seedstack.org/w20-material-theme">here</a>.</p>
+
+        </div>
+    </div>
+</div>
+
+<h1 id="installation">Installation</h1>
+
+<pre><code>$ bower install w20-material-theme --save
+</code></pre>
+
+<h1 id="configuration">Configuration</h1>
+
+<p>In <code>#/modules/main/theme</code>, <code>primaryPalette</code> and <code>accentPalette</code> properties MUST be defined.
+Each defined <code>*Palette</code> property MUST have at least their <code>name</code> properties defined. The <code>hues</code> property
+follows <a href="https://material.angularjs.org/latest/Theming/03_configuring_a_theme#specifying-custom-hues-for-color-intentions">Material Angular color intentions syntax</a>.
+A list of color palettes is present on the <a href="http://www.google.com/design/spec/style/color.html#color-color-palette">Material Design Specification</a>.</p>
+
+<pre><code class="language-javascript">&quot;bower_components/w20-material-theme/w20-material-theme.w20.json&quot;: {
+  &quot;modules&quot;: {
+    &quot;main&quot;: {
+      &quot;sidenav&quot;: {
+        &quot;logoUrl&quot;: &quot;/home&quot;,
+        &quot;logoImg&quot;: &quot;/images/logo.png&quot;,
+        &quot;backgroundImg&quot;: &quot;/images/header-background.jpg&quot;
+      },
+
+      &quot;theme&quot;: {
+        &quot;primaryPalette&quot;: {
+          &quot;name&quot;: &quot;indigo&quot;,
+          &quot;hues&quot;: {
+            &quot;default&quot;: &quot;400&quot;,
+            &quot;hue-1&quot;: &quot;100&quot;,
+            &quot;hue-3&quot;: &quot;A100&quot;
+          }
+        },
+
+        &quot;accentPalette&quot;: {
+          &quot;name&quot;: &quot;amber&quot;
+        },
+
+        &quot;warnPalette&quot;: {
+          &quot;name&quot;: &quot;red&quot;,
+          &quot;hues&quot;: {
+            &quot;default&quot;: &quot;400&quot;,
+            &quot;hue-2&quot;: &quot;600&quot;
+          }
+        },
+
+        &quot;backgroundPalette&quot;: {
+          &quot;name&quot;: &quot;blue-grey&quot;
+        },
+
+        &quot;dark&quot;: true // Defaults to false
+      }
+    }
+  }
+}
+</code></pre>
+
+<h1 id="usage">Usage</h1>
+
+<p>A simple masterpage would be:</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html data-w20-app&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=Edge&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;W20 Material Theme Test&lt;/title&gt;
+  &lt;script type=&quot;text/javascript&quot; data-main=&quot;bower_components/w20/modules/w20&quot; src=&quot;bower_components/requirejs/require.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body layout ng-cloak&gt;
+  &lt;div id=&quot;w20-loading-cloak&quot;&gt;
+    &lt;div class=&quot;w20-loading-indicator&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;w20-material-sidenav&gt;&lt;/w20-material-sidenav&gt;
+  &lt;main layout=&quot;column&quot; flex&gt;
+    &lt;w20-material-topbar search-placeholder=&quot;app.i18n.topbar.search.placeholder&quot;&gt;&lt;/w20-material-topbar&gt;
+    &lt;md-content ng-view layout=&quot;column&quot; layout-align=&quot;start center&quot; flex&gt;&lt;/md-content&gt;
+  &lt;/main&gt;
+  &lt;div data-w20-error-report&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2 id="directive-w20-material-sidenav">Directive w20-material-sidenav</h2>
+
+<p>Create a <a href="https://material.angularjs.org/latest/demo/sidenav">Material Angular sidenav</a> based upon a <a href="https://www.google.com/design/spec/patterns/navigation-drawer.html#navigation-drawer-behavior">temporary drawer from the Material Design Specification</a>.
+Generated by the <code>routes</code> property present in the fragment configuration. For each route, the <code>icon</code> property define its icon. Icons are <a href="https://design.google.com/icons/">Material Design Icons</a>. By default the icon is <code>arrow_right</code>.</p>
+
+<pre><code class="language-javascript">&quot;routes&quot;: {
+  &quot;/home&quot;: {
+    &quot;templateUrl&quot;: &quot;/views/home.html&quot;,
+    &quot;hidden&quot;: false,
+    &quot;icon&quot;: &quot;home&quot;
+  }
+}
+</code></pre>
+
+<h3 id="event-w20-material-sidenav-open">Event w20.material.sidenav.open</h3>
+
+<p>You can open the sidenav by emitting the following event:</p>
+
+<pre><code>`$scope.$emit('w20.material.sidenav.open'[, state])`
+</code></pre>
+
+<p>Parameters:</p>
+
+<ul>
+<li><code>state</code>: Boolean. Open the sidenav if <code>true</code>. Optional. If <code>state</code> is omitted, the event toggle the state of the sidenav.</li>
+</ul>
+
+<div class="callout callout-tips">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+                <i class="fa fa-lightbulb-o icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>If you consider opening and closing the sidenav by swiping, bind the event emitters on <code>&lt;body&gt;</code> like below.</p>
+
+        </div>
+    </div>
+</div>
+
+<p>Example:</p>
+
+<pre><code class="language-html">&lt;body md-swipe-left=&quot;$emit('w20.material.sidenav.open', false)&quot; md-swipe-right=&quot;$emit('w20.material.sidenav.open', true)&quot;&gt;
+</code></pre>
+
+<h2 id="directive-w20-material-topbar">Directive w20-material-topbar</h2>
+
+<p>Create a <a href="https://material.angularjs.org/latest/demo/toolbar">Material Angular toolbar</a> based upon a <a href="https://www.google.com/design/spec/components/toolbars.html#toolbars-usage">toolbar from the Material Design Specification</a>.</p>
+
+<p>The elements in the topbar are purposely fixed in order to net being able to bloat the entire topbar with buttons. It is only composed of:
+- Menu button to open the sidenav, hidden when the sidenav become fixed at larger resolutions
+- View title, with its value from <a href="https://github.com/seedstack/w20/blob/master/modules/culture.js"><code>cultureService.displayName()</code></a>
+- Search button to display a search input sending a <code>w20.material.topbar.search.query</code> event upon use</p>
+
+<h3 id="attribute-search-maxlength">Attribute search-maxlength</h3>
+
+<p>Define a maximum length of input. When the input is too long, a red underline appears.</p>
+
+<h3 id="attribute-search-placeholder">Attribute search-placeholder</h3>
+
+<p>Values are i18n key or simple string. If the attribute matches a i18n key, its value is retrieved through the <code>localize</code> w20 filter; if the value cannot be found, the literal string is displayed.</p>
+
+<h3 id="event-w20-material-topbar-search-query">Event w20.material.topbar.search.query</h3>
+
+<p>This event is emitted when the value of the search input changes.</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+<div class="side-menu">
+    
+        
+    
+    
+    <div class="list-group">
+        <ul class="nav">
+            
+                
+                    <li><a class="list-group-item" href='https://github.com/seedstack/w20-material-theme/edit/docs/index.md' target="_blank"><i class="fa fa-edit"></i> Contribute to this theme page</a></li>
+                
+            
+        </ul>
+    </div>
+</div>
+
+    </div>
+</div>
+
+</div>
+<div id="footer">
+    <div class="footer-v3">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="headline"><h2>About</h2></div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">W20 is a Web framework to create modular and composable enterprise-ready applications.</p>
+                </div>
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><h2>License</h2></div>
+                        <p>
+                            Code licensed under the <a href="https://www.mozilla.org/MPL/2.0" target="_blank">Mozilla Public License 2.0</a>.
+                            <br/>
+                            Documentation licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 map-img">
+                    <div class="headline"><h2>Contact us</h2></div>
+                    <address>
+                        <p>
+                            StackOverflow <a href="https://stackoverflow.com/questions/tagged/w20">W20 on StackOverflow</a>
+                        </p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js"></script>
+<script src="/assets/unify/plugins/smoothScroll.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/w20.js"></script>
+<script>
+    $(document).ready(function () {
+        var $search = $('.search-btn');
+
+        $('.search').click(function () {
+            if ($search.hasClass('fa-search')) {
+                w20.ui.openSearch();
+            } else {
+                w20.ui.closeSearch();
+            }
+        });
+
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $('.side-menu').affix({
+            offset: {
+                top: $('#header').height() + 20,
+                bottom: $('#footer').height() + 40
+            }
+        });
+
+        Mousetrap.bind('/', function () {
+            w20.ui.openSearch();
+            return false;
+        });
+
+        Mousetrap.bind('alt+up', function () {
+            if (w20.state.previousPage) {
+                window.location = w20.state.previousPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('alt+down', function () {
+            if (w20.state.nextPage) {
+                window.location = w20.state.nextPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('esc', function () {
+            w20.ui.closeSearch();
+            return false;
+        });
+
+        var originalCallback = Mousetrap.stopCallback;
+        Mousetrap.stopCallback = function (e, element, combo) {
+            if (combo === 'esc') {
+                return false;
+            }
+
+            return originalCallback(e, element, combo);
+        };
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#hotkeys-modal, #versions-modal').bind('hidden.bs.modal', function () {
+            $("html").css("margin-right", "0px");
+        }).bind('show.bs.modal', function () {
+            $("html").css("margin-right", "-15px");
+        });
+
+        var query = w20.strings.parseQueryString(location);
+        if (query.h && query.h.length > 0) {
+            $('.doc-content').highlight(query.h);
+            if (query.scroll) {
+                $('html, body').animate({
+                    scrollTop: $('span[class=highlight]:first').offset().top - 20
+                }, 250);
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

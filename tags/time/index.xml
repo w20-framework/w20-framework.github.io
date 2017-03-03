@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Time on </title>
+    <link>http://w20-framework.github.io/tags/time/index.xml</link>
+    <description>Recent content in Time on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/time/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Culture</title>
+      <link>http://w20-framework.github.io/docs/manual/culture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/culture/</guid>
+      <description>&lt;p&gt;W20 provides an extensive culture support through the jQuery Globalize library. It provides the developer tools to
+internationalize a W20 application which can then be localized via fragment manifests. As AngularJS
+also provides internalization support, W20 attempts to convert the active Globalize culture definition to an
+AngularJS locale, on a best-effort basis. This automatic conversion has limits, so it is recommended to stick to
+the W20 functions and services for internationalization.&lt;/p&gt;
+
+&lt;h1 id=&#34;cultures&#34;&gt;Cultures&lt;/h1&gt;
+
+&lt;p&gt;Cultures are defined as a combination of the language and the country speaking it. Each culture is given a unique code
+that is a combination of an ISO 639 two-letter lowercase culture code for the language, and a two-letter uppercase code
+for the country or region. For example, &amp;laquo;en-US&amp;raquo; is the culture code for English in the United States. Only one culture
+can be active at a time in the application but you can format values in any culture supported by the application,
+without switching the active one. This module handles:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Textual internationalization,&lt;/li&gt;
+&lt;li&gt;Date and time formatting,&lt;/li&gt;
+&lt;li&gt;Currency formatting,&lt;/li&gt;
+&lt;li&gt;Number formatting.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;W20 supports about 350 cultures but can also be extended to custom-defined ones. Here is the list of out-of-the-box
+supported cultures:&lt;/p&gt;
+
+&lt;h3 id=&#34;supported-cultures&#34;&gt;Supported cultures&lt;/h3&gt;
+
+&lt;p&gt;af-ZA, af, am-ET, am, ar-AE, ar-BH, ar-DZ, ar-EG, ar-IQ, ar-JO, ar-KW, ar-LB, ar-LY, ar-MA, ar-OM,
+ar-QA, ar-SA, ar-SY, ar-TN, ar-YE, ar, arn-CL, arn, as-IN, as, az-Cyrl-AZ, az-Cyrl, az-Latn-AZ,
+az-Latn, az, ba-RU, ba, be-BY, be, bg-BG, bg, bn-BD, bn-IN, bn, bo-CN, bo, br-FR, br,
+bs-Cyrl-BA, bs-Cyrl, bs-Latn-BA, bs-Latn, bs, ca-ES, ca, co-FR, co, cs-CZ, cs, cy-GB, cy, da-DK,
+da, de-AT, de-CH, de-DE, de-LI, de-LU, de,  dsb-DE, dsb, dv-MV, dv, el-GR, el, en-029, en-AU,
+en-BZ, en-CA, en-GB, en-IE, en-IN, en-JM, en-MY, en-NZ, en-PH, en-SG, en-TT, en-US, en-ZA,
+en-ZW, es-AR, es-BO, es-CL, es-CO, es-CR, es-DO, es-EC, es-ES, es-GT, es-HN, es-MX, es-NI,
+es-PA, es-PE, es-PR, es-PY, es-SV, es-US, es-UY, es-VE, es, et-EE, et, eu-ES, eu, fa-IR,
+fa, fi-FI, fi, fil-PH, fil, fo-FO, fo, fr-BE, fr-CA, fr-CH, fr-FR, fr-LU, fr-MC, fr, fy-NL,
+fy, ga-IE, ga, gd-GB, gd, gl-ES, gl, gsw-FR, gsw, gu-IN, gu, ha-Latn-NG, ha-Latn, ha, he-IL,
+he, hi-IN, hi, hr-BA, hr-HR, hr, hsb-DE, hsb, hu-HU, hu, hy-AM, hy, id-ID, id, ig-NG, ig,
+ii-CN, ii, is-IS, is, it-CH, it-IT, it, iu-Cans-CA, iu-Cans, iu-Latn-CA, iu-Latn, iu,
+ja-JP, ja, ka-GE, ka, kk-KZ, kk, kl-GL, kl, km-KH, km, kn-IN, kn, ko-KR, ko, kok-IN,
+kok, ky-KG, ky, lb-LU, lb, lo-LA, lo, lt-LT, lt, lv-LV, lv, mi-NZ, mi, mk-MK, mk,
+ml-IN, ml, mn-Cyrl, mn-MN, mn-Mong-CN, mn-Mong, mn, moh-CA, moh, mr-IN, mr, ms-BN,
+ms-MY, ms, mt-MT, mt, nb-NO, nb, ne-NP, ne, nl-BE, nl-NL, nl, nn-NO, nn, no, nso-ZA,
+nso, oc-FR, oc, or-IN, or, pa-IN, pa, pl-PL, pl, prs-AF, prs, ps-AF, ps, pt-BR, pt-PT, pt,
+qut-GT, qut, quz-BO, quz-EC, quz-PE, quz, rm-CH, rm, ro-RO, ro, ru-RU, ru, rw-RW, rw,
+sa-IN, sa, sah-RU, sah, se-FI, se-NO, se-SE, se, si-LK, si, sk-SK, sk, sl-SI, sl, sma-NO,
+sma-SE, sma, smj-NO, smj-SE, smj, smn-FI, smn, sms-FI, sms, sq-AL, sq, sr-Cyrl-BA, sr-Cyrl-CS,
+sr-Cyrl-ME, sr-Cyrl-RS, sr-Cyrl, sr-Latn-BA, sr-Latn-CS, sr-Latn-ME, sr-Latn-RS, sr-Latn, sr,
+sv-FI, sv-SE, sv, sw-KE, sw, syr-SY, syr, ta-IN, ta, te-IN, te, tg-Cyrl-TJ, tg-Cyrl, tg,
+th-TH, th, tk-TM, tk, tn-ZA, tn, tr-TR, tr, tt-RU, tt, tzm-Latn-DZ, tzm-Latn, tzm, ug-CN,
+ug, uk-UA, uk, ur-PK, ur, uz-Cyrl-UZ, uz-Cyrl, uz-Latn-UZ, uz-Latn, uz, vi-VN, vi, wo-SN,
+wo, xh-ZA, xh, yo-NG, yo, zh-CHS, zh-CHT, zh-CN, zh-Hans, zh-Hant, zh-HK, zh-MO,
+zh-SG, zh-TW, zh, zu-ZA, zu.&lt;/p&gt;
+
+&lt;h1 id=&#34;configuration&#34;&gt;Configuration&lt;/h1&gt;
+
+&lt;p&gt;The culture module of w20 core can be configured with the following attribute:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;available&lt;/code&gt; (array of string) which list the available culture in the application&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;default&lt;/code&gt; (string) which is the culture name of the default culture. It defaults to &amp;laquo;en&amp;raquo;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Example&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;path/w20-core.w20.json&amp;quot;: {
+    &amp;quot;culture&amp;quot;: {
+        &amp;quot;available&amp;quot;: [&amp;quot;en&amp;quot;, &amp;quot;fr&amp;quot;],
+        &amp;quot;default&amp;quot;: &amp;quot;en&amp;quot;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;fragment-declaration&#34;&gt;Fragment declaration&lt;/h1&gt;
+
+&lt;p&gt;The &amp;laquo;i18n&amp;raquo; section of a fragment manifest allows to declare culture localization bundles:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;i18n&amp;quot; : {
+    &amp;quot;&amp;quot; : [ &amp;quot;rest/i18n/bundle/:language&amp;quot; ]
+    &amp;quot;en&amp;quot; : [ &amp;quot;i18n/en-bundle-1.json&amp;quot;, &amp;quot;i18n/en-bundle-2.json&amp;quot;, ...  ],
+    &amp;quot;fr-FR&amp;quot; : [ &amp;quot;i18n/fr-FR-bundle-1.json&amp;quot;, &amp;quot;i18n/fr-FR-bundle-1.json&amp;quot;, ...  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bundles modules will be loaded as a text dependency and parsed as JSON. The empty string culture code can be used to
+point to remote bundle. In that case, two placeholders can be used in the URL:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;:language&lt;/code&gt; placeholder will be replaced by the actual language code,&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;:culture&lt;/code&gt; placeholder will be replaced by the actual culture code.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Dynamic bundles will always be loaded for any language. If no keys are available for a particular language an empty
+object can be returned.&lt;/p&gt;
+
+&lt;h1 id=&#34;usage&#34;&gt;Usage&lt;/h1&gt;
+
+&lt;p&gt;As an example if our bundle for en-EN culture contains the following entry:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;application.key&amp;quot;: &amp;quot;my translation&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Inside an html template use the localize filter.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt; {{ &#39;application.key&#39; | localize }} &amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also apply the localization programmatically by calling the CultureService.&lt;/p&gt;
+
+&lt;h1 id=&#34;formatting&#34;&gt;Formatting&lt;/h1&gt;
+
+&lt;p&gt;Numbers and dates can be formatted in various ways by using formatting patterns.&lt;/p&gt;
+
+&lt;h2 id=&#34;number-formatting&#34;&gt;Number formatting&lt;/h2&gt;
+
+&lt;p&gt;When formatting a number, the main purpose is to convert the number into a human readable string using the culture&amp;rsquo;s
+standard grouping and decimal rules. The rules between cultures can vary a lot. For example, in some cultures, the
+grouping of numbers is done unevenly. In the &amp;laquo;te-IN&amp;raquo; culture (Telugu in India), groups have 3 digits and then 2 digits.
+The number 1000000 (one million) is written as &amp;laquo;10,00,000&amp;raquo;. Some cultures do not group numbers at all. There are four
+main types of number formatting:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;n&lt;/strong&gt; for number&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;d&lt;/strong&gt; for decimal digits&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;p&lt;/strong&gt; for percentage&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;c&lt;/strong&gt; for currency&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Even within the same culture, the formatting rules can vary between these four types of numbers. For example, the expected
+number of decimal places may differ from the number format to the currency format. Each format token may also be
+followed by a number. The number determines how many decimal places to display for all the format types except decimal,
+for which it means the minimum number of digits to display, zero padding it if necessary. Also note that the way negative
+numbers are represented in each culture can vary, such as what the negative sign is, and whether the negative sign
+appears before or after the number. This is especially apparent with currency formatting, where many cultures use
+parentheses instead of a negative sign. For instance in the &amp;laquo;en-US&amp;raquo; culture:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;n&amp;raquo; will give &lt;strong&gt;123.45&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;n0&amp;raquo; will give &lt;strong&gt;123&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;n1&amp;raquo; will give &lt;strong&gt;123.5&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;d&amp;raquo; will give &lt;strong&gt;123&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;12 formatted with &amp;laquo;d3&amp;raquo; will give &lt;strong&gt;012&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;c&amp;raquo; will give &lt;strong&gt;$123.45&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;c0&amp;raquo; will give &lt;strong&gt;$123&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;c1&amp;raquo; will give &lt;strong&gt;$123.5&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;-123.45 formatted with &amp;laquo;c&amp;raquo; will give &lt;strong&gt;($123.45)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;0.12345 formatted with &amp;laquo;p&amp;raquo; will give &lt;strong&gt;12.35 %&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;0.12345 formatted with &amp;laquo;p0&amp;raquo; will give &lt;strong&gt;12 %&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;0.12345 formatted with &amp;laquo;p4&amp;raquo; will give &lt;strong&gt;12.3450 %&lt;/strong&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Parsing also accepts any of these formats.&lt;/p&gt;
+
+&lt;h2 id=&#34;date-formatting&#34;&gt;Date formatting&lt;/h2&gt;
+
+&lt;p&gt;Date formatting varies wildly by culture, not just in the spelling of month and day names, and the date separator, but
+by the expected order of the various date components, whether to use a 12 or 24 hour clock, and how months and days
+are abbreviated. Many cultures even include &amp;laquo;genitive&amp;raquo; month names, which are different from the typical names and are
+used only in certain cases. Also, each culture has a set of &amp;laquo;standard&amp;raquo; or &amp;laquo;typical&amp;raquo; formats. For example, in &amp;laquo;en-US&amp;raquo;,
+when displaying a date in its fullest form, it looks like &amp;laquo;Saturday, November 05, 1955&amp;raquo;. Note the non-abbreviated day
+and month name, the zero padded date, and four digit year.&lt;/p&gt;
+
+&lt;table class=&#34;table table-striped&#34;&gt;
+&lt;tr&gt;
+&lt;th&gt;Format&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;th&gt;&#34;en-US&#34;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;f&lt;/td&gt;
+&lt;td&gt;Long Date, Short Time&lt;/td&gt;
+&lt;td&gt;dddd, MMMM dd, yyyy h:mm tt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;Long Date, Long Time&lt;/td&gt;
+&lt;td&gt;dddd, MMMM dd, yyyy h:mm:ss tt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;t&lt;/td&gt;
+&lt;td&gt;Short Time&lt;/td&gt;
+&lt;td&gt;h:mm tt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;Long Time&lt;/td&gt;
+&lt;td&gt;h:mm:ss tt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;d&lt;/td&gt;
+&lt;td&gt;Short Date&lt;/td&gt;
+&lt;td&gt;M/d/yyyy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td&gt;Long Date&lt;/td&gt;
+&lt;td&gt;dddd, MMMM dd, yyyy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Month/Year&lt;/td&gt;
+&lt;td&gt;MMMM, yyyy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M&lt;/td&gt;
+&lt;td&gt;Month/Day&lt;/td&gt;
+&lt;td&gt;MMMM dd&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+In addition to these standard formats, there is the &#34;S&#34; format. This is a
+sortable format that is identical in every culture:
+&#34;&lt;strong&gt;yyyy&#39;-&#39;MM&#39;-&#39;dd&#39;T&#39;HH&#39;:&#39;mm&#39;:&#39;ss&lt;/strong&gt;&#34;.
+When more specific control is needed over the formatting, you may use any
+format you wish by specifying the following custom tokens:
+&lt;table class=&#34;table table-striped&#34;&gt;
+&lt;tr&gt;
+&lt;th&gt;Token&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;d&lt;/td&gt;
+&lt;td&gt;Day of month (no leading zero)&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;dd&lt;/td&gt;
+&lt;td&gt;Day of month (leading zero)&lt;/td&gt;
+&lt;td&gt;05&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ddd&lt;/td&gt;
+&lt;td&gt;Day name (abbreviated)&lt;/td&gt;
+&lt;td&gt;Sat&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;dddd&lt;/td&gt;
+&lt;td&gt;Day name (full)&lt;/td&gt;
+&lt;td&gt;Saturday&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M&lt;/td&gt;
+&lt;td&gt;Month of year (no leading zero)&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MM&lt;/td&gt;
+&lt;td&gt;Month of year (leading zero)&lt;/td&gt;
+&lt;td&gt;09&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MMM&lt;/td&gt;
+&lt;td&gt;Month name (abbreviated)&lt;/td&gt;
+&lt;td&gt;Sep&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MMMM&lt;/td&gt;
+&lt;td&gt;Month name (full)&lt;/td&gt;
+&lt;td&gt;September&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;yy&lt;/td&gt;
+&lt;td&gt;Year (two digits)&lt;/td&gt;
+&lt;td&gt;55&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;yyyy&lt;/td&gt;
+&lt;td&gt;Year (four digits)&lt;/td&gt;
+&lt;td&gt;1955&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&#39;literal&#39;&lt;/td&gt;
+&lt;td&gt;Literal Text&lt;/td&gt;
+&lt;td&gt;&#39;of the clock&#39;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;\&#39;&lt;/td&gt;
+&lt;td&gt;Single Quote&lt;/td&gt;
+&lt;td&gt;&#39;o&#39;\&#39;&#39;clock&#39;&lt;/td&gt;&lt;!-- o&#39;clock --&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;Minutes (no leading zero)&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;mm&lt;/td&gt;
+&lt;td&gt;Minutes (leading zero)&lt;/td&gt;
+&lt;td&gt;09&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;h&lt;/td&gt;
+&lt;td&gt;Hours (12 hour time, no leading zero)&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;hh&lt;/td&gt;
+&lt;td&gt;Hours (12 hour time, leading zero)&lt;/td&gt;
+&lt;td&gt;06&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;H&lt;/td&gt;
+&lt;td&gt;Hours (24 hour time, no leading zero)&lt;/td&gt;
+&lt;td&gt;5 (5am) 15 (3pm)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HH&lt;/td&gt;
+&lt;td&gt;Hours (24 hour time, leading zero)&lt;/td&gt;
+&lt;td&gt;05 (5am) 15 (3pm)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;s&lt;/td&gt;
+&lt;td&gt;Seconds (no leading zero)&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ss&lt;/td&gt;
+&lt;td&gt;Seconds (leading zero)&lt;/td&gt;
+&lt;td&gt;09&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;f&lt;/td&gt;
+&lt;td&gt;Deciseconds&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ff&lt;/td&gt;
+&lt;td&gt;Centiseconds&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;fff&lt;/td&gt;
+&lt;td&gt;Milliseconds&lt;/td&gt;
+&lt;td&gt;111&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;t&lt;/td&gt;
+&lt;td&gt;AM/PM indicator (first letter)&lt;/td&gt;
+&lt;td&gt;A or P&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;tt&lt;/td&gt;
+&lt;td&gt;AM/PM indicator (full)&lt;/td&gt;
+&lt;td&gt;AM or PM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;z&lt;/td&gt;
+&lt;td&gt;Timezone offset (hours only, no leading zero)&lt;/td&gt;
+&lt;td&gt;-8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;zz&lt;/td&gt;
+&lt;td&gt;Timezone offset (hours only, leading zero)&lt;/td&gt;
+&lt;td&gt;-08&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;zzz&lt;/td&gt;
+&lt;td&gt;Timezone offset (full hours/minutes)&lt;/td&gt;
+&lt;td&gt;-08:00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;g or gg&lt;/td&gt;
+&lt;td&gt;Era name&lt;/td&gt;
+&lt;td&gt;A.D.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

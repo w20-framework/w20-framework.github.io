@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projectroadmap on </title>
+    <link>http://w20-framework.github.io/sections/projectroadmap/index.xml</link>
+    <description>Recent content in Projectroadmap on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/sections/projectroadmap/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Roadmap</title>
+      <link>http://w20-framework.github.io/project/roadmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/project/roadmap/</guid>
+      <description>History and roadmap of the W20 project.&lt;!--more--&gt;
+
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://w20-framework.github.io/assets/unify/css/pages/shortcode_timeline2.css&#34;&gt;
+&lt;div class=&#34;content-wrapper&#34;&gt;
+    &lt;div class=&#34;doc-content&#34;&gt;
+        &lt;ul class=&#34;timeline-v2&#34;&gt;
+&lt;li class=&#34;equal-height-columns&#34;&gt;
+    &lt;div class=&#34;cbp_tmtime equal-height-column&#34; style=&#34;height: 162px;&#34;&gt;
+        &lt;span&gt;2017-01-17&lt;/span&gt;
+        &lt;span&gt;January&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;i class=&#34;cbp_tmicon rounded-x hidden-xs&#34;&gt;&lt;/i&gt;
+    &lt;div class=&#34;cbp_tmlabel equal-height-column&#34; style=&#34;height: 192px;&#34;&gt;
+        &lt;h2 class=&#34;nocount&#34;&gt;Separation from SeedStack&lt;/h2&gt;
+        
+            &lt;p&gt;W20 was previously a part of the &lt;a href=&#34;http://seedstack.org&#34;&gt;SeedStack&lt;/a&gt; development stack as
+the frontend framework. From this date, it lives in its own &lt;a href=&#34;https://github.com/w20-framework&#34;&gt;GitHub organization&lt;/a&gt;
+and has its own lifecycle.&lt;/p&gt;
+
+        
+    &lt;/div&gt;
+&lt;/li&gt;
+
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

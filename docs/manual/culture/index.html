@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+
+
+
+<title>
+    Culture
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/unify/css/style.css">
+<link rel="stylesheet" href="/assets/unify/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLF968Z');</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "W20 framework",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "Open-Source Software"
+  },
+  "applicationCategory" : "web framework"
+}
+</script>
+
+
+
+<meta property="og:title" content="Culture" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="http://w20-framework.github.io/docs/manual/culture/" />
+<meta property="og:site_name" content="W20 framework" />
+<meta property="og:image" content="http://w20-framework.github.io/img/opengraph-default.png" />
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://w20-framework.github.io/opensearch.xml" title="W20 framework" />
+
+
+
+<script type="text/javascript">
+    window.w20 = {
+        state: {}
+    };
+</script>
+
+
+</head>
+<body class="homepage">
+    
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLF968Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div id="header">
+        <div class="header">
+    <div class="container">
+        <a class="logo" href="/">W20 framework</a>
+        <div class="topbar hidden-xs hidden-sm">
+            <ul class="loginbar pull-right">
+                <li><i class="fa fa-stack-overflow"></i> <a target="_blank" href="http://stackoverflow.com/questions/ask?tags=w20">Ask a question</a></li>
+                <li class="topbar-devider"></li>
+                <li><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></li>
+            </ul>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" data-role="navigation" style="pointer-events: none;">
+        <div class="container">
+            <ul class="nav navbar-nav" style="pointer-events: auto;">
+                <li>
+                    <a href="/docs">Documentation</a>
+                </li>
+                <li>
+                    <a href="/addons">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/themes">Themes</a>
+                </li>
+                <li>
+                    <a href="/posts">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/project/community">Community</a></li>
+                        <li><a href="/project/roadmap">Roadmap</a></li>
+                        <li><a href="/project/faq">FAQ</a></li>
+                        <li><a href="/tags">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <form method="GET" action="/search">
+                            <div class="input-group animated fadeInDown">
+                                <input id="search-field" type="text" class="form-control" placeholder="Search" name="q">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        
+<div class="title-header small">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h2>Documentation</h2>
+                <p class="hidden-xs">Introduction, reference manual and JSDoc of the W20 framework.</p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-image-wrapper">
+                    <img class="header-image" src="/img/logos/w20-logo.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="title-subheader">
+    <div class="container">
+        <ul>
+            <li><h3 class=''><i class="fa fa-play-circle"></i> <a href="/docs">Introduction</a></h3></li>
+            <li><h3 class='active'><i class="fa fa-book"></i> <a href="/docs/manual">Manual</a></h3></li>
+            <li><h3 class=''><i class="fa fa-cogs"></i> <a href="/docs/generator">Generator</a></h3></li>
+            <li><h3><i class="fa fa-info-circle"></i> <a href="/jsdoc" target="_blank">JSDoc</a></h3></li>
+            <li><h3><i class="fa fa-tag"></i> <a href="https://github.com/w20-framework/w20/releases" target="_blank">Releases</a></h3></li>
+            <li><h3><i class="fa fa-github"></i> <a href="https://github.com/w20-framework/w20" target="_blank">Source</a></h3></li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+    <div id="content" class="container">
+        <div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="doc-content">
+                <p>W20 provides an extensive culture support through the jQuery Globalize library. It provides the developer tools to
+internationalize a W20 application which can then be localized via fragment manifests. As AngularJS
+also provides internalization support, W20 attempts to convert the active Globalize culture definition to an
+AngularJS locale, on a best-effort basis. This automatic conversion has limits, so it is recommended to stick to
+the W20 functions and services for internationalization.</p>
+
+<h1 id="cultures">Cultures</h1>
+
+<p>Cultures are defined as a combination of the language and the country speaking it. Each culture is given a unique code
+that is a combination of an ISO 639 two-letter lowercase culture code for the language, and a two-letter uppercase code
+for the country or region. For example, &laquo;en-US&raquo; is the culture code for English in the United States. Only one culture
+can be active at a time in the application but you can format values in any culture supported by the application,
+without switching the active one. This module handles:</p>
+
+<ul>
+<li>Textual internationalization,</li>
+<li>Date and time formatting,</li>
+<li>Currency formatting,</li>
+<li>Number formatting.</li>
+</ul>
+
+<p>W20 supports about 350 cultures but can also be extended to custom-defined ones. Here is the list of out-of-the-box
+supported cultures:</p>
+
+<h3 id="supported-cultures">Supported cultures</h3>
+
+<p>af-ZA, af, am-ET, am, ar-AE, ar-BH, ar-DZ, ar-EG, ar-IQ, ar-JO, ar-KW, ar-LB, ar-LY, ar-MA, ar-OM,
+ar-QA, ar-SA, ar-SY, ar-TN, ar-YE, ar, arn-CL, arn, as-IN, as, az-Cyrl-AZ, az-Cyrl, az-Latn-AZ,
+az-Latn, az, ba-RU, ba, be-BY, be, bg-BG, bg, bn-BD, bn-IN, bn, bo-CN, bo, br-FR, br,
+bs-Cyrl-BA, bs-Cyrl, bs-Latn-BA, bs-Latn, bs, ca-ES, ca, co-FR, co, cs-CZ, cs, cy-GB, cy, da-DK,
+da, de-AT, de-CH, de-DE, de-LI, de-LU, de,  dsb-DE, dsb, dv-MV, dv, el-GR, el, en-029, en-AU,
+en-BZ, en-CA, en-GB, en-IE, en-IN, en-JM, en-MY, en-NZ, en-PH, en-SG, en-TT, en-US, en-ZA,
+en-ZW, es-AR, es-BO, es-CL, es-CO, es-CR, es-DO, es-EC, es-ES, es-GT, es-HN, es-MX, es-NI,
+es-PA, es-PE, es-PR, es-PY, es-SV, es-US, es-UY, es-VE, es, et-EE, et, eu-ES, eu, fa-IR,
+fa, fi-FI, fi, fil-PH, fil, fo-FO, fo, fr-BE, fr-CA, fr-CH, fr-FR, fr-LU, fr-MC, fr, fy-NL,
+fy, ga-IE, ga, gd-GB, gd, gl-ES, gl, gsw-FR, gsw, gu-IN, gu, ha-Latn-NG, ha-Latn, ha, he-IL,
+he, hi-IN, hi, hr-BA, hr-HR, hr, hsb-DE, hsb, hu-HU, hu, hy-AM, hy, id-ID, id, ig-NG, ig,
+ii-CN, ii, is-IS, is, it-CH, it-IT, it, iu-Cans-CA, iu-Cans, iu-Latn-CA, iu-Latn, iu,
+ja-JP, ja, ka-GE, ka, kk-KZ, kk, kl-GL, kl, km-KH, km, kn-IN, kn, ko-KR, ko, kok-IN,
+kok, ky-KG, ky, lb-LU, lb, lo-LA, lo, lt-LT, lt, lv-LV, lv, mi-NZ, mi, mk-MK, mk,
+ml-IN, ml, mn-Cyrl, mn-MN, mn-Mong-CN, mn-Mong, mn, moh-CA, moh, mr-IN, mr, ms-BN,
+ms-MY, ms, mt-MT, mt, nb-NO, nb, ne-NP, ne, nl-BE, nl-NL, nl, nn-NO, nn, no, nso-ZA,
+nso, oc-FR, oc, or-IN, or, pa-IN, pa, pl-PL, pl, prs-AF, prs, ps-AF, ps, pt-BR, pt-PT, pt,
+qut-GT, qut, quz-BO, quz-EC, quz-PE, quz, rm-CH, rm, ro-RO, ro, ru-RU, ru, rw-RW, rw,
+sa-IN, sa, sah-RU, sah, se-FI, se-NO, se-SE, se, si-LK, si, sk-SK, sk, sl-SI, sl, sma-NO,
+sma-SE, sma, smj-NO, smj-SE, smj, smn-FI, smn, sms-FI, sms, sq-AL, sq, sr-Cyrl-BA, sr-Cyrl-CS,
+sr-Cyrl-ME, sr-Cyrl-RS, sr-Cyrl, sr-Latn-BA, sr-Latn-CS, sr-Latn-ME, sr-Latn-RS, sr-Latn, sr,
+sv-FI, sv-SE, sv, sw-KE, sw, syr-SY, syr, ta-IN, ta, te-IN, te, tg-Cyrl-TJ, tg-Cyrl, tg,
+th-TH, th, tk-TM, tk, tn-ZA, tn, tr-TR, tr, tt-RU, tt, tzm-Latn-DZ, tzm-Latn, tzm, ug-CN,
+ug, uk-UA, uk, ur-PK, ur, uz-Cyrl-UZ, uz-Cyrl, uz-Latn-UZ, uz-Latn, uz, vi-VN, vi, wo-SN,
+wo, xh-ZA, xh, yo-NG, yo, zh-CHS, zh-CHT, zh-CN, zh-Hans, zh-Hant, zh-HK, zh-MO,
+zh-SG, zh-TW, zh, zu-ZA, zu.</p>
+
+<h1 id="configuration">Configuration</h1>
+
+<p>The culture module of w20 core can be configured with the following attribute:</p>
+
+<ul>
+<li><code>available</code> (array of string) which list the available culture in the application</li>
+<li><code>default</code> (string) which is the culture name of the default culture. It defaults to &laquo;en&raquo;.</li>
+</ul>
+
+<p>Example</p>
+
+<pre><code>&quot;path/w20-core.w20.json&quot;: {
+    &quot;culture&quot;: {
+        &quot;available&quot;: [&quot;en&quot;, &quot;fr&quot;],
+        &quot;default&quot;: &quot;en&quot;
+    }
+}
+</code></pre>
+
+<h1 id="fragment-declaration">Fragment declaration</h1>
+
+<p>The &laquo;i18n&raquo; section of a fragment manifest allows to declare culture localization bundles:</p>
+
+<pre><code>&quot;i18n&quot; : {
+    &quot;&quot; : [ &quot;rest/i18n/bundle/:language&quot; ]
+    &quot;en&quot; : [ &quot;i18n/en-bundle-1.json&quot;, &quot;i18n/en-bundle-2.json&quot;, ...  ],
+    &quot;fr-FR&quot; : [ &quot;i18n/fr-FR-bundle-1.json&quot;, &quot;i18n/fr-FR-bundle-1.json&quot;, ...  ]
+}
+</code></pre>
+
+<p>Bundles modules will be loaded as a text dependency and parsed as JSON. The empty string culture code can be used to
+point to remote bundle. In that case, two placeholders can be used in the URL:</p>
+
+<ul>
+<li>The <code>:language</code> placeholder will be replaced by the actual language code,</li>
+<li>The <code>:culture</code> placeholder will be replaced by the actual culture code.</li>
+</ul>
+
+<p>Dynamic bundles will always be loaded for any language. If no keys are available for a particular language an empty
+object can be returned.</p>
+
+<h1 id="usage">Usage</h1>
+
+<p>As an example if our bundle for en-EN culture contains the following entry:</p>
+
+<pre><code>{
+    &quot;application.key&quot;: &quot;my translation&quot;
+}
+</code></pre>
+
+<p>Inside an html template use the localize filter.</p>
+
+<pre><code>&lt;p&gt; {{ 'application.key' | localize }} &lt;/p&gt;
+</code></pre>
+
+<p>You can also apply the localization programmatically by calling the CultureService.</p>
+
+<h1 id="formatting">Formatting</h1>
+
+<p>Numbers and dates can be formatted in various ways by using formatting patterns.</p>
+
+<h2 id="number-formatting">Number formatting</h2>
+
+<p>When formatting a number, the main purpose is to convert the number into a human readable string using the culture&rsquo;s
+standard grouping and decimal rules. The rules between cultures can vary a lot. For example, in some cultures, the
+grouping of numbers is done unevenly. In the &laquo;te-IN&raquo; culture (Telugu in India), groups have 3 digits and then 2 digits.
+The number 1000000 (one million) is written as &laquo;10,00,000&raquo;. Some cultures do not group numbers at all. There are four
+main types of number formatting:</p>
+
+<ul>
+<li><strong>n</strong> for number</li>
+<li><strong>d</strong> for decimal digits</li>
+<li><strong>p</strong> for percentage</li>
+<li><strong>c</strong> for currency</li>
+</ul>
+
+<p>Even within the same culture, the formatting rules can vary between these four types of numbers. For example, the expected
+number of decimal places may differ from the number format to the currency format. Each format token may also be
+followed by a number. The number determines how many decimal places to display for all the format types except decimal,
+for which it means the minimum number of digits to display, zero padding it if necessary. Also note that the way negative
+numbers are represented in each culture can vary, such as what the negative sign is, and whether the negative sign
+appears before or after the number. This is especially apparent with currency formatting, where many cultures use
+parentheses instead of a negative sign. For instance in the &laquo;en-US&raquo; culture:</p>
+
+<ul>
+<li>123.45 formatted with &laquo;n&raquo; will give <strong>123.45</strong></li>
+<li>123.45 formatted with &laquo;n0&raquo; will give <strong>123</strong></li>
+<li>123.45 formatted with &laquo;n1&raquo; will give <strong>123.5</strong></li>
+<li>123.45 formatted with &laquo;d&raquo; will give <strong>123</strong></li>
+<li>12 formatted with &laquo;d3&raquo; will give <strong>012</strong></li>
+<li>123.45 formatted with &laquo;c&raquo; will give <strong>$123.45</strong></li>
+<li>123.45 formatted with &laquo;c0&raquo; will give <strong>$123</strong></li>
+<li>123.45 formatted with &laquo;c1&raquo; will give <strong>$123.5</strong></li>
+<li>-123.45 formatted with &laquo;c&raquo; will give <strong>($123.45)</strong></li>
+<li>0.12345 formatted with &laquo;p&raquo; will give <strong>12.35 %</strong></li>
+<li>0.12345 formatted with &laquo;p0&raquo; will give <strong>12 %</strong></li>
+<li>0.12345 formatted with &laquo;p4&raquo; will give <strong>12.3450 %</strong>
+<br /></li>
+</ul>
+
+<p>Parsing also accepts any of these formats.</p>
+
+<h2 id="date-formatting">Date formatting</h2>
+
+<p>Date formatting varies wildly by culture, not just in the spelling of month and day names, and the date separator, but
+by the expected order of the various date components, whether to use a 12 or 24 hour clock, and how months and days
+are abbreviated. Many cultures even include &laquo;genitive&raquo; month names, which are different from the typical names and are
+used only in certain cases. Also, each culture has a set of &laquo;standard&raquo; or &laquo;typical&raquo; formats. For example, in &laquo;en-US&raquo;,
+when displaying a date in its fullest form, it looks like &laquo;Saturday, November 05, 1955&raquo;. Note the non-abbreviated day
+and month name, the zero padded date, and four digit year.</p>
+
+<table class="table table-striped">
+<tr>
+<th>Format</th>
+<th>Meaning</th>
+<th>"en-US"</th>
+</tr>
+<tr>
+<td>f</td>
+<td>Long Date, Short Time</td>
+<td>dddd, MMMM dd, yyyy h:mm tt</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Long Date, Long Time</td>
+<td>dddd, MMMM dd, yyyy h:mm:ss tt</td>
+</tr>
+<tr>
+<td>t</td>
+<td>Short Time</td>
+<td>h:mm tt</td>
+</tr>
+<tr>
+<td>T</td>
+<td>Long Time</td>
+<td>h:mm:ss tt</td>
+</tr>
+<tr>
+<td>d</td>
+<td>Short Date</td>
+<td>M/d/yyyy</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Long Date</td>
+<td>dddd, MMMM dd, yyyy</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>Month/Year</td>
+<td>MMMM, yyyy</td>
+</tr>
+<tr>
+<td>M</td>
+<td>Month/Day</td>
+<td>MMMM dd</td>
+</tr>
+</table>
+In addition to these standard formats, there is the "S" format. This is a
+sortable format that is identical in every culture:
+"<strong>yyyy'-'MM'-'dd'T'HH':'mm':'ss</strong>".
+When more specific control is needed over the formatting, you may use any
+format you wish by specifying the following custom tokens:
+<table class="table table-striped">
+<tr>
+<th>Token</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+<tr>
+<td>d</td>
+<td>Day of month (no leading zero)</td>
+<td>5</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>Day of month (leading zero)</td>
+<td>05</td>
+</tr>
+<tr>
+<td>ddd</td>
+<td>Day name (abbreviated)</td>
+<td>Sat</td>
+</tr>
+<tr>
+<td>dddd</td>
+<td>Day name (full)</td>
+<td>Saturday</td>
+</tr>
+<tr>
+<td>M</td>
+<td>Month of year (no leading zero)</td>
+<td>9</td>
+</tr>
+<tr>
+<td>MM</td>
+<td>Month of year (leading zero)</td>
+<td>09</td>
+</tr>
+<tr>
+<td>MMM</td>
+<td>Month name (abbreviated)</td>
+<td>Sep</td>
+</tr>
+<tr>
+<td>MMMM</td>
+<td>Month name (full)</td>
+<td>September</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>Year (two digits)</td>
+<td>55</td>
+</tr>
+<tr>
+<td>yyyy</td>
+<td>Year (four digits)</td>
+<td>1955</td>
+</tr>
+<tr>
+<td>'literal'</td>
+<td>Literal Text</td>
+<td>'of the clock'</td>
+</tr>
+<tr>
+<td>\'</td>
+<td>Single Quote</td>
+<td>'o'\''clock'</td><!-- o'clock -->
+</tr>
+<tr>
+<td>m</td>
+<td>Minutes (no leading zero)</td>
+<td>9</td>
+</tr>
+<tr>
+<td>mm</td>
+<td>Minutes (leading zero)</td>
+<td>09</td>
+</tr>
+<tr>
+<td>h</td>
+<td>Hours (12 hour time, no leading zero)</td>
+<td>6</td>
+</tr>
+<tr>
+<td>hh</td>
+<td>Hours (12 hour time, leading zero)</td>
+<td>06</td>
+</tr>
+<tr>
+<td>H</td>
+<td>Hours (24 hour time, no leading zero)</td>
+<td>5 (5am) 15 (3pm)</td>
+</tr>
+<tr>
+<td>HH</td>
+<td>Hours (24 hour time, leading zero)</td>
+<td>05 (5am) 15 (3pm)</td>
+</tr>
+<tr>
+<td>s</td>
+<td>Seconds (no leading zero)</td>
+<td>9</td>
+</tr>
+<tr>
+<td>ss</td>
+<td>Seconds (leading zero)</td>
+<td>09</td>
+</tr>
+<tr>
+<td>f</td>
+<td>Deciseconds</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ff</td>
+<td>Centiseconds</td>
+<td>11</td>
+</tr>
+<tr>
+<td>fff</td>
+<td>Milliseconds</td>
+<td>111</td>
+</tr>
+<tr>
+<td>t</td>
+<td>AM/PM indicator (first letter)</td>
+<td>A or P</td>
+</tr>
+<tr>
+<td>tt</td>
+<td>AM/PM indicator (full)</td>
+<td>AM or PM</td>
+</tr>
+<tr>
+<td>z</td>
+<td>Timezone offset (hours only, no leading zero)</td>
+<td>-8</td>
+</tr>
+<tr>
+<td>zz</td>
+<td>Timezone offset (hours only, leading zero)</td>
+<td>-08</td>
+</tr>
+<tr>
+<td>zzz</td>
+<td>Timezone offset (full hours/minutes)</td>
+<td>-08:00</td>
+</tr>
+<tr>
+<td>g or gg</td>
+<td>Era name</td>
+<td>A.D.</td>
+</tr>
+</table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+<div class="side-menu">
+    
+        
+        <div class="list-group">
+            <ul class="nav">
+                
+                
+                
+                    
+                    <li>
+                        <a href="/docs/manual/" class="list-group-item ">
+                            Web framework basics
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/routing/" class="list-group-item ">
+                            Routing
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/security/" class="list-group-item ">
+                            Security
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/culture/" class="list-group-item  active ">
+                            Culture
+                        </a>
+                        
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#cultures">Cultures</a>
+<ul>
+<li>
+<ul>
+<li><a href="#supported-cultures">Supported cultures</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#fragment-declaration">Fragment declaration</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#formatting">Formatting</a>
+<ul>
+<li><a href="#number-formatting">Number formatting</a></li>
+<li><a href="#date-formatting">Date formatting</a></li>
+</ul></li>
+</ul>
+</nav>
+                            <script>
+                                w20.state.previousPage = '\/docs\/manual\/security\/';
+                            </script>
+                            
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/hypermedia/" class="list-group-item ">
+                            Hypermedia
+                        </a>
+                        
+                            <script>
+                                w20.state.nextPage = '\/docs\/manual\/hypermedia\/';
+                            </script>
+                            
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/ui/" class="list-group-item ">
+                            UI
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/testing/" class="list-group-item ">
+                            Testing
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+            </ul>
+        </div>
+        
+    
+    
+    <div class="list-group">
+        <ul class="nav">
+            <li class="list-group-item"><div style="margin-bottom: 10px;"><i class="fa fa-tag"></i> Tags</div>
+                <div class="tags">
+                    
+                    <a class="label label-default" href="/tags/i18n">I18n</a>
+                    
+                    <a class="label label-default" href="/tags/locale">Locale</a>
+                    
+                    <a class="label label-default" href="/tags/date">Date</a>
+                    
+                    <a class="label label-default" href="/tags/time">Time</a>
+                    
+                    <a class="label label-default" href="/tags/format">Format</a>
+                    
+                    <a class="label label-default" href="/tags/localization">Localization</a>
+                    
+                    <a class="label label-default" href="/tags/internationalization">Internationalization</a>
+                    
+                    <a class="label label-default" href="/tags/culture">Culture</a>
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="list-group">
+        <ul class="nav">
+            
+                <li><a class="list-group-item" href="https://github.com/w20-framework/website/edit/master/content/docs/manual/culture.md" target="_blank"><i class="fa fa-edit"></i> Contribute to this page</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+    <div id="footer">
+        <div class="footer-v3">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="headline"><h2>About</h2></div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">W20 is a Web framework to create modular and composable enterprise-ready applications.</p>
+                </div>
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><h2>License</h2></div>
+                        <p>
+                            Code licensed under the <a href="https://www.mozilla.org/MPL/2.0" target="_blank">Mozilla Public License 2.0</a>.
+                            <br/>
+                            Documentation licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 map-img">
+                    <div class="headline"><h2>Contact us</h2></div>
+                    <address>
+                        <p>
+                            StackOverflow <a href="https://stackoverflow.com/questions/tagged/w20">W20 on StackOverflow</a>
+                        </p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js"></script>
+<script src="/assets/unify/plugins/smoothScroll.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/w20.js"></script>
+<script>
+    $(document).ready(function () {
+        var $search = $('.search-btn');
+
+        $('.search').click(function () {
+            if ($search.hasClass('fa-search')) {
+                w20.ui.openSearch();
+            } else {
+                w20.ui.closeSearch();
+            }
+        });
+
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $('.side-menu').affix({
+            offset: {
+                top: $('#header').height() + 20,
+                bottom: $('#footer').height() + 40
+            }
+        });
+
+        Mousetrap.bind('/', function () {
+            w20.ui.openSearch();
+            return false;
+        });
+
+        Mousetrap.bind('alt+up', function () {
+            if (w20.state.previousPage) {
+                window.location = w20.state.previousPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('alt+down', function () {
+            if (w20.state.nextPage) {
+                window.location = w20.state.nextPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('esc', function () {
+            w20.ui.closeSearch();
+            return false;
+        });
+
+        var originalCallback = Mousetrap.stopCallback;
+        Mousetrap.stopCallback = function (e, element, combo) {
+            if (combo === 'esc') {
+                return false;
+            }
+
+            return originalCallback(e, element, combo);
+        };
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#hotkeys-modal, #versions-modal').bind('hidden.bs.modal', function () {
+            $("html").css("margin-right", "0px");
+        }).bind('show.bs.modal', function () {
+            $("html").css("margin-right", "-15px");
+        });
+
+        var query = w20.strings.parseQueryString(location);
+        if (query.h && query.h.length > 0) {
+            $('.doc-content').highlight(query.h);
+            if (query.scroll) {
+                $('html, body').animate({
+                    scrollTop: $('span[class=highlight]:first').offset().top - 20
+                }, 250);
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

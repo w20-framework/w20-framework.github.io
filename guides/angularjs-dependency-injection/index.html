@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+
+
+<title>
+    AngularJS dependency injection
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/unify/css/style.css">
+<link rel="stylesheet" href="/assets/unify/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLF968Z');</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "W20 framework",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "Open-Source Software"
+  },
+  "applicationCategory" : "web framework"
+}
+</script>
+
+
+
+<meta property="og:title" content="AngularJS dependency injection" />
+<meta property="og:description" content="Dependency injection in AngularJS is supremely useful, and the key to making easily testable components. This article
+explains how AngularJS dependency injection system works." />
+<meta property="og:url" content="http://w20-framework.github.io/guides/angularjs-dependency-injection/" />
+<meta property="og:site_name" content="W20 framework" />
+<meta property="og:image" content="http://w20-framework.github.io/img/opengraph-default.png" />
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://w20-framework.github.io/opensearch.xml" title="W20 framework" />
+
+
+
+<script type="text/javascript">
+    window.w20 = {
+        state: {}
+    };
+</script>
+
+
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLF968Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div id="header">
+    <div class="header">
+    <div class="container">
+        <a class="logo" href="/">W20 framework</a>
+        <div class="topbar hidden-xs hidden-sm">
+            <ul class="loginbar pull-right">
+                <li><i class="fa fa-stack-overflow"></i> <a target="_blank" href="http://stackoverflow.com/questions/ask?tags=w20">Ask a question</a></li>
+                <li class="topbar-devider"></li>
+                <li><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></li>
+            </ul>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" data-role="navigation" style="pointer-events: none;">
+        <div class="container">
+            <ul class="nav navbar-nav" style="pointer-events: auto;">
+                <li>
+                    <a href="/docs">Documentation</a>
+                </li>
+                <li>
+                    <a href="/addons">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/themes">Themes</a>
+                </li>
+                <li>
+                    <a href="/posts">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/project/community">Community</a></li>
+                        <li><a href="/project/roadmap">Roadmap</a></li>
+                        <li><a href="/project/faq">FAQ</a></li>
+                        <li><a href="/tags">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <form method="GET" action="/search">
+                            <div class="input-group animated fadeInDown">
+                                <input id="search-field" type="text" class="form-control" placeholder="Search" name="q">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="title-header small">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h2>Guides</h2>
+                <p class="hidden-xs">Hands-on instructions and detailed insight applicable to W20-based projects.</p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-image-wrapper">
+                    <img class="header-image" src="/img/logos/guides-logo.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="title-subheader">
+        <div class="container">
+            <ul>
+                <li><h3><i class="fa fa-list"></i> <a href="/guides">All guides</a></h3></li>
+                <li><h3 class="active"><i class="fa fa-book"></i> <a href="">AngularJS dependency injection</a></h3></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="content" class="container">
+    <div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="doc-content">
+                <p>Dependency injection in AngularJS is supremely useful, and the key to making easily testable components. This article
+explains how AngularJS dependency injection system works.</p>
+
+<h1 id="the-provider-provide">The Provider ($provide)</h1>
+
+<p>The $provide service is responsible for telling Angular how to create new injectable things; these things are called
+services. Services are defined by things called providers, which is what you&rsquo;re creating when you use $provide.
+Defining a provider is done via the provider method on the $provide service, and you can get hold of the $provide
+service by asking for it to be injected into an application&rsquo;s config function. An example might be something like this:</p>
+
+<pre><code>myMod.config(function($provide) {
+  $provide.provider('greeting', function() {
+    this.$get = function() {
+      return function(name) {
+        alert(&quot;Hello, &quot; + name);
+      };
+    };
+  });
+});
+</code></pre>
+
+<p>Here we&rsquo;ve defined a new provider for a service called greeting; we can inject a variable named greeting into any
+injectable function (like controllers, more on that later) and Angular will call the provider&rsquo;s $get function in order
+to return a new instance of the service. In this case, the thing that will be injected is a function that takes a name
+parameter and alerts a message based on the name. We might use it like this:</p>
+
+<pre><code>myMod.controller('MainController', function($scope, greeting) {
+  $scope.onClick = function() {
+    greeting('Ford Prefect');
+  };
+});
+</code></pre>
+
+<p>Now here&rsquo;s the trick. factory, service, and value are all just shortcuts to define various parts of a provider&ndash;that is,
+they provide a means of defining a provider without having to type all that stuff out. For example, you could write that
+exact same provider just like this:</p>
+
+<pre><code>myMod.config(function($provide) {
+  $provide.factory('greeting', function() {
+    return function(name) {
+      alert(&quot;Hello, &quot; + name);
+    };
+  });
+});
+</code></pre>
+
+<p>It&rsquo;s important to understand, so I&rsquo;ll rephrase: under the hood, AngularJS is calling the exact same code that we wrote
+above (the $provide.provider version) for us. There is literally, 100% no difference in the two versions. value works
+just the same way&ndash;if whatever we would return from our $get function (aka our factory function) is always exactly the
+same, we can write even less code using value. For example, since we always return the same function for our greeting
+service, we can use value to define it, too:</p>
+
+<pre><code>myMod.config(function($provide) {
+  $provide.value('greeting', function(name) {
+    alert(&quot;Hello, &quot; + name);
+  });
+});
+</code></pre>
+
+<p>Again, this is 100% identical to the other two methods we&rsquo;ve used to define this function&ndash;it&rsquo;s just a way to save
+some typing.</p>
+
+<p>Now you probably noticed this annoying myMod.config(function($provide) { &hellip; }) thing I&rsquo;ve been using. Since defining
+new providers (via any of the given methods above) is so common, AngularJS exposes the $provider methods directly on the
+module object, to save even more typing:</p>
+
+<pre><code>var myMod = angular.module('myModule', []);
+
+myMod.provider(&quot;greeting&quot;, ...);
+myMod.factory(&quot;greeting&quot;, ...);
+myMod.value(&quot;greeting&quot;, ...);
+</code></pre>
+
+<p>These all do the same thing as the more verbose app.config(&hellip;) versions we used previously.</p>
+
+<p>The one injectable I&rsquo;ve skipped so far is constant. For now, it&rsquo;s easy enough to say that it works just like value.
+We&rsquo;ll see there&rsquo;s one difference later.</p>
+
+<p>To review, all these pieces of code are doing the exact same thing:</p>
+
+<pre><code>myMod.provider('greeting', function() {
+  this.$get = function() {
+    return function(name) {
+      alert(&quot;Hello, &quot; + name);
+    };
+  };
+});
+
+myMod.factory('greeting', function() {
+  return function(name) {
+    alert(&quot;Hello, &quot; + name);
+  };
+});
+
+myMod.value('greeting', function(name) {
+  alert(&quot;Hello, &quot; + name);
+});
+</code></pre>
+
+<h1 id="the-injector-injector">The Injector ($injector)</h1>
+
+<p>The injector is responsible for actually creating instances of our services using the code we provided via $provide
+(no pun intended). Any time you write a function that takes injected arguments, you&rsquo;re seeing the injector at work. Each
+AngularJS application has a single $injector that gets created when the application first starts; you can get a hold of
+it by injecting $injector into any injectable function (yes, $injector knows how to inject itself!)</p>
+
+<p>Once you have $injector, you can get an instance of a defined service by calling get on it with the name of the service.
+For example,</p>
+
+<pre><code>var greeting = $injector.get('greeting');
+greeting('Ford Prefect');
+</code></pre>
+
+<p>The injector is also responsible for injecting services into functions; for example, you can magically inject services
+into any function you have using the injector&rsquo;s invoke method;</p>
+
+<pre><code>var myFunction = function(greeting) {
+  greeting('Ford Prefect');
+};
+$injector.invoke(myFunction);
+</code></pre>
+
+<p>Its worth noting that the injector will only create an instance of a service once. It then caches whatever the provider
+returns by the service&rsquo;s name; the next time you ask for the service, you&rsquo;ll actually get the exact same object.</p>
+
+<p>So, it stands to reason that you can inject services into any function that is called with $injector.invoke. This
+includes:</p>
+
+<ul>
+<li>controller definition functions</li>
+<li>directive definition functions</li>
+<li>filter definition functions</li>
+<li>the $get methods of providers (aka the factory definition functions)</li>
+</ul>
+
+<p>Since constants and values always return a static value, they are not invoked via the injector, and thus you cannot
+inject them with anything.</p>
+
+<h1 id="configuring-providers">Configuring Providers</h1>
+
+<p>You may be wondering why anyone would bother to set up a full-fledged provider with the provide method if factory,
+value, etc. are so much easier. The answer is that providers allow a lot of configuration. We&rsquo;ve already mentioned
+that when you create a service via the provider (or any of the shortcuts Angular gives you), you create a new provider
+that defines how that service is constructed. What I didn&rsquo;t mention is that these providers can be injected into config
+sections of your application so you can interact with them!</p>
+
+<p>First, Angular runs your application in two-phases&ndash;the config and run phases. The config phase, as we&rsquo;ve seen, is where
+you can set up any providers as necessary. This is also where directives, controllers, filters, and the like get set up.
+The run phase, as you might guess, is where Angular actually compiles your DOM and starts up your app.</p>
+
+<p>You can add additional code to be run in these phases with the myMod.config and myMod.run functions&ndash;each take a
+function to run during that specific phase. As we saw in the first section, these functions are injectable&ndash;we injected
+the built-in $provide service in our very first code sample. However, what&rsquo;s worth noting is that during the config
+phase, only providers can be injected (with the exception of the services in the AUTO module&ndash;$provide and $injector).</p>
+
+<p>For example, the following is not allowed:</p>
+
+<pre><code>myMod.config(function(greeting) {
+  // WON'T WORK -- greeting is an *instance* of a service.
+  // Only providers for services can be injected in config blocks.
+});
+</code></pre>
+
+<p>What you do have access to are any providers for services you&rsquo;ve made:</p>
+
+<pre><code>myMod.config(function(greetingProvider) {
+  // a-ok!
+});
+</code></pre>
+
+<p>There is one important exception: constants, since they cannot be changed, are allowed to be injected inside config
+blocks (this is how they differ from values). They are accessed by their name alone (no Provider suffix necessary).</p>
+
+<p>Whenever you defined a provider for a service, that provider gets named serviceProvider, where service is the name of
+the service. Now we can use the power of providers to do some more complicated stuff!</p>
+
+<pre><code>myMod.provider('greeting', function() {
+  var text = 'Hello, ';
+
+  this.setText = function(value) {
+    text = value;
+  };
+
+  this.$get = function() {
+    return function(name) {
+      alert(text + name);
+    };
+  };
+});
+
+myMod.config(function(greetingProvider) {
+  greetingProvider.setText(&quot;Howdy there, &quot;);
+});
+
+myMod.run(function(greeting) {
+  greeting('Ford Prefect');
+});
+</code></pre>
+
+<p>Now we have a function on our provider called setText that we can use to customize our alert; we can get access to this
+provider in a config block to call this method and customize the service. When we finally run our app, we can grab the
+greeting service, and try it out to see that our customization took effect.</p>
+
+<p>Since this is a more complex example, here&rsquo;s a working demonstration: <a href="http://jsfiddle.net/BinaryMuse/9GjYg/">http://jsfiddle.net/BinaryMuse/9GjYg/</a>.</p>
+
+<h1 id="controllers-controller">Controllers ($controller)</h1>
+
+<p>You can inject things into controllers, but you can&rsquo;t inject controllers into things. That&rsquo;s because controllers aren&rsquo;t
+created via the provider. Instead, there is a built-in Angular service called $controller that is responsible for setting
+up your controllers. When you call myMod.controller(&hellip;), you&rsquo;re actually accessing this service&rsquo;s provider, just like
+in the last section.</p>
+
+<p>For example, when you define a controller like this:</p>
+
+<pre><code>myMod.controller('MainController', function($scope) {
+  // ...
+});
+</code></pre>
+
+<p>What you&rsquo;re actually doing is this:</p>
+
+<pre><code>myMod.config(function($controllerProvider) {
+  $controllerProvider.register('MainController', function($scope) {
+    // ...
+  });
+});
+</code></pre>
+
+<p>Later, when Angular needs to create an instance of your controller, it uses the $controller service (which in turn uses
+the $injector to invoke your controller function so it gets its dependencies injected too).</p>
+
+<p>Filters and Directives</p>
+
+<p>filter and directive work exactly the same way as controller; filter uses a service called $filter and its provider
+$filterProvider, while directive uses a service called $compile and its provider $compileProvider. Some links:</p>
+
+<ul>
+<li>$filter: <a href="http://docs.angularjs.org/api/ng.$filter">http://docs.angularjs.org/api/ng.$filter</a></li>
+<li>$filterProvider: <a href="http://docs.angularjs.org/api/ng.$filterProvider">http://docs.angularjs.org/api/ng.$filterProvider</a></li>
+<li>$compile: <a href="http://docs.angularjs.org/api/ng.$compile">http://docs.angularjs.org/api/ng.$compile</a></li>
+<li>$compileProvider: <a href="http://docs.angularjs.org/api/ng.$compileProvider">http://docs.angularjs.org/api/ng.$compileProvider</a></li>
+</ul>
+
+<p>As per the other examples, myMod.filter and myMod.directive are shortcuts to configuring these services.</p>
+
+<h1 id="summary">Summary</h1>
+
+<p>So, to summarize, any function that gets called with $injector.invoke can be injected into. This includes, but is not
+limited to:</p>
+
+<ul>
+<li>controller,</li>
+<li>directive,</li>
+<li>factory,</li>
+<li>filter,</li>
+<li>provider $get (when defining provider as an object),</li>
+<li>provider function (when defining provider as a constructor function),</li>
+<li>service.</li>
+</ul>
+
+<p>The provider creates new services that can be injected into things. This includes:</p>
+
+<ul>
+<li>constant,</li>
+<li>factory,</li>
+<li>provider,</li>
+<li>service,</li>
+<li>value.</li>
+</ul>
+
+<p>That said, built-in services like $controller and $filter can be injected, and you can use those service to get hold of
+the new filters and controllers you defined with those methods (even though the things you defined aren&rsquo;t, by
+themselves, able to be injected into things).</p>
+
+<p>Other than that, any injector-invoked function can be injected with any provider-provided service&ndash;there is no restriction
+(other than the config and run differences listed herein).</p>
+
+<h1 id="source-article">Source article</h1>
+
+<p>Article copied from <a href="https://github.com/angular/angular.js/wiki/Understanding-Dependency-Injection">https://github.com/angular/angular.js/wiki/Understanding-Dependency-Injection</a>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+<div class="side-menu">
+    
+    
+    <div class="list-group">
+        <ul class="nav">
+            
+                <li><a class="list-group-item" href="https://github.com/w20-framework/website/edit/master/content/guides/angularjs-dependency-injection/index.md" target="_blank"><i class="fa fa-edit"></i> Contribute to this page</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+    </div>
+</div>
+
+</div>
+<div id="footer">
+    <div class="footer-v3">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="headline"><h2>About</h2></div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">W20 is a Web framework to create modular and composable enterprise-ready applications.</p>
+                </div>
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><h2>License</h2></div>
+                        <p>
+                            Code licensed under the <a href="https://www.mozilla.org/MPL/2.0" target="_blank">Mozilla Public License 2.0</a>.
+                            <br/>
+                            Documentation licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 map-img">
+                    <div class="headline"><h2>Contact us</h2></div>
+                    <address>
+                        <p>
+                            StackOverflow <a href="https://stackoverflow.com/questions/tagged/w20">W20 on StackOverflow</a>
+                        </p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js"></script>
+<script src="/assets/unify/plugins/smoothScroll.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/w20.js"></script>
+<script>
+    $(document).ready(function () {
+        var $search = $('.search-btn');
+
+        $('.search').click(function () {
+            if ($search.hasClass('fa-search')) {
+                w20.ui.openSearch();
+            } else {
+                w20.ui.closeSearch();
+            }
+        });
+
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $('.side-menu').affix({
+            offset: {
+                top: $('#header').height() + 20,
+                bottom: $('#footer').height() + 40
+            }
+        });
+
+        Mousetrap.bind('/', function () {
+            w20.ui.openSearch();
+            return false;
+        });
+
+        Mousetrap.bind('alt+up', function () {
+            if (w20.state.previousPage) {
+                window.location = w20.state.previousPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('alt+down', function () {
+            if (w20.state.nextPage) {
+                window.location = w20.state.nextPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('esc', function () {
+            w20.ui.closeSearch();
+            return false;
+        });
+
+        var originalCallback = Mousetrap.stopCallback;
+        Mousetrap.stopCallback = function (e, element, combo) {
+            if (combo === 'esc') {
+                return false;
+            }
+
+            return originalCallback(e, element, combo);
+        };
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#hotkeys-modal, #versions-modal').bind('hidden.bs.modal', function () {
+            $("html").css("margin-right", "0px");
+        }).bind('show.bs.modal', function () {
+            $("html").css("margin-right", "-15px");
+        });
+
+        var query = w20.strings.parseQueryString(location);
+        if (query.h && query.h.length > 0) {
+            $('.doc-content').highlight(query.h);
+            if (query.scroll) {
+                $('html, body').animate({
+                    scrollTop: $('span[class=highlight]:first').offset().top - 20
+                }, 250);
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

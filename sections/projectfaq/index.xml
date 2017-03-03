@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projectfaq on </title>
+    <link>http://w20-framework.github.io/sections/projectfaq/index.xml</link>
+    <description>Recent content in Projectfaq on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/sections/projectfaq/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>FAQ</title>
+      <link>http://w20-framework.github.io/project/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/project/faq/</guid>
+      <description>&lt;p&gt;Answers to common questions about W20.&lt;/p&gt;
+
+&lt;h1 id=&#34;how-is-w20-licensed&#34;&gt;How is W20 licensed ?&lt;/h1&gt;
+
+&lt;p&gt;W20 code is licensed under the &lt;a href=&#34;https://www.mozilla.org/MPL/2.0/&#34;&gt;Mozilla Public License 2.0&lt;/a&gt;. The documentation
+is licensed under the &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34;&gt;Creative Commons Share-Alike 4.0 license&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;how-to-get-help-for-a-w20-related-problem&#34;&gt;How to get help for a W20 related problem ?&lt;/h1&gt;
+
+&lt;p&gt;If you have any question or problem please use &lt;a href=&#34;http://stackoverflow.com&#34;&gt;StackOverflow&lt;/a&gt; and make sure to tag your
+question with &lt;code&gt;w20&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;can-i-contribute-to-the-project&#34;&gt;Can I contribute to the project ?&lt;/h1&gt;
+
+&lt;p&gt;Sure. We would love to accept contributions as pull requests.&lt;/p&gt;
+
+&lt;h1 id=&#34;your-faq-is-not-so-great-it-did-not-answer-my-question&#34;&gt;Your FAQ is not so great. It did not answer my question.&lt;/h1&gt;
+
+&lt;p&gt;Open an &lt;a href=&#34;https://github.com/w20-framework/website/issues/&#34;&gt;issue&lt;/a&gt; on the website repository.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

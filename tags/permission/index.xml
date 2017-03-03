@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Permission on </title>
+    <link>http://w20-framework.github.io/tags/permission/index.xml</link>
+    <description>Recent content in Permission on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/permission/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Security</title>
+      <link>http://w20-framework.github.io/docs/manual/security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/security/</guid>
+      <description>&lt;p&gt;W20 applications can be integrated with security backends to authenticate users and display views that are consistent with
+the backend security model.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-danger&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Before going into details, &lt;strong&gt;it is crucial to understand that a client-side Web application such as a W20 one can almost
+never provide effective security&lt;/strong&gt;. It is only a frontend that will reflect the security enforced in the backend, but
+there is value in providing a consistent experience between what is possible in the UI and what is allowed by the
+backend and W20 provides such an integration.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;the-security-model&#34;&gt;The security model&lt;/h1&gt;
+
+&lt;h2 id=&#34;subject-and-principals&#34;&gt;Subject and principals&lt;/h2&gt;
+
+&lt;p&gt;The subject is the security term which refers to a security-centric view of an application user. It always have an
+identifier. A particular W20 application instance can only have zero or one subject connected at a time.
+Principals are key/value pairs associated to a subject and provide additional metadata about it, like its default culture,
+its full name, its avatar, etc.&lt;/p&gt;
+
+&lt;h2 id=&#34;security-providers&#34;&gt;Security providers&lt;/h2&gt;
+
+&lt;p&gt;Security providers are the bridge between the backend and the W20 security model. Authentication operations are
+done through security providers.&lt;/p&gt;
+
+&lt;h3 id=&#34;simple-authentication-provider&#34;&gt;Simple authentication provider&lt;/h3&gt;
+
+&lt;p&gt;W20 provides a &lt;code&gt;SimpleAuthenticationProvider&lt;/code&gt; which is configured with two URL:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;an authentication URL which will be requested with a GET upon authentication and a DELETE upon deauthentication.&lt;/li&gt;
+&lt;li&gt;an authorization URL which will be requested with a GET upon successful authentication to retrieve subject authorizations.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The credentials will be passed in clear as query parameters upon authentication so it is recommended that this provider
+is only used in the case of &lt;a href=&#34;https://tools.ietf.org/html/rfc2617&#34;&gt;basic authentication&lt;/a&gt; where credentials can be omitted as they are directly handled by the
+browser.&lt;/p&gt;
+
+&lt;h2 id=&#34;realms&#34;&gt;Realms&lt;/h2&gt;
+
+&lt;p&gt;Realms allow a W20 application to use several security backends at once. Security operations involving the backend(s)
+like authentication will be done on all security realms. The multiple responses are checked for coherence (they must
+all refer to the same subject id for instance) and are partially aggregated:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Subject identity (like its identifier, type and principals) are merged as one definition,&lt;/li&gt;
+&lt;li&gt;Subject authorizations are kept separate to avoid mixing backend security models.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;permissions&#34;&gt;Permissions&lt;/h2&gt;
+
+&lt;p&gt;W20 security model is permission-based. Permissions are arrays of strings which denote a specific right to do something
+in the application:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[ &#39;admin&#39;, &#39;restart&#39; ]
+[ &#39;admin&#39;, &#39;database&#39;, &#39;wipe&#39; ]
+[ &#39;users&#39;, &#39;list&#39;, &#39;create,read,update&#39; ]
+[ &#39;users&#39;, &#39;details&#39;, &#39;*&#39; ]
+[ &#39;printers&#39;, &#39;lp457&#39;, &#39;print&#39; ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Permission names are completely arbitrary and developer defined but it is recommended to start from the least-specific
+term (like a &amp;laquo;functional area&amp;raquo; of the application or a use case) to the most specific term (like an action or an entity
+identifier).&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-tips&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+                &lt;i class=&#34;fa fa-lightbulb-o icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Permission can also be expressed as colon-delimited strings: &lt;code&gt;users:details:*&lt;/code&gt; is equivalent to &lt;code&gt;[ &#39;users&#39;, &#39;details&#39;, &#39;*&#39; ]&lt;/code&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;roles&#34;&gt;Roles&lt;/h2&gt;
+
+&lt;p&gt;Roles are simply collections of permissions and, although they can be checked for explicitly, it is not recommended for
+the application security model maintainability. The recommendation is to design the permissions such as they express the
+intent of the associated use case or user action and to check for these permissions only. It is guaranteed that as long
+as the user action exists in the code the permission will remain semantically valid, whereas how it is given can change
+throughout application life.&lt;/p&gt;
+
+&lt;h2 id=&#34;attributes&#34;&gt;Attributes&lt;/h2&gt;
+
+&lt;p&gt;Attributes can be attached to roles and checked for during a permission or role check. It is mainly used to restrict
+a role scope to a geographic region or an organisational branch for instance.&lt;/p&gt;
+
+&lt;h1 id=&#34;configuration&#34;&gt;Configuration&lt;/h1&gt;
+
+&lt;p&gt;The security module can be configured with the following options:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;autoLogin&lt;/code&gt; will automatically trigger an authentication upon application startup. In this case, security providers
+will be called without credentials. They can ask for credentials at this points or let the browser handle credential
+entry (as it is the case in basic authentication for instance).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;redirectAfterLogin&lt;/code&gt; will redirect to the specified route path after a successful login.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;redirectAfterLogout&lt;/code&gt; will redirect to the specified route path after a logout.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;roleMapping&lt;/code&gt; will allow to map multiple backend roles to uniquely named unified frontend roles.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;role-mapping&#34;&gt;Role mapping&lt;/h2&gt;
+
+&lt;p&gt;W20 security allows to map several backend roles to a unified frontend role which can then be used for display or
+filtering purpose. It can be done through the &lt;code&gt;roleMapping&lt;/code&gt; configuration attribute:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;roleMapping&amp;quot;: {
+    &amp;quot;UNIFIED_ROLE&amp;quot;: {
+        &amp;quot;realm1&amp;quot;: &amp;quot;SOME_BACKEND_ROLE&amp;quot;,
+        &amp;quot;realm2&amp;quot;: &amp;quot;OTHER_BACKEND_ROLE&amp;quot;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This configuration enables to view the two backend roles, defined from two different realms as one frontend role
+called &lt;code&gt;UNIFIED_ROLE&lt;/code&gt;. If only one security realm is declared in the application, all backend roles of this realm will
+automatically be mapped to unified roles of the same name.&lt;/p&gt;
+
+&lt;h1 id=&#34;fragment-declaration&#34;&gt;Fragment declaration&lt;/h1&gt;
+
+&lt;p&gt;Security providers can be registered programatically with the authentication service but can also be declared in a fragment
+manifest:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+
+&amp;quot;security&amp;quot;: {
+    &amp;quot;provider&amp;quot;: &amp;quot;Simple&amp;quot;,
+    &amp;quot;config&amp;quot;: {
+        &amp;quot;authentication&amp;quot;: &amp;quot;...&amp;quot;,
+        &amp;quot;authorizations&amp;quot;: &amp;quot;...
+    }
+}
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will register a security realm with the name of the fragment identifier, using the &lt;code&gt;SimpleSecurityProvider&lt;/code&gt;
+service as the security provider configured with the &lt;code&gt;config&lt;/code&gt; section.&lt;/p&gt;
+
+&lt;h1 id=&#34;security-services&#34;&gt;Security services&lt;/h1&gt;
+
+&lt;h2 id=&#34;authentication-service&#34;&gt;Authentication service&lt;/h2&gt;
+
+&lt;p&gt;The authentication service can be used to alter the currently connected subject:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Authenticate a new subject with its credentials and define it as the globally active subject.&lt;/li&gt;
+&lt;li&gt;Deauthenticate the currently active subject.&lt;/li&gt;
+&lt;li&gt;Refresh the currently active subject.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The authentication service can also be used to query identity information about the subject, such as its identifier or
+its principals.&lt;/p&gt;
+
+&lt;h2 id=&#34;authorization-service&#34;&gt;Authorization service&lt;/h2&gt;
+
+&lt;p&gt;The authorization service can be used to verify specific authorizations on the currently active subject and on a specific
+realm:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If the subject has a specific role (with possibly specific attributes).&lt;/li&gt;
+&lt;li&gt;If the subject has a specific permission (with possibly specific attributes).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It can also be used to query the list of roles, although it is limited to the unified roles.&lt;/p&gt;
+
+&lt;h2 id=&#34;security-expression-service&#34;&gt;Security expression service&lt;/h2&gt;
+
+&lt;p&gt;Security expressions are a simple and effective way of checking the authentication and authorization status of the
+currently active subject. Inject the &lt;code&gt;SecurityExpressionService&lt;/code&gt; to evaluate them. Security expressions are normal
+AngularJS expressions with the following additional functions available:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;hasPermission(realm, permission, attributes)&lt;/code&gt; which checks a permission for the currently active subject,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hasRole(realm, role, attributes)&lt;/code&gt; which checks if the currently active subject has a specific role,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;isAuthenticated()&lt;/code&gt; which checks if there is a currently active subject,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;principal(name)&lt;/code&gt; which returns the value of a specific principal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The result of the security expression is evaluated as a boolean:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var result = securityExpressionService.evaluate(&amp;quot;hasPermission(&#39;someRealm&#39;, &#39;users:details:clear&#39;)&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;security-directive&#34;&gt;Security directive&lt;/h1&gt;
+
+&lt;p&gt;The &lt;code&gt;w20Security&lt;/code&gt; directive allows to evaluate a security expression in a view and display the element only if it
+evaluates to true. The expression is evaluated in its current scope, augmented with the security expression service operations described above:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div data-w20-security=&amp;quot;hasRole(&#39;someRealm&#39;, &#39;someRole&#39;)&amp;quot;&amp;gt;
+    ...
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div data-w20-security=&amp;quot;someLocalScopeVariable &amp;amp;&amp;amp; hasPermission(&#39;someRealm&#39;, &#39;users:details:clear&#39;)&amp;quot;&amp;gt;
+    ...
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;role-filtering&#34;&gt;Role filtering&lt;/h1&gt;
+
+&lt;p&gt;W20 security can narrow the authorizations of the currently active subject by setting up filters:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;role filter narrows the authorizations to the specified roles. Any permission or role not allowed by the filter will
+be denied until this filter is cancelled.&lt;/li&gt;
+&lt;li&gt;attribute filter narrows the authorizations on which the specified attribute values are attached. Any permission
+or role which don&amp;rsquo;t have the specified attribute values will be denied until this filter is cancelled.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Filtering is limited to unified roles.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

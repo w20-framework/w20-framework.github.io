@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data on </title>
+    <link>http://w20-framework.github.io/tags/data/index.xml</link>
+    <description>Recent content in Data on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/data/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Basics</title>
+      <link>http://w20-framework.github.io/addons/dataviz/</link>
+      <pubDate>Wed, 20 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/addons/dataviz/</guid>
+      <description>
+
+&lt;p&gt;The W20 Dataviz addon provides supports for charts and graphical representation. It proposes an integration of the
+&lt;a href=&#34;http://nvd3.org/&#34;&gt;NVD3&lt;/a&gt; charting library (which itself uses &lt;a href=&#34;http://d3js.org/&#34;&gt;D3&lt;/a&gt;) along with an integration of
+the &lt;a href=&#34;http://dygraphs.com/&#34;&gt;Dygraphs&lt;/a&gt; chart library for large data sets.&lt;/p&gt;
+
+&lt;div class=&#34;margin-top-20 margin-bottom-20&#34;&gt;
+    &lt;a href=&#39;http://w20-framework.github.io/w20-dataviz&#39; class=&#34;btn btn-u&#34;&gt;Live demo&lt;/a&gt;
+&lt;/div&gt;
+
+
+&lt;h1 id=&#34;dataviz-addon&#34;&gt;Dataviz addon&lt;/h1&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bower install w20-dataviz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;To include the addon, declare it in the application manifest:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20-dataviz/w20-dataviz.w20.json&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If using the w20 bridge you can simply refer to the fragment by its id without specifying the path:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;w20-dataviz&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Additional configuration information can be found in the &lt;a href=&#34;http://seedstack.org/jsdoc/#/dataviz&#34;&gt;Jsdoc&lt;/a&gt; of the addon.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

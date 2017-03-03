@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Themes on </title>
+    <link>http://w20-framework.github.io/themes/index.xml</link>
+    <description>Recent content in Themes on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 15 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://w20-framework.github.io/themes/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Basics</title>
+      <link>http://w20-framework.github.io/themes/material/</link>
+      <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/themes/material/</guid>
+      <description>
+
+&lt;h1 id=&#34;material-theme&#34;&gt;Material Theme&lt;/h1&gt;
+
+&lt;p&gt;The material theme is a based on &lt;a href=&#34;https://www.google.com/design/spec/material-design/introduction.html&#34;&gt;Google Material design&lt;/a&gt; and implemented
+with &lt;a href=&#34;http://seedstack.org/addons/w20-material/&#34;&gt;W20 Angular Material add-on&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-tips&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+                &lt;i class=&#34;fa fa-lightbulb-o icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Running demo available &lt;a href=&#34;http://seedstack.org/w20-material-theme&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;installation&#34;&gt;Installation&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;$ bower install w20-material-theme --save
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;configuration&#34;&gt;Configuration&lt;/h1&gt;
+
+&lt;p&gt;In &lt;code&gt;#/modules/main/theme&lt;/code&gt;, &lt;code&gt;primaryPalette&lt;/code&gt; and &lt;code&gt;accentPalette&lt;/code&gt; properties MUST be defined.
+Each defined &lt;code&gt;*Palette&lt;/code&gt; property MUST have at least their &lt;code&gt;name&lt;/code&gt; properties defined. The &lt;code&gt;hues&lt;/code&gt; property
+follows &lt;a href=&#34;https://material.angularjs.org/latest/Theming/03_configuring_a_theme#specifying-custom-hues-for-color-intentions&#34;&gt;Material Angular color intentions syntax&lt;/a&gt;.
+A list of color palettes is present on the &lt;a href=&#34;http://www.google.com/design/spec/style/color.html#color-color-palette&#34;&gt;Material Design Specification&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&amp;quot;bower_components/w20-material-theme/w20-material-theme.w20.json&amp;quot;: {
+  &amp;quot;modules&amp;quot;: {
+    &amp;quot;main&amp;quot;: {
+      &amp;quot;sidenav&amp;quot;: {
+        &amp;quot;logoUrl&amp;quot;: &amp;quot;/home&amp;quot;,
+        &amp;quot;logoImg&amp;quot;: &amp;quot;/images/logo.png&amp;quot;,
+        &amp;quot;backgroundImg&amp;quot;: &amp;quot;/images/header-background.jpg&amp;quot;
+      },
+
+      &amp;quot;theme&amp;quot;: {
+        &amp;quot;primaryPalette&amp;quot;: {
+          &amp;quot;name&amp;quot;: &amp;quot;indigo&amp;quot;,
+          &amp;quot;hues&amp;quot;: {
+            &amp;quot;default&amp;quot;: &amp;quot;400&amp;quot;,
+            &amp;quot;hue-1&amp;quot;: &amp;quot;100&amp;quot;,
+            &amp;quot;hue-3&amp;quot;: &amp;quot;A100&amp;quot;
+          }
+        },
+
+        &amp;quot;accentPalette&amp;quot;: {
+          &amp;quot;name&amp;quot;: &amp;quot;amber&amp;quot;
+        },
+
+        &amp;quot;warnPalette&amp;quot;: {
+          &amp;quot;name&amp;quot;: &amp;quot;red&amp;quot;,
+          &amp;quot;hues&amp;quot;: {
+            &amp;quot;default&amp;quot;: &amp;quot;400&amp;quot;,
+            &amp;quot;hue-2&amp;quot;: &amp;quot;600&amp;quot;
+          }
+        },
+
+        &amp;quot;backgroundPalette&amp;quot;: {
+          &amp;quot;name&amp;quot;: &amp;quot;blue-grey&amp;quot;
+        },
+
+        &amp;quot;dark&amp;quot;: true // Defaults to false
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;usage&#34;&gt;Usage&lt;/h1&gt;
+
+&lt;p&gt;A simple masterpage would be:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html data-w20-app&amp;gt;
+&amp;lt;head&amp;gt;
+  &amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;IE=Edge&amp;quot;&amp;gt;
+  &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+  &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+  &amp;lt;title&amp;gt;W20 Material Theme Test&amp;lt;/title&amp;gt;
+  &amp;lt;script type=&amp;quot;text/javascript&amp;quot; data-main=&amp;quot;bower_components/w20/modules/w20&amp;quot; src=&amp;quot;bower_components/requirejs/require.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body layout ng-cloak&amp;gt;
+  &amp;lt;div id=&amp;quot;w20-loading-cloak&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;w20-loading-indicator&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+  &amp;lt;w20-material-sidenav&amp;gt;&amp;lt;/w20-material-sidenav&amp;gt;
+  &amp;lt;main layout=&amp;quot;column&amp;quot; flex&amp;gt;
+    &amp;lt;w20-material-topbar search-placeholder=&amp;quot;app.i18n.topbar.search.placeholder&amp;quot;&amp;gt;&amp;lt;/w20-material-topbar&amp;gt;
+    &amp;lt;md-content ng-view layout=&amp;quot;column&amp;quot; layout-align=&amp;quot;start center&amp;quot; flex&amp;gt;&amp;lt;/md-content&amp;gt;
+  &amp;lt;/main&amp;gt;
+  &amp;lt;div data-w20-error-report&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;directive-w20-material-sidenav&#34;&gt;Directive w20-material-sidenav&lt;/h2&gt;
+
+&lt;p&gt;Create a &lt;a href=&#34;https://material.angularjs.org/latest/demo/sidenav&#34;&gt;Material Angular sidenav&lt;/a&gt; based upon a &lt;a href=&#34;https://www.google.com/design/spec/patterns/navigation-drawer.html#navigation-drawer-behavior&#34;&gt;temporary drawer from the Material Design Specification&lt;/a&gt;.
+Generated by the &lt;code&gt;routes&lt;/code&gt; property present in the fragment configuration. For each route, the &lt;code&gt;icon&lt;/code&gt; property define its icon. Icons are &lt;a href=&#34;https://design.google.com/icons/&#34;&gt;Material Design Icons&lt;/a&gt;. By default the icon is &lt;code&gt;arrow_right&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&amp;quot;routes&amp;quot;: {
+  &amp;quot;/home&amp;quot;: {
+    &amp;quot;templateUrl&amp;quot;: &amp;quot;/views/home.html&amp;quot;,
+    &amp;quot;hidden&amp;quot;: false,
+    &amp;quot;icon&amp;quot;: &amp;quot;home&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;event-w20-material-sidenav-open&#34;&gt;Event w20.material.sidenav.open&lt;/h3&gt;
+
+&lt;p&gt;You can open the sidenav by emitting the following event:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;`$scope.$emit(&#39;w20.material.sidenav.open&#39;[, state])`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Parameters:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;state&lt;/code&gt;: Boolean. Open the sidenav if &lt;code&gt;true&lt;/code&gt;. Optional. If &lt;code&gt;state&lt;/code&gt; is omitted, the event toggle the state of the sidenav.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;callout callout-tips&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+                &lt;i class=&#34;fa fa-lightbulb-o icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;If you consider opening and closing the sidenav by swiping, bind the event emitters on &lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt; like below.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;body md-swipe-left=&amp;quot;$emit(&#39;w20.material.sidenav.open&#39;, false)&amp;quot; md-swipe-right=&amp;quot;$emit(&#39;w20.material.sidenav.open&#39;, true)&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;directive-w20-material-topbar&#34;&gt;Directive w20-material-topbar&lt;/h2&gt;
+
+&lt;p&gt;Create a &lt;a href=&#34;https://material.angularjs.org/latest/demo/toolbar&#34;&gt;Material Angular toolbar&lt;/a&gt; based upon a &lt;a href=&#34;https://www.google.com/design/spec/components/toolbars.html#toolbars-usage&#34;&gt;toolbar from the Material Design Specification&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The elements in the topbar are purposely fixed in order to net being able to bloat the entire topbar with buttons. It is only composed of:
+- Menu button to open the sidenav, hidden when the sidenav become fixed at larger resolutions
+- View title, with its value from &lt;a href=&#34;https://github.com/seedstack/w20/blob/master/modules/culture.js&#34;&gt;&lt;code&gt;cultureService.displayName()&lt;/code&gt;&lt;/a&gt;
+- Search button to display a search input sending a &lt;code&gt;w20.material.topbar.search.query&lt;/code&gt; event upon use&lt;/p&gt;
+
+&lt;h3 id=&#34;attribute-search-maxlength&#34;&gt;Attribute search-maxlength&lt;/h3&gt;
+
+&lt;p&gt;Define a maximum length of input. When the input is too long, a red underline appears.&lt;/p&gt;
+
+&lt;h3 id=&#34;attribute-search-placeholder&#34;&gt;Attribute search-placeholder&lt;/h3&gt;
+
+&lt;p&gt;Values are i18n key or simple string. If the attribute matches a i18n key, its value is retrieved through the &lt;code&gt;localize&lt;/code&gt; w20 filter; if the value cannot be found, the literal string is displayed.&lt;/p&gt;
+
+&lt;h3 id=&#34;event-w20-material-topbar-search-query&#34;&gt;Event w20.material.topbar.search.query&lt;/h3&gt;
+
+&lt;p&gt;This event is emitted when the value of the search input changes.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Basics</title>
+      <link>http://w20-framework.github.io/themes/business/</link>
+      <pubDate>Tue, 28 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/themes/business/</guid>
+      <description>
+
+&lt;h1 id=&#34;business-theme&#34;&gt;Business Theme&lt;/h1&gt;
+
+&lt;p&gt;The Business Theme is a responsive Bootstrap 3 based theme that provides upfront integration of aspects such as
+routes navigation, authentication or internationalization in your front end application.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-tips&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+                &lt;i class=&#34;fa fa-lightbulb-o icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Running demo available &lt;a href=&#34;http://seedstack.org/w20-business-theme&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;installation&#34;&gt;Installation&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;$ bower install w20-business-theme --save
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;configuration&#34;&gt;Configuration&lt;/h1&gt;
+
+&lt;h2 id=&#34;fragment-declaration&#34;&gt;Fragment declaration&lt;/h2&gt;
+
+&lt;p&gt;To include the theme, declare it in your fragment manifest (If you are using the bridge addon it will be included by default).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20-business-theme/w20-business-theme.w20.json&amp;quot;: {
+    &amp;quot;modules&amp;quot;: {
+        &amp;quot;main&amp;quot;: {}
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;options&#34;&gt;Options&lt;/h2&gt;
+
+&lt;p&gt;Options can be declared in the &lt;code&gt;main&lt;/code&gt; module configuration.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sidebar&lt;/code&gt;: (Object) Options for the theme sidebar.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;width&lt;/code&gt;: (Number) Specify a fixed size in px for the sidebar. If not configured a default 270px width is applied.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;brand&lt;/code&gt;: (Object) Options for the upper-left corner which displays the application brand/name.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;fixedWith&lt;/code&gt;: (Boolean) If true, the brand name size will not exceed the default sidebar width.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;backgroundColor&lt;/code&gt;: (Any CSS color compatible declaration) Set the background color of the brand.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;textColor&lt;/code&gt;: (Any CSS color compatible declaration) Set the color of the brand test.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;links&lt;/code&gt;: (Array) Add additional links to the topbar. The &lt;code&gt;links&lt;/code&gt; array will contain Object link with the following properties:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;label&lt;/code&gt;: (String) The value to display as the link name if no i18n key is provided.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;i18n&lt;/code&gt;: (String) The i18n key to use for the link (ex: &amp;lsquo;custom.link.key&amp;rsquo;). See the culture module of w20 for more information.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;href&lt;/code&gt;: (String) The href attribute value of the link.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;target&lt;/code&gt;: (String) The target attribute value of the link (ex: &amp;lsquo;_blank&amp;rsquo;).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;security&lt;/code&gt;: (String) The link display security expression. See the security module of w20 for more information.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hideConnectivity&lt;/code&gt;: (Boolean) Hide the connectivity status.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hideCulture&lt;/code&gt;: (Boolean) Hide the culture dropdown.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hideSecurity&lt;/code&gt;: (Boolean) Hide the authentication action.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;logo&lt;/code&gt;: (Object) Options for the topbar logo
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ìmage&lt;/code&gt;: (String) url of the logo image&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;link&lt;/code&gt;: (String) url of the logo link&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;target&lt;/code&gt;: (String) target of the logo link (defaults to _self)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tooltip&lt;/code&gt;: (String) text of the logo tooltip (defaults to the &lt;code&gt;url&lt;/code&gt; attribute)
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;sidebar-routes&#34;&gt;Sidebar routes&lt;/h2&gt;
+
+&lt;p&gt;Routes declaration of fragments are aggregated in the sidebar menu. You can group related route under a category by declaring
+a &lt;code&gt;category&lt;/code&gt; attribute on the route declaration.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;routes&amp;quot;: {
+    &amp;quot;topLevelRoute&amp;quot;: {
+        &amp;quot;templateUrl&amp;quot;:&amp;quot;{Fragment}/views/topLevelRoute.html&amp;quot;,
+        &amp;quot;controller&amp;quot;:&amp;quot;TopLevelRouteController as tlr&amp;quot;,
+    },
+    &amp;quot;route1OfCatOne&amp;quot;: {
+        &amp;quot;templateUrl&amp;quot;:&amp;quot;{Fragment}/views/route1.html&amp;quot;,
+        &amp;quot;controller&amp;quot;:&amp;quot;Route1Controller as rc1&amp;quot;,
+        &amp;quot;category&amp;quot;: &amp;quot;catOne&amp;quot;
+    },
+   &amp;quot;route2OfCatOne&amp;quot;: {
+       &amp;quot;templateUrl&amp;quot;:&amp;quot;{Fragment}/views/route2.html&amp;quot;,
+       &amp;quot;controller&amp;quot;:&amp;quot;Route1Controller as rc2&amp;quot;,
+       &amp;quot;category&amp;quot;: &amp;quot;catOne&amp;quot;
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The category will appear as an i18n key in your route (&lt;code&gt;application.viewcategory.[category name]&lt;/code&gt;) which you can
+then localize.&lt;/p&gt;
+
+&lt;p&gt;You can order the category in the menu by delcaring a &lt;code&gt;navigation&lt;/code&gt; property in your fragment manifest:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;navigation&amp;quot;: {
+    &amp;quot;&amp;quot;: [ &amp;quot;catTwo&amp;quot;, &amp;quot;catOne&amp;quot;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;topbar-actions&#34;&gt;Topbar actions&lt;/h2&gt;
+
+&lt;p&gt;The topbar will automatically include actions such as a culture dropdown, login/logout button or connectivity status if
+the relevant module have been declared and if these actions have not been hidden using &lt;code&gt;hideXXXX&lt;/code&gt; properties.
+You can include your own actions using the &lt;code&gt;MenuService&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First you need to register an action type:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;service.registerActionType(&#39;my-action-type&#39;, {
+    templateUrl: &#39;{Fragment}/templates/action-my-action.html&#39;,
+    showFn: function () {
+        var show = true;
+        // You can specify conditions for displaying the action
+        return show;
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Then you can add this action to the topbar:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;service.addAction(&#39;action&#39;, &#39;my-action-type&#39;, {
+    sortKey: 300
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This register an action of name &amp;lsquo;action&amp;rsquo; of type &amp;lsquo;my-action-type&amp;rsquo;. The last parameter is an
+object which will extend the default one you provided in the action type registration. Use
+the &lt;code&gt;sortKey&lt;/code&gt; attribute to order your actions display.&lt;/p&gt;
+
+&lt;h2 id=&#34;background-colors&#34;&gt;Background colors&lt;/h2&gt;
+
+&lt;p&gt;These background classes can be used to style background. Text color will be set appropriately to
+contrast with them.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#999999;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-grey&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#f7f7f7;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-gray-light&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#111111;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-black&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#DD4B39;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-red&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#F39C12;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-yellow&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#00C0EF;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-aqua&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#428BCA;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-blue&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#3C8DBC;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-light-blue&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#00A65A;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-green&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#001F3F;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-navy&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#39CCCC;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-teal&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#3D9970;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-olive&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#01FF70;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-lime&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#FF851B;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-orange&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#F012BE;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-fuchsia&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#605CA8;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-purple&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;background-color:#D81B60;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;&#34;&gt;
+&lt;/span&gt; .bg-maroon&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;infobox&#34;&gt;Infobox&lt;/h2&gt;
+
+&lt;p&gt;Infobox are components that display information associated with an icon.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;col-md-3&amp;quot;&amp;gt;
+    &amp;lt;!-- Apply a bg-* to the info-box to color it completely --&amp;gt;
+    &amp;lt;div class=&amp;quot;info-box&amp;quot;&amp;gt;
+        &amp;lt;!-- Apply any bg-* class to to the icon to color it --&amp;gt;
+        &amp;lt;span class=&amp;quot;info-box-icon bg-red&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-star-o&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;div class=&amp;quot;info-box-content&amp;quot;&amp;gt;
+            &amp;lt;span class=&amp;quot;info-box-text&amp;quot;&amp;gt;Text&amp;lt;/span&amp;gt;
+            &amp;lt;span class=&amp;quot;info-box-number&amp;quot;&amp;gt;100&amp;lt;/span&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;callout&#34;&gt;Callout&lt;/h2&gt;
+
+&lt;p&gt;Callout can be used as an alternative to Bootstrap &lt;code&gt;alert&lt;/code&gt; to carry visual emphasis.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;col-md-6&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;callout callout-info|warning|success|danger&amp;quot;&amp;gt;
+        &amp;lt;h4&amp;gt;Title&amp;lt;/h4&amp;gt;
+        &amp;lt;p&amp;gt; Message to display to the user &amp;lt;/p&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Basics</title>
+      <link>http://w20-framework.github.io/themes/simple/</link>
+      <pubDate>Mon, 27 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/themes/simple/</guid>
+      <description>
+
+&lt;p&gt;To install the theme, you simply need to add the &lt;code&gt;w20-simple-theme&lt;/code&gt; to your &lt;code&gt;bower.json&lt;/code&gt; file.
+Check for the latest release &lt;a href=&#34;https://github.com/seedstack/w20-simple-theme/releases&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;configuration&#34;&gt;Configuration&lt;/h1&gt;
+
+&lt;h2 id=&#34;fragment-declaration&#34;&gt;Fragment declaration&lt;/h2&gt;
+
+&lt;p&gt;To include the theme, declare it in your W20 application configuration file (If you are using the bridge addon it will be included by default).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20-simple-theme/w20-simple-theme.w20.json&amp;quot;: {
+    &amp;quot;modules&amp;quot;: {
+        &amp;quot;main&amp;quot;: {}
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;options&#34;&gt;Options&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;categories&lt;/code&gt;: (Array of strings)  Ordered array of displayed menu categories&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hideViews&lt;/code&gt;: (Boolean) Hide the views section&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hideConnectivity&lt;/code&gt;: (Boolean) Hide the connectivity indicator&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hideCulture&lt;/code&gt;: (Boolean) Hide the culture chooser&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hideSecurity&lt;/code&gt;: (Boolean) Hide the security status&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;routes&lt;/code&gt;: (Array of strings) Routes to show directly in the topbar&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;logo&lt;/code&gt;: (Object) Options for the topbar logo
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ìmage&lt;/code&gt;: (String) url of the logo image&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;url&lt;/code&gt;: (String) url of the logo link&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;target&lt;/code&gt;: (String) target of the logo link (defaults to _self)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tooltip&lt;/code&gt;: (String) text of the logo tooltip (defaults to the &lt;code&gt;url&lt;/code&gt; attribute)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;menu-routes&#34;&gt;Menu routes&lt;/h2&gt;
+
+&lt;p&gt;Routes declaration of fragments are aggregated in the sidebar menu. You can group related route under a category by declaring a &lt;code&gt;category&lt;/code&gt; attribute on the route declaration.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;routes&amp;quot;: {
+    &amp;quot;topLevelRoute&amp;quot;: {
+        &amp;quot;templateUrl&amp;quot;:&amp;quot;{Fragment}/views/topLevelRoute.html&amp;quot;,
+        &amp;quot;controller&amp;quot;:&amp;quot;TopLevelRouteController as tlr&amp;quot;,
+    },
+    &amp;quot;route1OfCatOne&amp;quot;: {
+        &amp;quot;templateUrl&amp;quot;:&amp;quot;{Fragment}/views/route1.html&amp;quot;,
+        &amp;quot;controller&amp;quot;:&amp;quot;Route1Controller as rc1&amp;quot;,
+        &amp;quot;category&amp;quot;: &amp;quot;catOne&amp;quot;
+    },
+   &amp;quot;route2OfCatOne&amp;quot;: {
+       &amp;quot;templateUrl&amp;quot;:&amp;quot;{Fragment}/views/route2.html&amp;quot;,
+       &amp;quot;controller&amp;quot;:&amp;quot;Route1Controller as rc2&amp;quot;,
+       &amp;quot;category&amp;quot;: &amp;quot;catOne&amp;quot;
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The category will appear as an i18n key in your route (&lt;code&gt;application.viewcategory.[category name]&lt;/code&gt;) which you can
+then localize.&lt;/p&gt;
+
+&lt;p&gt;You can order the category in the menu by delcaring a &lt;code&gt;navigation&lt;/code&gt; property in your fragment manifest:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;navigation&amp;quot;: {
+    &amp;quot;&amp;quot;: [ &amp;quot;catTwo&amp;quot;, &amp;quot;catOne&amp;quot;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;topbar-actions&#34;&gt;Topbar actions&lt;/h2&gt;
+
+&lt;p&gt;The topbar will automatically include actions such as a culture dropdown, login/logout button or connectivity status if
+the relevant module have been declared and if these actions have not been hidden using &lt;code&gt;hideXXXX&lt;/code&gt; properties.&lt;/p&gt;
+
+&lt;p&gt;You can include your own actions using the &lt;code&gt;MenuService&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First you need to register an action type:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;service.registerActionType(&#39;my-action-type&#39;, {
+    templateUrl: &#39;{Fragment}/templates/action-my-action.html&#39;,
+    showFn: function () {
+        var show = true;
+        // You can specify conditions for displaying the action
+        return show;
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Then you can add this action to the topbar:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;service.addAction(&#39;action&#39;, &#39;my-action-type&#39;, {
+    sortKey: 300
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This register an action of name &amp;lsquo;action&amp;rsquo; of type &amp;lsquo;my-action-type&amp;rsquo;. The last parameter is an
+object which will extend the default one you provided in the action type registration. Use
+the &lt;code&gt;sortKey&lt;/code&gt; attribute to order your actions display.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

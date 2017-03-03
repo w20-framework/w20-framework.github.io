@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fragment on </title>
+    <link>http://w20-framework.github.io/tags/fragment/index.xml</link>
+    <description>Recent content in Fragment on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/fragment/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Web framework</title>
+      <link>http://w20-framework.github.io/docs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/</guid>
+      <description>&lt;p&gt;W20 is a web solution designed to allow developers to quickly and simply create enterprise-grade &lt;strong&gt;Single Page
+Application&lt;/strong&gt; (SPA). It is &lt;strong&gt;server agnostic&lt;/strong&gt; which means it can work with any HTTP capable server technology. In fact,
+it can even work without any server.&lt;/p&gt;
+
+&lt;h1 id=&#34;benefits&#34;&gt;Benefits&lt;/h1&gt;
+
+&lt;p&gt;W20 provides a &lt;strong&gt;modular programming model for web applications&lt;/strong&gt;, allowing entire parts of web frontend to be reused
+across applications. These parts are called fragments and can be published on any HTTP server as static resources.
+Creating a frontend application with W20 becomes as easy as choosing the fragments you want to load and how you want
+them to be configured from a single configuration file.
+In fact, W20 itself is distributed as several fragments which are, aside from its core, all optional.&lt;/p&gt;
+
+&lt;h1 id=&#34;organization-of-an-application&#34;&gt;Organization of an application&lt;/h1&gt;
+
+&lt;p&gt;A W20 application is a Single Page Application (SPA) composed of:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A &lt;strong&gt;master page&lt;/strong&gt; (usually &lt;code&gt;index.html&lt;/code&gt;, but can be dynamically generated). It is the entry point of the application.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;configuration file&lt;/strong&gt; (usually &lt;code&gt;w20.app.json&lt;/code&gt;, but can be dynamically generated).&lt;/li&gt;
+&lt;li&gt;One or more &lt;strong&gt;fragment(s)&lt;/strong&gt;. A fragment is a bundle of web resources described by a JSON manifest which must be
+accessible by HTTP from the browser.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;    (docroot)
+        |-index.html
+        |-w20.app.json
+        |-fragments
+            |-fragment1
+                |-fragment1.w20.json
+                ...
+            |-fragment2
+                |-fragment2.w20.json
+                ...
+            ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;the-master-page&#34;&gt;The master page&lt;/h2&gt;
+
+&lt;p&gt;A single page application is a web application that fits on a single web page called the master page (usually
+&lt;code&gt;index.html&lt;/code&gt;). Assuming you keep your static resources in a &lt;code&gt;bower_components&lt;/code&gt; directory, a sample code of a
+minimalist master page in W20 would be :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
+&amp;lt;html data-w20-app&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Application title&amp;lt;/title&amp;gt;
+    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; 
+            data-main=&amp;quot;bower_components/w20/modules/w20&amp;quot; 
+            src=&amp;quot;bower_components/requirejs/require.js&amp;quot;&amp;gt;
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;div data-ng-view&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Things worth noticing :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;data-w20-app&lt;/code&gt; attribute on the &lt;code&gt;html&lt;/code&gt; tag that will load the configuration of your W20 application.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tag, where we reference &lt;a href=&#34;http://requirejs.org/&#34;&gt;RequireJS&lt;/a&gt; and instruct it to load W20.&lt;/li&gt;
+&lt;li&gt;A W20 application is also an &lt;a href=&#34;http://angularjs.org&#34;&gt;AngularJS&lt;/a&gt; application. Therefore you should add a &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; tag
+with the &lt;code&gt;data-ng-view&lt;/code&gt; attribute. This will include rendered templates into the master page.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;the-configuration-file&#34;&gt;The configuration file&lt;/h2&gt;
+
+&lt;p&gt;The configuration file &lt;code&gt;w20.app.json&lt;/code&gt; is where you set-up your application. As mentioned earlier, a W20 application is
+basically composed of a set of fragments (a fragment is a bundle of web resources). All are optional except one : the
+core fragment of W20, thus it has to be referenced in the &lt;code&gt;w20.app.json&lt;/code&gt;. This is done by specifying the path to its
+configuration file (&lt;em&gt;a.k.a&lt;/em&gt; the fragment manifest) :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20/w20-core.w20.json&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;the-fragments&#34;&gt;The fragments&lt;/h2&gt;
+
+&lt;p&gt;An important concept in W20 is the &lt;strong&gt;fragment&lt;/strong&gt;. A W20 application is composed of one or more fragment(s). A fragment is
+a bundle of web resources (templates, css, javascript, &amp;hellip;). Each one is intended to serve a purpose and &lt;strong&gt;can be reused
+across applications&lt;/strong&gt;. For example, W20 provides an optional fragment with native AngularJS implementations of UI
+components such as &lt;em&gt;datagrid&lt;/em&gt; and &lt;em&gt;combo boxes&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;fragment-manifest&#34;&gt;Fragment manifest&lt;/h3&gt;
+
+&lt;p&gt;To reference web resources and how they are to be configured, each fragment has its own manifest file located at the
+root of the fragment. The only mandatory property is the fragment unique identifier :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;id&amp;quot; : &amp;quot;fragment-identifier&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;By convention, the manifest file is called after the fragment identifier and suffixed by &lt;code&gt;.w20.json&lt;/code&gt;. In this example,
+the fragment manifest would be &lt;code&gt;fragment-identifier.w20.json&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;fragment-modules&#34;&gt;Fragment modules&lt;/h3&gt;
+
+&lt;p&gt;Now suppose we want to use the fragment discussed above but only the &lt;em&gt;datagrid&lt;/em&gt; component. For that, W20 offers a finer
+granularity to configure your application. Within a single fragment, there can be several units called &lt;strong&gt;modules&lt;/strong&gt; which
+are loaded only if you decide to reference them in your application configuration. That way, you can load a fragment
+without being forced to load all of its resources.
+The sample code below shows how to declare a fragment module :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;id&amp;quot; : &amp;quot;fragment-identifier&amp;quot;,
+
+    &amp;quot;modules&amp;quot;: {
+        &amp;quot;module1&amp;quot;: {
+            &amp;quot;path&amp;quot;: &amp;quot;{fragment-identifier}/modules/module1&amp;quot;,
+            &amp;quot;autoload&amp;quot; : true|false,
+            &amp;quot;configSchema&amp;quot;: {
+                ...
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Things worth noticing :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;{fragment-identifier}&lt;/code&gt; is used by W20 as a placeholder to target the fragment path. This ensures paths are always
+relative to the fragment manifest location. It is particularly useful if the fragment is intended to be used across
+applications&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;path&lt;/code&gt; attribute is mandatory for RequireJS to load the module when it is required by the application&lt;/li&gt;
+&lt;li&gt;Fragments modules are &lt;a href=&#34;http://requirejs.org/docs/whyamd.html#amd&#34;&gt;AMD compliant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;If a configuration JSON schema is provided for a specific module in the fragment manifest, the configuration specified
+here will be validated against it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;how-it-works&#34;&gt;How it works&lt;/h1&gt;
+
+&lt;p&gt;The master page is the one and only entry point of your web application. By adding the following &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tag in it,
+two things happen :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;RequireJS is loaded&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Once RequireJS is loaded, it loads &lt;code&gt;bower_components/w20/modules/w20.js&lt;/code&gt; (notice there is no extension in the
+&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; when pointing to the &lt;code&gt;w20.js&lt;/code&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; 
+            data-main=&amp;quot;bower_components/w20/modules/w20&amp;quot; 
+            src=&amp;quot;bower_components/requirejs/require.js&amp;quot;&amp;gt;
+    &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;w20.js&lt;/code&gt; is the core implementation of W20. Once loaded, it will automatically parse your application configuration
+file &lt;code&gt;w20.app.json&lt;/code&gt; to :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;detect which fragments to load&lt;/li&gt;
+&lt;li&gt;detect which modules to load for each fragment&lt;/li&gt;
+&lt;li&gt;validate configuration for each fragment and module (&lt;code&gt;w20.app.json&lt;/code&gt;) against its schema
+(&lt;code&gt;fragment-identifier.w20.json&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;load AMD modules using RequireJS&lt;/li&gt;
+&lt;li&gt;load the home view from the application module of the W20 core fragment into the master page&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#39;pull-right margin-top-20&#39;&gt;
+    &lt;a href=&#39;manual&#39; class=&#34;btn btn-u&#34;&gt;Next: start reading the manual...&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&#34;clearfix&#34;&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Web framework basics</title>
+      <link>http://w20-framework.github.io/docs/manual/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/</guid>
+      <description>&lt;p&gt;W20 is an integration framework for the AngularJS-based Single Page Applications (SPA). It offers a modular programming
+model based on fragments and high-level services to accelerate your Web development.&lt;/p&gt;
+
+&lt;h1 id=&#34;fragments-and-configuration&#34;&gt;Fragments and configuration&lt;/h1&gt;
+
+&lt;p&gt;W20 and its applications are organized around the idea of &lt;strong&gt;fragments&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-is-a-fragment&#34;&gt;What is a fragment ?&lt;/h2&gt;
+
+&lt;p&gt;A W20 application is made of several fragments that brings different concerns to the application.
+A fragment is a collection of web resources (JavaScript &lt;a href=&#34;http://en.wikipedia.org/wiki/Asynchronous_module_definition&#34;&gt;AMD modules&lt;/a&gt;, stylesheets, HTML templates&amp;hellip;)
+that often but not necessarily depends on each other. The dependency between modules inside a fragment is orchestrated by the use of
+the &lt;a href=&#34;http://requirejs.org/&#34;&gt;RequireJS&lt;/a&gt; library.&lt;/p&gt;
+
+&lt;p&gt;Think of a fragment as a coherent set of resources linked together for the purpose of &lt;strong&gt;organization&lt;/strong&gt; and &lt;strong&gt;reusability&lt;/strong&gt;.
+By including and configuring a fragment you can bring the corresponding aspect and/or asset to your web application without having to worry about
+the intrinsic details of the fragment itself. Inside a fragment, the module dependency system guarantees that the dependencies of a module will be loaded before the module
+itself. This is especially important for large applications that often require an important number of JavaScript modules.&lt;/p&gt;
+
+&lt;h2 id=&#34;fragments-vs-modules&#34;&gt;Fragments vs modules&lt;/h2&gt;
+
+&lt;p&gt;When we talk about a module, we refer to a JavaScript AMD module, as used in the RequireJS library. That is, to say thing shortly, a .js file
+whose content is wrapped in a &lt;code&gt;define&lt;/code&gt; call (AMD modules are explained in greater detail further down). A fragment on the other hand is a collection of modules.
+It is described by a manifest which exposes configuration properties. When you include and configure a fragment in your application you can generally choose
+which modules to activate inside of it.&lt;/p&gt;
+
+&lt;h2 id=&#34;fragment-manifest&#34;&gt;Fragment manifest&lt;/h2&gt;
+
+&lt;p&gt;Each fragment contains a JSON manifest that serves as a descriptor for the fragment configuration possibilities. The fragment manifest has two main goals:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;To expose the available modules of the fragment and their available configuration options. It is important to understand that the fragment manifest does
+not configure the fragment. It exposes what configuration will be possible according to a configuration schema. In the next section we will see how to
+actually configure the fragment when you declare it inside your application manifest.&lt;/li&gt;
+&lt;li&gt;To allow the declaration of additional RequireJS configuration. On application start, each RequireJS configuration of each fragments, if present, are merged
+together.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The properties of a fragment manifest are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;id&lt;/code&gt;: a mandatory string with no space which identifies the fragment. No fragment with the same id can be included at the same time in an application.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;: an optional name for the fragment.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;description&lt;/code&gt;: an optional description of the fragment.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;requireConfig&lt;/code&gt;: an optional object with the properties of a RequireJS configuration object. In the example below we add a simple RequireJS configuration
+for module mapping (this allow to &amp;laquo;map&amp;raquo; a module to a name, which can be used for creating aliases or for module substitution). For an exhaustive list and
+description of the RequireJS configuration options, please have a look  at its &lt;a href=&#34;http://requirejs.org/docs/api.html&#34;&gt;API&lt;/a&gt;.
+Remember that this configuration will be merged with all the other declared fragment configuration on application start.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;id&amp;quot;: &amp;quot;demo-fragment&amp;quot;,
+    &amp;quot;requireConfig&amp;quot;: {
+        &amp;quot;map&amp;quot;: {
+           &amp;quot;*&amp;quot;: {
+             &amp;quot;mappedModule&amp;quot;: &amp;quot;path/to/module/to/map&amp;quot;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;modules&lt;/code&gt;: an optional object whose keys are the name of the exposed modules of the fragment. The value of those keys is an object with
+the module path and the configuration schema. The configuration schema contains the name of the configuration properties available for the module.
+In the example below we expose a module &amp;laquo;demoModule&amp;raquo; inside a fragment with id &amp;laquo;demo-fragment&amp;raquo; and a configuration property named &amp;laquo;demoConfig&amp;raquo;
+of type string for the module demoModule.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;id&amp;quot;: &amp;quot;demo-fragment&amp;quot;,
+    &amp;quot;modules&amp;quot;: {
+        &amp;quot;demoModule&amp;quot;: {
+             &amp;quot;path&amp;quot;: &amp;quot;{demo-fragment}/modules/demoModule&amp;quot;,
+             &amp;quot;autoload&amp;quot; : true,
+             &amp;quot;configSchema&amp;quot;: {
+                 &amp;quot;title&amp;quot;: &amp;quot;Demo module configuration&amp;quot;,
+                 &amp;quot;type&amp;quot;: &amp;quot;object&amp;quot;,
+                 &amp;quot;additionalProperties&amp;quot;: false,
+                 &amp;quot;properties&amp;quot;: {
+                     &amp;quot;demoConfig&amp;quot;: {
+                         &amp;quot;description&amp;quot;: &amp;quot;A description of the demoConfig property&amp;quot;,
+                         &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot;
+                     }
+                 }
+             }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is a few additional things to note in this last example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In the &lt;code&gt;path&lt;/code&gt; property we used the fragment id enclosed in curly braces (&lt;code&gt;{demo-fragment}&lt;/code&gt;). This alias is automatically registered based
+on the fragment id and points to the location of the fragment manifest (it is a RequireJS mapping). You can (and should for reusability consideration)
+use this alias in all other fragments
+and in the application to refer to the fragment location.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;autoload&lt;/code&gt; attribute specify if the module should be loaded automatically or only if required by another module. By &amp;laquo;required by another module&amp;raquo;, we refer
+to the AMD definition and the dependency management between modules as used in RequireJS (through the use of a &lt;code&gt;define&lt;/code&gt; or &lt;code&gt;require&lt;/code&gt; call). If not specified, the
+module will not be autoloaded.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;type&lt;/code&gt; property of the &amp;laquo;demoConfig&amp;raquo; option has been specified as a string. This means that when the property will be given its value in the application
+manifest, passing a type other than a string will raise an error. The other type available are object, array, boolean and number.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;additionalProperties&lt;/code&gt; property of the configuration schema specify if additional properties can be given when configuring this module in the application
+manifest. In this example, trying to configure any other property than a &amp;laquo;demoConfig&amp;raquo; one for this module in the application manifest will raise an error.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;The configuration schema is optional. You can simply declare the module along with its path and eventually ask for it to be autoloaded (false if not specified). This
+is often the case when you simply want to include a module that has no particular configuration in your business fragment.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;W20 is packaged and distributed as multiple fragments. Your application will then be composed of those fragments and your own business fragments.
+Now that we have a better understanding of the notion of fragment, we can proceed to the configuration step in which we actually include and configure those fragments
+in our application.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;Application configuration happens in an application manifest. This manifest must be named &lt;strong&gt;w20.app.json&lt;/strong&gt; because, in the absence of
+a remote manifest, the framework will fall back to looking for a JSON file with this name at the application root.&lt;/p&gt;
+
+&lt;p&gt;The role of the application manifest is to reference fragments through their manifest URL and configure them specifically for the application.&lt;/p&gt;
+
+&lt;h3 id=&#34;fragment-declaration&#34;&gt;Fragment declaration&lt;/h3&gt;
+
+&lt;p&gt;To include a fragment in your application, specify the path of the fragment manifest as a key.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;bower_components/w20/w20-core.w20.json&amp;quot;: {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;w20-core&lt;/code&gt; fragment will be loaded with all its modules whose &lt;code&gt;autoload&lt;/code&gt; property is set to true. An alias &lt;code&gt;{w20-core}&lt;/code&gt; is now
+pointing to &lt;code&gt;bower_components/w20&lt;/code&gt;, the location of the fragment manifest.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;&lt;code&gt;bower_components&lt;/code&gt; is the default name of the folder in which &lt;a href=&#34;http://bower.io/&#34;&gt;Bower&lt;/a&gt; installs the web dependencies. Bower is one of the most popular
+package manager for web application. It should be installed to ease application development and/or use the w20 application generator. W20 fragments are available
+in the &lt;a href=&#34;http://bower.io/search/?q=w20&#34;&gt;Bower registry&lt;/a&gt; and will be installed to the bower_components folder if you choose this way of installation.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;fragment-configuration&#34;&gt;Fragment configuration&lt;/h3&gt;
+
+&lt;p&gt;Declaring a fragment like above can sometimes be enough. Autoloaded modules will be available and that may be sufficient.
+However, most of the time, you will configure the fragment&amp;rsquo;s modules according to your need or because an explicit configuration value is required.
+To configure the modules of the fragment add a &lt;code&gt;modules&lt;/code&gt; section:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;bower_components/w20/w20-core.w20.json&amp;quot; : {
+        &amp;quot;modules&amp;quot;: {
+            &amp;quot;application&amp;quot;: {
+                &amp;quot;id&amp;quot;: &amp;quot;my-app&amp;quot;
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the above configuration, the &lt;code&gt;application&lt;/code&gt; module of &lt;code&gt;w20-core&lt;/code&gt; will be configured with the corresponding object (defining
+the unique identifier of the application in this case). This module is normally defined as automatically loaded so this
+definition will only serve to configure it. To load a module that is not automatically loaded without configuration, just
+specify it with an empty object:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;bower_components/w20/w20-core.w20.json&amp;quot;: {
+        &amp;quot;modules&amp;quot;: {
+            &amp;quot;application&amp;quot;: {
+                &amp;quot;id&amp;quot;: &amp;quot;my-app&amp;quot;
+            }
+        }
+    },
+
+    &amp;quot;bower_components/other-fragment/other-fragment.w20.json&amp;quot;: {
+        &amp;quot;modules&amp;quot;: {
+            &amp;quot;my-module&amp;quot;: {}
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the example above &amp;laquo;my-module&amp;raquo; will be loaded without any configuration. If it was not declared and the module was not set to be autoloaded, &amp;laquo;my-module&amp;raquo;
+would not be loaded on application start even if it belongs to the &amp;laquo;other-fragment&amp;raquo; fragment.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;If a configuration JSON schema is provided for a specific module in the fragment manifest, the configuration specified
+here will be validated against it. Also, if a default configuration is provided for a specific module in the fragment manifest, the configuration specified here
+will be merged with it, overriding it. If no default configuration is provided, the configuration is provided as-is to the module.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/fragments.png&#34; alt=&#34;fragments-overview&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;masterpage&#34;&gt;Masterpage&lt;/h1&gt;
+
+&lt;p&gt;W20 uses &lt;a href=&#34;https://angularjs.org/&#34;&gt;AngularJS&lt;/a&gt; as a core framework for application development.
+Thus, its applications are &lt;a href=&#34;https://en.wikipedia.org/wiki/Single-page_application&#34;&gt;Single Page Application (SPA)&lt;/a&gt;.
+Only one HTML page is served with an outermost html doctype and a root tag &lt;code&gt;&amp;lt;html&amp;gt;&amp;lt;/html&amp;gt;&lt;/code&gt;. This page is called the &lt;strong&gt;masterpage&lt;/strong&gt;.
+The masterpage serves two roles:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Instruct the browser to load the RequireJS library with the w20 loader as the main module. The w20 loader is a module of the core fragment and
+referenced in the &lt;code&gt;main&lt;/code&gt; attribute of the script which loads RequireJS and who will take care of bootstrapping the application. A &lt;code&gt;w20-app&lt;/code&gt; attribute is mandatory on the root
+element of the masterpage. Application loading is explained in further details
+in the following section.&lt;/li&gt;
+&lt;li&gt;Declare the unique &lt;code&gt;ng-view&lt;/code&gt; element of the application which will include view templates. View change is handled through client-side
+routing which associates an URL to a template. This template is rendered in the &lt;code&gt;ng-view&lt;/code&gt; tag.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
+&amp;lt;!-- Sample masterpage for a W20 app --&amp;gt;
+&amp;lt;html data-w20-app&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Application title&amp;lt;/title&amp;gt;
+    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; 
+            data-main=&amp;quot;bower_components/w20/modules/w20&amp;quot; 
+            src=&amp;quot;bower_components/requirejs/require.js&amp;quot;&amp;gt;
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;div data-ng-view&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;You can notice that HTML attributes that are not part of the HTML specification (such as &lt;code&gt;w20-app&lt;/code&gt; or &lt;code&gt;ng-view&lt;/code&gt;) are prefixed with
+&amp;laquo;data-&amp;raquo;. This allow to keep templates valid against HTML validator by defining those attributes as &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*&#34;&gt;custom attributes&lt;/a&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Note that the w20 module is referenced without the .js extension. It is a common mistake to include the .js extension while referring to module but this
+is not accepted by RequireJS. The module file name is &amp;laquo;w20.js&amp;raquo; but it must be referenced by &amp;laquo;w20&amp;raquo; only.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Additional configuration can be provided:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;w20-app&lt;/code&gt; attribute can be provided with the URL of the application manifest as the value:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;html data-w20-app=&amp;quot;/resources/configuration&amp;quot;&amp;gt; ... &amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In that case, a request is made for retrieving the remote configuration. Without any value provided, the w20 loader will look
+for a &lt;code&gt;w20.app.json&lt;/code&gt; at the same level as the masterpage.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;w20-app-version&lt;/code&gt; attribute, when provided a value, will append this value as an extra query string to URLs of resources.
+This is useful for cache busting.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;html data-w20-app data-w20-app-version=&amp;quot;1.0.0&amp;quot;&amp;gt; ... &amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;w20-timeout&lt;/code&gt; attribute specify the number of seconds to wait before giving up on loading a script.
+Setting it to 0 disables the timeout. The default if not specified is 7 seconds.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;html data-w20-app data-w20-timeout=&amp;quot;3&amp;quot;&amp;gt; ... &amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;w20-cors-with-credentials&lt;/code&gt; attribute accept a boolean that specify if whether or not cross-site Access-Control requests should be made using credentials
+such as cookies or authorization headers. By default the value is false.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;html data-w20-app data-w20-cors-with-credentials=&amp;quot;true&amp;quot;&amp;gt; ... &amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;core-fragment&#34;&gt;Core fragment&lt;/h1&gt;
+
+&lt;p&gt;The core fragment of W20 is the most important fragment of the framework and the only one that is mandatory.
+It provides the fundamental aspect of the framework, mainly:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;An &lt;a href=&#34;http://en.wikipedia.org/wiki/Asynchronous_module_definition&#34;&gt;AMD&lt;/a&gt; infrastructure through &lt;a href=&#34;http://requirejs.org/&#34;&gt;RequireJS&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;An MVC runtime through &lt;a href=&#34;https://angularjs.org/&#34;&gt;AngularJS&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;Application loading and initialization through the &lt;code&gt;w20&lt;/code&gt; module referenced in the masterpage,&lt;/li&gt;
+&lt;li&gt;A permission model which enables to reflect backend security,&lt;/li&gt;
+&lt;li&gt;Extensive culture support.&lt;/li&gt;
+&lt;li&gt;Support for HATEOAS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;No CSS framework is provided in the core fragment to let you free of this choice. However, you can simply add
+an appropriate fragment of W20 to bring frameworks such as &lt;a href=&#34;http://getbootstrap.com/&#34;&gt;Twitter Bootstrap&lt;/a&gt; (w20-bootstrap-3)
+or &lt;a href=&#34;https://material.angularjs.org/latest/&#34;&gt;Angular Material&lt;/a&gt; (w20-material). For additional information,
+please consult the &lt;a href=&#34;http://w20-framework.github.io/docs/manual/ui/&#34;&gt;UI&lt;/a&gt; section.&lt;/p&gt;
+
+&lt;p&gt;The rest of this manual will focus mainly on the core fragment. Additional fragments documentation can be found in the corresponding
+section of the documentation.&lt;/p&gt;
+
+&lt;p&gt;The core fragment provides the &lt;code&gt;w20&lt;/code&gt; module which is responsible for application initialization. Let&amp;rsquo;s look at how a W20 application load
+itself.&lt;/p&gt;
+
+&lt;h1 id=&#34;application-loading&#34;&gt;Application loading&lt;/h1&gt;
+
+&lt;p&gt;Once RequireJS is loaded, the &lt;code&gt;w20&lt;/code&gt; module becomes the entry point of a W20 application as the main module.
+Think of it as a &amp;laquo;fragment loader&amp;raquo;. Its initialization sequence is as follow:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Loading and parsing of the application configuration (&lt;code&gt;w20.app.json&lt;/code&gt; or remote configuration).&lt;/li&gt;
+&lt;li&gt;Loading and parsing of all the declared fragment manifests.&lt;/li&gt;
+&lt;li&gt;Computing of a global RequireJS configuration along with the list of all modules to load.&lt;/li&gt;
+&lt;li&gt;Loading of all modules needed at startup time at once.&lt;/li&gt;
+&lt;li&gt;Initialization of each loaded modules through their lifecycle callbacks (pre -&amp;gt; run -&amp;gt; post).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The last phase should be a little bit unclear at this point because we did not introduce modules lifecycle yet.
+We included it here to give you the full initialization sequence for future reference. Modules are documented in the next section.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://w20-framework.github.io/img/w20-loading.png&#34; alt=&#34;w20loading&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;modules&#34;&gt;Modules&lt;/h1&gt;
+
+&lt;h2 id=&#34;amd&#34;&gt;AMD&lt;/h2&gt;
+
+&lt;p&gt;JavaScript logic in W20 are defined in AMD modules. An AMD module is defined using the global function &lt;code&gt;define&lt;/code&gt; exposed by RequireJS.
+AMD module can be named but it is strongly recommended that you use anonymous AMD modules, each one living in its own JavaScript file.
+They have the following form:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+        // (1) list of the dependencies of this module
+], function(/* (2) list of injected dependencies (in the same order as (1)) */) {
+    
+    // (3) module factory function body (private scope of the module)
+
+    return {
+        // (4) public signature of the module that can be injected 
+        // when requested as a dependency of another module
+    };
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let us expand a little bit on each part of this module definition:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(1) The list of dependencies is composed of path to dependencies of this module, which are often themselves AMD modules.
+The path can be an absolute path or a map key if a RequireJS mapping has been defined. Remember that fragments manifest location are
+automatically aliased by their fragment id enclosed in curly braces. This means that you can reference a W20 fragment or your own one as
+a dependency like this:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+&#39;{w20-core}/modules/application&#39;, 
+&#39;{your-fragment}/modules/your-module&#39;
+], ... );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Please note that modules are referenced without their .js extension.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Third party libraries location are also aliased. For instance AngularJS distribution location is aliased by &lt;code&gt;{angular}&lt;/code&gt;.
+This means that you can reference a dependency to angular.js with &lt;code&gt;{angular}/angular&lt;/code&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(2) The last parameter to the &lt;code&gt;define&lt;/code&gt; function is the factory function. Its parameters are the public value returned by the dependencies defined in (1) in
+the same order. That is, if we take the example above, the public value of the &amp;laquo;application&amp;raquo; module as first argument and the public value of &amp;laquo;your-module&amp;raquo; as
+second argument.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;(3) The body of the factory function constitute the private part of the module. This part is not available to other modules.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;(4) The return value of a module is the public part it exposes to the world. The value of this return will be what will be injected
+in other modules factory function if that module is a dependency of them.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+&#39;{w20-core}/modules/application&#39;,
+&#39;{yourFragment}/modules/yourModule&#39;
+], function (applicationPublic, yourModulePublic) {
+ 
+ var privateValue = &#39;I am a private string&#39;;
+ 
+ return {
+    publicValue: &#39;I am a public string&#39;
+ }
+
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, if we suppose the module above to be named &amp;laquo;demo.js&amp;raquo; inside a fragment with id &amp;laquo;example&amp;raquo;, if this module is defined as a dependency of another,
+the last one can access the publicValue property of the object.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;{example}/modules/demo&#39;,
+], function (demo) {
+
+    console.info(demo.publicValue); // &amp;quot;I am a public string&amp;quot;
+
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;module-configuration&#34;&gt;Module configuration&lt;/h2&gt;
+
+&lt;p&gt;To access the configuration of a module it needs to depend on the &lt;code&gt;module&lt;/code&gt; module. This special module is used to retrieve the module id, its location
+and the value of its configuration options (those declared in the application manifest).
+If we suppose a module &amp;laquo;sample&amp;raquo; with the following configuration:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;some-fragment/path/some-fragment.w20.json&amp;quot;: {
+    &amp;quot;modules&amp;quot;: {
+        &amp;quot;sample&amp;quot;: {
+            &amp;quot;prop&amp;quot;: &amp;quot;Value of property one&amp;quot;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The configuration is retrieved inside the &amp;laquo;sample&amp;raquo; module like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;module&#39;,
+], function (module) {
+
+    var config = module &amp;amp;&amp;amp; module.config() || {};
+    
+    console.log(config.prop); // &amp;quot;Value of property&amp;quot;
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The statement &lt;code&gt;module &amp;amp;&amp;amp; module.config() || {}&lt;/code&gt; is the idiomatic way of safely retrieving the module configuration.&lt;/p&gt;
+
+&lt;h2 id=&#34;lifecycle-callbacks&#34;&gt;Lifecycle callbacks&lt;/h2&gt;
+
+&lt;p&gt;In the &amp;laquo;Application loading&amp;raquo; section we have seen that the initialization sequence ended with each loaded modules going
+through their &amp;laquo;lifecycle callbacks&amp;raquo;. Actually this is only the case for modules that declares lifecycle callbacks. If a module does
+not declare any lifecycle callback then it is simply loaded.&lt;/p&gt;
+
+&lt;p&gt;Lifecycle callbacks happens when all fragments have been collected and the RequireJS
+configuration has been merged. There are 3 lifecycle callbacks which runs in the order: &lt;code&gt;pre&lt;/code&gt;, &lt;code&gt;run&lt;/code&gt; and &lt;code&gt;post&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All of them are optional.&lt;/li&gt;
+&lt;li&gt;It is guaranteed that every modules will run their &lt;code&gt;pre&lt;/code&gt; callback before any other modules run their &lt;code&gt;run&lt;/code&gt; callback.&lt;/li&gt;
+&lt;li&gt;It is guaranteed that every modules will run their &lt;code&gt;run&lt;/code&gt; callback before any other modules run their &lt;code&gt;post&lt;/code&gt; callback.&lt;/li&gt;
+&lt;li&gt;A module dependency will have its callback called before the module requiring it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To integrate a module into the lifecycle management of the application, you must add the following code to the public
+signature of the module (i.e the return value of the factory function):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;return {
+    ...
+
+    lifecycle: {
+        pre: function (modules, fragments, callback) {},
+        run: function (modules, fragments, callback) {},
+        post: function (modules, fragments, callback) {}
+    }
+
+    ...
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can omit the unsupported callbacks (for instance, just leaving the &lt;code&gt;pre&lt;/code&gt; one). If the loader recognize one or more
+lifecycle callbacks, they will be invoked during W20 initialization with the following arguments:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;modules&lt;/code&gt; is an array of all public modules definitions,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fragments&lt;/code&gt; an array of all loaded fragment manifests,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;callback&lt;/code&gt; is a function that &lt;strong&gt;MUST&lt;/strong&gt; be called to notify the loader that any processing in this phase is done for
+this module (including asynchronous processing). If a module do not call its callback, the whole initialization process
+is blocked for a specified amount of time. After that, it is cancelled and a timeout error message is displayed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lifecycle callbacks are useful hooks for application initialization. The &lt;code&gt;pre&lt;/code&gt; callback for instance will run before AngularJS
+initialization, the subject of the next section.&lt;/p&gt;
+
+&lt;h1 id=&#34;angularjs-initialization&#34;&gt;AngularJS initialization&lt;/h1&gt;
+
+&lt;p&gt;Before AngularJS initialization, it is guaranteed that:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All AMD modules needed at startup are loaded,&lt;/li&gt;
+&lt;li&gt;Their factory functions have been run in the correct order,&lt;/li&gt;
+&lt;li&gt;Their &lt;code&gt;pre&lt;/code&gt; lifecycle callbacks have been run and all modules have notified the loader that they have finished loading
+their asynchronous resources if any.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;AngularJS initialization is done explicitly with the &lt;code&gt;angular.bootstrap()&lt;/code&gt; function on the document element. It occurs
+in the &lt;code&gt;run&lt;/code&gt; lifecycle callback of the &lt;code&gt;application&lt;/code&gt; module. From this moment AngularJS initialize normally; you can read more
+about the initialization process &lt;a href=&#34;https://docs.angularjs.org/guide/bootstrap&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;angularjs-modules&#34;&gt;AngularJS modules&lt;/h1&gt;
+
+&lt;h2 id=&#34;amd-vs-angularjs-modules&#34;&gt;AMD vs AngularJS modules&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.angularjs.org/guide/module&#34;&gt;AngularJS modules&lt;/a&gt; are not to be confused with AMD modules. We said at the
+begining of this guide that when we refer to a &amp;laquo;module&amp;raquo;, it is an AMD module. We will continue to do so and use the term &amp;laquo;AngularJS module&amp;raquo;
+to refer to the notion of module in AngularJS.&lt;/p&gt;
+
+&lt;p&gt;From the AMD point of view, AngularJS modules have no meaning. However, AngularJS modules are fundamental for
+structuring an application correctly.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-is-an-angularjs-module&#34;&gt;What is an AngularJS module ?&lt;/h2&gt;
+
+&lt;p&gt;AngularJS modules allow to register services, factories, controllers, directives, providers and other concepts
+such as configuration or run block. AngularJS modules are also fundamental for unit testing. Each AngularJS module can only be loaded once per injector.
+Usually an AngularJS app has only one injector and AngularJS modules are only loaded once. Each test has its own injector and AngularJS modules are loaded multiple times.&lt;/p&gt;
+
+&lt;h2 id=&#34;angularjs-module-dependencies&#34;&gt;AngularJS module dependencies&lt;/h2&gt;
+
+&lt;p&gt;Wait a minute. Did we not already talk about dependencies between modules ? Yes, we did. We talked of dependencies between AMD modules.
+But AngularJs modules can also list other AngularJS modules as their dependencies. Depending on an AngularJS module implies that the required AngularJS module
+needs to be loaded before the requiring AngularJS module is loaded.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// firstModule.js
+define([&#39;{angular}/angular&#39;], function (angular) {
+  var firstAngularModule = angular.module(&#39;first&#39;, []);
+});
+
+// secondModule.js
+define([&#39;{angular}/angular&#39;, &#39;firstModule&#39;], function(angular) {
+  var secondAngularModule = angular.module(&#39;second&#39;, [&#39;first&#39;]);
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the example above the dependency between AngularJS modules is declared as an array in the second argument to the &lt;code&gt;angular.module&lt;/code&gt; function. AngularJS maintains an injector
+with a list of names and corresponding objects. An entry is added to the injector when a component is created and the object is returned whenever it is referenced using the registered name.&lt;/p&gt;
+
+&lt;p&gt;How does that fit with the dependency system between AMD modules ?  It is important to remember that the purpose of AMD modules and AngularJS modules is totally different.
+The dependency injection system built into AngularJS deals with the objects needed in a component while dependency management in RequireJS deals with JavaScript files. In other word,
+if an AngularJS modules depends on another AngularJS modules, this means that they must be loaded in the correct order. The &lt;code&gt;secondModule&lt;/code&gt; depend on the &lt;code&gt;firstModule&lt;/code&gt; to be loaded first.&lt;/p&gt;
+
+&lt;h2 id=&#34;angularjs-modules-and-w20&#34;&gt;AngularJS modules and W20&lt;/h2&gt;
+
+&lt;p&gt;To correctly initialize AngularJS, the &lt;code&gt;application&lt;/code&gt; module must know all the top-level declared
+AngularJS modules. To expose them properly, you must add the following code to the public signature of modules that
+declare AngularJS modules:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;return {
+    ...
+
+    angularModules: [ &#39;angularModule1&#39;, &#39;angularModule2&#39;, ... ]
+
+    ...
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All &lt;code&gt;angularModules&lt;/code&gt; arrays of AMD public signature modules are concatenated and the resulting array is passed to
+the &lt;code&gt;angular.bootstrap()&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Note that you don&amp;rsquo;t need to add the transitive AngularJS modules.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

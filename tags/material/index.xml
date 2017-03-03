@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Material on </title>
+    <link>http://w20-framework.github.io/tags/material/index.xml</link>
+    <description>Recent content in Material on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/material/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Basics</title>
+      <link>http://w20-framework.github.io/addons/material/</link>
+      <pubDate>Mon, 08 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/addons/material/</guid>
+      <description>
+
+&lt;p&gt;The W20 Material addon provides the &lt;a href=&#34;https://material.angularjs.org/latest/&#34;&gt;Angular Material&lt;/a&gt; framework.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bower install w20-material
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;To include the addon, declare it in the application manifest:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20-material/w20-material.w20.json&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

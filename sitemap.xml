@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://w20-framework.github.io/themes/material/</loc>
+    <lastmod>2016-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/material/</loc>
+    <lastmod>2016-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/bootstrap-2/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/bootstrap-3/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/components/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/dataviz/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/extras/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/themes/business/</loc>
+    <lastmod>2015-07-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/themes/simple/</loc>
+    <lastmod>2015-07-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/guides/bootstrap-basics/</loc>
+    <lastmod>2014-12-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/guides/frontend-testing/</loc>
+    <lastmod>2014-12-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/guides/angularjs-dependency-injection/</loc>
+    <lastmod>2014-11-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/guides/angularjs-directive-design/</loc>
+    <lastmod>2014-11-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/posts/welcome-to-w20/</loc>
+    <lastmod>2015-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/</loc>
+    <lastmod>2016-04-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/zones/addons/</loc>
+    <lastmod>2016-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/</loc>
+    <lastmod>2016-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/authors/adrien-lauer/</loc>
+    <lastmod>2015-05-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/analytics/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/angular/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/api/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/authentication/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/authorization/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/authors/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/bar/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/bookmark/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/bootstrap/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/chart/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/combo/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/project/community/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/component/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/configuration/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/content/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/css/</loc>
+    <lastmod>2016-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/culture/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/docs/manual/culture/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/data/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/date/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/design/</loc>
+    <lastmod>2016-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/display/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/docs/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/zones/documentation/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/dataviz/dygraphs/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/extras/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/project/faq/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/form/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/format/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/components/forms/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/fragment/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/frontend/</loc>
+    <lastmod>2016-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/generation/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/grid/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/zones/guides/</loc>
+    <lastmod>2014-12-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/guides/</loc>
+    <lastmod>2014-12-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/hypermedia/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/docs/manual/hypermedia/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/i18n/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/index/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/integration/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/internationalization/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/json/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/lifecycle/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/linechart/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/link/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/locale/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/localization/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/manifest/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/masterpage/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/material/</loc>
+    <lastmod>2016-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/menu/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/module/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/navigation/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/dataviz/nvd3/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/project/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/path/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/permission/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/pie/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/plot/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/zones/posts/</loc>
+    <lastmod>2015-05-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/posts/</loc>
+    <lastmod>2015-05-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/zones/project/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/sections/projectcommunity/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/sections/projectfaq/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/sections/projectoverview/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/sections/projectroadmap/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/project/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/resource/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/rest/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/search/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/rich/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/project/roadmap/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/role/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/route/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/docs/manual/routing/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/sampling/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/zones/search/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/search/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/sections/searchresults/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/sections/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/docs/manual/security/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/select/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/startup/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/template/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/test/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/docs/manual/testing/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/zones/themes/</loc>
+    <lastmod>2016-04-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/themes/</loc>
+    <lastmod>2016-04-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/time/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/docs/manual/ui/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/components/select/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/addons/components/ui-grid/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/unit/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/view/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/visualization/</loc>
+    <lastmod>2016-01-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/tags/w20/</loc>
+    <lastmod>2016-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/docs/generator/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/sections/w20generator/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/sections/w20introduction/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/sections/w20manual/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/docs/manual/</loc>
+  </url>
+  
+  <url>
+    <loc>http://w20-framework.github.io/zones/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

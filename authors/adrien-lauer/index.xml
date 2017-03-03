@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Adrien Lauer on </title>
+    <link>http://w20-framework.github.io/authors/adrien-lauer/index.xml</link>
+    <description>Recent content in Adrien Lauer on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/authors/adrien-lauer/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Welcome to W20</title>
+      <link>http://w20-framework.github.io/posts/welcome-to-w20/</link>
+      <pubDate>Sat, 02 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/posts/welcome-to-w20/</guid>
+      <description>&lt;p&gt;Welcome to W20!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

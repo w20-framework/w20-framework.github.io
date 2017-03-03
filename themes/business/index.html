@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+
+
+<title>
+    Basics
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/unify/css/style.css">
+<link rel="stylesheet" href="/assets/unify/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLF968Z');</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "W20 framework",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "Open-Source Software"
+  },
+  "applicationCategory" : "web framework"
+}
+</script>
+
+
+
+<meta property="og:title" content="Basics" />
+<meta property="og:description" content="Business Theme The Business Theme is a responsive Bootstrap 3 based theme that provides upfront integration of aspects such as routes navigation, authentication or internationalization in your front end application.
+  Running demo available here.
+   Installation $ bower install w20-business-theme --save  Configuration Fragment declaration To include the theme, declare it in your fragment manifest (If you are using the bridge addon it will be included by default)." />
+<meta property="og:url" content="http://w20-framework.github.io/themes/business/" />
+<meta property="og:site_name" content="W20 framework" />
+<meta property="og:image" content="http://w20-framework.github.io/img/opengraph-default.png" />
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://w20-framework.github.io/opensearch.xml" title="W20 framework" />
+
+
+
+<script type="text/javascript">
+    window.w20 = {
+        state: {}
+    };
+</script>
+
+
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLF968Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div id="header">
+    <div class="header">
+    <div class="container">
+        <a class="logo" href="/">W20 framework</a>
+        <div class="topbar hidden-xs hidden-sm">
+            <ul class="loginbar pull-right">
+                <li><i class="fa fa-stack-overflow"></i> <a target="_blank" href="http://stackoverflow.com/questions/ask?tags=w20">Ask a question</a></li>
+                <li class="topbar-devider"></li>
+                <li><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></li>
+            </ul>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" data-role="navigation" style="pointer-events: none;">
+        <div class="container">
+            <ul class="nav navbar-nav" style="pointer-events: auto;">
+                <li>
+                    <a href="/docs">Documentation</a>
+                </li>
+                <li>
+                    <a href="/addons">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/themes">Themes</a>
+                </li>
+                <li>
+                    <a href="/posts">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/project/community">Community</a></li>
+                        <li><a href="/project/roadmap">Roadmap</a></li>
+                        <li><a href="/project/faq">FAQ</a></li>
+                        <li><a href="/tags">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <form method="GET" action="/search">
+                            <div class="input-group animated fadeInDown">
+                                <input id="search-field" type="text" class="form-control" placeholder="Search" name="q">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="title-header small">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h2>Themes</h2>
+                <p class="hidden-xs">Ready-to-use graphical themes for customizing your W20 application.</p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-image-wrapper">
+                    <img class="header-image" src="/img/logos/themes-logo.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="title-subheader">
+        <div class="container">
+            <ul>
+                <li><h3><i class="fa fa-list"></i> <a href="/themes">All themes</a></h3></li>
+                <li><h3 class="active"><i class="fa fa-plug"></i> <a href="">Business theme</a></h3></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="content" class="container">
+    <div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="doc-content">
+                
+
+<h1 id="business-theme">Business Theme</h1>
+
+<p>The Business Theme is a responsive Bootstrap 3 based theme that provides upfront integration of aspects such as
+routes navigation, authentication or internationalization in your front end application.</p>
+
+<div class="callout callout-tips">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+                <i class="fa fa-lightbulb-o icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>Running demo available <a href="http://seedstack.org/w20-business-theme">here</a>.</p>
+
+        </div>
+    </div>
+</div>
+
+<h1 id="installation">Installation</h1>
+
+<pre><code>$ bower install w20-business-theme --save
+</code></pre>
+
+<h1 id="configuration">Configuration</h1>
+
+<h2 id="fragment-declaration">Fragment declaration</h2>
+
+<p>To include the theme, declare it in your fragment manifest (If you are using the bridge addon it will be included by default).</p>
+
+<pre><code>&quot;bower_components/w20-business-theme/w20-business-theme.w20.json&quot;: {
+    &quot;modules&quot;: {
+        &quot;main&quot;: {}
+    }
+}
+</code></pre>
+
+<h2 id="options">Options</h2>
+
+<p>Options can be declared in the <code>main</code> module configuration.</p>
+
+<ul>
+<li><code>sidebar</code>: (Object) Options for the theme sidebar.
+
+<ul>
+<li><code>width</code>: (Number) Specify a fixed size in px for the sidebar. If not configured a default 270px width is applied.</li>
+</ul></li>
+<li><code>brand</code>: (Object) Options for the upper-left corner which displays the application brand/name.
+
+<ul>
+<li><code>fixedWith</code>: (Boolean) If true, the brand name size will not exceed the default sidebar width.</li>
+<li><code>backgroundColor</code>: (Any CSS color compatible declaration) Set the background color of the brand.</li>
+<li><code>textColor</code>: (Any CSS color compatible declaration) Set the color of the brand test.</li>
+</ul></li>
+<li><code>links</code>: (Array) Add additional links to the topbar. The <code>links</code> array will contain Object link with the following properties:
+
+<ul>
+<li><code>label</code>: (String) The value to display as the link name if no i18n key is provided.</li>
+<li><code>i18n</code>: (String) The i18n key to use for the link (ex: &lsquo;custom.link.key&rsquo;). See the culture module of w20 for more information.</li>
+<li><code>href</code>: (String) The href attribute value of the link.</li>
+<li><code>target</code>: (String) The target attribute value of the link (ex: &lsquo;_blank&rsquo;).</li>
+<li><code>security</code>: (String) The link display security expression. See the security module of w20 for more information.</li>
+</ul></li>
+<li><code>hideConnectivity</code>: (Boolean) Hide the connectivity status.</li>
+<li><code>hideCulture</code>: (Boolean) Hide the culture dropdown.</li>
+<li><code>hideSecurity</code>: (Boolean) Hide the authentication action.</li>
+<li><code>logo</code>: (Object) Options for the topbar logo
+
+<ul>
+<li><code>ìmage</code>: (String) url of the logo image</li>
+<li><code>link</code>: (String) url of the logo link</li>
+<li><code>target</code>: (String) target of the logo link (defaults to _self)</li>
+<li><code>tooltip</code>: (String) text of the logo tooltip (defaults to the <code>url</code> attribute)
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="sidebar-routes">Sidebar routes</h2>
+
+<p>Routes declaration of fragments are aggregated in the sidebar menu. You can group related route under a category by declaring
+a <code>category</code> attribute on the route declaration.</p>
+
+<pre><code>&quot;routes&quot;: {
+    &quot;topLevelRoute&quot;: {
+        &quot;templateUrl&quot;:&quot;{Fragment}/views/topLevelRoute.html&quot;,
+        &quot;controller&quot;:&quot;TopLevelRouteController as tlr&quot;,
+    },
+    &quot;route1OfCatOne&quot;: {
+        &quot;templateUrl&quot;:&quot;{Fragment}/views/route1.html&quot;,
+        &quot;controller&quot;:&quot;Route1Controller as rc1&quot;,
+        &quot;category&quot;: &quot;catOne&quot;
+    },
+   &quot;route2OfCatOne&quot;: {
+       &quot;templateUrl&quot;:&quot;{Fragment}/views/route2.html&quot;,
+       &quot;controller&quot;:&quot;Route1Controller as rc2&quot;,
+       &quot;category&quot;: &quot;catOne&quot;
+   }
+}
+</code></pre>
+
+<p>The category will appear as an i18n key in your route (<code>application.viewcategory.[category name]</code>) which you can
+then localize.</p>
+
+<p>You can order the category in the menu by delcaring a <code>navigation</code> property in your fragment manifest:</p>
+
+<pre><code>&quot;navigation&quot;: {
+    &quot;&quot;: [ &quot;catTwo&quot;, &quot;catOne&quot;]
+}
+</code></pre>
+
+<h2 id="topbar-actions">Topbar actions</h2>
+
+<p>The topbar will automatically include actions such as a culture dropdown, login/logout button or connectivity status if
+the relevant module have been declared and if these actions have not been hidden using <code>hideXXXX</code> properties.
+You can include your own actions using the <code>MenuService</code>.</p>
+
+<ul>
+<li>First you need to register an action type:</li>
+</ul>
+
+<pre><code>service.registerActionType('my-action-type', {
+    templateUrl: '{Fragment}/templates/action-my-action.html',
+    showFn: function () {
+        var show = true;
+        // You can specify conditions for displaying the action
+        return show;
+    }
+});
+</code></pre>
+
+<ul>
+<li>Then you can add this action to the topbar:</li>
+</ul>
+
+<pre><code>service.addAction('action', 'my-action-type', {
+    sortKey: 300
+});
+</code></pre>
+
+<p>This register an action of name &lsquo;action&rsquo; of type &lsquo;my-action-type&rsquo;. The last parameter is an
+object which will extend the default one you provided in the action type registration. Use
+the <code>sortKey</code> attribute to order your actions display.</p>
+
+<h2 id="background-colors">Background colors</h2>
+
+<p>These background classes can be used to style background. Text color will be set appropriately to
+contrast with them.</p>
+
+<ul>
+<li><span style="background-color:#999999;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-grey</li>
+<li><span style="background-color:#f7f7f7;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-gray-light</li>
+<li><span style="background-color:#111111;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-black</li>
+<li><span style="background-color:#DD4B39;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-red</li>
+<li><span style="background-color:#F39C12;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-yellow</li>
+<li><span style="background-color:#00C0EF;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-aqua</li>
+<li><span style="background-color:#428BCA;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-blue</li>
+<li><span style="background-color:#3C8DBC;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-light-blue</li>
+<li><span style="background-color:#00A65A;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-green</li>
+<li><span style="background-color:#001F3F;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-navy</li>
+<li><span style="background-color:#39CCCC;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-teal</li>
+<li><span style="background-color:#3D9970;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-olive</li>
+<li><span style="background-color:#01FF70;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-lime</li>
+<li><span style="background-color:#FF851B;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-orange</li>
+<li><span style="background-color:#F012BE;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-fuchsia</li>
+<li><span style="background-color:#605CA8;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-purple</li>
+<li><span style="background-color:#D81B60;
+             display: inline-block;
+             width: 70px;
+             height: 40px;
+             margin: 0 5px 0 5px;">
+</span> .bg-maroon</li>
+</ul>
+
+<h2 id="infobox">Infobox</h2>
+
+<p>Infobox are components that display information associated with an icon.</p>
+
+<pre><code>&lt;div class=&quot;col-md-3&quot;&gt;
+    &lt;!-- Apply a bg-* to the info-box to color it completely --&gt;
+    &lt;div class=&quot;info-box&quot;&gt;
+        &lt;!-- Apply any bg-* class to to the icon to color it --&gt;
+        &lt;span class=&quot;info-box-icon bg-red&quot;&gt;&lt;i class=&quot;fa fa-star-o&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;div class=&quot;info-box-content&quot;&gt;
+            &lt;span class=&quot;info-box-text&quot;&gt;Text&lt;/span&gt;
+            &lt;span class=&quot;info-box-number&quot;&gt;100&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h2 id="callout">Callout</h2>
+
+<p>Callout can be used as an alternative to Bootstrap <code>alert</code> to carry visual emphasis.</p>
+
+<pre><code>&lt;div class=&quot;col-md-6&quot;&gt;
+    &lt;div class=&quot;callout callout-info|warning|success|danger&quot;&gt;
+        &lt;h4&gt;Title&lt;/h4&gt;
+        &lt;p&gt; Message to display to the user &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+<div class="side-menu">
+    
+        
+    
+    
+    <div class="list-group">
+        <ul class="nav">
+            
+                
+                    <li><a class="list-group-item" href='https://github.com/seedstack/w20-business-theme/edit/docs/index.md' target="_blank"><i class="fa fa-edit"></i> Contribute to this theme page</a></li>
+                
+            
+        </ul>
+    </div>
+</div>
+
+    </div>
+</div>
+
+</div>
+<div id="footer">
+    <div class="footer-v3">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="headline"><h2>About</h2></div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">W20 is a Web framework to create modular and composable enterprise-ready applications.</p>
+                </div>
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><h2>License</h2></div>
+                        <p>
+                            Code licensed under the <a href="https://www.mozilla.org/MPL/2.0" target="_blank">Mozilla Public License 2.0</a>.
+                            <br/>
+                            Documentation licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 map-img">
+                    <div class="headline"><h2>Contact us</h2></div>
+                    <address>
+                        <p>
+                            StackOverflow <a href="https://stackoverflow.com/questions/tagged/w20">W20 on StackOverflow</a>
+                        </p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js"></script>
+<script src="/assets/unify/plugins/smoothScroll.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/w20.js"></script>
+<script>
+    $(document).ready(function () {
+        var $search = $('.search-btn');
+
+        $('.search').click(function () {
+            if ($search.hasClass('fa-search')) {
+                w20.ui.openSearch();
+            } else {
+                w20.ui.closeSearch();
+            }
+        });
+
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $('.side-menu').affix({
+            offset: {
+                top: $('#header').height() + 20,
+                bottom: $('#footer').height() + 40
+            }
+        });
+
+        Mousetrap.bind('/', function () {
+            w20.ui.openSearch();
+            return false;
+        });
+
+        Mousetrap.bind('alt+up', function () {
+            if (w20.state.previousPage) {
+                window.location = w20.state.previousPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('alt+down', function () {
+            if (w20.state.nextPage) {
+                window.location = w20.state.nextPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('esc', function () {
+            w20.ui.closeSearch();
+            return false;
+        });
+
+        var originalCallback = Mousetrap.stopCallback;
+        Mousetrap.stopCallback = function (e, element, combo) {
+            if (combo === 'esc') {
+                return false;
+            }
+
+            return originalCallback(e, element, combo);
+        };
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#hotkeys-modal, #versions-modal').bind('hidden.bs.modal', function () {
+            $("html").css("margin-right", "0px");
+        }).bind('show.bs.modal', function () {
+            $("html").css("margin-right", "-15px");
+        });
+
+        var query = w20.strings.parseQueryString(location);
+        if (query.h && query.h.length > 0) {
+            $('.doc-content').highlight(query.h);
+            if (query.scroll) {
+                $('html, body').animate({
+                    scrollTop: $('span[class=highlight]:first').offset().top - 20
+                }, 250);
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

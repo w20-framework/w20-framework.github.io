@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Test on </title>
+    <link>http://w20-framework.github.io/tags/test/index.xml</link>
+    <description>Recent content in Test on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Testing</title>
+      <link>http://w20-framework.github.io/docs/manual/testing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/testing/</guid>
+      <description>&lt;p&gt;As your application grows it becomes harder to assert that all your features are still working correctly.
+Whether you are doing some refactoring, upgrading a library version or adding new features, you want
+a mechanism to assert that thing are working correctly and protect yourself from regression.&lt;/p&gt;
+
+&lt;h1 id=&#34;testing&#34;&gt;Testing&lt;/h1&gt;
+
+&lt;h2 id=&#34;unit-tests&#34;&gt;Unit tests&lt;/h2&gt;
+
+&lt;p&gt;The web framework does not enforce a particular runner or test suite for unit testing but we found that
+a good combination is &lt;a href=&#34;http://karma-runner.github.io/0.13/index.html&#34;&gt;Karma&lt;/a&gt; as the runner and
+&lt;a href=&#34;http://jasmine.github.io/2.0/introduction.html&#34;&gt;Jasmine&lt;/a&gt; as the test suite language. This is probably the most
+popular combination for running tests and the one that the AngularJS team uses. Recommended lecture are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://karma-runner.github.io/0.13/index.html&#34;&gt;Karma documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jasmine.github.io/2.0/introduction.html&#34;&gt;Jasmine documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.angularjs.org/guide/unit-testing&#34;&gt;AngularJS guide on unit testing&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;installation-and-configuration&#34;&gt;Installation and configuration&lt;/h3&gt;
+
+&lt;p&gt;If you used the generator-w20, required packages will already be installed  in your node_modules folder.
+If you want to start from scratch, first install &lt;a href=&#34;https://nodejs.org/en/&#34;&gt;NodeJS&lt;/a&gt;, create a directory for your app
+if you do not already have one, cd into it and use the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ npm install karma karma-cli karma-jasmine karma-phantomjs-launcher karma-requirejs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will need to configure a &lt;code&gt;karma.conf.js&lt;/code&gt; file at your project root to instruct Karma. You can use the following &lt;a href=&#34;http://karma-runner.github.io/0.12/intro/configuration.html&#34;&gt;guide&lt;/a&gt;
+to configure every options in cli mode. Please have a look at the &lt;a href=&#34;http://karma-runner.github.io/0.12/intro/configuration.html&#34;&gt;Karma documentation&lt;/a&gt;
+for a complete description of the options. The end result should look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;module.exports = function(config) {
+    &#39;use strict&#39;;
+
+    config.set({
+        frameworks: [ &#39;jasmine&#39;, &#39;requirejs&#39; ],
+        files: [
+            &#39;test-main.js&#39;,
+            { pattern: &#39;fragment/**/*.js&#39;, included: false },
+            { pattern: &#39;bower_components/**/*&#39;, included: false }
+        ],
+        port: 9876,
+        colors: true,
+        logLevel: &#39;INFO&#39;,
+        browsers: [ &#39;PhantomJS&#39; ]
+    });
+};
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This file instruct Karma about the file patterns to be served when running the tests.
+As you can see we will served the business modules of the fragment located in the &amp;laquo;fragment&amp;raquo; folder, along
+with the web dependencies of the &amp;laquo;bower_components&amp;raquo;.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;The PhantomJS browser will be used for loading the application. PhantomJS is
+a headless browser. It can run the application without rendering the HTML pages which we do not need since we are only interested in
+testing the application logic. This is useful for executing tests in an environment which does not support graphical interface such as a
+CI server for instance.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Since we are using RequireJS, we will need a main module for the tests. This module will be declared in a &lt;code&gt;test-main.js&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var tests = [];
+
+for (var file in window.__karma__.files) {
+    if (/.spec\.js$/.test(file)) {
+        tests.push(file);
+    }
+}
+
+window.w20 = {
+    configuration: {
+        &#39;/base/bower_components/w20/w20-core.w20.json&#39;: {
+            modules: {
+                application: {
+                    id: &#39;w20-test&#39;,
+                    home: &#39;/test&#39;
+                }
+            },
+            vars: {
+                &#39;components-path&#39;: &#39;/base/bower_components&#39;
+            }
+        }
+    },
+    deps: tests,
+    callback: window.__karma__.start
+};
+
+requirejs.config({
+    paths: {
+        &#39;{angular-mocks}&#39;: &#39;/base/bower_components/angular-mocks&#39;,
+        &#39;{fragment}&#39;: &#39;/base/fragment&#39;
+    },
+    shim: {
+        &#39;{angular-mocks}/angular-mocks&#39;: [ &#39;{angular}/angular&#39; ]
+    }
+});
+
+requirejs([ &#39;/base/bower_components/w20/modules/w20.js&#39; ]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is a lot going on in the &lt;code&gt;test-main.js&lt;/code&gt; file and we will explain what this configuration does. This module is the
+main entry point to the application under test.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Loaded files are listed in the global variable &lt;code&gt;window._karma_.files&lt;/code&gt;.
+We add all the &lt;code&gt;.spec.js&lt;/code&gt; files in a list, those files corresponding to the unit test modules (we will write one soon).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;We configure the application programmatically by editing the &lt;code&gt;w20&lt;/code&gt; global variable &lt;code&gt;configuration&lt;/code&gt; property. Normally, the loader will create this configuration
+by reading and parsing an application manifest but we can edit it directly for the need of bootstrapping a test environment. We declare the core fragment and configure
+the application module. Because Karma will serve files from &lt;code&gt;/base&lt;/code&gt; we need to specify the path to our web components (by default the components path is mapped to
+&lt;code&gt;bower_components&lt;/code&gt; but here we need to remap it to &lt;code&gt;/base/bower_components&lt;/code&gt;. This is possible using the &lt;code&gt;vars&lt;/code&gt; property. We add the unit test modules to the dependencies
+by using the &lt;code&gt;deps&lt;/code&gt; property and allow the start of Karma once the configuration has been processed using the &lt;code&gt;callback&lt;/code&gt; property.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Some additional RequireJS configuration are necessary to remap the &lt;code&gt;angular-mocks&lt;/code&gt; module and the business fragment alias to suit Karma base path.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Finally we start the application by requiring explicitely the &lt;code&gt;w20&lt;/code&gt; module.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;writing-unit-tests&#34;&gt;Writing unit tests&lt;/h3&gt;
+
+&lt;p&gt;We are ready to start unit testing a module. We will take the example of a simple AngularJS controller defined in &lt;code&gt;fragment/modules/module-to-test.js&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;{angular}/angular&#39;
+], function(angular) {
+    &#39;use strict&#39;;
+
+	 var module = angular.module(&#39;moduleToTest&#39;, []);
+
+     module.controller(&#39;ControllerToTest&#39;, [&#39;$scope&#39;, function ($scope) {
+        $scope.greeting = &#39;Hello World!&#39;;
+    }]);
+
+	return {
+		angularModules : [ &#39;moduleToTest&#39; ]
+	};
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This module does not do anything fancy. We declare an AngularJS module &lt;code&gt;moduleToTest&lt;/code&gt; and a controller with
+a scope property.&lt;/p&gt;
+
+&lt;p&gt;The &amp;lsquo;spec&amp;rsquo; (unit test module) for this module will be located in &lt;code&gt;fragment/specs/module-to-test.spec.js&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;{angular}/angular&#39;,
+    &#39;{angular-mocks}/angular-mocks&#39;,
+    &#39;{fragment}/modules/module-to-test&#39;  
+    ], function (angular) {
+        &#39;use strict&#39;;
+
+        describe(&#39;The module to test&#39;, function() {
+        
+            var scope;
+
+            beforeEach(angular.mock.module(&#39;moduleToTest&#39;));
+
+            beforeEach(inject(function ($rootScope, $controller) {
+                scope = $rootScope.$new();
+                $controller(&#39;ControllerToTest&#39;, {
+                    $scope: scope
+                });
+            }));
+
+            it(&#39;says hello world!&#39;, function () {
+                expect(scope.greeting).toEqual(&#39;Hello World!&#39;);
+            });
+
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;A test suite begins with a call to the global Jasmine function &lt;code&gt;describe&lt;/code&gt; with two parameters: a string and a function.
+The string is the title of the suite - usually what is under test. The function body implements the suite.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;beforeEach&lt;/code&gt; function executes before each unit test. Here we register a mocked version of the module &lt;code&gt;moduleToTest&lt;/code&gt;. This will allow us later to request
+the controller declared on this module without having to worry about the dependency of this module.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;We also request that before each test, the &lt;code&gt;scope&lt;/code&gt; variable be initialized with a new scope. The &lt;code&gt;$controller&lt;/code&gt; service allow us to retrieve our controller and provide
+it its dependency. Our newly created scope (with &lt;code&gt;$rootScope.$new()&lt;/code&gt;) will be passed to the constructor through dependency injection.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Finally the unit test can be written. A unit test in Jasmine takes the form of &lt;code&gt;it&lt;/code&gt; statement which reads like a sentence describing the expected result of the test.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projectcommunity on </title>
+    <link>http://w20-framework.github.io/sections/projectcommunity/index.xml</link>
+    <description>Recent content in Projectcommunity on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/sections/projectcommunity/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Community</title>
+      <link>http://w20-framework.github.io/project/community/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/project/community/</guid>
+      <description>&lt;p&gt;Discover below the tools you can use to contact the W20 community.&lt;/p&gt;
+
+&lt;h1 id=&#34;stackoverflow&#34;&gt;StackOverflow&lt;/h1&gt;
+
+&lt;p&gt;If you have any question or problem please use &lt;a href=&#34;http://stackoverflow.com/&#34;&gt;StackOverflow&lt;/a&gt; and make sure to tag your
+question with &lt;code&gt;w20&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

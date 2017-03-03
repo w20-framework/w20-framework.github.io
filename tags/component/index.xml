@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Component on </title>
+    <link>http://w20-framework.github.io/tags/component/index.xml</link>
+    <description>Recent content in Component on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/component/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Basics</title>
+      <link>http://w20-framework.github.io/addons/components/</link>
+      <pubDate>Wed, 20 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/addons/components/</guid>
+      <description>
+
+&lt;h1 id=&#34;w20-components&#34;&gt;W20 Components&lt;/h1&gt;
+
+&lt;p&gt;The W20 Components addon provides various UI components.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bower install w20-components
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;To include the addon, declare it in the application manifest:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20-components/w20-components.w20.json&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>UI grid</title>
+      <link>http://w20-framework.github.io/addons/components/ui-grid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/addons/components/ui-grid/</guid>
+      <description>
+
+&lt;h1 id=&#34;angular-ui-grid&#34;&gt;Angular UI grid&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ui-grid.info/&#34;&gt;Angular UI grid&lt;/a&gt; is a datagrid fully integrated with AngularJS. It is part of the
+&lt;a href=&#34;http://angular-ui.github.io/&#34;&gt;AngularUI&lt;/a&gt; suite.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20-components/w20-components.w20.json&amp;quot;: {
+    &amp;quot;grid&amp;quot;: {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

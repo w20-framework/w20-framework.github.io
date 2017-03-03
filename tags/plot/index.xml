@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Plot on </title>
+    <link>http://w20-framework.github.io/tags/plot/index.xml</link>
+    <description>Recent content in Plot on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/plot/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Dygraphs</title>
+      <link>http://w20-framework.github.io/addons/dataviz/dygraphs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/addons/dataviz/dygraphs/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://dygraphs.com/&#34;&gt;Dygraphs&lt;/a&gt; is a fast charting library that allows users to explore large data sets. It plots data series as lines.
+The W20 integration provides an AngularJS directive augmented with an option to load down-sampled data while zooming.&lt;/p&gt;
+
+&lt;div class=&#34;margin-top-20 margin-bottom-20&#34;&gt;
+    &lt;a href=&#39;http://w20-framework.github.io/w20-dataviz&#39; class=&#34;btn btn-u&#34;&gt;Live demo&lt;/a&gt;
+&lt;/div&gt;
+
+
+&lt;h1 id=&#34;dygraphs&#34;&gt;Dygraphs&lt;/h1&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;See the installation of the Dataviz addon in the &lt;a href=&#34;http://w20-framework.github.io/addons/w20-dataviz/&#34;&gt;basics&lt;/a&gt; section&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;Declare the &lt;code&gt;dygraphs&lt;/code&gt; module in the &lt;code&gt;modules&lt;/code&gt; section of the dataviz fragment&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;w20-dataviz&amp;quot;: {
+    &amp;quot;modules&amp;quot;: {
+        &amp;quot;dygraphs&amp;quot;: {}
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;directive&#34;&gt;Directive&lt;/h1&gt;
+
+&lt;p&gt;Below you can find an example of a dygrah declaration with all its attributes:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div w20-dygraph
+     data=&amp;quot;data&amp;quot;
+     options=&amp;quot;options&amp;quot;
+     reference=&amp;quot;reference&amp;quot;
+     on-range-change=&amp;quot;change&amp;quot;&amp;gt;
+&amp;lt;/div&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;attributes&#34;&gt;Attributes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;data&lt;/strong&gt;: The initial data to provide to the dygraph. Data format can either be of type &lt;code&gt;string&lt;/code&gt; (CSV), &lt;code&gt;array&lt;/code&gt; or &lt;code&gt;url&lt;/code&gt;. If no data is passed or if the values are empty, the graph will not be instatntiated.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;string-csv-data-set&#34;&gt;String (CSV) data set&lt;/h3&gt;
+
+&lt;p&gt;CSV, for Comma Separated Values, is a lightweight data format that can be transmitted as &lt;code&gt;string&lt;/code&gt; to the dygraph. It is often used while exporting data from tools like MS Excel for instance. Here is an example of a CVS data set which represents two series of maximum and minimum temperatures during consecutive days of january 2007.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Date,High,Low
+20070101,62,39
+20070102,62,44
+20070103,62,42
+20070104,57,45
+20070105,54,44
+20070106,55,36
+20070107,62,45
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first line is the data set header. Dygraphs will use these information for labelling the axis and series. For each row of data, the first element correspond to the X-axis while the remaining values represents the series value at this abscissa.&lt;/p&gt;
+
+&lt;h3 id=&#34;raw-data-set&#34;&gt;Raw data set&lt;/h3&gt;
+
+&lt;p&gt;You can also pass an array of data to the graph instead of a CSV formatted string. Here is the same example as above in raw data format.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;[
+    [20070101,62,39]
+    [20070102,62,44]
+    [20070103,62,42]
+    [20070104,57,45]
+    [20070105,54,44]
+    [20070106,55,36]
+    [20070107,62,45]
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The information about series name is lost when using raw data format. Headers for native format must be specified via the &lt;code&gt;labels&lt;/code&gt; option (see options attribute).&lt;/p&gt;
+
+&lt;h3 id=&#34;url&#34;&gt;URL&lt;/h3&gt;
+
+&lt;p&gt;Alternatively you can use a url as the value of the data attribute. Dygraphs will try to issue a GET request to this url and use the response as the data value. The response should be of one of the aforementioned type.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;options&lt;/strong&gt;: This attributes allows you to merge your custom options with the default one provided by the directive. The available options are documented on the dygraphs &lt;a href=&#34;http://dygraphs.com/options.html&#34;&gt;options&lt;/a&gt; page.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;reference&lt;/strong&gt;: This attribute establishes a two way data binding between the dygraph instance created in the directive and the reference passed to this attribute.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div w20-dygraph reference=&amp;quot;myReference&amp;quot; ...&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;console.info($scope.myReference instanceof Dygraph); // true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Please note that data must be passed to the graph before a reference could be created. This means that the reference could be undefined if you try to access it prior to the graph instantiation.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;on-range-change&lt;/strong&gt;: This attribute should receive a function reference which, if defined, will display a range selector below the graph and trigger the function whenever the range changes. See next section for details.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;server-side-down-sampling&#34;&gt;Server side down sampling&lt;/h1&gt;
+
+&lt;p&gt;Dygraph can handle large data sets but feeding a massive amount of data to the client still pose a problem in terms of network performance. One technique to avoid this issue is to load a reasonable amount of data points initially and request more data points on the range the user has selected. This behavior can be triggered by declaring the &lt;code&gt;on-range-attribute&lt;/code&gt; on the directive element.&lt;/p&gt;
+
+&lt;p&gt;Example: Our backend has a REST resource &lt;code&gt;&#39;/data&#39;&lt;/code&gt; which returns a data set interval defined by the two query params &lt;code&gt;min&lt;/code&gt; and &lt;code&gt;max&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div w20-dygraph
+     data=&amp;quot;data&amp;quot;
+     options=&amp;quot;options&amp;quot;
+     reference=&amp;quot;reference&amp;quot;
+     on-range-change=&amp;quot;onRangeChange&amp;quot;&amp;gt;
+&amp;lt;/div&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var minValue = 1461327631000, 
+    max value = 1461414031000;
+
+$http.get(&#39;/data&#39;, { params: { min: minValue, max: maxValue })
+     .then(function (data) { $scope.data = data; });
+
+$scope.onRangeChange = function (rangeArray, doneCallback) {
+    var lowerLimit = rangeArray[0],
+        upperLimit = rangeArray[1];
+
+     $http.get(&#39;/data&#39;, { params: { min: lowerLimit, max: upperLimit })
+          .then(function (moreDetailedData) { 
+             doneCallback(moreDetailedData);
+          });   
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We start by requesting the original data set and set our initial &lt;code&gt;$scope.data&lt;/code&gt; with the result. As soon as data is available, the directive will create a new Dygraph instance and plot the graph to the div.&lt;/p&gt;
+
+&lt;p&gt;When the user interact with the graph through the range selector or by click-moving on the graph canvas, the &lt;code&gt;onRangeChange&lt;/code&gt; function is called with two parameters:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;rangeArray&lt;/strong&gt;: An array of length 2 which contains the lower and upper limit selected by the range selector.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;doneCallback&lt;/strong&gt;: A function callback which must be called with the more fine grained data set for the specific interval.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When the &lt;code&gt;doneCallback&lt;/code&gt; function is called, the argument it is passed will be merged into the original data set (supplied to $scope.data).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

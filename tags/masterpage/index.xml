@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Masterpage on </title>
+    <link>http://w20-framework.github.io/tags/masterpage/index.xml</link>
+    <description>Recent content in Masterpage on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/masterpage/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Web framework</title>
+      <link>http://w20-framework.github.io/docs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/</guid>
+      <description>&lt;p&gt;W20 is a web solution designed to allow developers to quickly and simply create enterprise-grade &lt;strong&gt;Single Page
+Application&lt;/strong&gt; (SPA). It is &lt;strong&gt;server agnostic&lt;/strong&gt; which means it can work with any HTTP capable server technology. In fact,
+it can even work without any server.&lt;/p&gt;
+
+&lt;h1 id=&#34;benefits&#34;&gt;Benefits&lt;/h1&gt;
+
+&lt;p&gt;W20 provides a &lt;strong&gt;modular programming model for web applications&lt;/strong&gt;, allowing entire parts of web frontend to be reused
+across applications. These parts are called fragments and can be published on any HTTP server as static resources.
+Creating a frontend application with W20 becomes as easy as choosing the fragments you want to load and how you want
+them to be configured from a single configuration file.
+In fact, W20 itself is distributed as several fragments which are, aside from its core, all optional.&lt;/p&gt;
+
+&lt;h1 id=&#34;organization-of-an-application&#34;&gt;Organization of an application&lt;/h1&gt;
+
+&lt;p&gt;A W20 application is a Single Page Application (SPA) composed of:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A &lt;strong&gt;master page&lt;/strong&gt; (usually &lt;code&gt;index.html&lt;/code&gt;, but can be dynamically generated). It is the entry point of the application.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;configuration file&lt;/strong&gt; (usually &lt;code&gt;w20.app.json&lt;/code&gt;, but can be dynamically generated).&lt;/li&gt;
+&lt;li&gt;One or more &lt;strong&gt;fragment(s)&lt;/strong&gt;. A fragment is a bundle of web resources described by a JSON manifest which must be
+accessible by HTTP from the browser.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;    (docroot)
+        |-index.html
+        |-w20.app.json
+        |-fragments
+            |-fragment1
+                |-fragment1.w20.json
+                ...
+            |-fragment2
+                |-fragment2.w20.json
+                ...
+            ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;the-master-page&#34;&gt;The master page&lt;/h2&gt;
+
+&lt;p&gt;A single page application is a web application that fits on a single web page called the master page (usually
+&lt;code&gt;index.html&lt;/code&gt;). Assuming you keep your static resources in a &lt;code&gt;bower_components&lt;/code&gt; directory, a sample code of a
+minimalist master page in W20 would be :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
+&amp;lt;html data-w20-app&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Application title&amp;lt;/title&amp;gt;
+    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; 
+            data-main=&amp;quot;bower_components/w20/modules/w20&amp;quot; 
+            src=&amp;quot;bower_components/requirejs/require.js&amp;quot;&amp;gt;
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+    &amp;lt;div data-ng-view&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Things worth noticing :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;data-w20-app&lt;/code&gt; attribute on the &lt;code&gt;html&lt;/code&gt; tag that will load the configuration of your W20 application.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tag, where we reference &lt;a href=&#34;http://requirejs.org/&#34;&gt;RequireJS&lt;/a&gt; and instruct it to load W20.&lt;/li&gt;
+&lt;li&gt;A W20 application is also an &lt;a href=&#34;http://angularjs.org&#34;&gt;AngularJS&lt;/a&gt; application. Therefore you should add a &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; tag
+with the &lt;code&gt;data-ng-view&lt;/code&gt; attribute. This will include rendered templates into the master page.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;the-configuration-file&#34;&gt;The configuration file&lt;/h2&gt;
+
+&lt;p&gt;The configuration file &lt;code&gt;w20.app.json&lt;/code&gt; is where you set-up your application. As mentioned earlier, a W20 application is
+basically composed of a set of fragments (a fragment is a bundle of web resources). All are optional except one : the
+core fragment of W20, thus it has to be referenced in the &lt;code&gt;w20.app.json&lt;/code&gt;. This is done by specifying the path to its
+configuration file (&lt;em&gt;a.k.a&lt;/em&gt; the fragment manifest) :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20/w20-core.w20.json&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;the-fragments&#34;&gt;The fragments&lt;/h2&gt;
+
+&lt;p&gt;An important concept in W20 is the &lt;strong&gt;fragment&lt;/strong&gt;. A W20 application is composed of one or more fragment(s). A fragment is
+a bundle of web resources (templates, css, javascript, &amp;hellip;). Each one is intended to serve a purpose and &lt;strong&gt;can be reused
+across applications&lt;/strong&gt;. For example, W20 provides an optional fragment with native AngularJS implementations of UI
+components such as &lt;em&gt;datagrid&lt;/em&gt; and &lt;em&gt;combo boxes&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;fragment-manifest&#34;&gt;Fragment manifest&lt;/h3&gt;
+
+&lt;p&gt;To reference web resources and how they are to be configured, each fragment has its own manifest file located at the
+root of the fragment. The only mandatory property is the fragment unique identifier :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;id&amp;quot; : &amp;quot;fragment-identifier&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;By convention, the manifest file is called after the fragment identifier and suffixed by &lt;code&gt;.w20.json&lt;/code&gt;. In this example,
+the fragment manifest would be &lt;code&gt;fragment-identifier.w20.json&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;fragment-modules&#34;&gt;Fragment modules&lt;/h3&gt;
+
+&lt;p&gt;Now suppose we want to use the fragment discussed above but only the &lt;em&gt;datagrid&lt;/em&gt; component. For that, W20 offers a finer
+granularity to configure your application. Within a single fragment, there can be several units called &lt;strong&gt;modules&lt;/strong&gt; which
+are loaded only if you decide to reference them in your application configuration. That way, you can load a fragment
+without being forced to load all of its resources.
+The sample code below shows how to declare a fragment module :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;id&amp;quot; : &amp;quot;fragment-identifier&amp;quot;,
+
+    &amp;quot;modules&amp;quot;: {
+        &amp;quot;module1&amp;quot;: {
+            &amp;quot;path&amp;quot;: &amp;quot;{fragment-identifier}/modules/module1&amp;quot;,
+            &amp;quot;autoload&amp;quot; : true|false,
+            &amp;quot;configSchema&amp;quot;: {
+                ...
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Things worth noticing :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;{fragment-identifier}&lt;/code&gt; is used by W20 as a placeholder to target the fragment path. This ensures paths are always
+relative to the fragment manifest location. It is particularly useful if the fragment is intended to be used across
+applications&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;path&lt;/code&gt; attribute is mandatory for RequireJS to load the module when it is required by the application&lt;/li&gt;
+&lt;li&gt;Fragments modules are &lt;a href=&#34;http://requirejs.org/docs/whyamd.html#amd&#34;&gt;AMD compliant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;If a configuration JSON schema is provided for a specific module in the fragment manifest, the configuration specified
+here will be validated against it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;how-it-works&#34;&gt;How it works&lt;/h1&gt;
+
+&lt;p&gt;The master page is the one and only entry point of your web application. By adding the following &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tag in it,
+two things happen :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;RequireJS is loaded&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Once RequireJS is loaded, it loads &lt;code&gt;bower_components/w20/modules/w20.js&lt;/code&gt; (notice there is no extension in the
+&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; when pointing to the &lt;code&gt;w20.js&lt;/code&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; 
+            data-main=&amp;quot;bower_components/w20/modules/w20&amp;quot; 
+            src=&amp;quot;bower_components/requirejs/require.js&amp;quot;&amp;gt;
+    &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;w20.js&lt;/code&gt; is the core implementation of W20. Once loaded, it will automatically parse your application configuration
+file &lt;code&gt;w20.app.json&lt;/code&gt; to :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;detect which fragments to load&lt;/li&gt;
+&lt;li&gt;detect which modules to load for each fragment&lt;/li&gt;
+&lt;li&gt;validate configuration for each fragment and module (&lt;code&gt;w20.app.json&lt;/code&gt;) against its schema
+(&lt;code&gt;fragment-identifier.w20.json&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;load AMD modules using RequireJS&lt;/li&gt;
+&lt;li&gt;load the home view from the application module of the W20 core fragment into the master page&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&#39;pull-right margin-top-20&#39;&gt;
+    &lt;a href=&#39;manual&#39; class=&#34;btn btn-u&#34;&gt;Next: start reading the manual...&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&#34;clearfix&#34;&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

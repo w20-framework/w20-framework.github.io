@@ -1,0 +1,2102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pie on </title>
+    <link>http://w20-framework.github.io/tags/pie/index.xml</link>
+    <description>Recent content in Pie on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/pie/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Nvd3</title>
+      <link>http://w20-framework.github.io/addons/dataviz/nvd3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/addons/dataviz/nvd3/</guid>
+      <description>
+
+&lt;h1 id=&#34;nvd3&#34;&gt;Nvd3&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://nvd3.org/&#34;&gt;Nvd3&lt;/a&gt; is a data visualization library build on top of the popular &lt;a href=&#34;https://d3js.org/&#34;&gt;d3&lt;/a&gt; library. It offers several chart types for
+common visualization needs. The web framework add an AngularJS integration in the form of directives, along with sensible defaults for these different charts.&lt;/p&gt;
+
+&lt;div class=&#34;margin-top-20 margin-bottom-20&#34;&gt;
+    &lt;a href=&#39;http://w20-framework.github.io/w20-dataviz&#39; class=&#34;btn btn-u&#34;&gt;Live demo&lt;/a&gt;
+&lt;/div&gt;
+
+
+&lt;h1 id=&#34;multibar&#34;&gt;Multibar&lt;/h1&gt;
+
+&lt;p&gt;The multibar chart is used to compare different series in a bar representation following the X axis.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;multibar&amp;quot;:{},
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The w20MultibarChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;You must indicate a unique id for the chart&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;multibar&amp;quot; data-w20-multibar-chart=&amp;quot;multibarConfig&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;data-format&#34;&gt;Data format&lt;/h2&gt;
+
+&lt;p&gt;Data fed to the multibar chart should follow a default format. This format can be overridden by the use of personal function (See &amp;laquo;x&amp;raquo; and &amp;laquo;y&amp;raquo; properties below).&lt;/p&gt;
+
+&lt;p&gt;Default data format exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  [
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 1&amp;quot;,
+      &amp;quot;values&amp;quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 2&amp;quot;,
+      &amp;quot;values&amp;quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;key&lt;/code&gt; property defines the name of the series. The &lt;code&gt;values&lt;/code&gt; defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.&lt;/p&gt;
+
+&lt;h2 id=&#34;multibar-configuration&#34;&gt;Multibar configuration&lt;/h2&gt;
+
+&lt;p&gt;The multibar chart is configured by the configuration object passed to the directive declaration (see Directives).&lt;/p&gt;
+
+&lt;p&gt;Exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  $scope.multibarConfig = {
+      data: $scope.multibarData,
+      yAxisShowMaxMin: true,
+      xAxisShowMaxMin: true,
+      showLegend: true,
+      showControls: true,
+      tooltips: true,
+      yaxislabel: &#39;The Y axis title&#39;,
+      xaxislabel: &#39;The X axis title&#39;,
+      xaxistickformat: xAxisTickFormatMultibar // custom function to configure X axis
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Available properties :&lt;/p&gt;
+
+&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Properties&lt;/th&gt;
+        &lt;th&gt;Type&lt;/th&gt;
+        &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;data&lt;/td&gt;
+        &lt;td&gt;Array&lt;/td&gt;
+        &lt;td&gt;Data to display using the multibar chart (mandatory if you don&#39;t define the &#34;noData&#34; property.).
+            Generally it would be a property of $scope
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;x&lt;/td&gt;
+        &lt;td&gt;function&lt;/td&gt;
+        &lt;td&gt;Providing a function to the x property allows configuration of the data on the X axis.
+            Consider this example : say we want to double the data value displayed on the X axis in comparison
+            to the data provided to the &#34;data&#34; property.
+            We can achieve this by providing the following function to the x property :
+            &lt;code&gt;function(d){
+                return d[0]*2;
+                };
+            &lt;/code&gt;
+            where &#34;d[0]&#34; is all the values at index 0 of all sub arrays of the array at property &#34;values&#34; of
+            all objects in the array provided to the &#34;data&#34; property.
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+            &lt;td&gt;y&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;See &#34;x&#34; property above. Applied to the Y axis instead.&lt;/td&gt;
+    &lt;/tr&gt;
+      &lt;tr&gt;
+                  &lt;td&gt;forceY&lt;/td&gt;
+                  &lt;td&gt;Array&lt;/td&gt;
+                  &lt;td&gt;Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie.
+                      Use it to force special values such as 0.
+                  &lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                  &lt;td&gt;showLegend&lt;/td&gt;
+                  &lt;td&gt;Boolean&lt;/td&gt;
+                  &lt;td&gt;Display or hide legend.&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                  &lt;td&gt;showControls&lt;/td&gt;
+                  &lt;td&gt;Boolean&lt;/td&gt;
+                  &lt;td&gt;Display or hide controls.&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                  &lt;td&gt;tooltips&lt;/td&gt;
+                  &lt;td&gt;Boolean&lt;/td&gt;
+                  &lt;td&gt;Enable or disable tooltips when hovering the chart.&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                  &lt;td&gt;reduceXTicks&lt;/td&gt;
+                  &lt;td&gt;Boolean&lt;/td&gt;
+                  &lt;td&gt;Reduce the number of ticks on the X axis&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                  &lt;td&gt;staggerLabels&lt;/td&gt;
+                  &lt;td&gt;Boolean&lt;/td&gt;
+                  &lt;td&gt;Create a gap between labels so that they don&#39;t overlap on each other if they are too many&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                  &lt;td&gt;noData&lt;/td&gt;
+                  &lt;td&gt;String&lt;/td&gt;
+                  &lt;td&gt;Message to display when there is no data (default to &#34;No data available&#34;)&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                  &lt;td&gt;rotateLabels&lt;/td&gt;
+                  &lt;td&gt;integer&lt;/td&gt;
+                  &lt;td&gt;Rotation to apply to X axis labels (0 : horizontal(default), 90 : vertical)&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                  &lt;td&gt;color&lt;/td&gt;
+                  &lt;td&gt;Array&lt;/td&gt;
+                  &lt;td&gt; Color of series in the corresponding order. Can be hexadecimal, named or RGB.
+                      Ex. &lt;code&gt;[&#39;#4D9FF2&#39;, &#39;yellow&#39;, &#39;rgb(151,109,165)&#39;]&lt;/code&gt;. Note that you can also
+                      specify the value of the color in the &#34;data&#34; array by providing a &#34;color&#34; attribute to each object.
+                  &lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                  &lt;td&gt;stacked&lt;/td&gt;
+                  &lt;td&gt;Boolean&lt;/td&gt;
+                  &lt;td&gt;Indicate whether the series should be stacked on each other or not.&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                      &lt;td&gt; tooltipContent&lt;/td&gt;
+                      &lt;td&gt;function&lt;/td&gt;
+                      &lt;td&gt;Customize tooltip content.
+                          Ex.
+                           function(key, x, y, e, graph) { return &#39;&amp;lth1&amp;gt Tooltip Title &amp;lt/h1&amp;gt &amp;ltp&amp;gt&#39;+ y
+                              +&#39;&amp;lt/p&amp;gt&#39;;}
+                          where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart
+                          object.
+                      &lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                      &lt;td&gt;transitionDuration&lt;/td&gt;
+                      &lt;td&gt;integer&lt;/td&gt;
+                      &lt;td&gt;Duration of transition effect (Default to 500).&lt;/td&gt;
+                  &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;axis-configuration&#34;&gt;Axis Configuration&lt;/h2&gt;
+
+&lt;p&gt;Axis are configured in the same configuration object.&lt;/p&gt;
+
+&lt;h3 id=&#34;x-axis&#34;&gt;X axis :&lt;/h3&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisTickValues&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Specify explicitly the values to plot on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickSubdivide&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; Specify the number of intermediate ticks to show on the X axis &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickPadding&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Specify ticks padding on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickFormat&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt; Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : &lt;code&gt; d3.format(&amp;lsquo;.2f&amp;rsquo;)&lt;/code&gt;. Or format Date object to
+            a readable format as &lt;code&gt; d3.time.format(&amp;lsquo;%Y&amp;rsquo;)&lt;/code&gt; which shows the year only. See
+            &lt;a href=&#34;https://github.com/mbostock/d3/wiki/Formatting&#34; target=&#34;_blank&#34;&gt;d3.js documentation&lt;/a&gt;
+            for a list of all format available
+            &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisLabel&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Label of the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisDomain&lt;/td&gt;
+            &lt;td&gt;Array [start, end]&lt;/td&gt;
+            &lt;td&gt; Specify the domain on the X axis (min to max value)&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisShowMaxMin&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt; Show or hide maximum and minimum value in bold&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisRotateLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; 0 to 180° rotation of X axis tick label&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisStaggerLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Size of the gap between labels to resolve overlapping issue&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;y-axis&#34;&gt;Y axis :&lt;/h3&gt;
+
+&lt;p&gt;See X axis. Replace property &amp;laquo;xName&amp;raquo; by &amp;laquo;yName&amp;raquo;.&lt;/p&gt;
+
+&lt;h1 id=&#34;pie&#34;&gt;Pie&lt;/h1&gt;
+
+&lt;p&gt;The pie chart is used to represent proportion between series.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration-1&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;quot;pie&amp;quot;:{},
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The w20PieChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;You must indicate a unique id for the chart&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;pie&amp;quot; data-w20-pie-chart=&amp;quot;pieConfig&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;data-format-1&#34;&gt;Data format&lt;/h2&gt;
+
+&lt;p&gt;Data fed to the pie chart should follow a default format. This format can be overridden by the use of personal function (See &amp;laquo;x&amp;raquo; and &amp;laquo;y&amp;raquo; properties below).&lt;/p&gt;
+
+&lt;p&gt;Default data format exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;     [
+      {
+         &amp;quot;key&amp;quot;: &amp;quot;Series 1&amp;quot;,
+         &amp;quot;value&amp;quot;: 10
+      },
+      {
+         &amp;quot;key&amp;quot;: &amp;quot;Series 2&amp;quot;,
+         &amp;quot;value&amp;quot;: 20
+      }
+     ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;callout callout-tips&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+                &lt;i class=&#34;fa fa-lightbulb-o icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Note that the pie/donut chart has &amp;laquo;value&amp;raquo; by default instead of &amp;laquo;values&amp;raquo; as it can only represent one single value&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;key&lt;/code&gt; property defines the name of the series. The &lt;code&gt;value&lt;/code&gt; defines the data of the series.&lt;/p&gt;
+
+&lt;h2 id=&#34;pie-chart-configuration&#34;&gt;Pie chart configuration&lt;/h2&gt;
+
+&lt;p&gt;The pie chart is configured by the configuration object passed to the directive declaration (see Directives).&lt;/p&gt;
+
+&lt;p&gt;Exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    $scope.pieConfig = {
+      data:$scope.pieData,
+      showLabels:true,
+      pieLabelsOutside:true,
+      showValues:true,
+      tooltips:true,
+      labelType:&#39;percent&#39;,
+      showLegend:true
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Available properties :&lt;/p&gt;
+
+&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+   &lt;thead&gt;
+       &lt;tr&gt;
+           &lt;th&gt;Properties&lt;/th&gt;
+           &lt;th&gt;Type&lt;/th&gt;
+           &lt;th&gt;Description&lt;/th&gt;
+       &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+       &lt;tr&gt;
+           &lt;td&gt;data&lt;/td&gt;
+           &lt;td&gt;Numeric&lt;/td&gt;
+           &lt;td&gt;Data to display using the pie chart (mandatory if you don&#39;t define the &#34;noData&#34; property.).&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;x&lt;/td&gt;
+           &lt;td&gt;function&lt;/td&gt;
+           &lt;td&gt;Providing a function to the x property allows configuration of the data on the &#34;X&#34; axis.
+            Consider this example : say we want to customize the key value displayed on the &#34;X&#34; axis (X refer to the key and Y to the value)
+            in comparison to the data provided to the &#34;data&#34; property.
+           We can achieve this by providing the following function to the x property :
+           function(){
+                           return d.key+&#34; a custom string appended&#34;;
+                  };
+             where &#34;d.key&#34; is all the values of key in the array passed to property &#34;data&#34;.
+           &lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;y&lt;/td&gt;
+           &lt;td&gt;function&lt;/td&gt;
+           &lt;td&gt;See &#34;x&#34; property above. Applied to the Y axis instead. (Exemple : double value :
+               function(){
+                      return d.value*2;
+                  }
+           &lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;showLegend&lt;/td&gt;
+           &lt;td&gt;Boolean&lt;/td&gt;
+           &lt;td&gt;Display or hide legend.&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;tooltips&lt;/td&gt;
+           &lt;td&gt;Boolean&lt;/td&gt;
+           &lt;td&gt;Enable or disable tooltips when hovering the chart.&lt;/td&gt;
+       &lt;/tr&gt;
+         &lt;tr&gt;
+           &lt;td&gt;noData&lt;/td&gt;
+           &lt;td&gt;String&lt;/td&gt;
+           &lt;td&gt;Message to display when there is no data (default to &#34;No data available&#34;) &lt;/td&gt;
+       &lt;/tr&gt;
+         &lt;tr&gt;
+           &lt;td&gt;color&lt;/td&gt;
+           &lt;td&gt;Array&lt;/td&gt;
+           &lt;td&gt; Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  [&#39;#4D9FF2&#39;, &#39;yellow&#39;, &#39;rgb(151,109,165)&#39;]. Note that you can also
+           specify the value of the color in the &#34;data&#34; array by providing a &#34;color&#34; attribute to each object. &lt;/td&gt;
+       &lt;/tr&gt;
+          &lt;tr&gt;
+           &lt;td&gt; tooltipContent&lt;/td&gt;
+           &lt;td&gt;function&lt;/td&gt;
+           &lt;td&gt;Customize tooltip content. Ex. function(key, x, y, e, graph) { return &#39;&amp;lth1&amp;gt Tooltip Title &amp;lt/h1&amp;gt &amp;ltp&amp;gt&#39;+ y +&#39;&amp;lt/p&amp;gt&#39;;}
+           where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.&lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;transitionDuration&lt;/td&gt;
+           &lt;td&gt;integer&lt;/td&gt;
+           &lt;td&gt;Duration of transition effect (Default to 500).&lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;showLabels&lt;/td&gt;
+           &lt;td&gt;Boolean&lt;/td&gt;
+           &lt;td&gt;Show or hide labels.&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;labelType&lt;/td&gt;
+           &lt;td&gt;String&lt;/td&gt;
+           &lt;td&gt;What the label would display : &#39;key&#39;, &#39;value&#39; or &#39;percent&#39;.&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;pieLabelsOutside&lt;/td&gt;
+           &lt;td&gt;Boolean&lt;/td&gt;
+           &lt;td&gt;Should the label be inside or outside the chart.&lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;valueFormat&lt;/td&gt;
+           &lt;td&gt;function&lt;/td&gt;
+           &lt;td&gt;Custom formating of values. For instance one can print values in .2f decimal
+           by passing d3.format(&#39;,.2f&#39;) to this property. See &lt;a href=&#34;https://github.com/mbostock/d3/wiki/Formatting&#34; target=&#34;_blank&#34;&gt;d3.js documentation&lt;/a&gt;
+           for a list of format value.&lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;donut&lt;/td&gt;
+           &lt;td&gt;Boolean&lt;/td&gt;
+           &lt;td&gt;Display the chart as a donut&lt;/td&gt;
+       &lt;/tr&gt;
+          &lt;tr&gt;
+           &lt;td&gt;donutLabelsOutside&lt;/td&gt;
+           &lt;td&gt;Boolean&lt;/td&gt;
+           &lt;td&gt;Should the label be inside or outside the chart&lt;/td&gt;
+       &lt;/tr&gt;
+            &lt;/tr&gt;
+          &lt;tr&gt;
+           &lt;td&gt;donutRatio&lt;/td&gt;
+           &lt;td&gt;Numeric&lt;/td&gt;
+           &lt;td&gt;Ratio between the hole and edge of donut (Default 0.5)&lt;/td&gt;
+       &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&#34;scatter-bubble-chart&#34;&gt;Scatter/Bubble chart&lt;/h1&gt;
+
+&lt;p&gt;The scatter chart is used to compare different series between 3 values : X and Y axis + size of data.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration-2&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;scatter&amp;quot;:{}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The w20ScatterChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;You must indicate a unique id for the chart&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;scatter&amp;quot; data-w20-scatter-chart=&amp;quot;scatterConfig&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;fragment-definition-sections&#34;&gt;Fragment definition sections&lt;/h2&gt;
+
+&lt;p&gt;This module has no fragment definition section.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-format-2&#34;&gt;Data format&lt;/h2&gt;
+
+&lt;p&gt;Data fed to the scatter chart should follow a default format.&lt;/p&gt;
+
+&lt;p&gt;Default data format exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;      [
+       {
+          &amp;quot;key&amp;quot;: &amp;quot;Series 1&amp;quot;,
+          &amp;quot;values&amp;quot;: [ {
+                    x: 10,
+                    y: 20,
+                    size: 0.5
+                    },
+                    {
+                    x: 12,
+                    y: 13,
+                    size: 0.9
+                    }
+                    ]
+       },
+       {
+          &amp;quot;key&amp;quot;: &amp;quot;Series 2&amp;quot;,
+          &amp;quot;values&amp;quot;:  [ {
+                     x: 15,
+                     y: 2,
+                     size: 0.5
+                     },
+                     {
+                     x: 15,
+                     y: 13,
+                     size: 0.6
+                     }
+                     ]
+       }
+      ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;key&lt;/code&gt; property defines the name of the series. The &lt;code&gt;values&lt;/code&gt; defines the data of the series.&lt;/p&gt;
+
+&lt;h2 id=&#34;scatter-chart-configuration&#34;&gt;Scatter chart configuration&lt;/h2&gt;
+
+&lt;p&gt;The scatter chart is configured by the configuration object passed to the directive declaration (see Directives).&lt;/p&gt;
+
+&lt;p&gt;Exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;     $scope.scatterConfig = {
+       data: $scope.scatterChartData,
+       tooltips: true,
+       showLegend: true,
+       showControls: true,
+     }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Available properties :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;data&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt;Data to display using the scatter chart (mandatory if you don&amp;rsquo;t define the &amp;laquo;noData&amp;raquo; property.). Generally it would be a property of $scope&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;x&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Providing a function to the x property allows configuration of the data on the X axis. Consider this example :
+            say we want to double the data value displayed on the X axis in comparison to the data provided to the &amp;laquo;data&amp;raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &amp;laquo;d[0]&amp;raquo; is all the values at index 0 of all sub arrays of the array at property &amp;laquo;values&amp;raquo; of all objects in the array provided to the &amp;laquo;data&amp;raquo; property.
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;tooltipXContent&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Customize tooltip content on the X axis (require tooltips to be true). Ex :
+                function (key, x, y) {
+                                   return &amp;lsquo;&amp;amp;ltstrong&amp;amp;gt&amp;rsquo; + x + &amp;lsquo;&amp;amp;lt/strong&amp;amp;gt&amp;rsquo;;
+                               })
+             &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;tooltipYContent&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Customize tooltip content on the X axis (require tooltips to be true). Ex :
+                function (key, x, y) {
+                                   return &amp;lsquo;&amp;amp;ltstrong&amp;amp;gt&amp;rsquo; + y + &amp;lsquo;&amp;amp;lt/strong&amp;amp;gt&amp;rsquo;;
+                               })
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;showLegend&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Display or hide legend.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;showControls&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Display or hide controls.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;tooltips&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Enable or disable tooltips when hovering the chart.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;showDistX&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Show/hide a line marker to the X value when hovering the point&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;showDistY&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Show/hide a line marker to the Y value when hovering the point&lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;noData&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Message to display when there is no data (default to &amp;laquo;No data available&amp;raquo;) &lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;xPadding&lt;/td&gt;
+            &lt;td&gt;Numeric&lt;/td&gt;
+            &lt;td&gt;distance between ticks on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;yPadding&lt;/td&gt;
+            &lt;td&gt;Numeric&lt;/td&gt;
+            &lt;td&gt;distance between ticks on the Y axis&lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;color&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  &lt;code&gt;[&amp;lsquo;#4D9FF2&amp;rsquo;, &amp;lsquo;yellow&amp;rsquo;, &amp;lsquo;rgb(151,109,165)&amp;rsquo;]&lt;/code&gt;. Note that you can also
+            specify the value of the color in the &amp;laquo;data&amp;raquo; array by providing a &amp;laquo;color&amp;raquo; attribute to each object. &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;transitionDuration&lt;/td&gt;
+            &lt;td&gt;integer&lt;/td&gt;
+            &lt;td&gt;Duration of transition effect (Default to 500).&lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;fisheye&lt;/td&gt;
+            &lt;td&gt;Numeric&lt;/td&gt;
+            &lt;td&gt;Magnifying factor (when showControls is true)&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+ &lt;/table&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;axis-configuration-1&#34;&gt;Axis Configuration&lt;/h2&gt;
+
+&lt;p&gt;Axis are configured in the same configuration object.&lt;/p&gt;
+
+&lt;p&gt;X axis :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisTickValues&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Specify explicitly the values to plot on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickSubdivide&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; Specify the number of intermediate ticks to show on the X axis &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickPadding&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Specify ticks padding on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickFormat&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt; Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : &lt;code&gt; d3.format(&amp;lsquo;.2f&amp;rsquo;)&lt;/code&gt;. Or format Date object to
+            a readable format as &lt;code&gt; d3.time.format(&amp;lsquo;%Y&amp;rsquo;)&lt;/code&gt; which shows the year only. See
+            &lt;a href=&#34;https://github.com/mbostock/d3/wiki/Formatting&#34; target=&#34;_blank&#34;&gt;d3.js documentation&lt;/a&gt;
+            for a list of all format available
+            &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisLabel&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Label of the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisDomain&lt;/td&gt;
+            &lt;td&gt;Array [start, end]&lt;/td&gt;
+            &lt;td&gt; Specify the domain on the X axis (min to max value)&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisShowMaxMin&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt; Show or hide maximum and minimum value in bold&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisRotateLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; 0 to 180° rotation of X axis tick label&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisStaggerLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Size of the gap between labels to resolve overlapping issue&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;Y axis :&lt;/p&gt;
+
+&lt;p&gt;See X axis. Replace property &amp;laquo;xName&amp;raquo; by &amp;laquo;yName&amp;raquo;.&lt;/p&gt;
+
+&lt;h1 id=&#34;discrete-bar&#34;&gt;Discrete bar&lt;/h1&gt;
+
+&lt;p&gt;The discretebar chart is used to compare different series in a bar representation.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration-3&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;discretebar&amp;quot;:{}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The w20DiscreteBarChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;You must indicate a unique id for the chart&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;discretebar&amp;quot; data-w20-discrete-bar-chart=&amp;quot;discreteConfig&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;data-format-3&#34;&gt;Data format&lt;/h2&gt;
+
+&lt;p&gt;Data fed to the discretebar chart should follow a default format. This format can be overridden by the use of personal function (See &amp;laquo;x&amp;raquo; and &amp;laquo;y&amp;raquo; properties below).&lt;/p&gt;
+
+&lt;p&gt;Default data format exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  [
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 1&amp;quot;,
+      &amp;quot;values&amp;quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 2&amp;quot;,
+      &amp;quot;values&amp;quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;key&lt;/code&gt; property defines the name of the series. The &lt;code&gt;values&lt;/code&gt; defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.&lt;/p&gt;
+
+&lt;p&gt;## Discretebar configuration&lt;/p&gt;
+
+&lt;p&gt;The discretebar chart is configured by the configuration object passed to the directive declaration (see Directives).&lt;/p&gt;
+
+&lt;p&gt;Exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   $scope.discreteBarConfig = {
+           data: $scope.discreteBarData,
+           tooltips: true,
+           showValues: true
+
+   }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Available properties :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;data&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt;Data to display using the discretebar chart (mandatory if you don&amp;rsquo;t define the &amp;laquo;noData&amp;raquo; property.). Generally it would be a property of $scope&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;x&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Providing a function to the x property allows configuration of the data on the X axis. Consider this example : say we want to double the data value displayed on the X axis in comparison to the data provided to the &amp;laquo;data&amp;raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &amp;laquo;d[0]&amp;raquo; is all the values at index 0 of all sub arrays of the array at property &amp;laquo;values&amp;raquo; of all objects in the array provided to the &amp;laquo;data&amp;raquo; property.
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;y&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;See &amp;laquo;x&amp;raquo; property above. Applied to the Y axis instead.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;forceY&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt;Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie. Use it to force special values such as 0.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;showValues&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Display the value of the bar on top of them.&lt;/td&gt;
+        &lt;/tr&gt;
+       &lt;tr&gt;
+            &lt;td&gt;valueFormat&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Format the value displayed when showValues is true. Ex: &lt;code&gt; d3.format(&amp;lsquo;.2f&amp;rsquo;)&lt;/code&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;tooltips&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Enable or disable tooltips when hovering the chart.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;staggerLabels&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Create a gap between labels so that they don&amp;rsquo;t overlap on each other if they are too many &lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;noData&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Message to display when there is no data (default to &amp;laquo;No data available&amp;raquo;) &lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;color&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  [&amp;lsquo;#4D9FF2&amp;rsquo;, &amp;lsquo;yellow&amp;rsquo;, &amp;lsquo;rgb(151,109,165)&amp;rsquo;]. Note that you can also
+            specify the value of the color in the &amp;laquo;data&amp;raquo; array by providing a &amp;laquo;color&amp;raquo; attribute to each object. &lt;/td&gt;
+        &lt;/tr&gt;
+           &lt;tr&gt;
+            &lt;td&gt; tooltipContent&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Customize tooltip content. Ex.  function(key, x, y, e, graph) { return &amp;lsquo;&amp;amp;lth1&amp;amp;gt Tooltip Title &amp;amp;lt/h1&amp;amp;gt &amp;amp;ltp&amp;amp;gt&amp;rsquo;+ y +&amp;rsquo;&amp;amp;lt/p&amp;amp;gt&amp;rsquo;;}
+            where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;transitionDuration&lt;/td&gt;
+            &lt;td&gt;integer&lt;/td&gt;
+            &lt;td&gt;Duration of transition effect (Default to 500).&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+ &lt;/table&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;axis-configuration-2&#34;&gt;Axis Configuration&lt;/h2&gt;
+
+&lt;p&gt;Axis are configured in the same configuration object.&lt;/p&gt;
+
+&lt;p&gt;X axis :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisTickValues&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Specify explicitly the values to plot on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickSubdivide&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; Specify the number of intermediate ticks to show on the X axis &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickPadding&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Specify ticks padding on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickFormat&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt; Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : &lt;code&gt; d3.format(&amp;lsquo;.2f&amp;rsquo;)&lt;/code&gt;. Or format Date object to
+            a readable format as &lt;code&gt; d3.time.format(&amp;lsquo;%Y&amp;rsquo;)&lt;/code&gt; which shows the year only. See
+            &lt;a href=&#34;https://github.com/mbostock/d3/wiki/Formatting&#34; target=&#34;_blank&#34;&gt;d3.js documentation&lt;/a&gt;
+            for a list of all format available
+            &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisLabel&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Label of the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisDomain&lt;/td&gt;
+            &lt;td&gt;Array [start, end]&lt;/td&gt;
+            &lt;td&gt; Specify the domain on the X axis (min to max value)&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisShowMaxMin&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt; Show or hide maximum and minimum value in bold&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisRotateLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; 0 to 180° rotation of X axis tick label&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisStaggerLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Size of the gap between labels to resolve overlapping issue&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;Y axis :&lt;/p&gt;
+
+&lt;p&gt;See X axis. Replace property &amp;laquo;xName&amp;raquo; by &amp;laquo;yName&amp;raquo;.&lt;/p&gt;
+
+&lt;h1 id=&#34;line-with-focus&#34;&gt;Line with focus&lt;/h1&gt;
+
+&lt;p&gt;The line with focus chart is used to explore series on a long range of values. You can restrict the range with
+the chart below the main chart to render data in a more precise way.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration-4&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;linewithfocus&amp;quot;:{}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The w20LineWithFocusChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;You must indicate a unique id for the chart&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;linewithfocus&amp;quot; data-w20-line-with-focus-chart=&amp;quot;lineWithFocusConfig&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;fragment-definition-sections-1&#34;&gt;Fragment definition sections&lt;/h2&gt;
+
+&lt;p&gt;This module has no fragment definition section.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-format-4&#34;&gt;Data format&lt;/h2&gt;
+
+&lt;p&gt;Data fed to the line with focus chart should follow a default format. This format can be overridden by the use of personal function (See &amp;laquo;x&amp;raquo; and &amp;laquo;y&amp;raquo; properties below).&lt;/p&gt;
+
+&lt;p&gt;Default data format exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  [
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 1&amp;quot;,
+      &amp;quot;values&amp;quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 2&amp;quot;,
+      &amp;quot;values&amp;quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;key&lt;/code&gt; property defines the name of the series. The &lt;code&gt;values&lt;/code&gt; defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.&lt;/p&gt;
+
+&lt;h2 id=&#34;line-with-focus-configuration&#34;&gt;Line with focus configuration&lt;/h2&gt;
+
+&lt;p&gt;The line with focus chart is configured by the configuration object passed to the directive declaration (see Directives).&lt;/p&gt;
+
+&lt;p&gt;Exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   $scope.lineWithFocusConfig = {
+   data: $scope.linefocusdata,
+   tooltips: true
+   }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Available properties :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;data&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt;Data to display using the line with focus chart (mandatory if you don&amp;rsquo;t define the &amp;laquo;noData&amp;raquo; property.). Generally it would be a property of $scope&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;x&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Providing a function to the x property allows configuration of the data on the X axis. Consider this example : say we want to double the data value displayed on the X axis in comparison to the data provided to the &amp;laquo;data&amp;raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &amp;laquo;d[0]&amp;raquo; is all the values at index 0 of all sub arrays of the array at property &amp;laquo;values&amp;raquo; of all objects in the array provided to the &amp;laquo;data&amp;raquo; property.
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;y&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;See &amp;laquo;x&amp;raquo; property above. Applied to the Y axis instead.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;forceY&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt;Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie. Use it to force special values such as 0.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;showLegend&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Display or hide legend.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;tooltips&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Enable or disable tooltips when hovering the chart.&lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;noData&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Message to display when there is no data (default to &amp;laquo;No data available&amp;raquo;) &lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;color&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  &lt;code&gt;[&amp;lsquo;#4D9FF2&amp;rsquo;, &amp;lsquo;yellow&amp;rsquo;, &amp;lsquo;rgb(151,109,165)&amp;rsquo;]&lt;/code&gt;. Note that you can also
+            specify the value of the color in the &amp;laquo;data&amp;raquo; array by providing a &amp;laquo;color&amp;raquo; attribute to each object. &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;transitionDuration&lt;/td&gt;
+            &lt;td&gt;integer&lt;/td&gt;
+            &lt;td&gt;Duration of transition effect (Default to 500).&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+ &lt;/table&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;axis-configuration-3&#34;&gt;Axis Configuration&lt;/h2&gt;
+
+&lt;p&gt;Axis are configured in the same configuration object.&lt;/p&gt;
+
+&lt;p&gt;X axis main chart:&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisTickValues&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Specify explicitly the values to plot on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickSubdivide&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; Specify the number of intermediate ticks to show on the X axis &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickPadding&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Specify ticks padding on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickFormat&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt; Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : &lt;code&gt; d3.format(&amp;lsquo;.2f&amp;rsquo;)&lt;/code&gt;. Or format Date object to
+            a readable format as &lt;code&gt; d3.time.format(&amp;lsquo;%Y&amp;rsquo;)&lt;/code&gt; which shows the year only. See
+            &lt;a href=&#34;https://github.com/mbostock/d3/wiki/Formatting&#34; target=&#34;_blank&#34;&gt;d3.js documentation&lt;/a&gt;
+            for a list of all format available
+            &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisLabel&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Label of the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisDomain&lt;/td&gt;
+            &lt;td&gt;Array [start, end]&lt;/td&gt;
+            &lt;td&gt; Specify the domain on the X axis (min to max value)&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisShowMaxMin&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt; Show or hide maximum and minimum value in bold&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisRotateLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; 0 to 180° rotation of X axis tick label&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisStaggerLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Size of the gap between labels to resolve overlapping issue&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;Y axis :&lt;/p&gt;
+
+&lt;p&gt;See X axis. Replace property &amp;laquo;xName&amp;raquo; by &amp;laquo;yName&amp;raquo;.&lt;/p&gt;
+
+&lt;p&gt;X2 axis :&lt;/p&gt;
+
+&lt;p&gt;For the small focusin chart. See X axis. Replace property &amp;lsquo;xName&amp;rsquo; with &amp;lsquo;x2Name&amp;rsquo;.&lt;/p&gt;
+
+&lt;p&gt;Y2 axis :&lt;/p&gt;
+
+&lt;p&gt;For the small focusing chart. See X axis. Replace property &amp;lsquo;xName&amp;rsquo; with &amp;lsquo;y2Name&amp;rsquo;.&lt;/p&gt;
+
+&lt;h1 id=&#34;stacked-area&#34;&gt;Stacked area&lt;/h1&gt;
+
+&lt;p&gt;The stacked area chart is used to compare different series according to their surface area.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration-5&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;stackedarea&amp;quot;:{}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The w20StackedAreaChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;You must indicate a unique id for the chart&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;stackedArea&amp;quot; data-w20-stacked-area-chart=&amp;quot;stackedAreaConfig&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;data-format-5&#34;&gt;Data format&lt;/h2&gt;
+
+&lt;p&gt;Data fed to the stacked area chart should follow a default format. This format can be overridden by the use of personal function (See &amp;laquo;x&amp;raquo; and &amp;laquo;y&amp;raquo; properties below).&lt;/p&gt;
+
+&lt;p&gt;Default data format exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  [
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 1&amp;quot;,
+      &amp;quot;values&amp;quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 2&amp;quot;,
+      &amp;quot;values&amp;quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;key&lt;/code&gt; property defines the name of the series. The &lt;code&gt;values&lt;/code&gt; defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.&lt;/p&gt;
+
+&lt;h2 id=&#34;stacked-area-chart-configuration&#34;&gt;Stacked area chart configuration&lt;/h2&gt;
+
+&lt;p&gt;The stacked area chart is configured by the configuration object passed to the directive declaration (see Directives).&lt;/p&gt;
+
+&lt;p&gt;Exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    $scope.stackedAreaConfig = {
+           data: $scope.stackedareadata,
+           tooltips: true,
+           showControls: true,
+           showLegend: true
+   };
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Available properties :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;data&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt;Data to display using the multibar chart (mandatory if you don&amp;rsquo;t define the &amp;laquo;noData&amp;raquo; property.). Generally it would be a property of $scope&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;x&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Providing a function to the x property allows configuration of the data on the X axis. Consider this example :
+             say we want to double the data value displayed on the X axis in comparison to the data provided to the &amp;laquo;data&amp;raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &amp;laquo;d[0]&amp;raquo; is all the values at index 0 of all sub arrays of the array at property &amp;laquo;values&amp;raquo; of all objects in the array provided to the &amp;laquo;data&amp;raquo; property.
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;y&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;See &amp;laquo;x&amp;raquo; property above. Applied to the Y axis instead.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;forceY&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt;Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie. Use it to force special values such as 0.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;showLegend&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Display or hide legend.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;showControls&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Display or hide controls.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;tooltips&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Enable or disable tooltips when hovering the chart.&lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;noData&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Message to display when there is no data (default to &amp;laquo;No data available&amp;raquo;) &lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;color&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  [&amp;lsquo;#4D9FF2&amp;rsquo;, &amp;lsquo;yellow&amp;rsquo;, &amp;lsquo;rgb(151,109,165)&amp;rsquo;]. Note that you can also
+            specify the value of the color in the &amp;laquo;data&amp;raquo; array by providing a &amp;laquo;color&amp;raquo; attribute to each object. &lt;/td&gt;
+        &lt;/tr&gt;
+           &lt;tr&gt;
+            &lt;td&gt; tooltipContent&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Customize tooltip content. Ex. function(key, x, y, e, graph) { return &amp;lsquo;&amp;amp;lth1&amp;amp;gt Tooltip Title &amp;amp;lt/h1&amp;amp;gt &amp;amp;ltp&amp;amp;gt&amp;rsquo;+ y +&amp;rsquo;&amp;amp;lt/p&amp;amp;gt&amp;rsquo;;}
+            where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;transitionDuration&lt;/td&gt;
+            &lt;td&gt;integer&lt;/td&gt;
+            &lt;td&gt;Duration of transition effect (Default to 500).&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+ &lt;/table&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;axis-configuration-4&#34;&gt;Axis Configuration&lt;/h2&gt;
+
+&lt;p&gt;Axis are configured in the same configuration object.&lt;/p&gt;
+
+&lt;p&gt;X axis :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisTickValues&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Specify explicitly the values to plot on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickSubdivide&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; Specify the number of intermediate ticks to show on the X axis &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickPadding&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Specify ticks padding on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickFormat&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt; Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : &lt;code&gt; d3.format(&amp;lsquo;.2f&amp;rsquo;)&lt;/code&gt;. Or format Date object to
+            a readable format as &lt;code&gt; d3.time.format(&amp;lsquo;%Y&amp;rsquo;)&lt;/code&gt; which shows the year only. See
+            &lt;a href=&#34;https://github.com/mbostock/d3/wiki/Formatting&#34; target=&#34;_blank&#34;&gt;d3.js documentation&lt;/a&gt;
+            for a list of all format available
+            &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisLabel&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Label of the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisDomain&lt;/td&gt;
+            &lt;td&gt;Array [start, end]&lt;/td&gt;
+            &lt;td&gt; Specify the domain on the X axis (min to max value)&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisShowMaxMin&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt; Show or hide maximum and minimum value in bold&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisRotateLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; 0 to 180° rotation of X axis tick label&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisStaggerLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Size of the gap between labels to resolve overlapping issue&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;Y axis :&lt;/p&gt;
+
+&lt;p&gt;See X axis. Replace property &amp;laquo;xName&amp;raquo; by &amp;laquo;yName&amp;raquo;.&lt;/p&gt;
+
+&lt;h1 id=&#34;multibar-horizontal&#34;&gt;Multibar horizontal&lt;/h1&gt;
+
+&lt;p&gt;The multibar horizontal chart is used to compare different series in a horizontal bar representation.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration-6&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;multibarhorizontal&amp;quot;:{}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The w20MultiBarHorizontalChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;You must indicate a unique id for the chart&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;multibarhorizontal&amp;quot; data-w20-multi-bar-horizontal-chart=&amp;quot;multibarHorizontalConfig&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;fragment-definition-sections-2&#34;&gt;Fragment definition sections&lt;/h2&gt;
+
+&lt;p&gt;This module has no fragment definition section.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-format-6&#34;&gt;Data format&lt;/h2&gt;
+
+&lt;p&gt;Data fed to the multibar horizontal chart should follow a default format. This format can be overridden by the use of personal function (See &amp;laquo;x&amp;raquo; and &amp;laquo;y&amp;raquo; properties below).&lt;/p&gt;
+
+&lt;p&gt;Default data format exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; [
+  {
+     &amp;quot;key&amp;quot;: &amp;quot;Series 1&amp;quot;,
+     &amp;quot;values&amp;quot;: [ [1, 10], [2, 20], [3, 5] ]
+  },
+  {
+     &amp;quot;key&amp;quot;: &amp;quot;Series 2&amp;quot;,
+     &amp;quot;values&amp;quot;: [ [1, 8], [2, 10], [3, 15] ]
+  }
+ ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;key&lt;/code&gt; property defines the name of the series. The &lt;code&gt;values&lt;/code&gt; defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.&lt;/p&gt;
+
+&lt;h2 id=&#34;multibar-configuration-1&#34;&gt;Multibar configuration&lt;/h2&gt;
+
+&lt;p&gt;The multibar chart is configured by the configuration object passed to the directive declaration (see Directives).&lt;/p&gt;
+
+&lt;p&gt;Exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   $scope.multibarHorizontalConfig = {
+          data: $scope.multibarhorizontaldata,
+          showXAxis: true,
+          showYAxis: true,
+          tooltips: true,
+          showControls: true,
+          showLegend: true
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Available properties :&lt;/p&gt;
+
+&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+   &lt;thead&gt;
+       &lt;tr&gt;
+           &lt;th&gt;Properties&lt;/th&gt;
+           &lt;th&gt;Type&lt;/th&gt;
+           &lt;th&gt;Description&lt;/th&gt;
+       &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+       &lt;tr&gt;
+           &lt;td&gt;data&lt;/td&gt;
+           &lt;td&gt;Array&lt;/td&gt;
+           &lt;td&gt;Data to display using the multibar horizontal chart (mandatory if you don&#39;t define the &#34;noData&#34; property.). Generally it would be a property of $scope&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;x&lt;/td&gt;
+           &lt;td&gt;function&lt;/td&gt;
+           &lt;td&gt;Providing a function to the x property allows configuration of the data on the X axis. Consider this example : say we want to double the data value displayed on the X axis in comparison to the data provided to the &#34;data&#34; property.
+           We can achieve this by providing the following function to the x property :
+           function(){
+                      return function(d){
+                           return d[0]*2;
+                       };
+                  };
+             where &#34;d[0]&#34; is all the values at index 0 of all sub arrays of the array at property &#34;values&#34; of all objects in the array provided to the &#34;data&#34; property.
+           &lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;y&lt;/td&gt;
+           &lt;td&gt;function&lt;/td&gt;
+           &lt;td&gt;See &#34;x&#34; property above. Applied to the Y axis instead.&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;forceY&lt;/td&gt;
+           &lt;td&gt;Array&lt;/td&gt;
+           &lt;td&gt;Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie. Use it to force special values such as 0.&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;showLegend&lt;/td&gt;
+           &lt;td&gt;Boolean&lt;/td&gt;
+           &lt;td&gt;Display or hide legend.&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;showControls&lt;/td&gt;
+           &lt;td&gt;Boolean&lt;/td&gt;
+           &lt;td&gt;Display or hide controls.&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;tooltips&lt;/td&gt;
+           &lt;td&gt;Boolean&lt;/td&gt;
+           &lt;td&gt;Enable or disable tooltips when hovering the chart.&lt;/td&gt;
+       &lt;/tr&gt;
+         &lt;tr&gt;
+           &lt;td&gt;noData&lt;/td&gt;
+           &lt;td&gt;String&lt;/td&gt;
+           &lt;td&gt;Message to display when there is no data (default to &#34;No data available&#34;) &lt;/td&gt;
+       &lt;/tr&gt;
+         &lt;tr&gt;
+           &lt;td&gt;color&lt;/td&gt;
+           &lt;td&gt;Array&lt;/td&gt;
+           &lt;td&gt; Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  [&#39;#4D9FF2&#39;, &#39;yellow&#39;, &#39;rgb(151,109,165)&#39;]. Note that you can also
+           specify the value of the color in the &#34;data&#34; array by providing a &#34;color&#34; attribute to each object. &lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;stacked&lt;/td&gt;
+           &lt;td&gt;Boolean&lt;/td&gt;
+           &lt;td&gt;Indicate whether the series should be stacked on each other or not. &lt;/td&gt;
+       &lt;/tr&gt;
+          &lt;tr&gt;
+           &lt;td&gt; tooltipContent&lt;/td&gt;
+           &lt;td&gt;function&lt;/td&gt;
+           &lt;td&gt;Customize tooltip content. Ex.function(key, x, y, e, graph) { return &#39;&amp;lth1&amp;gt Tooltip Title &amp;lt/h1&amp;gt &amp;ltp&amp;gt&#39;+ y +&#39;&amp;lt/p&amp;gt&#39;;}
+           where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.&lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;transitionDuration&lt;/td&gt;
+           &lt;td&gt;integer&lt;/td&gt;
+           &lt;td&gt;Duration of transition effect (Default to 500).&lt;/td&gt;
+       &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;axis-configuration-5&#34;&gt;Axis Configuration&lt;/h2&gt;
+
+&lt;p&gt;Axis are configured in the same configuration object.&lt;/p&gt;
+
+&lt;p&gt;X axis :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+   &lt;thead&gt;
+       &lt;tr&gt;
+           &lt;th&gt;Properties&lt;/th&gt;
+           &lt;th&gt;Type&lt;/th&gt;
+           &lt;th&gt;Description&lt;/th&gt;
+       &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+       &lt;tr&gt;
+           &lt;td&gt;xAxisTickValues&lt;/td&gt;
+           &lt;td&gt;Array&lt;/td&gt;
+           &lt;td&gt; Specify explicitly the values to plot on the X axis&lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;xAxisTickSubdivide&lt;/td&gt;
+           &lt;td&gt;Integer&lt;/td&gt;
+           &lt;td&gt; Specify the number of intermediate ticks to show on the X axis &lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;xAxisTickPadding&lt;/td&gt;
+           &lt;td&gt;Integer&lt;/td&gt;
+           &lt;td&gt;Specify ticks padding on the X axis&lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;xAxisTickFormat&lt;/td&gt;
+           &lt;td&gt;function&lt;/td&gt;
+           &lt;td&gt; Specify how data should be formatted. For instance you can format number on the X axis to
+           have exactly two digit after the decimal point : &lt;code&gt; d3.format(&amp;lsquo;.2f&amp;rsquo;)&lt;/code&gt;. Or format Date object to
+           a readable format as &lt;code&gt; d3.time.format(&amp;lsquo;%Y&amp;rsquo;)&lt;/code&gt; which shows the year only. See
+           &lt;a href=&#34;https://github.com/mbostock/d3/wiki/Formatting&#34; target=&#34;_blank&#34;&gt;d3.js documentation&lt;/a&gt;
+           for a list of all format available
+           &lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;xAxisLabel&lt;/td&gt;
+           &lt;td&gt;String&lt;/td&gt;
+           &lt;td&gt;Label of the X axis&lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;xAxisDomain&lt;/td&gt;
+           &lt;td&gt;Array [start, end]&lt;/td&gt;
+           &lt;td&gt; Specify the domain on the X axis (min to max value)&lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;xAxisShowMaxMin&lt;/td&gt;
+           &lt;td&gt;Boolean&lt;/td&gt;
+           &lt;td&gt; Show or hide maximum and minimum value in bold&lt;/td&gt;
+       &lt;/tr&gt;
+       &lt;tr&gt;
+           &lt;td&gt;xAxisRotateLabels&lt;/td&gt;
+           &lt;td&gt;Integer&lt;/td&gt;
+           &lt;td&gt; 0 to 180° rotation of X axis tick label&lt;/td&gt;
+       &lt;/tr&gt;
+        &lt;tr&gt;
+           &lt;td&gt;xAxisStaggerLabels&lt;/td&gt;
+           &lt;td&gt;Integer&lt;/td&gt;
+           &lt;td&gt;Size of the gap between labels to resolve overlapping issue&lt;/td&gt;
+       &lt;/tr&gt;
+   &lt;/tbody&gt;
+ &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;Y axis :&lt;/p&gt;
+
+&lt;p&gt;See X axis. Replace property &amp;laquo;xName&amp;raquo; by &amp;laquo;yName&amp;raquo;.&lt;/p&gt;
+
+&lt;h1 id=&#34;line&#34;&gt;Line&lt;/h1&gt;
+
+&lt;p&gt;The line chart is used to plot series as line function.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration-7&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;line&amp;quot;:{}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The w20MultibarChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;You must indicate a unique id for the chart&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;multibar&amp;quot; data-w20-multibar-chart=&amp;quot;multibarConfig&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;data-format-7&#34;&gt;Data format&lt;/h2&gt;
+
+&lt;p&gt;Data fed to the line chart should follow a default format. This format can be overridden by the use of personal function (See &amp;laquo;x&amp;raquo; and &amp;laquo;y&amp;raquo; properties below).&lt;/p&gt;
+
+&lt;p&gt;Default data format exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  [
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 1&amp;quot;,
+      &amp;quot;values&amp;quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 2&amp;quot;,
+      &amp;quot;values&amp;quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;key&lt;/code&gt; property defines the name of the series. The &lt;code&gt;values&lt;/code&gt; defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.&lt;/p&gt;
+
+&lt;h2 id=&#34;line-chart-configuration&#34;&gt;Line chart configuration&lt;/h2&gt;
+
+&lt;p&gt;The line chart is configured by the configuration object passed to the directive declaration (see Directives).&lt;/p&gt;
+
+&lt;p&gt;Exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    $scope.lineConfig = {
+           data: $scope.lineData,
+           xAxisTickSubdivide: 10,
+           xAxisTickFormat: d3.format(&#39;.2f&#39;),
+           showControls: true,
+           showLabels: true,
+           showLegend: true,
+           tooltips: true,
+           showXAxis: true,
+           showYAxis: true,
+           xAxisHighlightZero: true,
+           xAxisLabel: &#39;W label&#39;,
+           yAxisLabel: &#39;y label&#39;,
+           xAxisRotateLabels: 90,
+           xAxisScale: d3.scale.linear(),
+           xAxisDomain: [0, 10],
+           yAxisDomain: [0, 100]
+       }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Available properties :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;data&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt;Data to display using the line chart (mandatory if you don&amp;rsquo;t define the &amp;laquo;noData&amp;raquo; property.). Generally it would be a property of $scope&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;x&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Providing a function to the x property allows configuration of the data on the X axis. Consider this example : say we want to double the data value displayed on the X axis in comparison to the data provided to the &amp;laquo;data&amp;raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &amp;laquo;d[0]&amp;raquo; is all the values at index 0 of all sub arrays of the array at property &amp;laquo;values&amp;raquo; of all objects in the array provided to the &amp;laquo;data&amp;raquo; property.
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;y&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;See &amp;laquo;x&amp;raquo; property above. Applied to the Y axis instead.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;forceY&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt;Values to force on the Y axis. By default the Y axis will start at the minimum value of the serie. Use it to force special values such as 0.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;showLegend&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Display or hide legend.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;tooltips&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Enable or disable tooltips when hovering the chart.&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;isArea&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Color integral of series&lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;noData&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Message to display when there is no data (default to &amp;laquo;No data available&amp;raquo;) &lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;color&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex. [&amp;lsquo;#4D9FF2&amp;rsquo;, &amp;lsquo;yellow&amp;rsquo;, &amp;lsquo;rgb(151,109,165)&amp;rsquo;]. Note that you can also
+            specify the value of the color in the &amp;laquo;data&amp;raquo; array by providing a &amp;laquo;color&amp;raquo; attribute to each object. &lt;/td&gt;
+        &lt;/tr&gt;
+           &lt;tr&gt;
+            &lt;td&gt; tooltipContent&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Customize tooltip content. Ex. function(key, x, y, e, graph) { return &amp;lsquo;&amp;amp;lth1&amp;amp;gt Tooltip Title &amp;amp;lt/h1&amp;amp;gt &amp;amp;ltp&amp;amp;gt&amp;rsquo;+ y +&amp;rsquo;&amp;amp;lt/p&amp;amp;gt&amp;rsquo;;}
+            where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;transitionDuration&lt;/td&gt;
+            &lt;td&gt;integer&lt;/td&gt;
+            &lt;td&gt;Duration of transition effect (Default to 500).&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;showXAxis&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Show/hide X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;showYAxis&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Show/hide Y axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;interpolate&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Define the interpolation mode :
+              &lt;ul&gt;
+                    &lt;li&gt;linear - piecewise linear segments, as in a polyline.&lt;/li&gt;
+                    &lt;li&gt;linear-closed - close the linear segments to form a polygon.&lt;/li&gt;
+                    &lt;li&gt;step-before - alternate between vertical and horizontal segments, as in a step function.&lt;/li&gt;
+                    &lt;li&gt;step-after - alternate between horizontal and vertical segments, as in a step function.&lt;/li&gt;
+                    &lt;li&gt;basis - a B-spline, with control point duplication on the ends.&lt;/li&gt;
+                    &lt;li&gt;basis-open - an open B-spline; may not intersect the start or end.&lt;/li&gt;
+                    &lt;li&gt;basis-closed - a closed B-spline, as in a loop.&lt;/li&gt;
+                    &lt;li&gt;bundle - equivalent to basis, except the tension parameter is used to straighten the spline.&lt;/li&gt;
+                    &lt;li&gt;cardinal - a Cardinal spline, with control point duplication on the ends.&lt;/li&gt;
+                    &lt;li&gt;cardinal-open - an open Cardinal spline; may not intersect the start or end, but will intersect other control points.&lt;/li&gt;
+                    &lt;li&gt;cardinal-closed - a closed Cardinal spline, as in a loop.&lt;/li&gt;
+                    &lt;li&gt;monotone - cubic interpolation that preserves monotonicity in y.&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+ &lt;/table&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;axis-configuration-6&#34;&gt;Axis Configuration&lt;/h2&gt;
+
+&lt;p&gt;Axis are configured in the same configuration object.&lt;/p&gt;
+
+&lt;p&gt;X axis :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisTickValues&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Specify explicitly the values to plot on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickSubdivide&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; Specify the number of intermediate ticks to show on the X axis &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickPadding&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Specify ticks padding on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickFormat&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt; Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : &lt;code&gt; d3.format(&amp;lsquo;.2f&amp;rsquo;)&lt;/code&gt;. Or format Date object to
+            a readable format as &lt;code&gt; d3.time.format(&amp;lsquo;%Y&amp;rsquo;)&lt;/code&gt; which shows the year only. See
+            &lt;a href=&#34;https://github.com/mbostock/d3/wiki/Formatting&#34; target=&#34;_blank&#34;&gt;d3.js documentation&lt;/a&gt;
+            for a list of all format available
+            &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisLabel&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Label of the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisDomain&lt;/td&gt;
+            &lt;td&gt;Array [start, end]&lt;/td&gt;
+            &lt;td&gt; Specify the domain on the X axis (min to max value)&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisShowMaxMin&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt; Show or hide maximum and minimum value in bold&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisRotateLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; 0 to 180° rotation of X axis tick label&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisStaggerLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Size of the gap between labels to resolve overlapping issue&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;Y axis :&lt;/p&gt;
+
+&lt;p&gt;See X axis. Replace property &amp;laquo;xName&amp;raquo; by &amp;laquo;yName&amp;raquo;.&lt;/p&gt;
+
+&lt;h1 id=&#34;line-plus-bar&#34;&gt;Line plus bar&lt;/h1&gt;
+
+&lt;p&gt;The line plus bar chart is used to represent series by lines and bars on the same area..&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration-8&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;lineplusbar&amp;quot;:{}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The w20LinePlusBarChart directive allows you to declare the chart on your html markup and specify the configuration object to be used in your controller.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;You must indicate a unique id for the chart&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;LinePlusBarChart&amp;quot; data-w20-line-plus-bar-chart=&amp;quot;lineplusbarConfig&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;fragment-definition-sections-3&#34;&gt;Fragment definition sections&lt;/h2&gt;
+
+&lt;p&gt;This module has no fragment definition section.&lt;/p&gt;
+
+&lt;h2 id=&#34;data-format-8&#34;&gt;Data format&lt;/h2&gt;
+
+&lt;p&gt;Data fed to the line plus bar chart should follow a default format. This format can be overridden by the use of personal function (See &amp;laquo;x&amp;raquo; and &amp;laquo;y&amp;raquo; properties below).&lt;/p&gt;
+
+&lt;p&gt;Default data format exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  [
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 1&amp;quot;,
+      &amp;quot;bar&amp;quot;: true,
+      &amp;quot;values&amp;quot;: [ [1, 10], [2, 20], [3, 5] ]
+   },
+   {
+      &amp;quot;key&amp;quot;: &amp;quot;Series 2&amp;quot;,
+      &amp;quot;values&amp;quot;: [ [1, 8], [2, 10], [3, 15] ]
+   }
+  ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;key&lt;/code&gt; property defines the name of the series. The &lt;code&gt;values&lt;/code&gt; defines the data of the series. By default the value at index 0 of each sub array is plotted on the X axis while the value at index 1 is plotted on the Y axis.
+ By default data are plotted as line. The &amp;laquo;bar&amp;raquo; property specify if the series should be plotted with bars.&lt;/p&gt;
+
+&lt;h2 id=&#34;line-plus-bar-configuration&#34;&gt;line plus bar configuration&lt;/h2&gt;
+
+&lt;p&gt;The line plus bar chart is configured by the configuration object passed to the directive declaration (see Directives).&lt;/p&gt;
+
+&lt;p&gt;Exemple :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  $scope.linePlusBarConfig = {
+   data: $scope.lineplusbardata,
+   showLegend: true
+   }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Available properties :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;data&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt;Data to display using the multibar chart (mandatory if you don&amp;rsquo;t define the &amp;laquo;noData&amp;raquo; property.). Generally it would be a property of $scope&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;x&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Providing a function to the x property allows configuration of the data on the X axis. Consider this example : say we want to double the data value displayed on the X axis in comparison to the data provided to the &amp;laquo;data&amp;raquo; property.
+            We can achieve this by providing the following function to the x property :
+            function(){
+                       return function(d){
+                            return d[0]*2;
+                        };
+                   };
+              where &amp;laquo;d[0]&amp;raquo; is all the values at index 0 of all sub arrays of the array at property &amp;laquo;values&amp;raquo; of all objects in the array provided to the &amp;laquo;data&amp;raquo; property.
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;y&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;See &amp;laquo;x&amp;raquo; property above. Applied to the Y axis instead.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;showLegend&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Display or hide legend.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;tooltips&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt;Enable or disable tooltips when hovering the chart.&lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;noData&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Message to display when there is no data (default to &amp;laquo;No data available&amp;raquo;) &lt;/td&gt;
+        &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;color&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Color of series in the corresponding order. Can be hexadecimal, named  or RGB. Ex.  [&amp;lsquo;#4D9FF2&amp;rsquo;, &amp;lsquo;yellow&amp;rsquo;, &amp;lsquo;rgb(151,109,165)&amp;rsquo;]. Note that you can also
+            specify the value of the color in the &amp;laquo;data&amp;raquo; array by providing a &amp;laquo;color&amp;raquo; attribute to each object. &lt;/td&gt;
+        &lt;/tr&gt;
+           &lt;tr&gt;
+            &lt;td&gt;tooltipContent&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt;Customize tooltip content. Ex. function(key, x, y, e, graph) { return &amp;lsquo;&amp;amp;lth1&amp;amp;gt Tooltip Title &amp;amp;lt/h1&amp;amp;gt &amp;amp;ltp&amp;amp;gt&amp;rsquo;+ y +&amp;rsquo;&amp;amp;lt/p&amp;amp;gt&amp;rsquo;;}
+            where key, x and y are the name and value of the series at the tooltip point, e an event and graph the chart object.&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;transitionDuration&lt;/td&gt;
+            &lt;td&gt;integer&lt;/td&gt;
+            &lt;td&gt;Duration of transition effect (Default to 500).&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+ &lt;/table&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;axis-configuration-7&#34;&gt;Axis Configuration&lt;/h2&gt;
+
+&lt;p&gt;Axis are configured in the same configuration object.&lt;/p&gt;
+
+&lt;p&gt;X axis :&lt;/p&gt;
+
+&lt;p&gt;&lt;table style=&#34;width: 100%; text-align: left;&#34; class=&#34;table table-striped table-bordered table-condensed&#34;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Properties&lt;/th&gt;
+            &lt;th&gt;Type&lt;/th&gt;
+            &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisTickValues&lt;/td&gt;
+            &lt;td&gt;Array&lt;/td&gt;
+            &lt;td&gt; Specify explicitly the values to plot on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickSubdivide&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; Specify the number of intermediate ticks to show on the X axis &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickPadding&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Specify ticks padding on the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisTickFormat&lt;/td&gt;
+            &lt;td&gt;function&lt;/td&gt;
+            &lt;td&gt; Specify how data should be formatted. For instance you can format number on the X axis to
+            have exactly two digit after the decimal point : &lt;code&gt; d3.format(&amp;lsquo;.2f&amp;rsquo;)&lt;/code&gt;. Or format Date object to
+            a readable format as &lt;code&gt; d3.time.format(&amp;lsquo;%Y&amp;rsquo;)&lt;/code&gt; which shows the year only. See
+            &lt;a href=&#34;https://github.com/mbostock/d3/wiki/Formatting&#34; target=&#34;_blank&#34;&gt;d3.js documentation&lt;/a&gt;
+            for a list of all format available
+            &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisLabel&lt;/td&gt;
+            &lt;td&gt;String&lt;/td&gt;
+            &lt;td&gt;Label of the X axis&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisDomain&lt;/td&gt;
+            &lt;td&gt;Array [start, end]&lt;/td&gt;
+            &lt;td&gt; Specify the domain on the X axis (min to max value)&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisShowMaxMin&lt;/td&gt;
+            &lt;td&gt;Boolean&lt;/td&gt;
+            &lt;td&gt; Show or hide maximum and minimum value in bold&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;xAxisRotateLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt; 0 to 180° rotation of X axis tick label&lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;xAxisStaggerLabels&lt;/td&gt;
+            &lt;td&gt;Integer&lt;/td&gt;
+            &lt;td&gt;Size of the gap between labels to resolve overlapping issue&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;&lt;/p&gt;
+
+&lt;p&gt;Y axis :&lt;/p&gt;
+
+&lt;p&gt;See X axis. Replace property &amp;laquo;xName&amp;raquo; by &amp;laquo;yName&amp;raquo;.&lt;/p&gt;
+
+&lt;p&gt;Y2 axis :&lt;/p&gt;
+
+&lt;p&gt;For the right axis. Replace property &amp;laquo;xName&amp;raquo; by &amp;laquo;y2Name&amp;raquo;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

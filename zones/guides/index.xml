@@ -1,0 +1,1985 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guides on </title>
+    <link>http://w20-framework.github.io/zones/guides/index.xml</link>
+    <description>Recent content in Guides on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/zones/guides/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Bootstrap 3 basics</title>
+      <link>http://w20-framework.github.io/guides/bootstrap-basics/</link>
+      <pubDate>Wed, 10 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/guides/bootstrap-basics/</guid>
+      <description>&lt;style type=&#34;text/css&#34;&gt;
+    .bs-grid {
+        background: #EEE;
+        border: 1px solid #DDD;
+        padding: 10px;
+    }
+
+    .show-grid [class^=col-] {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #eee;
+        background-color: rgba(86, 61, 124, .15);
+        border: 1px solid #ddd;
+        border: 1px solid rgba(86, 61, 124, .2);
+    }
+&lt;/style&gt;
+&lt;div&gt;
+&lt;p&gt;
+    See &lt;a href=&#34;http://getbootstrap.com/&#34;&gt;the official bootstrap documentation &lt;/a&gt; for exhaustive information.
+    See also &lt;a href=&#34;http://angular-ui.github.io/bootstrap/&#34;&gt;the bootstrap-ui documentation&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+    The bootstrap framework consists of css resources for the layout and responsive grid design; and javascript for
+    interactive or animated components. With its flat and clear design, the Bootstrap (version 3) framework is of
+    great help for building your views structure.
+&lt;/p&gt;
+
+&lt;p&gt;
+    The Ui Bootstrap library offer tight integration of Bootstrap with AngularJS through dedicated directives that
+    are included
+    in W20.
+&lt;/p&gt;
+
+&lt;p&gt;
+    Bootstrap is loaded naturally whenever you include the &lt;b&gt;w20-ui&lt;/b&gt; module.
+&lt;/p&gt;
+
+&lt;p&gt;
+    Browse this section for information regarding Bootstrap grid layout and major components.
+&lt;/p&gt;
+
+&lt;!-- GRID LAYOUT ---
+--------------------&gt;
+&lt;h1&gt;Grid layout&lt;/h1&gt;
+
+&lt;p&gt;Bootstrap 3.x grid system, as opposed to its predecessor Bootstrap 2.x, is designed to be mobile first.&lt;/p&gt;
+
+&lt;p&gt; Grid systems are used for creating page layouts through a series of rows and columns that house your content.
+    Here&#39;s
+    how the Bootstrap grid system works: &lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;Rows must be placed within a &lt;code&gt;.container&lt;/code&gt; (fixed-width) or &lt;code&gt;.container-fluid&lt;/code&gt;
+        (full-width)
+        for proper alignment and padding.
+    &lt;/li&gt;
+    &lt;li&gt;Use rows to create horizontal groups of columns.&lt;/li&gt;
+    &lt;li&gt;Content should be placed within columns, and only columns may be immediate children of rows.&lt;/li&gt;
+    &lt;li&gt;Predefined grid classes like &lt;code&gt;.row&lt;/code&gt; and &lt;code&gt;.col-xs-4&lt;/code&gt; are available for quickly making
+        grid
+        layouts. Less mixins can also be used for more semantic layouts.
+    &lt;/li&gt;
+    &lt;li&gt;Columns create gutters (gaps between column content) via &lt;code&gt;padding&lt;/code&gt;. That padding is offset in
+        rows
+        for the first and last column via negative margin on &lt;code&gt;.row&lt;/code&gt;s.
+    &lt;/li&gt;
+    &lt;li&gt;Grid columns are created by specifying the number of twelve available columns you wish to span. For example,
+        three equal columns would use three &lt;code&gt;.col-xs-4&lt;/code&gt;.
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt; Depending on the device size, the grid will adopt the corresponding css class. Here is a summary of the
+    different available size : &lt;/p&gt;
+
+&lt;table class=&#34;table table-striped table-bordered&#34;&gt;
+    &lt;tbody&gt;
+    &lt;tr class=&#34;active&#34;&gt;
+        &lt;td&gt;&lt;code&gt;.col-xs-$&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Extra Small&lt;/td&gt;
+        &lt;td&gt;Phones Less than 768px&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&#34;danger&#34;&gt;
+        &lt;td&gt;&lt;code&gt;.col-sm-$&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Small Devices&lt;/td&gt;
+        &lt;td&gt;Tablets 768px and Up&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&#34;warning&#34;&gt;
+        &lt;td&gt;&lt;code&gt;.col-md-$&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Medium Devices&lt;/td&gt;
+        &lt;td&gt;Desktops 992px and Up&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&#34;success&#34;&gt;
+        &lt;td&gt;&lt;code&gt;.col-lg-$&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Large Devices&lt;/td&gt;
+        &lt;td&gt;Large Desktops 1200px and Up&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- RESPONSIVE UTILITIES ------
+--------------------------------&gt;
+&lt;h1&gt; Responsive Utilities &lt;/h1&gt;
+
+&lt;p&gt; Sometime you simply want to hide/show a part of the DOM depending of the size of the viewing device. Bootstrap
+    offer convenient classes for this purpose : &#34;visible-$&#34; and &#34;hidden-$&#34;.&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;code&gt;.visible-xs&lt;/code&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;code&gt;.visible-sm&lt;/code&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;code&gt;.visible-md&lt;/code&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;code&gt;.visible-lg&lt;/code&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;code&gt;.hidden-xs&lt;/code&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;code&gt;.hidden-sm&lt;/code&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;code&gt;.hidden-md&lt;/code&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;code&gt;.hidden-lg&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here are a few examples of the grids that you can create. We&#39;ll go through some basic sites that some people
+    might want and show how easy it is to build that site with the Bootstrap 3 grid.&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-info&#34;&gt;&lt;i class=&#34;icon-bolt&#34;&gt;&lt;/i&gt; Resize your browser&amp;#8217;s width to see the different grids in action. &lt;/div&gt;
+
+&lt;h3&gt;Simple: Large Desktop vs Mobile&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;#8217;s say you wanted a site to have &lt;strong&gt;1 column&lt;/strong&gt; on extra small (phone) and small (tablet)
+    devices, &lt;strong&gt;2 columns&lt;/strong&gt; on medium (medium desktop) devices, and &lt;strong&gt;4 columns&lt;/strong&gt; on large
+    (desktop) devices.&lt;/p&gt;
+
+&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col-md-6 col-lg-3&#34;&gt;
+        &lt;div class=&#34;bs-grid visible-lg text-success&#34;&gt;Large Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-md text-warning&#34;&gt;Medium Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-sm text-primary&#34;&gt;Small Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-xs text-danger&#34;&gt;Extra Small&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-md-6 col-lg-3&#34;&gt;
+        &lt;div class=&#34;bs-grid visible-lg text-success&#34;&gt;Large Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-md text-warning&#34;&gt;Medium Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-sm text-primary&#34;&gt;Small Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-xs text-danger&#34;&gt;Extra Small&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-md-6 col-lg-3&#34;&gt;
+        &lt;div class=&#34;bs-grid visible-lg text-success&#34;&gt;Large Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-md text-warning&#34;&gt;Medium Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-sm text-primary&#34;&gt;Small Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-xs text-danger&#34;&gt;Extra Small&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-md-6 col-lg-3&#34;&gt;
+        &lt;div class=&#34;bs-grid visible-lg text-success&#34;&gt;Large Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-md text-warning&#34;&gt;Medium Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-sm text-primary&#34;&gt;Small Devices!&lt;/div&gt;
+        &lt;div class=&#34;bs-grid visible-xs text-danger&#34;&gt;Extra Small&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here is the code for that example:&lt;/p&gt;
+
+        &lt;pre&gt;
+            &amp;lt;div class=&#34;row&#34;&amp;gt;
+                &amp;lt;div class=&#34;col-md-6 col-lg-3&#34;&amp;gt;
+                    &amp;lt;div class=&#34;visible-lg text-success&#34;&amp;gt;Large Devices!&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&#34;visible-md text-warning&#34;&amp;gt;Medium Devices!&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&#34;visible-sm text-primary&#34;&amp;gt;Small Devices!&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&#34;visible-xs visible-sm text-danger&#34;&amp;gt;Extra Small and Small Devices&amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&#34;col-md-6 col-lg-3&#34;&amp;gt;
+                    &amp;lt;div class=&#34;visible-lg text-success&#34;&amp;gt;Large Devices!&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&#34;visible-md text-warning&#34;&amp;gt;Medium Devices!&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&#34;visible-sm text-primary&#34;&amp;gt;Small Devices!&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&#34;visible-xs visible-sm text-danger&#34;&amp;gt;Extra Small and Small Devices&amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&#34;col-md-6 col-lg-3&#34;&amp;gt;
+                    &amp;lt;div class=&#34;visible-lg text-success&#34;&amp;gt;Large Devices!&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&#34;visible-md text-warning&#34;&amp;gt;Medium Devices!&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&#34;visible-sm text-primary&#34;&amp;gt;Small Devices!&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&#34;visible-xs visible-sm text-danger&#34;&amp;gt;Extra Small and Small Devices&amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&#34;col-md-6 col-lg-3&#34;&amp;gt;
+                    &amp;lt;div class=&#34;visible-lg text-success&#34;&amp;gt;Large Devices!&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&#34;visible-md text-warning&#34;&amp;gt;Medium Devices!&amp;lt;/div&amp;gt;
+                     &amp;lt;div class=&#34;visible-sm text-primary&#34;&amp;gt;Small Devices!&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&#34;visible-xs visible-sm text-danger&#34;&amp;gt;Extra Small and Small Devices&amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &lt;/pre&gt;
+
+&lt;h3&gt;Intermediate: Show Extra Column on Large Desktops&lt;/h3&gt;
+
+&lt;p&gt;This is an interesting example and one that the new grid excels at. Let&amp;#8217;s say you have a site that has a
+    sidebar and a main content section. For &lt;strong&gt;extra small devices&lt;/strong&gt;, you want one column, main content
+    with
+    the sidebar stacked below it. For &lt;strong&gt;small and medium devices&lt;/strong&gt;, we want sidebar and main content to
+    sit
+    side by side. Now for &lt;strong&gt;large devices&lt;/strong&gt;, we want to utilize the space on larger devices. We want to
+    add
+    an extra sidebar to show more content.&lt;/p&gt;
+
+&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col-sm-9 col-lg-6 text-danger&#34;&gt;
+        &lt;div class=&#34;bs-grid&#34;&gt;I am the main content.&lt;/div&gt;
+        &lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&#34;col-sm-3 text-warning&#34;&gt;
+        &lt;div class=&#34;bs-grid&#34;&gt;I am the main sidebar.&lt;/div&gt;
+        &lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&#34;col-lg-3 visible-lg text-success&#34;&gt;
+        &lt;div class=&#34;bs-grid&#34;&gt;I am the secondary sidebar that only shows up on LARGE devices.&lt;/div&gt;
+        &lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;We change the size of the main content to span 6 columns on large devices to make room for our second sidebar.
+    This
+    is a great way to utilize the space on larger desktops. And here is the code for that example.&lt;/p&gt;
+        &lt;pre&gt;
+            &amp;lt;div class=&#34;row&#34;&amp;gt;
+                &amp;lt;div class=&#34;col-sm-9 col-lg-6 text-danger&#34;&amp;gt;
+                    I am the main content.
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&#34;col-sm-3 text-warning&#34;&amp;gt;
+                    I am the main sidebar.
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&#34;col-lg-3 visible-lg text-success&#34;&amp;gt;
+                    I am the secondary sidebar that only shows up on LARGE devices.
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &lt;/pre&gt;
+
+&lt;h3&gt;Advanced: Different Grid For Every Size&lt;/h3&gt;
+
+&lt;p&gt;This will be a more complex example. Let&amp;#8217;s say that at no point in our grid system do we want all of our
+    columns to stack. For &lt;strong&gt;extra small devices&lt;/strong&gt;, we want 2 columns. For &lt;strong&gt;small
+        devices&lt;/strong&gt;,
+    we want 3 columns. For &lt;strong&gt;medium devices&lt;/strong&gt;, we want 4 columns. For &lt;strong&gt;large devices&lt;/strong&gt;,
+    we
+    want 6 columns (one that only shows on large devices).&lt;/p&gt;
+
+&lt;p&gt;You get the drill now. Let&#39;s just straight into the example and code.&lt;/p&gt;
+
+&lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2&#34;&gt;
+        &lt;div class=&#34;bs-grid text-success&#34;&gt;I&#39;m content!&lt;/div&gt;
+        &lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2&#34;&gt;
+        &lt;div class=&#34;bs-grid text-success&#34;&gt;I&#39;m content!&lt;/div&gt;
+        &lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2&#34;&gt;
+        &lt;div class=&#34;bs-grid text-success&#34;&gt;I&#39;m content!&lt;/div&gt;
+        &lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2&#34;&gt;
+        &lt;div class=&#34;bs-grid text-success&#34;&gt;I&#39;m content!&lt;/div&gt;
+        &lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2&#34;&gt;
+        &lt;div class=&#34;bs-grid text-success&#34;&gt;I&#39;m content!&lt;/div&gt;
+        &lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2 visible-lg&#34;&gt;
+        &lt;div class=&#34;bs-grid text-danger&#34;&gt;I&#39;m content only visible on large devices!&lt;/div&gt;
+        &lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+        &lt;pre&gt;
+            &amp;lt;div class=&#34;row&#34;&amp;gt;
+                &amp;lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2&#34;&amp;gt;
+                    I&#39;m content!
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2&#34;&amp;gt;
+                    I&#39;m content!
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2&#34;&amp;gt;
+                    I&#39;m content!
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2&#34;&amp;gt;
+                    I&#39;m content!
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2&#34;&amp;gt;
+                    I&#39;m content!
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&#34;col-xs-6 col-sm-4 col-md-3 col-lg-2 visible-lg&#34;&amp;gt;
+                    I&#39;m content only visible on large devices!
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &lt;/pre&gt;
+
+&lt;p&gt;You can see that as the browser size gets smaller, the columns start to form. Also, the content inside each will
+    begin stacking.&lt;/p&gt;
+
+&lt;h3 id=&#34;grid-offsetting&#34;&gt;Offsetting columns&lt;/h3&gt;
+
+&lt;p&gt;Move columns to the right using &lt;code&gt;.col-md-offset-*&lt;/code&gt; classes. These classes increase the left margin of
+    a column by &lt;code&gt;*&lt;/code&gt; columns. For example, &lt;code&gt;.col-md-offset-4&lt;/code&gt; moves &lt;code&gt;.col-md-4&lt;/code&gt; over four columns.&lt;/p&gt;
+
+&lt;div class=&#34;show-grid bs-docs-grid&#34;&gt;
+    &lt;div class=&#34;row show-grid&#34;&gt;
+        &lt;div class=&#34;col-md-4&#34;&gt;.col-md-4&lt;/div&gt;
+        &lt;div class=&#34;col-md-4 col-md-offset-4&#34;&gt;.col-md-4 .col-md-offset-4&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;row show-grid&#34;&gt;
+        &lt;div class=&#34;col-md-3 col-md-offset-3&#34;&gt;.col-md-3 .col-md-offset-3&lt;/div&gt;
+        &lt;div class=&#34;col-md-3 col-md-offset-3&#34;&gt;.col-md-3 .col-md-offset-3&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;row show-grid&#34;&gt;
+        &lt;div class=&#34;col-md-6 col-md-offset-3&#34;&gt;.col-md-6 .col-md-offset-3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+
+&lt;div&gt;
+            &lt;pre&gt;
+            &amp;lt;div class=&amp;quot;show-grid bs-docs-grid&amp;quot;&amp;gt;
+                &amp;lt;div class=&amp;quot;row show-grid&amp;quot;&amp;gt;
+                    &amp;lt;div class=&amp;quot;col-md-4&amp;quot;&amp;gt;.col-md-4&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&amp;quot;col-md-4 col-md-offset-4&amp;quot;&amp;gt;.col-md-4 .col-md-offset-4&amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&amp;quot;row show-grid&amp;quot;&amp;gt;
+                    &amp;lt;div class=&amp;quot;col-md-3 col-md-offset-3&amp;quot;&amp;gt;.col-md-3 .col-md-offset-3&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&amp;quot;col-md-3 col-md-offset-3&amp;quot;&amp;gt;.col-md-3 .col-md-offset-3&amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&amp;quot;row show-grid&amp;quot;&amp;gt;
+                    &amp;lt;div class=&amp;quot;col-md-6 col-md-offset-3&amp;quot;&amp;gt;.col-md-6 .col-md-offset-3&amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+            &lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;alert alert-info&#34;&gt; Please check out the official &lt;a href=&#34;http://getbootstrap.com/css/&#34;&gt; Bootstrap
+    documentation &lt;/a&gt; for full information regarding the framework.
+&lt;/div&gt;
+
+&lt;!-- COMPONENTS ---------------
+--------------------------------&gt;
+&lt;h1&gt;Components&lt;/h1&gt;
+&lt;br&gt;
+&lt;p&gt; The Bootstrap library of components is huge ! Check out &lt;a href=&#34;http://getbootstrap.com/components/&#34;&gt;bootstrap
+    official documentation &lt;/a&gt; for an exhaustive list of components. We have selected some excerpt of the most commonly used.&lt;/p&gt;
+
+&lt;p&gt; Here are some demos of a few components available in Bootstrap 3.x. (Not exhaustive)&lt;/p&gt;
+
+&lt;!-- ========= Tables =============== --&gt;
+&lt;h1 class=&#34;page-header&#34;&gt; Table &lt;/h1&gt;
+
+&lt;p&gt; Use Bootstrap classes to customize table.&lt;/p&gt;
+&lt;table class=&#34;table&#34;&gt;
+    &lt;thead&gt;
+    &lt;tr&gt;
+        &lt;th&gt;#&lt;/th&gt;
+        &lt;th&gt;Column heading&lt;/th&gt;
+        &lt;th&gt;Column heading&lt;/th&gt;
+        &lt;th&gt;Column heading&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    &lt;tr class=&#34;active&#34;&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;2&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&#34;success&#34;&gt;
+        &lt;td&gt;3&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;4&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&#34;info&#34;&gt;
+        &lt;td&gt;5&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;6&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&#34;warning&#34;&gt;
+        &lt;td&gt;7&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;8&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr class=&#34;danger&#34;&gt;
+        &lt;td&gt;9&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+        &lt;td&gt;Column content&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+        &lt;pre&gt;
+        &amp;lt;table class=&#34;table&#34;&amp;gt;
+                ...
+        &amp;lt;!-- On rows --&amp;gt;
+        &amp;lt;tr class=&amp;quot;active&amp;quot;&amp;gt;...&amp;lt;/tr&amp;gt;
+        &amp;lt;tr class=&amp;quot;success&amp;quot;&amp;gt;...&amp;lt;/tr&amp;gt;
+        &amp;lt;tr class=&amp;quot;warning&amp;quot;&amp;gt;...&amp;lt;/tr&amp;gt;
+        &amp;lt;tr class=&amp;quot;danger&amp;quot;&amp;gt;...&amp;lt;/tr&amp;gt;
+        &amp;lt;tr class=&amp;quot;info&amp;quot;&amp;gt;...&amp;lt;/tr&amp;gt;
+
+        &amp;lt;!-- On cells (`td` or `th`) --&amp;gt;
+        &amp;lt;tr&amp;gt;
+          &amp;lt;td class=&amp;quot;active&amp;quot;&amp;gt;...&amp;lt;/td&amp;gt;
+          &amp;lt;td class=&amp;quot;success&amp;quot;&amp;gt;...&amp;lt;/td&amp;gt;
+          &amp;lt;td class=&amp;quot;warning&amp;quot;&amp;gt;...&amp;lt;/td&amp;gt;
+          &amp;lt;td class=&amp;quot;danger&amp;quot;&amp;gt;...&amp;lt;/td&amp;gt;
+          &amp;lt;td class=&amp;quot;info&amp;quot;&amp;gt;...&amp;lt;/td&amp;gt;
+        &amp;lt;/tr&amp;gt;
+            &lt;/pre&gt;
+&lt;div class=&#34;alert alert-info&#34;&gt;
+    Create responsive tables by wrapping any .table in .table-responsive to make them scroll horizontally up to
+    small devices (under 768px).
+    When viewing on anything larger than 768px wide, you will not see any difference in these tables.
+&lt;/div&gt;
+
+&lt;!-- ========= Forms =============== --&gt;
+&lt;h1&gt; Forms &lt;/h1&gt;
+
+&lt;h2 id=&#34;forms-example&#34;&gt;Basic example&lt;/h2&gt;
+
+&lt;p&gt;Individual form controls automatically receive some global styling. All textual &lt;code&gt;&amp;lt;input&amp;gt;&lt;/code&gt;,
+    &lt;code&gt;&amp;lt;textarea&amp;gt;&lt;/code&gt;, and &lt;code&gt;&amp;lt;select&amp;gt;&lt;/code&gt; elements with &lt;code&gt;.form-control&lt;/code&gt; are set
+    to &lt;code&gt;width: 100%;&lt;/code&gt; by default. Wrap labels and controls in &lt;code&gt;.form-group&lt;/code&gt; for optimum
+    spacing.&lt;/p&gt;
+
+&lt;div&gt;
+    &lt;form role=&#34;form&#34;&gt;
+        &lt;div class=&#34;form-group&#34;&gt;
+            &lt;label for=&#34;exampleInputEmail1&#34;&gt;Email address&lt;/label&gt;
+            &lt;input type=&#34;email&#34; class=&#34;form-control&#34; id=&#34;exampleInputEmail1&#34; placeholder=&#34;Enter email&#34;&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;form-group&#34;&gt;
+            &lt;label for=&#34;exampleInputPassword1&#34;&gt;Password&lt;/label&gt;
+            &lt;input type=&#34;password&#34; class=&#34;form-control&#34; id=&#34;exampleInputPassword1&#34; placeholder=&#34;Password&#34;&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;form-group&#34;&gt;
+            &lt;label for=&#34;exampleInputFile&#34;&gt;File input&lt;/label&gt;
+            &lt;input type=&#34;file&#34; id=&#34;exampleInputFile&#34;&gt;
+
+            &lt;p class=&#34;help-block&#34;&gt;Example block-level help text here.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;checkbox&#34;&gt;
+            &lt;label&gt;
+                &lt;input type=&#34;checkbox&#34;&gt; Check me out
+            &lt;/label&gt;
+        &lt;/div&gt;
+        &lt;button type=&#34;submit&#34; class=&#34;btn btn-default&#34;&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+&lt;!-- /example --&gt;
+&lt;br&gt;
+
+&lt;div&gt;
+                &lt;pre&gt;
+&amp;lt;form role=&amp;quot;form&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;form-group&amp;quot;&amp;gt;
+        &amp;lt;label for=&amp;quot;exampleInputEmail1&amp;quot;&amp;gt;Email address&amp;lt;/label&amp;gt;
+        &amp;lt;input type=&amp;quot;email&amp;quot; class=&amp;quot;form-control&amp;quot; id=&amp;quot;exampleInputEmail1&amp;quot; placeholder=&amp;quot;Enter email&amp;quot;&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;form-group&amp;quot;&amp;gt;
+        &amp;lt;label for=&amp;quot;exampleInputPassword1&amp;quot;&amp;gt;Password&amp;lt;/label&amp;gt;
+        &amp;lt;input type=&amp;quot;password&amp;quot; class=&amp;quot;form-control&amp;quot; id=&amp;quot;exampleInputPassword1&amp;quot; placeholder=&amp;quot;Password&amp;quot;&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;form-group&amp;quot;&amp;gt;
+        &amp;lt;label for=&amp;quot;exampleInputFile&amp;quot;&amp;gt;File input&amp;lt;/label&amp;gt;
+        &amp;lt;input type=&amp;quot;file&amp;quot; id=&amp;quot;exampleInputFile&amp;quot;&amp;gt;
+
+        &amp;lt;p class=&amp;quot;help-block&amp;quot;&amp;gt;Example block-level help text here.&amp;lt;/p&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;checkbox&amp;quot;&amp;gt;
+        &amp;lt;label&amp;gt;
+            &amp;lt;input type=&amp;quot;checkbox&amp;quot;&amp;gt; Check me out
+        &amp;lt;/label&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;button type=&amp;quot;submit&amp;quot; class=&amp;quot;btn btn-default&amp;quot;&amp;gt;Submit&amp;lt;/button&amp;gt;
+&amp;lt;/form&amp;gt;
+                &lt;/pre&gt;
+&lt;/div&gt;
+&lt;!-- Buttons
+================================================== --&gt;
+&lt;div class=&#34;bs-docs-section&#34;&gt;
+    &lt;h1 id=&#34;buttons&#34;&gt;Buttons&lt;/h1&gt;
+
+    &lt;h2 id=&#34;buttons-options&#34;&gt;Options&lt;/h2&gt;
+
+    &lt;p&gt;Use any of the available button classes to quickly create a styled button.&lt;/p&gt;
+
+    &lt;div class=&#34;bs-example&#34;&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-default&#34;&gt;Default&lt;/button&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-primary&#34;&gt;Primary&lt;/button&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-success&#34;&gt;Success&lt;/button&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-info&#34;&gt;Info&lt;/button&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-warning&#34;&gt;Warning&lt;/button&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-danger&#34;&gt;Danger&lt;/button&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-link&#34;&gt;Link&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;br&gt;
+
+    &lt;div&gt;
+                &lt;pre&gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-default&amp;quot;&amp;gt;Default&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Primary&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-success&amp;quot;&amp;gt;Success&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-info&amp;quot;&amp;gt;Info&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-warning&amp;quot;&amp;gt;Warning&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-danger&amp;quot;&amp;gt;Danger&amp;lt;/button&amp;gt;
+&amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-link&amp;quot;&amp;gt;Link&amp;lt;/button&amp;gt;
+                &lt;/pre&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;buttons-sizes&#34;&gt;Sizes&lt;/h2&gt;
+
+&lt;p&gt;Fancy larger or smaller buttons? Add &lt;code&gt;.btn-lg&lt;/code&gt;, &lt;code&gt;.btn-sm&lt;/code&gt;, or &lt;code&gt;.btn-xs&lt;/code&gt; for
+    additional sizes.&lt;/p&gt;
+
+&lt;div class=&#34;bs-example&#34;&gt;
+    &lt;p&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-primary btn-lg&#34;&gt;Large button&lt;/button&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-default btn-lg&#34;&gt;Large button&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-primary&#34;&gt;Default button&lt;/button&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-default&#34;&gt;Default button&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-primary btn-sm&#34;&gt;Small button&lt;/button&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-default btn-sm&#34;&gt;Small button&lt;/button&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-primary btn-xs&#34;&gt;Extra small button&lt;/button&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-default btn-xs&#34;&gt;Extra small button&lt;/button&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;
+                &lt;pre&gt;
+ &amp;lt;p&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-primary btn-lg&amp;quot;&amp;gt;Large button&amp;lt;/button&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-default btn-lg&amp;quot;&amp;gt;Large button&amp;lt;/button&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Default button&amp;lt;/button&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-default&amp;quot;&amp;gt;Default button&amp;lt;/button&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-primary btn-sm&amp;quot;&amp;gt;Small button&amp;lt;/button&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-default btn-sm&amp;quot;&amp;gt;Small button&amp;lt;/button&amp;gt;
+&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-primary btn-xs&amp;quot;&amp;gt;Extra small button&amp;lt;/button&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-default btn-xs&amp;quot;&amp;gt;Extra small button&amp;lt;/button&amp;gt;
+&amp;lt;/p&amp;gt;
+                &lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;btn-dropdowns-single&#34;&gt;Single button dropdowns&lt;/h2&gt;
+
+&lt;p&gt;Turn a button into a dropdown toggle with some basic markup changes.&lt;/p&gt;
+
+&lt;div class=&#34;bs-example&#34;&gt;
+    &lt;div class=&#34;btn-group&#34;&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-default dropdown-toggle&#34; data-toggle=&#34;dropdown&#34;&gt;Default
+            &lt;span class=&#34;caret&#34;&gt;&lt;/span&gt;&lt;/button&gt;
+        &lt;ul class=&#34;dropdown-menu&#34; role=&#34;menu&#34;&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&#34;divider&#34;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- /btn-group --&gt;
+    &lt;div class=&#34;btn-group&#34;&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-primary dropdown-toggle&#34; data-toggle=&#34;dropdown&#34;&gt;Primary
+            &lt;span class=&#34;caret&#34;&gt;&lt;/span&gt;&lt;/button&gt;
+        &lt;ul class=&#34;dropdown-menu&#34; role=&#34;menu&#34;&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&#34;divider&#34;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- /btn-group --&gt;
+    &lt;div class=&#34;btn-group&#34;&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-success dropdown-toggle&#34; data-toggle=&#34;dropdown&#34;&gt;Success
+            &lt;span class=&#34;caret&#34;&gt;&lt;/span&gt;&lt;/button&gt;
+        &lt;ul class=&#34;dropdown-menu&#34; role=&#34;menu&#34;&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&#34;divider&#34;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- /btn-group --&gt;
+    &lt;div class=&#34;btn-group&#34;&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-info dropdown-toggle&#34; data-toggle=&#34;dropdown&#34;&gt;Info
+            &lt;span class=&#34;caret&#34;&gt;&lt;/span&gt;&lt;/button&gt;
+        &lt;ul class=&#34;dropdown-menu&#34; role=&#34;menu&#34;&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&#34;divider&#34;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- /btn-group --&gt;
+    &lt;div class=&#34;btn-group&#34;&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-warning dropdown-toggle&#34; data-toggle=&#34;dropdown&#34;&gt;Warning
+            &lt;span class=&#34;caret&#34;&gt;&lt;/span&gt;&lt;/button&gt;
+        &lt;ul class=&#34;dropdown-menu&#34; role=&#34;menu&#34;&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&#34;divider&#34;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- /btn-group --&gt;
+    &lt;div class=&#34;btn-group&#34;&gt;
+        &lt;button type=&#34;button&#34; class=&#34;btn btn-danger dropdown-toggle&#34; data-toggle=&#34;dropdown&#34;&gt;Danger
+            &lt;span class=&#34;caret&#34;&gt;&lt;/span&gt;&lt;/button&gt;
+        &lt;ul class=&#34;dropdown-menu&#34; role=&#34;menu&#34;&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&#34;divider&#34;&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&#34;#&#34;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;!-- /btn-group --&gt;
+&lt;/div&gt;
+&lt;br&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;
+        &lt;pre&gt;
+&amp;lt;div class=&amp;quot;btn-group&amp;quot;&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-success dropdown-toggle&amp;quot; data-toggle=&amp;quot;dropdown&amp;quot;&amp;gt;Success
+        &amp;lt;span class=&amp;quot;caret&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/button&amp;gt;
+    &amp;lt;ul class=&amp;quot;dropdown-menu&amp;quot; role=&amp;quot;menu&amp;quot;&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Action&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Another action&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Something else here&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li class=&amp;quot;divider&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Separated link&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;!-- /btn-group --&amp;gt;
+&amp;lt;div class=&amp;quot;btn-group&amp;quot;&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-info dropdown-toggle&amp;quot; data-toggle=&amp;quot;dropdown&amp;quot;&amp;gt;Info
+        &amp;lt;span class=&amp;quot;caret&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/button&amp;gt;
+    &amp;lt;ul class=&amp;quot;dropdown-menu&amp;quot; role=&amp;quot;menu&amp;quot;&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Action&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Another action&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Something else here&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li class=&amp;quot;divider&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Separated link&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;!-- /btn-group --&amp;gt;
+&amp;lt;div class=&amp;quot;btn-group&amp;quot;&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-warning dropdown-toggle&amp;quot; data-toggle=&amp;quot;dropdown&amp;quot;&amp;gt;Warning
+        &amp;lt;span class=&amp;quot;caret&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/button&amp;gt;
+    &amp;lt;ul class=&amp;quot;dropdown-menu&amp;quot; role=&amp;quot;menu&amp;quot;&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Action&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Another action&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Something else here&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li class=&amp;quot;divider&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Separated link&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;!-- /btn-group --&amp;gt;
+&amp;lt;div class=&amp;quot;btn-group&amp;quot;&amp;gt;
+    &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-danger dropdown-toggle&amp;quot; data-toggle=&amp;quot;dropdown&amp;quot;&amp;gt;Danger
+        &amp;lt;span class=&amp;quot;caret&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/button&amp;gt;
+    &amp;lt;ul class=&amp;quot;dropdown-menu&amp;quot; role=&amp;quot;menu&amp;quot;&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Action&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Another action&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Something else here&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li class=&amp;quot;divider&amp;quot;&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Separated link&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;!-- /btn-group --&amp;gt;
+        &lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1&gt; Panels &lt;/h1&gt;
+
+&lt;p&gt;Like other components, easily make a panel more meaningful to a particular context by adding any of the
+    contextual state classes.&lt;/p&gt;
+
+&lt;div class=&#34;bs-example&#34;&gt;
+    &lt;div class=&#34;panel panel-primary&#34;&gt;
+        &lt;div class=&#34;panel-heading&#34;&gt;
+            &lt;h3 class=&#34;panel-title&#34;&gt;Panel title&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;panel-body&#34;&gt;
+            Panel content
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;panel panel-success&#34;&gt;
+        &lt;div class=&#34;panel-heading&#34;&gt;
+            &lt;h3 class=&#34;panel-title&#34;&gt;Panel title&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;panel-body&#34;&gt;
+            Panel content
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;panel panel-info&#34;&gt;
+        &lt;div class=&#34;panel-heading&#34;&gt;
+            &lt;h3 class=&#34;panel-title&#34;&gt;Panel title&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;panel-body&#34;&gt;
+            Panel content
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;panel panel-warning&#34;&gt;
+        &lt;div class=&#34;panel-heading&#34;&gt;
+            &lt;h3 class=&#34;panel-title&#34;&gt;Panel title&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;panel-body&#34;&gt;
+            Panel content
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;panel panel-danger&#34;&gt;
+        &lt;div class=&#34;panel-heading&#34;&gt;
+            &lt;h3 class=&#34;panel-title&#34;&gt;Panel title&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;panel-body&#34;&gt;
+            Panel content
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;
+                &lt;pre&gt;
+&amp;lt;div class=&amp;quot;panel panel-primary&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;panel-heading&amp;quot;&amp;gt;
+        &amp;lt;h3 class=&amp;quot;panel-title&amp;quot;&amp;gt;Panel title&amp;lt;/h3&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;panel-body&amp;quot;&amp;gt;
+        Panel content
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;panel panel-success&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;panel-heading&amp;quot;&amp;gt;
+        &amp;lt;h3 class=&amp;quot;panel-title&amp;quot;&amp;gt;Panel title&amp;lt;/h3&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;panel-body&amp;quot;&amp;gt;
+        Panel content
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;panel panel-info&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;panel-heading&amp;quot;&amp;gt;
+        &amp;lt;h3 class=&amp;quot;panel-title&amp;quot;&amp;gt;Panel title&amp;lt;/h3&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;panel-body&amp;quot;&amp;gt;
+        Panel content
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;panel panel-warning&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;panel-heading&amp;quot;&amp;gt;
+        &amp;lt;h3 class=&amp;quot;panel-title&amp;quot;&amp;gt;Panel title&amp;lt;/h3&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;panel-body&amp;quot;&amp;gt;
+        Panel content
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;panel panel-danger&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;panel-heading&amp;quot;&amp;gt;
+        &amp;lt;h3 class=&amp;quot;panel-title&amp;quot;&amp;gt;Panel title&amp;lt;/h3&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;panel-body&amp;quot;&amp;gt;
+        Panel content
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+                &lt;/pre&gt;
+&lt;/div&gt;
+&lt;h1&gt;Modal&lt;/h1&gt;
+
+&lt;p&gt;Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the
+    page.&lt;/p&gt;
+&lt;!-- sample modal content --&gt;
+&lt;div id=&#34;myModal&#34; class=&#34;modal fade&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-labelledby=&#34;myModalLabel&#34; aria-hidden=&#34;true&#34;&gt;
+    &lt;div class=&#34;modal-dialog&#34;&gt;
+        &lt;div class=&#34;modal-content&#34;&gt;
+            &lt;div class=&#34;modal-header&#34;&gt;
+                &lt;button type=&#34;button&#34; class=&#34;close&#34; data-dismiss=&#34;modal&#34; aria-hidden=&#34;true&#34;&gt;&amp;times;&lt;/button&gt;
+                &lt;h4 class=&#34;modal-title&#34; id=&#34;myModalLabel&#34;&gt;Modal Heading&lt;/h4&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;modal-body&#34;&gt;
+
+                &lt;h4&gt;Overflowing text to show scroll behavior&lt;/h4&gt;
+
+                &lt;p&gt;Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+                    egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&lt;/p&gt;
+
+                &lt;p&gt;Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
+                    augue laoreet rutrum faucibus dolor auctor.&lt;/p&gt;
+
+                &lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
+                    nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;
+
+                &lt;p&gt;Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+                    egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&lt;/p&gt;
+
+                &lt;p&gt;Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
+                    augue laoreet rutrum faucibus dolor auctor.&lt;/p&gt;
+
+                &lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
+                    nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;
+
+                &lt;p&gt;Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+                    egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&lt;/p&gt;
+
+                &lt;p&gt;Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
+                    augue laoreet rutrum faucibus dolor auctor.&lt;/p&gt;
+
+                &lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
+                    nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;modal-footer&#34;&gt;
+                &lt;button type=&#34;button&#34; class=&#34;btn btn-default&#34; data-dismiss=&#34;modal&#34;&gt;Close&lt;/button&gt;
+                &lt;button type=&#34;button&#34; class=&#34;btn btn-primary&#34;&gt;Save changes&lt;/button&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;!-- /.modal-content --&gt;
+    &lt;/div&gt;
+    &lt;!-- /.modal-dialog --&gt;
+&lt;/div&gt;
+&lt;!-- /.modal --&gt;
+
+&lt;div class=&#34;bs-example&#34; style=&#34;padding-bottom: 24px;&#34;&gt;
+    &lt;button class=&#34;btn btn-primary btn-lg&#34; data-toggle=&#34;modal&#34; data-target=&#34;#myModal&#34;&gt;
+        Launch demo modal
+    &lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- /example --&gt;
+&lt;div class=&#34;highlight&#34;&gt;
+                &lt;pre&gt;
+ gt&amp;lt;!-- sample modal content --&amp;gt;
+&amp;lt;div id=&amp;quot;myModal&amp;quot; class=&amp;quot;modal fade&amp;quot; tabindex=&amp;quot;-1&amp;quot; role=&amp;quot;dialog&amp;quot; aria-labelledby=&amp;quot;myModalLabel&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;modal-dialog&amp;quot;&amp;gt;
+        &amp;lt;div class=&amp;quot;modal-content&amp;quot;&amp;gt;
+            &amp;lt;div class=&amp;quot;modal-header&amp;quot;&amp;gt;
+                &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;close&amp;quot; data-dismiss=&amp;quot;modal&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;&amp;amp;times;&amp;lt;/button&amp;gt;
+                &amp;lt;h4 class=&amp;quot;modal-title&amp;quot; id=&amp;quot;myModalLabel&amp;quot;&amp;gt;Modal Heading&amp;lt;/h4&amp;gt;
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div class=&amp;quot;modal-body&amp;quot;&amp;gt;
+
+                &amp;lt;h4&amp;gt;Overflowing text to show scroll behavior&amp;lt;/h4&amp;gt;
+
+                &amp;lt;p&amp;gt;Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+                    egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&amp;lt;/p&amp;gt;
+
+                &amp;lt;p&amp;gt;Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
+                    augue laoreet rutrum faucibus dolor auctor.&amp;lt;/p&amp;gt;
+
+                &amp;lt;p&amp;gt;Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
+                    nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.&amp;lt;/p&amp;gt;
+
+                &amp;lt;p&amp;gt;Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+                    egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&amp;lt;/p&amp;gt;
+
+                &amp;lt;p&amp;gt;Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
+                    augue laoreet rutrum faucibus dolor auctor.&amp;lt;/p&amp;gt;
+
+                &amp;lt;p&amp;gt;Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
+                    nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.&amp;lt;/p&amp;gt;
+
+                &amp;lt;p&amp;gt;Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+                    egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&amp;lt;/p&amp;gt;
+
+                &amp;lt;p&amp;gt;Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
+                    augue laoreet rutrum faucibus dolor auctor.&amp;lt;/p&amp;gt;
+
+                &amp;lt;p&amp;gt;Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
+                    nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.&amp;lt;/p&amp;gt;
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div class=&amp;quot;modal-footer&amp;quot;&amp;gt;
+                &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-default&amp;quot; data-dismiss=&amp;quot;modal&amp;quot;&amp;gt;Close&amp;lt;/button&amp;gt;
+                &amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Save changes&amp;lt;/button&amp;gt;
+            &amp;lt;/div&amp;gt;
+
+        &amp;lt;/div&amp;gt;
+        &amp;lt;!-- /.modal-content --&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;!-- /.modal-dialog --&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;!-- /.modal --&amp;gt;
+
+&amp;lt;div class=&amp;quot;bs-example&amp;quot; style=&amp;quot;padding-bottom: 24px;&amp;quot;&amp;gt;
+    &amp;lt;button class=&amp;quot;btn btn-primary btn-lg&amp;quot; data-toggle=&amp;quot;modal&amp;quot; data-target=&amp;quot;#myModal&amp;quot;&amp;gt;
+        Launch demo modal
+    &amp;lt;/button&amp;gt;
+&amp;lt;/div&amp;;
+                &lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;tabs&#34;&gt;Togglable tabs &lt;/h1&gt;
+
+&lt;p&gt;Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.&lt;/p&gt;
+
+&lt;div class=&#34;bs-example bs-example-tabs&#34;&gt;
+    &lt;ul id=&#34;myTab&#34; class=&#34;nav nav-tabs&#34;&gt;
+        &lt;li class=&#34;active&#34;&gt;&lt;a href=&#34;#home&#34; data-toggle=&#34;tab&#34;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#profile&#34; data-toggle=&#34;tab&#34;&gt;Profile&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&#34;dropdown&#34;&gt;
+            &lt;a href=&#34;#&#34; id=&#34;myTabDrop1&#34; class=&#34;dropdown-toggle&#34; data-toggle=&#34;dropdown&#34;&gt;Dropdown
+                &lt;b class=&#34;caret&#34;&gt;&lt;/b&gt;&lt;/a&gt;
+            &lt;ul class=&#34;dropdown-menu&#34; role=&#34;menu&#34; aria-labelledby=&#34;myTabDrop1&#34;&gt;
+                &lt;li&gt;&lt;a href=&#34;#dropdown1&#34; tabindex=&#34;-1&#34; data-toggle=&#34;tab&#34;&gt;@fat&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&#34;#dropdown2&#34; tabindex=&#34;-1&#34; data-toggle=&#34;tab&#34;&gt;@mdo&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;br&gt;
+
+    &lt;div id=&#34;myTabContent&#34; class=&#34;tab-content&#34;&gt;
+        &lt;div class=&#34;tab-pane fade in active&#34; id=&#34;home&#34;&gt;
+            &lt;p&gt;Raw denim you probably haven&#39;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua,
+                retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
+                Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry
+                richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american
+                apparel, butcher voluptate nisi qui.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;tab-pane fade&#34; id=&#34;profile&#34;&gt;
+            &lt;p&gt;Food truck fixie locavore, accusamus mcsweeney&#39;s marfa nulla single-origin coffee squid. Exercitation
+                +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
+                craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
+                ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.
+                Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio
+                cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson
+                biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed
+                echo park.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;tab-pane fade&#34; id=&#34;dropdown1&#34;&gt;
+            &lt;p&gt;Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney&#39;s organic lomo retro
+                fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer,
+                iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
+                Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles
+                pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven&#39;t heard of
+                them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;tab-pane fade&#34; id=&#34;dropdown2&#34;&gt;
+            &lt;p&gt;Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master
+                cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party
+                locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before
+                they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade
+                thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park
+                vegan.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- /example --&gt;
+
+
+&lt;p&gt;You can activate a tab or pill navigation without writing any JavaScript by simply specifying &lt;code&gt;data-toggle=&#34;tab&#34;&lt;/code&gt;
+    or &lt;code&gt;data-toggle=&#34;pill&#34;&lt;/code&gt; on an element. Adding the &lt;code&gt;nav&lt;/code&gt; and &lt;code&gt;nav-tabs&lt;/code&gt; classes
+    to the tab &lt;code&gt;ul&lt;/code&gt; will apply the Bootstrap tab styling, while adding the &lt;code&gt;nav&lt;/code&gt; and &lt;code&gt;nav-pills&lt;/code&gt;
+    classes will apply pill styling.&lt;/p&gt;
+
+&lt;div&gt;
+            &lt;pre&gt;
+&amp;lt;ul id=&amp;quot;myTab&amp;quot; class=&amp;quot;nav nav-tabs&amp;quot;&amp;gt;
+    &amp;lt;li class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#home&amp;quot; data-toggle=&amp;quot;tab&amp;quot;&amp;gt;Home&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#profile&amp;quot; data-toggle=&amp;quot;tab&amp;quot;&amp;gt;Profile&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;li class=&amp;quot;dropdown&amp;quot;&amp;gt;
+        &amp;lt;a href=&amp;quot;#&amp;quot; id=&amp;quot;myTabDrop1&amp;quot; class=&amp;quot;dropdown-toggle&amp;quot; data-toggle=&amp;quot;dropdown&amp;quot;&amp;gt;Dropdown
+            &amp;lt;b class=&amp;quot;caret&amp;quot;&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/a&amp;gt;
+        &amp;lt;ul class=&amp;quot;dropdown-menu&amp;quot; role=&amp;quot;menu&amp;quot; aria-labelledby=&amp;quot;myTabDrop1&amp;quot;&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#dropdown1&amp;quot; tabindex=&amp;quot;-1&amp;quot; data-toggle=&amp;quot;tab&amp;quot;&amp;gt;@fat&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;#dropdown2&amp;quot; tabindex=&amp;quot;-1&amp;quot; data-toggle=&amp;quot;tab&amp;quot;&amp;gt;@mdo&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;/ul&amp;gt;
+    &amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+
+&amp;lt;br&amp;gt;
+
+&amp;lt;div id=&amp;quot;myTabContent&amp;quot; class=&amp;quot;tab-content&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;tab-pane fade in active&amp;quot; id=&amp;quot;home&amp;quot;&amp;gt;
+        &amp;lt;p&amp;gt;Raw denim you probably haven&amp;#39;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua,
+            retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
+            Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry
+            richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american
+            apparel, butcher voluptate nisi qui.&amp;lt;/p&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;tab-pane fade&amp;quot; id=&amp;quot;profile&amp;quot;&amp;gt;
+        &amp;lt;p&amp;gt;Food truck fixie locavore, accusamus mcsweeney&amp;#39;s marfa nulla single-origin coffee squid. Exercitation
+            +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
+            craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
+            ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.
+            Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio
+            cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson
+            biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed
+            echo park.&amp;lt;/p&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;tab-pane fade&amp;quot; id=&amp;quot;dropdown1&amp;quot;&amp;gt;
+        &amp;lt;p&amp;gt;Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney&amp;#39;s organic lomo retro
+            fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer,
+            iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
+            Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles
+            pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven&amp;#39;t heard of
+            them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.&amp;lt;/p&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;tab-pane fade&amp;quot; id=&amp;quot;dropdown2&amp;quot;&amp;gt;
+        &amp;lt;p&amp;gt;Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master
+            cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party
+            locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before
+            they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade
+            thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park
+            vegan.&amp;lt;/p&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+            &lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Fade effect&lt;/h3&gt;
+
+&lt;p&gt;To make tabs fade in, add &lt;code&gt;.fade&lt;/code&gt; to each &lt;code&gt;.tab-pane&lt;/code&gt;. The first tab pane must also have
+    &lt;code&gt;.in&lt;/code&gt; to properly fade in initial content.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;
+                &lt;pre&gt;
+&amp;lt;div class=&amp;quot;tab-content&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;tab-pane fade in active&amp;quot; id=&amp;quot;home&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;tab-pane fade&amp;quot; id=&amp;quot;profile&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;tab-pane fade&amp;quot; id=&amp;quot;messages&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&amp;quot;tab-pane fade&amp;quot; id=&amp;quot;settings&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+                &lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Frontend testing</title>
+      <link>http://w20-framework.github.io/guides/frontend-testing/</link>
+      <pubDate>Wed, 10 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/guides/frontend-testing/</guid>
+      <description>
+
+&lt;p&gt;As your application grows it becomes harder to assert that all your features are still working correctly. Whether you are
+doing some refactoring, upgrading a library version or adding new features, you would want a mechanism to protect yourself
+from regression. Testing is well known for Java EE server side application but your front end web application also deserves
+unit testing especially when complex logic are involved.&lt;/p&gt;
+
+&lt;p&gt;Unit testing as the name implies is about testing individual units of code. Unit tests try to answer questions such as
+&amp;laquo;Did I think about the logic correctly?&amp;raquo; or &amp;laquo;Does the sort function order the list in the right order?&amp;raquo;.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+&lt;p&gt;W20 itself is agnostic of the testing framework and the test runner but you may have good results with respectively
+&lt;a href=&#34;http://jasmine.github.io/&#34;&gt;Jasmine&lt;/a&gt; and &lt;a href=&#34;http://karma-runner.github.io/&#34;&gt;Karma&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;writing-unit-tests&#34;&gt;Writing unit tests&lt;/h1&gt;
+
+&lt;p&gt;Instead of repeating in a less complete way what the documentation on Jasmine &lt;a href=&#34;http://jasmine.github.io/2.1/introduction.html&#34;&gt;Jasmine&lt;/a&gt;
+and &lt;a href=&#34;http://docs.angularjs.org/guide/dev_guide.unit-testing&#34;&gt;AngularJS&lt;/a&gt; have to offer on testing, we are going
+to follow an example and see how we can test our individual unit of code.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-code-to-test&#34;&gt;The code to test&lt;/h2&gt;
+
+&lt;p&gt;We will use the example of a small CRUD application for managing users. The code that we will test consists of a service
+&amp;lsquo;UsersService&amp;rsquo; that retrieve users and an angular controller which holds some functions : addUser, loadUsers and clearUsers.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;module.factory(&#39;UsersService&#39;, [ &#39;$resource&#39;, function($resource) {
+    return {
+        usersResource: $resource(require.toUrl(&#39;{fragmentRoot}/data/users.json&#39;))
+    };
+}]);
+
+module.controller(&#39;UserController&#39;, [ &#39;$scope&#39;, &#39;UsersService&#39;, function ($scope, usersService) {
+
+    var userId = 0;
+    var Users = usersService.usersResource;
+
+    // User array initialization
+    $scope.users = [];
+
+    // This function add the current entered user to the user array
+    $scope.addUser = function () {
+        $scope.users.push({
+            id: (++userId).toString(),
+            firstName: $scope.firstName,
+            lastName: $scope.lastName,
+        });
+    };
+
+    // This function loads users from a resource
+    $scope.loadUsers = function () {
+        Users.query(function (result) {
+            for (var i = 0; i &amp;lt; result.length; i++)
+                if (result[i].id &amp;gt; userId)
+                    userId = result[i].maxid;
+            $scope.users = result;
+        });
+    };
+
+    // This function clears the user array
+    $scope.clearUsers = function () {
+        $scope.users = [];
+    };
+
+]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can now start writing some tests in our user.test.js file.&lt;/p&gt;
+
+&lt;h2 id=&#34;unit-test-structure&#34;&gt;Unit test structure&lt;/h2&gt;
+
+&lt;p&gt;A &lt;b&gt;test suite&lt;/b&gt; begins with a call to the global Jasmine function &lt;code&gt;describe&lt;/code&gt; with two parameters: a string and a function. The string is a name or title
+for a spec suite – usually what is under test. The function is a block of code that implements the suite.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;describe(&amp;quot;A suite&amp;quot;, function() {
+  it(&amp;quot;contains spec with an expectation&amp;quot;, function() {
+    expect(true).toBe(true);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;b&gt;Specs&lt;/b&gt; are defined by calling the global Jasmine function &lt;code&gt;it&lt;/code&gt;, which, like &lt;code&gt;describe&lt;/code&gt; takes a string and a function.
+The string is a title for this spec and the function is the spec, or test. A spec contains one or more expectations that test the state of the code under test.
+An expectation in Jasmine is an assertion that can be either true or false. A spec with all true expectations is a passing spec.
+A spec with one or more expectations that evaluate to false is a failing spec.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;describe(&amp;quot;A suite of spec&amp;quot;, function() {
+  var a;
+  it(&amp;quot;is a spec and variable a should be true &amp;quot;, function() {
+    a = true;
+    expect(a).toBe(true);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Jasmine also provides the global &lt;code&gt;beforeEach&lt;/code&gt; and &lt;code&gt;afterEach&lt;/code&gt; functions.
+As the name implies the beforeEach function is called once before each spec in the describe is run and the afterEach function is called once after each spec.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;describe(&amp;quot;A spec (with setup and tear-down)&amp;quot;, function() {
+  var foo;
+
+  beforeEach(function() {
+    foo = 0;
+    foo += 1;
+  });
+
+  afterEach(function() {
+    foo = 0;
+  });
+
+  it(&amp;quot;is just a function, so it can contain any code&amp;quot;, function() {
+    expect(foo).toEqual(1);
+  });
+
+  it(&amp;quot;can have more than one expectation&amp;quot;, function() {
+    expect(foo).toEqual(1);
+    expect(true).toEqual(true);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;example&#34;&gt;Example&lt;/h1&gt;
+
+&lt;p&gt;With those basic concepts we can now start writing some tests for our code sample. Before writing the test suite we want
+to get our hand on the service and controller inside our test file. We do this by using the &lt;code&gt;beforeEach&lt;/code&gt; function :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;{angular}/angular&#39;,
+    &#39;{angular-mocks}/angular-mocks&#39;
+    &#39;{my-fragment}/modules/user&#39;
+], function(angular) {
+    var userController, $scope;
+
+    beforeEach(function () {
+        // Load the user module, which contains the service and controller
+        module(&#39;user&#39;);
+
+        // inject services that will allow us to get our hands on the required components we want to unit test
+        inject(function ($injector, $controller, $rootScope) {
+
+            // Create an object &#39;serviceMock&#39; with a property &#39;usersResource&#39;.
+            // We do this so that later on we can use it as a spy for call on the UsersService.usersResource.query()
+            serviceMock = {
+                       usersResource: {}
+                   };
+
+            // Get a new child scope from the root scope which will served in our specs
+            $scope = $rootScope.$new();
+
+            // Get the &#39;UserController&#39; and map its $scope dependency to the one defined above and its
+            // &#39;UsersService&#39; dependency as the &#39;serviceMock&#39; we defined above
+            userController = $controller(&#39;UserController&#39;, {
+                $scope: $scope,
+                UsersService: serviceMock
+            });
+        });
+    });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We now have all our components ready for our test suite. Remember that a test suite is defined with &lt;code&gt;describe&lt;/code&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; describe(&amp;quot;the user controller&amp;quot;, function () { ... }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Inside of this test suite we can write our specs :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Check that initialization is correct
+it(&amp;quot;should have empty users collection when initialized&amp;quot;, function () {
+        // assert that $scope.users exists
+        expect($scope.users).toBeDefined();
+        // assert it is empty
+        expect($scope.users.length).toEqual(0);
+});
+
+// Unit test the adduser() method
+it(&amp;quot;should be able to add items to the users collection&amp;quot;, function () {
+       $scope.firstName = &#39;Robert&#39;;
+       $scope.lastName = &#39;SMITH&#39;;
+
+       $scope.addUser();
+
+       expect($scope.users.length).toEqual(1);
+       expect($scope.users).toContain({
+           id: &#39;1&#39;,
+           firstName: &#39;Robert&#39;,
+           lastName: &#39;SMITH&#39;
+       });
+   });
+
+// Unit test the clearUsers() method
+it(&amp;quot;should be able to clear the users collection&amp;quot;, function () {
+        $scope.users.push({
+            id: &#39;1&#39;,
+            firstName: &#39;Robert&#39;,
+            lastName: &#39;SMITH&#39;
+        });
+        expect($scope.users.length).toEqual(1);
+
+        $scope.clearUsers();
+
+        expect($scope.users.length).toEqual(0);
+    });
+
+// Unit test the loadUsers() method
+it(&amp;quot;should be able to load data to the users collection&amp;quot;, function () {
+
+        // We are going to turn query() into a dummy function;
+        // The .andCallFake() specify what the call to query()
+        // should do. We created a spy. Then we test it (with loadUsers())
+        //
+        serviceMock.usersResource.query = jasmine.createSpy().andCallFake(function (callback) {
+            callback([
+                {
+                    id: &#39;1&#39;,
+                    firstName: &#39;Robert&#39;,
+                    lastName: &#39;SMITH&#39;
+                }
+            ]);
+        });
+
+        // loadUsers() will trigger a call to usersService.usersResource.query
+        // which is mocked by serviceMock.usersResource.query
+        $scope.loadUsers();
+
+        expect($scope.users.length).toEqual(1);
+        expect($scope.users).toContain({
+            id: &#39;1&#39;,
+            firstName: &#39;Robert&#39;,
+            lastName: &#39;SMITH&#39;
+        });
+
+        $scope.firstName = &#39;Anna&#39;;
+        $scope.lastName = &#39;O\&#39;HARA&#39;;
+        $scope.addUser();
+
+        expect($scope.users.length).toEqual(2);
+        expect($scope.users).toContain({
+            id: &#39;1&#39;,
+            firstName: &#39;Robert&#39;,
+            lastName: &#39;SMITH&#39;
+        }, {
+            id: &#39;2&#39;,
+            firstName: &#39;Anna&#39;,
+            lastName: &#39;O\&#39;HARA&#39;
+        });
+    });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;full-code&#34;&gt;Full code&lt;/h1&gt;
+
+&lt;p&gt;To conclude here is the entire user.test.js file :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;{angular}/angular&#39;,
+    &#39;{angular-mocks}/angular-mocks&#39;
+    &#39;{my-fragment}/modules/user&#39;
+], function(angular) {
+    var userController, $scope;
+
+    beforeEach(function () {
+        module(&#39;user&#39;);
+        inject(function ($injector, $controller, $rootScope) {
+            serviceMock = {
+                usersResource: {}
+            };
+
+            $scope = $rootScope.$new();
+
+            userController = $controller(&#39;UserController&#39;, {
+                $scope: $scope,
+                UsersService: serviceMock
+            });
+        });
+    });
+
+    describe(&amp;quot;the user controller&amp;quot;, function () {
+        it(&amp;quot;should have empty users collection when initialized&amp;quot;, function () {
+            expect($scope.users).toBeDefined();
+            expect($scope.users.length).toEqual(0);
+        });
+
+        it(&amp;quot;should be able to add items to the users collection&amp;quot;, function () {
+            $scope.firstName = &#39;Robert&#39;;
+            $scope.lastName = &#39;SMITH&#39;;
+            $scope.addUser();
+
+            expect($scope.users.length).toEqual(1);
+            expect($scope.users).toContain({
+                id: &#39;1&#39;,
+                firstName: &#39;Robert&#39;,
+                lastName: &#39;SMITH&#39;
+            });
+        });
+
+        it(&amp;quot;should be able to clear the users collection&amp;quot;, function () {
+            $scope.users.push({
+                id: &#39;1&#39;,
+                firstName: &#39;Robert&#39;,
+                lastName: &#39;SMITH&#39;
+            });
+
+            expect($scope.users.length).toEqual(1);
+            $scope.clearUsers();
+            expect($scope.users.length).toEqual(0);
+        });
+
+        it(&amp;quot;should be able to load data to the users collection&amp;quot;, function () {
+            serviceMock.usersResource.query = jasmine.createSpy().andCallFake(function (callback) {
+                callback([
+                    {
+                        id: &#39;1&#39;,
+                        firstName: &#39;Robert&#39;,
+                        lastName: &#39;SMITH&#39;
+                    }
+                ]);
+            });
+            $scope.loadUsers();
+
+            expect($scope.users.length).toEqual(1);
+            expect($scope.users).toContain({
+                id: &#39;1&#39;,
+                firstName: &#39;Robert&#39;,
+                lastName: &#39;SMITH&#39;
+            });
+
+            $scope.firstName = &#39;Anna&#39;;
+            $scope.lastName = &#39;O\&#39;HARA&#39;;
+            $scope.addUser();
+
+            expect($scope.users.length).toEqual(2);
+            expect($scope.users).toContain({
+                id: &#39;1&#39;,
+                firstName: &#39;Robert&#39;,
+                lastName: &#39;SMITH&#39;
+            }, {
+                id: &#39;2&#39;,
+                firstName: &#39;Anna&#39;,
+                lastName: &#39;O\&#39;HARA&#39;
+            });
+        });
+    });
+});
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>AngularJS dependency injection</title>
+      <link>http://w20-framework.github.io/guides/angularjs-dependency-injection/</link>
+      <pubDate>Mon, 24 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/guides/angularjs-dependency-injection/</guid>
+      <description>&lt;p&gt;Dependency injection in AngularJS is supremely useful, and the key to making easily testable components. This article
+explains how AngularJS dependency injection system works.&lt;/p&gt;
+
+&lt;h1 id=&#34;the-provider-provide&#34;&gt;The Provider ($provide)&lt;/h1&gt;
+
+&lt;p&gt;The $provide service is responsible for telling Angular how to create new injectable things; these things are called
+services. Services are defined by things called providers, which is what you&amp;rsquo;re creating when you use $provide.
+Defining a provider is done via the provider method on the $provide service, and you can get hold of the $provide
+service by asking for it to be injected into an application&amp;rsquo;s config function. An example might be something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myMod.config(function($provide) {
+  $provide.provider(&#39;greeting&#39;, function() {
+    this.$get = function() {
+      return function(name) {
+        alert(&amp;quot;Hello, &amp;quot; + name);
+      };
+    };
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here we&amp;rsquo;ve defined a new provider for a service called greeting; we can inject a variable named greeting into any
+injectable function (like controllers, more on that later) and Angular will call the provider&amp;rsquo;s $get function in order
+to return a new instance of the service. In this case, the thing that will be injected is a function that takes a name
+parameter and alerts a message based on the name. We might use it like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myMod.controller(&#39;MainController&#39;, function($scope, greeting) {
+  $scope.onClick = function() {
+    greeting(&#39;Ford Prefect&#39;);
+  };
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now here&amp;rsquo;s the trick. factory, service, and value are all just shortcuts to define various parts of a provider&amp;ndash;that is,
+they provide a means of defining a provider without having to type all that stuff out. For example, you could write that
+exact same provider just like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myMod.config(function($provide) {
+  $provide.factory(&#39;greeting&#39;, function() {
+    return function(name) {
+      alert(&amp;quot;Hello, &amp;quot; + name);
+    };
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It&amp;rsquo;s important to understand, so I&amp;rsquo;ll rephrase: under the hood, AngularJS is calling the exact same code that we wrote
+above (the $provide.provider version) for us. There is literally, 100% no difference in the two versions. value works
+just the same way&amp;ndash;if whatever we would return from our $get function (aka our factory function) is always exactly the
+same, we can write even less code using value. For example, since we always return the same function for our greeting
+service, we can use value to define it, too:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myMod.config(function($provide) {
+  $provide.value(&#39;greeting&#39;, function(name) {
+    alert(&amp;quot;Hello, &amp;quot; + name);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Again, this is 100% identical to the other two methods we&amp;rsquo;ve used to define this function&amp;ndash;it&amp;rsquo;s just a way to save
+some typing.&lt;/p&gt;
+
+&lt;p&gt;Now you probably noticed this annoying myMod.config(function($provide) { &amp;hellip; }) thing I&amp;rsquo;ve been using. Since defining
+new providers (via any of the given methods above) is so common, AngularJS exposes the $provider methods directly on the
+module object, to save even more typing:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var myMod = angular.module(&#39;myModule&#39;, []);
+
+myMod.provider(&amp;quot;greeting&amp;quot;, ...);
+myMod.factory(&amp;quot;greeting&amp;quot;, ...);
+myMod.value(&amp;quot;greeting&amp;quot;, ...);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These all do the same thing as the more verbose app.config(&amp;hellip;) versions we used previously.&lt;/p&gt;
+
+&lt;p&gt;The one injectable I&amp;rsquo;ve skipped so far is constant. For now, it&amp;rsquo;s easy enough to say that it works just like value.
+We&amp;rsquo;ll see there&amp;rsquo;s one difference later.&lt;/p&gt;
+
+&lt;p&gt;To review, all these pieces of code are doing the exact same thing:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myMod.provider(&#39;greeting&#39;, function() {
+  this.$get = function() {
+    return function(name) {
+      alert(&amp;quot;Hello, &amp;quot; + name);
+    };
+  };
+});
+
+myMod.factory(&#39;greeting&#39;, function() {
+  return function(name) {
+    alert(&amp;quot;Hello, &amp;quot; + name);
+  };
+});
+
+myMod.value(&#39;greeting&#39;, function(name) {
+  alert(&amp;quot;Hello, &amp;quot; + name);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;the-injector-injector&#34;&gt;The Injector ($injector)&lt;/h1&gt;
+
+&lt;p&gt;The injector is responsible for actually creating instances of our services using the code we provided via $provide
+(no pun intended). Any time you write a function that takes injected arguments, you&amp;rsquo;re seeing the injector at work. Each
+AngularJS application has a single $injector that gets created when the application first starts; you can get a hold of
+it by injecting $injector into any injectable function (yes, $injector knows how to inject itself!)&lt;/p&gt;
+
+&lt;p&gt;Once you have $injector, you can get an instance of a defined service by calling get on it with the name of the service.
+For example,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var greeting = $injector.get(&#39;greeting&#39;);
+greeting(&#39;Ford Prefect&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The injector is also responsible for injecting services into functions; for example, you can magically inject services
+into any function you have using the injector&amp;rsquo;s invoke method;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var myFunction = function(greeting) {
+  greeting(&#39;Ford Prefect&#39;);
+};
+$injector.invoke(myFunction);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Its worth noting that the injector will only create an instance of a service once. It then caches whatever the provider
+returns by the service&amp;rsquo;s name; the next time you ask for the service, you&amp;rsquo;ll actually get the exact same object.&lt;/p&gt;
+
+&lt;p&gt;So, it stands to reason that you can inject services into any function that is called with $injector.invoke. This
+includes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;controller definition functions&lt;/li&gt;
+&lt;li&gt;directive definition functions&lt;/li&gt;
+&lt;li&gt;filter definition functions&lt;/li&gt;
+&lt;li&gt;the $get methods of providers (aka the factory definition functions)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Since constants and values always return a static value, they are not invoked via the injector, and thus you cannot
+inject them with anything.&lt;/p&gt;
+
+&lt;h1 id=&#34;configuring-providers&#34;&gt;Configuring Providers&lt;/h1&gt;
+
+&lt;p&gt;You may be wondering why anyone would bother to set up a full-fledged provider with the provide method if factory,
+value, etc. are so much easier. The answer is that providers allow a lot of configuration. We&amp;rsquo;ve already mentioned
+that when you create a service via the provider (or any of the shortcuts Angular gives you), you create a new provider
+that defines how that service is constructed. What I didn&amp;rsquo;t mention is that these providers can be injected into config
+sections of your application so you can interact with them!&lt;/p&gt;
+
+&lt;p&gt;First, Angular runs your application in two-phases&amp;ndash;the config and run phases. The config phase, as we&amp;rsquo;ve seen, is where
+you can set up any providers as necessary. This is also where directives, controllers, filters, and the like get set up.
+The run phase, as you might guess, is where Angular actually compiles your DOM and starts up your app.&lt;/p&gt;
+
+&lt;p&gt;You can add additional code to be run in these phases with the myMod.config and myMod.run functions&amp;ndash;each take a
+function to run during that specific phase. As we saw in the first section, these functions are injectable&amp;ndash;we injected
+the built-in $provide service in our very first code sample. However, what&amp;rsquo;s worth noting is that during the config
+phase, only providers can be injected (with the exception of the services in the AUTO module&amp;ndash;$provide and $injector).&lt;/p&gt;
+
+&lt;p&gt;For example, the following is not allowed:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myMod.config(function(greeting) {
+  // WON&#39;T WORK -- greeting is an *instance* of a service.
+  // Only providers for services can be injected in config blocks.
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What you do have access to are any providers for services you&amp;rsquo;ve made:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myMod.config(function(greetingProvider) {
+  // a-ok!
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is one important exception: constants, since they cannot be changed, are allowed to be injected inside config
+blocks (this is how they differ from values). They are accessed by their name alone (no Provider suffix necessary).&lt;/p&gt;
+
+&lt;p&gt;Whenever you defined a provider for a service, that provider gets named serviceProvider, where service is the name of
+the service. Now we can use the power of providers to do some more complicated stuff!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myMod.provider(&#39;greeting&#39;, function() {
+  var text = &#39;Hello, &#39;;
+
+  this.setText = function(value) {
+    text = value;
+  };
+
+  this.$get = function() {
+    return function(name) {
+      alert(text + name);
+    };
+  };
+});
+
+myMod.config(function(greetingProvider) {
+  greetingProvider.setText(&amp;quot;Howdy there, &amp;quot;);
+});
+
+myMod.run(function(greeting) {
+  greeting(&#39;Ford Prefect&#39;);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we have a function on our provider called setText that we can use to customize our alert; we can get access to this
+provider in a config block to call this method and customize the service. When we finally run our app, we can grab the
+greeting service, and try it out to see that our customization took effect.&lt;/p&gt;
+
+&lt;p&gt;Since this is a more complex example, here&amp;rsquo;s a working demonstration: &lt;a href=&#34;http://jsfiddle.net/BinaryMuse/9GjYg/&#34;&gt;http://jsfiddle.net/BinaryMuse/9GjYg/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;controllers-controller&#34;&gt;Controllers ($controller)&lt;/h1&gt;
+
+&lt;p&gt;You can inject things into controllers, but you can&amp;rsquo;t inject controllers into things. That&amp;rsquo;s because controllers aren&amp;rsquo;t
+created via the provider. Instead, there is a built-in Angular service called $controller that is responsible for setting
+up your controllers. When you call myMod.controller(&amp;hellip;), you&amp;rsquo;re actually accessing this service&amp;rsquo;s provider, just like
+in the last section.&lt;/p&gt;
+
+&lt;p&gt;For example, when you define a controller like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myMod.controller(&#39;MainController&#39;, function($scope) {
+  // ...
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What you&amp;rsquo;re actually doing is this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myMod.config(function($controllerProvider) {
+  $controllerProvider.register(&#39;MainController&#39;, function($scope) {
+    // ...
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Later, when Angular needs to create an instance of your controller, it uses the $controller service (which in turn uses
+the $injector to invoke your controller function so it gets its dependencies injected too).&lt;/p&gt;
+
+&lt;p&gt;Filters and Directives&lt;/p&gt;
+
+&lt;p&gt;filter and directive work exactly the same way as controller; filter uses a service called $filter and its provider
+$filterProvider, while directive uses a service called $compile and its provider $compileProvider. Some links:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;$filter: &lt;a href=&#34;http://docs.angularjs.org/api/ng.$filter&#34;&gt;http://docs.angularjs.org/api/ng.$filter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;$filterProvider: &lt;a href=&#34;http://docs.angularjs.org/api/ng.$filterProvider&#34;&gt;http://docs.angularjs.org/api/ng.$filterProvider&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;$compile: &lt;a href=&#34;http://docs.angularjs.org/api/ng.$compile&#34;&gt;http://docs.angularjs.org/api/ng.$compile&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;$compileProvider: &lt;a href=&#34;http://docs.angularjs.org/api/ng.$compileProvider&#34;&gt;http://docs.angularjs.org/api/ng.$compileProvider&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As per the other examples, myMod.filter and myMod.directive are shortcuts to configuring these services.&lt;/p&gt;
+
+&lt;h1 id=&#34;summary&#34;&gt;Summary&lt;/h1&gt;
+
+&lt;p&gt;So, to summarize, any function that gets called with $injector.invoke can be injected into. This includes, but is not
+limited to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;controller,&lt;/li&gt;
+&lt;li&gt;directive,&lt;/li&gt;
+&lt;li&gt;factory,&lt;/li&gt;
+&lt;li&gt;filter,&lt;/li&gt;
+&lt;li&gt;provider $get (when defining provider as an object),&lt;/li&gt;
+&lt;li&gt;provider function (when defining provider as a constructor function),&lt;/li&gt;
+&lt;li&gt;service.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The provider creates new services that can be injected into things. This includes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;constant,&lt;/li&gt;
+&lt;li&gt;factory,&lt;/li&gt;
+&lt;li&gt;provider,&lt;/li&gt;
+&lt;li&gt;service,&lt;/li&gt;
+&lt;li&gt;value.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That said, built-in services like $controller and $filter can be injected, and you can use those service to get hold of
+the new filters and controllers you defined with those methods (even though the things you defined aren&amp;rsquo;t, by
+themselves, able to be injected into things).&lt;/p&gt;
+
+&lt;p&gt;Other than that, any injector-invoked function can be injected with any provider-provided service&amp;ndash;there is no restriction
+(other than the config and run differences listed herein).&lt;/p&gt;
+
+&lt;h1 id=&#34;source-article&#34;&gt;Source article&lt;/h1&gt;
+
+&lt;p&gt;Article copied from &lt;a href=&#34;https://github.com/angular/angular.js/wiki/Understanding-Dependency-Injection&#34;&gt;https://github.com/angular/angular.js/wiki/Understanding-Dependency-Injection&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AngularJS directive design</title>
+      <link>http://w20-framework.github.io/guides/angularjs-directive-design/</link>
+      <pubDate>Mon, 24 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/guides/angularjs-directive-design/</guid>
+      <description>&lt;p&gt;AngularJS is a web application framework that makes creating complicated web applications much simpler. One of its best
+features is the ability to create directives, or reusable web components. It gives you the ability to create new HTML
+tags and attributes, which can dynamically display content in response to data changes, as well as update the data when
+appropriate.&lt;/p&gt;
+
+&lt;p&gt;They’re a big productivity booster because they let you wrap up a complicated interaction with the DOM in a nice,
+reusable package.&lt;/p&gt;
+
+&lt;h1 id=&#34;making-directives-can-be-confusing-at-first&#34;&gt;Making directives can be confusing at first&lt;/h1&gt;
+
+&lt;p&gt;It doesn’t take long to realize that directives are useful, and the ones that are bundled with AngularJS are well
+designed, but making directives can feel overwhelming at first. The Angular team has done a good job making directives
+extremely powerful and flexible, but all that power comes with some complexity.&lt;/p&gt;
+
+&lt;p&gt;Specifically, it’s difficult to understand how to create a directive that responds to data changes, updates data,
+responds to events, or exposes events. Basically it boils down to this:&lt;/p&gt;
+
+&lt;blockquote&gt;How do I talk to a directive?&lt;/blockquote&gt;
+
+&lt;p&gt;This article aims to explain and simplify some of the most common problems you will run in to when creating directives.&lt;/p&gt;
+
+&lt;h1 id=&#34;directive-design-principles&#34;&gt;Directive design principles&lt;/h1&gt;
+
+&lt;p&gt;Directives make our lives easier when you can reuse them without needing to read or edit the source code. Then we can
+forget how they work, and just remember what they do.&lt;/p&gt;
+
+&lt;p&gt;If you’re coming from a view-centric framework, you may be tempted to separate your application into view-like directive
+chunks. For example, if you want to display a list of users, you might create a directive that reads $scope.users and
+prints them all out:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;user-list/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;user-list&lt;/code&gt; directive works. I mean, look how DRY it is! However, contrast it with ng-repeat, which handles only the
+repetition. Which one could be used in more places? What if you need to display users differently in two places?&lt;/p&gt;
+
+&lt;blockquote&gt;A good directive only does one job&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code&gt;ng-repeat&lt;/code&gt; is better than &lt;code&gt;user-list&lt;/code&gt; because it does only one job: It only does the repetition part, so you can reuse
+it many more situations. It’s job is easy to understand. Instead of making one directive that solves everything, split
+it up into several focused directives and glue them together.&lt;/p&gt;
+
+&lt;blockquote&gt;A good directive is not application specific&lt;/blockquote&gt;
+
+&lt;p&gt;Directives are more widely useful the fewer assumptions they make about your application. A directive that allows the
+user to say which property to observe, like ng-model is more useful than one that assumes that $scope.users exists.
+As a general rule, if your directive could be useful in a completely different application, it’s more likely to be well
+designed and useful even if you never publish it.&lt;/p&gt;
+
+&lt;p&gt;That’s enough theory for now. Let’s dive in to some specific examples of common ways you can interact with directives.&lt;/p&gt;
+
+&lt;h1 id=&#34;how-to-display-bindings&#34;&gt;How to display bindings&lt;/h1&gt;
+
+&lt;p&gt;The first thing to learn is how to make a directive that respects a binding: the ones with double curly braces. For
+example, let’s make a directive that displays a photo and a caption.&lt;/p&gt;
+
+&lt;p&gt;The first step in any directive design is to choose the names of the attributes that will make up your interface.
+I’ve chosen to use photo-src for the image src, and caption for the text. Be careful not to use names that other
+directives use, like ng-src unless you know how they work.&lt;/p&gt;
+
+&lt;p&gt;Secondly, decide if you want to support only attributes and class names, or elements too. In this case we decide we
+want photo to be an element.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;photo photo-src=&amp;quot;{{photo.url}}&amp;quot;
+         caption=&amp;quot;Taken on: {{photo.date}}&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that I did not give the directive the whole photo object. It’s better design to allow the directive to work with
+any data structure.&lt;/p&gt;
+
+&lt;p&gt;To read a binding, use &lt;code&gt;attrs.$observe&lt;/code&gt;. This will call your callback any time the binding changes. We then use element
+to make changes to the DOM.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;app.directive(&#39;photo&#39;, function() {
+    return {
+        // required to make it work as an element
+        restrict: &#39;E&#39;,
+
+        // replace &amp;lt;photo&amp;gt; with this html
+        template: &#39;&amp;lt;figure&amp;gt;&amp;lt;img/&amp;gt;&amp;lt;figcaption/&amp;gt;&amp;lt;/figure&amp;gt;&#39;,
+        replace: true,
+
+        // observe and manipulate the DOM
+        link: function($scope, element, attrs) {
+            attrs.$observe(&#39;caption&#39;, function(value) {
+                element.find(&#39;figcaption&#39;).text(value)
+            })
+
+            // attribute names change to camel case
+            attrs.$observe(&#39;photoSrc&#39;, function(value) {
+                element.find(&#39;img&#39;).attr(&#39;src&#39;, value)
+            })
+        }
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alternatively, if your component has its own template, you can do all of this with an isolate scope.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;app.directive(&#39;photo&#39;, function() {
+    return {
+        restrict: &#39;E&#39;,
+        templateUrl: &#39;photo.html&#39;,
+        replace: true,
+        // pass these two names from attrs into the template scope
+        scope: {
+            caption: &#39;@&#39;,
+            photoSrc: &#39;@&#39;
+        }
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;HTML:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;figure&amp;gt;
+    &amp;lt;img ng-src=&amp;quot;{{photoSrc}}&amp;quot;/&amp;gt;
+    &amp;lt;figcaption&amp;gt;{{caption}}&amp;lt;/figcaption&amp;gt;
+&amp;lt;/figure&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;how-to-read-and-write-data&#34;&gt;How to read and write data&lt;/h1&gt;
+
+&lt;p&gt;Some directives need to write data too, like &lt;code&gt;ng-model&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s make a button toggle directive. This directive will automatically set its toggle state based on some boolean in
+the scope, and when clicked, it will set the boolean.&lt;/p&gt;
+
+&lt;p&gt;When passing data this way, you don’t use curly braces, you use an “Expression”. An Expression is any JS code that would
+run if it were on the scope. Use expressions whenever you need to write data, or when passing in an Object or Array
+into the directive instead of a string.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- no double curly braces here --&amp;gt;
+&amp;lt;button toggle=&amp;quot;preferences.showDetails&amp;quot;&amp;gt;Show Details&amp;lt;/button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;First we use &lt;code&gt;=&lt;/code&gt; on the &lt;code&gt;scope:&lt;/code&gt; settings to make &lt;code&gt;scope.toggle&lt;/code&gt; available within our directive. Anywhere in our directive,
+&lt;code&gt;scope.toggle&lt;/code&gt; reads and writes to whatever the user set in the attribute.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;app.directive(&#39;toggle&#39;, function() {
+    return {
+        scope: {
+            toggle: &#39;=&#39;,
+        },
+        link: function($scope, element, attrs) {
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we use scope.$watch, which calls your function whenever the expression changes. We’ll add and remove the active css
+class whenever it changes.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;            $scope.$watch(&amp;quot;toggle&amp;quot;, function(value) {
+                element.toggleClass(&#39;active&#39;, value)
+            })
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally, let’s listen to the jQuery click event and update the scope. We need to use &lt;code&gt;scope.$apply&lt;/code&gt; any time we respond
+to changes from outside of Angular.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;            element.click(function() {
+                $scope.$apply(function() {
+                    $scope.toggle = !$scope.toggle
+                })
+            })
+        }
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;how-to-expose-events&#34;&gt;How to expose events&lt;/h1&gt;
+
+&lt;p&gt;Sometimes you want to allow a controller to respond to events from within a directive, like ng-click. Let’s make a
+scroll directive, that can call a function whenever a user scrolls that element. In addition, let’s expose the scroll
+offset too.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;textarea scroll=&amp;quot;onScroll(offset)&amp;quot;&amp;gt;...&amp;lt;/textarea&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Similar to the toggle button, we map whatever function they specify in the attribute to &lt;code&gt;scroll&lt;/code&gt; in our directive’s scope.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;app.directive(&#39;scroll&#39;, function() {
+    return {
+        scope: {
+            scroll: &amp;quot;&amp;amp;&amp;quot;
+        },
+        link: function($scope, element, attrs) {
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We’ll use jQuery’s scroll event to get what we need. We still need to call &lt;code&gt;scope.$apply&lt;/code&gt; here, because even though it
+calls the handler either way, the handler on the controller might set data.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;            element.scroll(function() {
+                $scope.apply(function() {
+                    var offset = element.scrollTop()
+                    $scope.scroll({offset:offset})
+                })
+            })
+        }
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that we don’t pass the offset in as the first parameter, we pass a hash of available parameters, and make them
+available to the expression &lt;code&gt;onScroll(offset)&lt;/code&gt; that they passed in to the attribute. This is much more flexible than
+passing parameters directly, because they can pass other scope variables into their functions, like the current
+item in an &lt;code&gt;ng-repeat&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;how-to-have-html-content&#34;&gt;How to have HTML content&lt;/h1&gt;
+
+&lt;p&gt;Directives can have html content by default, but the minute you specify a template the content is replaced by the
+template.&lt;/p&gt;
+
+&lt;p&gt;Let’s make a &lt;code&gt;modal&lt;/code&gt; component: a popup window with a close button, and we would like to set the body as html.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;modal&amp;gt;
+  &amp;lt;p&amp;gt;Some contents&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;Put whatever you want in here&amp;lt;/p&amp;gt;
+&amp;lt;/modal&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Our modal is more than just one element though. When we make the template, we include everything we need, then we put a
+special ng-transclude directive in the div that is supposed to take back over and get all the contents.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;modal&amp;quot;&amp;gt;
+    &amp;lt;header&amp;gt;
+        &amp;lt;button&amp;gt;Close&amp;lt;/button&amp;gt;
+        &amp;lt;h2&amp;gt;Modal&amp;lt;/h2&amp;gt;
+    &amp;lt;/header&amp;gt;
+    &amp;lt;div class=&amp;quot;body&amp;quot; ng-transclude&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wiring things up is pretty simple. Just set transclude: true to get this to work:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;app.directive(&#39;modal&#39;, function() {
+    return {
+        restrict: &#39;E&#39;,
+        templateUrl: &#39;modal.html&#39;,
+        replace: true,
+        transclude: true,
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can combine this with any of the other techniques in this article to make something more complicated.&lt;/p&gt;
+
+&lt;h1 id=&#34;how-to-respond-to-events&#34;&gt;How to respond to events&lt;/h1&gt;
+
+&lt;p&gt;Sometimes you might want to call a function on your directive, in response to an event in your scope. For example, you
+might want to close the open modal if the user hits the escape key.&lt;/p&gt;
+
+&lt;p&gt;This is almost always an indication that you are stuck on events, when you should be thinking about data flow.
+Controllers don’t just contain data, they hold view state too. It’s totally fine to have a windowShown boolean on
+your controller, and use ng-show or pass a boolean into your directive as described above.&lt;/p&gt;
+
+&lt;p&gt;There are cases where it does make sense to use &lt;code&gt;$scope.$on&lt;/code&gt; in a directive, but for beginners, try to think about the
+problem in terms of changing state instead. Things get much easier in Angular if you focus on data and state instead of
+events.&lt;/p&gt;
+
+&lt;h1 id=&#34;more-information&#34;&gt;More Information&lt;/h1&gt;
+
+&lt;p&gt;There is a lot more to directives. This article doesn’t nearly cover everything they can do. Please visit the &lt;a href=&#34;http://docs.angularjs.org/guide/directive&#34;&gt;directive
+documentation&lt;/a&gt; page for more information.&lt;/p&gt;
+
+&lt;h1 id=&#34;source-article&#34;&gt;Source article&lt;/h1&gt;
+
+&lt;p&gt;Article copied from &lt;a href=&#34;http://seanhess.github.io/2013/10/14/angularjs-directive-design.html&#34;&gt;http://seanhess.github.io/2013/10/14/angularjs-directive-design.html&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

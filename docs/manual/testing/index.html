@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+
+
+
+<title>
+    Testing
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/unify/css/style.css">
+<link rel="stylesheet" href="/assets/unify/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLF968Z');</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "W20 framework",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "Open-Source Software"
+  },
+  "applicationCategory" : "web framework"
+}
+</script>
+
+
+
+<meta property="og:title" content="Testing" />
+<meta property="og:description" content="As your application grows it becomes harder to assert that all your features are still working correctly.
+Whether you are doing some refactoring, upgrading a library version or adding new features, you want
+a mechanism to assert that thing are working correctly and protect yourself from regression." />
+<meta property="og:url" content="http://w20-framework.github.io/docs/manual/testing/" />
+<meta property="og:site_name" content="W20 framework" />
+<meta property="og:image" content="http://w20-framework.github.io/img/opengraph-default.png" />
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://w20-framework.github.io/opensearch.xml" title="W20 framework" />
+
+
+
+<script type="text/javascript">
+    window.w20 = {
+        state: {}
+    };
+</script>
+
+
+</head>
+<body class="homepage">
+    
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLF968Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div id="header">
+        <div class="header">
+    <div class="container">
+        <a class="logo" href="/">W20 framework</a>
+        <div class="topbar hidden-xs hidden-sm">
+            <ul class="loginbar pull-right">
+                <li><i class="fa fa-stack-overflow"></i> <a target="_blank" href="http://stackoverflow.com/questions/ask?tags=w20">Ask a question</a></li>
+                <li class="topbar-devider"></li>
+                <li><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></li>
+            </ul>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" data-role="navigation" style="pointer-events: none;">
+        <div class="container">
+            <ul class="nav navbar-nav" style="pointer-events: auto;">
+                <li>
+                    <a href="/docs">Documentation</a>
+                </li>
+                <li>
+                    <a href="/addons">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/themes">Themes</a>
+                </li>
+                <li>
+                    <a href="/posts">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/project/community">Community</a></li>
+                        <li><a href="/project/roadmap">Roadmap</a></li>
+                        <li><a href="/project/faq">FAQ</a></li>
+                        <li><a href="/tags">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <form method="GET" action="/search">
+                            <div class="input-group animated fadeInDown">
+                                <input id="search-field" type="text" class="form-control" placeholder="Search" name="q">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        
+<div class="title-header small">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h2>Documentation</h2>
+                <p class="hidden-xs">Introduction, reference manual and JSDoc of the W20 framework.</p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-image-wrapper">
+                    <img class="header-image" src="/img/logos/w20-logo.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="title-subheader">
+    <div class="container">
+        <ul>
+            <li><h3 class=''><i class="fa fa-play-circle"></i> <a href="/docs">Introduction</a></h3></li>
+            <li><h3 class='active'><i class="fa fa-book"></i> <a href="/docs/manual">Manual</a></h3></li>
+            <li><h3 class=''><i class="fa fa-cogs"></i> <a href="/docs/generator">Generator</a></h3></li>
+            <li><h3><i class="fa fa-info-circle"></i> <a href="/jsdoc" target="_blank">JSDoc</a></h3></li>
+            <li><h3><i class="fa fa-tag"></i> <a href="https://github.com/w20-framework/w20/releases" target="_blank">Releases</a></h3></li>
+            <li><h3><i class="fa fa-github"></i> <a href="https://github.com/w20-framework/w20" target="_blank">Source</a></h3></li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+    <div id="content" class="container">
+        <div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="doc-content">
+                <p>As your application grows it becomes harder to assert that all your features are still working correctly.
+Whether you are doing some refactoring, upgrading a library version or adding new features, you want
+a mechanism to assert that thing are working correctly and protect yourself from regression.</p>
+
+<h1 id="testing">Testing</h1>
+
+<h2 id="unit-tests">Unit tests</h2>
+
+<p>The web framework does not enforce a particular runner or test suite for unit testing but we found that
+a good combination is <a href="http://karma-runner.github.io/0.13/index.html">Karma</a> as the runner and
+<a href="http://jasmine.github.io/2.0/introduction.html">Jasmine</a> as the test suite language. This is probably the most
+popular combination for running tests and the one that the AngularJS team uses. Recommended lecture are:</p>
+
+<ul>
+<li><a href="http://karma-runner.github.io/0.13/index.html">Karma documentation</a></li>
+<li><a href="http://jasmine.github.io/2.0/introduction.html">Jasmine documentation</a></li>
+<li><a href="https://docs.angularjs.org/guide/unit-testing">AngularJS guide on unit testing</a></li>
+</ul>
+
+<h3 id="installation-and-configuration">Installation and configuration</h3>
+
+<p>If you used the generator-w20, required packages will already be installed  in your node_modules folder.
+If you want to start from scratch, first install <a href="https://nodejs.org/en/">NodeJS</a>, create a directory for your app
+if you do not already have one, cd into it and use the following command:</p>
+
+<pre><code>$ npm install karma karma-cli karma-jasmine karma-phantomjs-launcher karma-requirejs
+</code></pre>
+
+<p>You will need to configure a <code>karma.conf.js</code> file at your project root to instruct Karma. You can use the following <a href="http://karma-runner.github.io/0.12/intro/configuration.html">guide</a>
+to configure every options in cli mode. Please have a look at the <a href="http://karma-runner.github.io/0.12/intro/configuration.html">Karma documentation</a>
+for a complete description of the options. The end result should look something like this:</p>
+
+<pre><code>module.exports = function(config) {
+    'use strict';
+
+    config.set({
+        frameworks: [ 'jasmine', 'requirejs' ],
+        files: [
+            'test-main.js',
+            { pattern: 'fragment/**/*.js', included: false },
+            { pattern: 'bower_components/**/*', included: false }
+        ],
+        port: 9876,
+        colors: true,
+        logLevel: 'INFO',
+        browsers: [ 'PhantomJS' ]
+    });
+};
+};
+</code></pre>
+
+<p>This file instruct Karma about the file patterns to be served when running the tests.
+As you can see we will served the business modules of the fragment located in the &laquo;fragment&raquo; folder, along
+with the web dependencies of the &laquo;bower_components&raquo;.</p>
+
+<div class="callout callout-info">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+                <i class="fa fa-info-circle icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>The PhantomJS browser will be used for loading the application. PhantomJS is
+a headless browser. It can run the application without rendering the HTML pages which we do not need since we are only interested in
+testing the application logic. This is useful for executing tests in an environment which does not support graphical interface such as a
+CI server for instance.</p>
+
+        </div>
+    </div>
+</div>
+
+<p>Since we are using RequireJS, we will need a main module for the tests. This module will be declared in a <code>test-main.js</code> file.</p>
+
+<pre><code>var tests = [];
+
+for (var file in window.__karma__.files) {
+    if (/.spec\.js$/.test(file)) {
+        tests.push(file);
+    }
+}
+
+window.w20 = {
+    configuration: {
+        '/base/bower_components/w20/w20-core.w20.json': {
+            modules: {
+                application: {
+                    id: 'w20-test',
+                    home: '/test'
+                }
+            },
+            vars: {
+                'components-path': '/base/bower_components'
+            }
+        }
+    },
+    deps: tests,
+    callback: window.__karma__.start
+};
+
+requirejs.config({
+    paths: {
+        '{angular-mocks}': '/base/bower_components/angular-mocks',
+        '{fragment}': '/base/fragment'
+    },
+    shim: {
+        '{angular-mocks}/angular-mocks': [ '{angular}/angular' ]
+    }
+});
+
+requirejs([ '/base/bower_components/w20/modules/w20.js' ]);
+</code></pre>
+
+<p>There is a lot going on in the <code>test-main.js</code> file and we will explain what this configuration does. This module is the
+main entry point to the application under test.</p>
+
+<ol>
+<li><p>Loaded files are listed in the global variable <code>window._karma_.files</code>.
+We add all the <code>.spec.js</code> files in a list, those files corresponding to the unit test modules (we will write one soon).</p></li>
+
+<li><p>We configure the application programmatically by editing the <code>w20</code> global variable <code>configuration</code> property. Normally, the loader will create this configuration
+by reading and parsing an application manifest but we can edit it directly for the need of bootstrapping a test environment. We declare the core fragment and configure
+the application module. Because Karma will serve files from <code>/base</code> we need to specify the path to our web components (by default the components path is mapped to
+<code>bower_components</code> but here we need to remap it to <code>/base/bower_components</code>. This is possible using the <code>vars</code> property. We add the unit test modules to the dependencies
+by using the <code>deps</code> property and allow the start of Karma once the configuration has been processed using the <code>callback</code> property.</p></li>
+
+<li><p>Some additional RequireJS configuration are necessary to remap the <code>angular-mocks</code> module and the business fragment alias to suit Karma base path.</p></li>
+
+<li><p>Finally we start the application by requiring explicitely the <code>w20</code> module.</p></li>
+</ol>
+
+<h3 id="writing-unit-tests">Writing unit tests</h3>
+
+<p>We are ready to start unit testing a module. We will take the example of a simple AngularJS controller defined in <code>fragment/modules/module-to-test.js</code>.</p>
+
+<pre><code>define([
+    '{angular}/angular'
+], function(angular) {
+    'use strict';
+
+	 var module = angular.module('moduleToTest', []);
+
+     module.controller('ControllerToTest', ['$scope', function ($scope) {
+        $scope.greeting = 'Hello World!';
+    }]);
+
+	return {
+		angularModules : [ 'moduleToTest' ]
+	};
+});
+
+</code></pre>
+
+<p>This module does not do anything fancy. We declare an AngularJS module <code>moduleToTest</code> and a controller with
+a scope property.</p>
+
+<p>The &lsquo;spec&rsquo; (unit test module) for this module will be located in <code>fragment/specs/module-to-test.spec.js</code>.</p>
+
+<pre><code>define([
+    '{angular}/angular',
+    '{angular-mocks}/angular-mocks',
+    '{fragment}/modules/module-to-test'  
+    ], function (angular) {
+        'use strict';
+
+        describe('The module to test', function() {
+        
+            var scope;
+
+            beforeEach(angular.mock.module('moduleToTest'));
+
+            beforeEach(inject(function ($rootScope, $controller) {
+                scope = $rootScope.$new();
+                $controller('ControllerToTest', {
+                    $scope: scope
+                });
+            }));
+
+            it('says hello world!', function () {
+                expect(scope.greeting).toEqual('Hello World!');
+            });
+
+});
+</code></pre>
+
+<ol>
+<li><p>A test suite begins with a call to the global Jasmine function <code>describe</code> with two parameters: a string and a function.
+The string is the title of the suite - usually what is under test. The function body implements the suite.</p></li>
+
+<li><p>The <code>beforeEach</code> function executes before each unit test. Here we register a mocked version of the module <code>moduleToTest</code>. This will allow us later to request
+the controller declared on this module without having to worry about the dependency of this module.</p></li>
+
+<li><p>We also request that before each test, the <code>scope</code> variable be initialized with a new scope. The <code>$controller</code> service allow us to retrieve our controller and provide
+it its dependency. Our newly created scope (with <code>$rootScope.$new()</code>) will be passed to the constructor through dependency injection.</p></li>
+
+<li><p>Finally the unit test can be written. A unit test in Jasmine takes the form of <code>it</code> statement which reads like a sentence describing the expected result of the test.</p></li>
+</ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+<div class="side-menu">
+    
+        
+        <div class="list-group">
+            <ul class="nav">
+                
+                
+                
+                    
+                    <li>
+                        <a href="/docs/manual/" class="list-group-item ">
+                            Web framework basics
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/routing/" class="list-group-item ">
+                            Routing
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/security/" class="list-group-item ">
+                            Security
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/culture/" class="list-group-item ">
+                            Culture
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/hypermedia/" class="list-group-item ">
+                            Hypermedia
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/ui/" class="list-group-item ">
+                            UI
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/testing/" class="list-group-item  active ">
+                            Testing
+                        </a>
+                        
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#testing">Testing</a>
+<ul>
+<li><a href="#unit-tests">Unit tests</a>
+<ul>
+<li><a href="#installation-and-configuration">Installation and configuration</a></li>
+<li><a href="#writing-unit-tests">Writing unit tests</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                            <script>
+                                w20.state.previousPage = '\/docs\/manual\/ui\/';
+                            </script>
+                            
+                        
+                    </li>
+                    
+                
+            </ul>
+        </div>
+        
+    
+    
+    <div class="list-group">
+        <ul class="nav">
+            <li class="list-group-item"><div style="margin-bottom: 10px;"><i class="fa fa-tag"></i> Tags</div>
+                <div class="tags">
+                    
+                    <a class="label label-default" href="/tags/test">Test</a>
+                    
+                    <a class="label label-default" href="/tags/unit">Unit</a>
+                    
+                    <a class="label label-default" href="/tags/integration">Integration</a>
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="list-group">
+        <ul class="nav">
+            
+                <li><a class="list-group-item" href="https://github.com/w20-framework/website/edit/master/content/docs/manual/testing.md" target="_blank"><i class="fa fa-edit"></i> Contribute to this page</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+    <div id="footer">
+        <div class="footer-v3">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="headline"><h2>About</h2></div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">W20 is a Web framework to create modular and composable enterprise-ready applications.</p>
+                </div>
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><h2>License</h2></div>
+                        <p>
+                            Code licensed under the <a href="https://www.mozilla.org/MPL/2.0" target="_blank">Mozilla Public License 2.0</a>.
+                            <br/>
+                            Documentation licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 map-img">
+                    <div class="headline"><h2>Contact us</h2></div>
+                    <address>
+                        <p>
+                            StackOverflow <a href="https://stackoverflow.com/questions/tagged/w20">W20 on StackOverflow</a>
+                        </p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js"></script>
+<script src="/assets/unify/plugins/smoothScroll.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/w20.js"></script>
+<script>
+    $(document).ready(function () {
+        var $search = $('.search-btn');
+
+        $('.search').click(function () {
+            if ($search.hasClass('fa-search')) {
+                w20.ui.openSearch();
+            } else {
+                w20.ui.closeSearch();
+            }
+        });
+
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $('.side-menu').affix({
+            offset: {
+                top: $('#header').height() + 20,
+                bottom: $('#footer').height() + 40
+            }
+        });
+
+        Mousetrap.bind('/', function () {
+            w20.ui.openSearch();
+            return false;
+        });
+
+        Mousetrap.bind('alt+up', function () {
+            if (w20.state.previousPage) {
+                window.location = w20.state.previousPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('alt+down', function () {
+            if (w20.state.nextPage) {
+                window.location = w20.state.nextPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('esc', function () {
+            w20.ui.closeSearch();
+            return false;
+        });
+
+        var originalCallback = Mousetrap.stopCallback;
+        Mousetrap.stopCallback = function (e, element, combo) {
+            if (combo === 'esc') {
+                return false;
+            }
+
+            return originalCallback(e, element, combo);
+        };
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#hotkeys-modal, #versions-modal').bind('hidden.bs.modal', function () {
+            $("html").css("margin-right", "0px");
+        }).bind('show.bs.modal', function () {
+            $("html").css("margin-right", "-15px");
+        });
+
+        var query = w20.strings.parseQueryString(location);
+        if (query.h && query.h.length > 0) {
+            $('.doc-content').highlight(query.h);
+            if (query.scroll) {
+                $('html, body').animate({
+                    scrollTop: $('span[class=highlight]:first').offset().top - 20
+                }, 250);
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

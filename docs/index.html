@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+
+
+
+<title>
+    Web framework
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/unify/css/style.css">
+<link rel="stylesheet" href="/assets/unify/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLF968Z');</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "W20 framework",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "Open-Source Software"
+  },
+  "applicationCategory" : "web framework"
+}
+</script>
+
+
+
+<meta property="og:title" content="Web framework" />
+<meta property="og:description" content="W20 is a web solution designed to allow developers to quickly and simply create enterprise-grade Single Page
+Application (SPA). It is server agnostic which means it can work with any HTTP capable server technology. In fact,
+it can even work without any server." />
+<meta property="og:url" content="http://w20-framework.github.io/docs/" />
+<meta property="og:site_name" content="W20 framework" />
+<meta property="og:image" content="http://w20-framework.github.io/img/opengraph-default.png" />
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://w20-framework.github.io/opensearch.xml" title="W20 framework" />
+
+
+
+<script type="text/javascript">
+    window.w20 = {
+        state: {}
+    };
+</script>
+
+
+</head>
+<body class="homepage">
+    
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLF968Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div id="header">
+        <div class="header">
+    <div class="container">
+        <a class="logo" href="/">W20 framework</a>
+        <div class="topbar hidden-xs hidden-sm">
+            <ul class="loginbar pull-right">
+                <li><i class="fa fa-stack-overflow"></i> <a target="_blank" href="http://stackoverflow.com/questions/ask?tags=w20">Ask a question</a></li>
+                <li class="topbar-devider"></li>
+                <li><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></li>
+            </ul>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" data-role="navigation" style="pointer-events: none;">
+        <div class="container">
+            <ul class="nav navbar-nav" style="pointer-events: auto;">
+                <li>
+                    <a href="/docs">Documentation</a>
+                </li>
+                <li>
+                    <a href="/addons">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/themes">Themes</a>
+                </li>
+                <li>
+                    <a href="/posts">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/project/community">Community</a></li>
+                        <li><a href="/project/roadmap">Roadmap</a></li>
+                        <li><a href="/project/faq">FAQ</a></li>
+                        <li><a href="/tags">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <form method="GET" action="/search">
+                            <div class="input-group animated fadeInDown">
+                                <input id="search-field" type="text" class="form-control" placeholder="Search" name="q">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        
+<div class="title-header small">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h2>Documentation</h2>
+                <p class="hidden-xs">Introduction, reference manual and JSDoc of the W20 framework.</p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-image-wrapper">
+                    <img class="header-image" src="/img/logos/w20-logo.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="title-subheader">
+    <div class="container">
+        <ul>
+            <li><h3 class='active'><i class="fa fa-play-circle"></i> <a href="/docs">Introduction</a></h3></li>
+            <li><h3 class=''><i class="fa fa-book"></i> <a href="/docs/manual">Manual</a></h3></li>
+            <li><h3 class=''><i class="fa fa-cogs"></i> <a href="/docs/generator">Generator</a></h3></li>
+            <li><h3><i class="fa fa-info-circle"></i> <a href="/jsdoc" target="_blank">JSDoc</a></h3></li>
+            <li><h3><i class="fa fa-tag"></i> <a href="https://github.com/w20-framework/w20/releases" target="_blank">Releases</a></h3></li>
+            <li><h3><i class="fa fa-github"></i> <a href="https://github.com/w20-framework/w20" target="_blank">Source</a></h3></li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+    <div id="content" class="container">
+        <div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="doc-content">
+                <p>W20 is a web solution designed to allow developers to quickly and simply create enterprise-grade <strong>Single Page
+Application</strong> (SPA). It is <strong>server agnostic</strong> which means it can work with any HTTP capable server technology. In fact,
+it can even work without any server.</p>
+
+<h1 id="benefits">Benefits</h1>
+
+<p>W20 provides a <strong>modular programming model for web applications</strong>, allowing entire parts of web frontend to be reused
+across applications. These parts are called fragments and can be published on any HTTP server as static resources.
+Creating a frontend application with W20 becomes as easy as choosing the fragments you want to load and how you want
+them to be configured from a single configuration file.
+In fact, W20 itself is distributed as several fragments which are, aside from its core, all optional.</p>
+
+<h1 id="organization-of-an-application">Organization of an application</h1>
+
+<p>A W20 application is a Single Page Application (SPA) composed of:</p>
+
+<ul>
+<li>A <strong>master page</strong> (usually <code>index.html</code>, but can be dynamically generated). It is the entry point of the application.</li>
+<li>A <strong>configuration file</strong> (usually <code>w20.app.json</code>, but can be dynamically generated).</li>
+<li>One or more <strong>fragment(s)</strong>. A fragment is a bundle of web resources described by a JSON manifest which must be
+accessible by HTTP from the browser.</li>
+</ul>
+
+<pre><code>    (docroot)
+        |-index.html
+        |-w20.app.json
+        |-fragments
+            |-fragment1
+                |-fragment1.w20.json
+                ...
+            |-fragment2
+                |-fragment2.w20.json
+                ...
+            ...
+</code></pre>
+
+<h2 id="the-master-page">The master page</h2>
+
+<p>A single page application is a web application that fits on a single web page called the master page (usually
+<code>index.html</code>). Assuming you keep your static resources in a <code>bower_components</code> directory, a sample code of a
+minimalist master page in W20 would be :</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html data-w20-app&gt;
+&lt;head&gt;
+    &lt;title&gt;Application title&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; 
+            data-main=&quot;bower_components/w20/modules/w20&quot; 
+            src=&quot;bower_components/requirejs/require.js&quot;&gt;
+    &lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div data-ng-view&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>Things worth noticing :</strong></p>
+
+<ul>
+<li>The <code>data-w20-app</code> attribute on the <code>html</code> tag that will load the configuration of your W20 application.</li>
+<li>The <code>&lt;script&gt;</code> tag, where we reference <a href="http://requirejs.org/">RequireJS</a> and instruct it to load W20.</li>
+<li>A W20 application is also an <a href="http://angularjs.org">AngularJS</a> application. Therefore you should add a <code>&lt;div&gt;</code> tag
+with the <code>data-ng-view</code> attribute. This will include rendered templates into the master page.</li>
+</ul>
+
+<h2 id="the-configuration-file">The configuration file</h2>
+
+<p>The configuration file <code>w20.app.json</code> is where you set-up your application. As mentioned earlier, a W20 application is
+basically composed of a set of fragments (a fragment is a bundle of web resources). All are optional except one : the
+core fragment of W20, thus it has to be referenced in the <code>w20.app.json</code>. This is done by specifying the path to its
+configuration file (<em>a.k.a</em> the fragment manifest) :</p>
+
+<pre><code>&quot;bower_components/w20/w20-core.w20.json&quot;: {}
+</code></pre>
+
+<h2 id="the-fragments">The fragments</h2>
+
+<p>An important concept in W20 is the <strong>fragment</strong>. A W20 application is composed of one or more fragment(s). A fragment is
+a bundle of web resources (templates, css, javascript, &hellip;). Each one is intended to serve a purpose and <strong>can be reused
+across applications</strong>. For example, W20 provides an optional fragment with native AngularJS implementations of UI
+components such as <em>datagrid</em> and <em>combo boxes</em>.</p>
+
+<h3 id="fragment-manifest">Fragment manifest</h3>
+
+<p>To reference web resources and how they are to be configured, each fragment has its own manifest file located at the
+root of the fragment. The only mandatory property is the fragment unique identifier :</p>
+
+<pre><code>{
+    &quot;id&quot; : &quot;fragment-identifier&quot;
+}
+</code></pre>
+
+<p>By convention, the manifest file is called after the fragment identifier and suffixed by <code>.w20.json</code>. In this example,
+the fragment manifest would be <code>fragment-identifier.w20.json</code>.</p>
+
+<h3 id="fragment-modules">Fragment modules</h3>
+
+<p>Now suppose we want to use the fragment discussed above but only the <em>datagrid</em> component. For that, W20 offers a finer
+granularity to configure your application. Within a single fragment, there can be several units called <strong>modules</strong> which
+are loaded only if you decide to reference them in your application configuration. That way, you can load a fragment
+without being forced to load all of its resources.
+The sample code below shows how to declare a fragment module :</p>
+
+<pre><code>{
+    &quot;id&quot; : &quot;fragment-identifier&quot;,
+
+    &quot;modules&quot;: {
+        &quot;module1&quot;: {
+            &quot;path&quot;: &quot;{fragment-identifier}/modules/module1&quot;,
+            &quot;autoload&quot; : true|false,
+            &quot;configSchema&quot;: {
+                ...
+            }
+        }
+    }
+}
+</code></pre>
+
+<p><strong>Things worth noticing :</strong></p>
+
+<ul>
+<li><code>{fragment-identifier}</code> is used by W20 as a placeholder to target the fragment path. This ensures paths are always
+relative to the fragment manifest location. It is particularly useful if the fragment is intended to be used across
+applications</li>
+<li>The <code>path</code> attribute is mandatory for RequireJS to load the module when it is required by the application</li>
+<li>Fragments modules are <a href="http://requirejs.org/docs/whyamd.html#amd">AMD compliant</a></li>
+<li>If a configuration JSON schema is provided for a specific module in the fragment manifest, the configuration specified
+here will be validated against it.</li>
+</ul>
+
+<h1 id="how-it-works">How it works</h1>
+
+<p>The master page is the one and only entry point of your web application. By adding the following <code>&lt;script&gt;</code> tag in it,
+two things happen :</p>
+
+<ol>
+<li>RequireJS is loaded</li>
+
+<li><p>Once RequireJS is loaded, it loads <code>bower_components/w20/modules/w20.js</code> (notice there is no extension in the
+<code>&lt;script&gt;</code> when pointing to the <code>w20.js</code> :</p>
+
+<pre><code>    &lt;script type=&quot;text/javascript&quot; 
+            data-main=&quot;bower_components/w20/modules/w20&quot; 
+            src=&quot;bower_components/requirejs/require.js&quot;&gt;
+    &lt;/script&gt;
+</code></pre></li>
+
+<li><p><code>w20.js</code> is the core implementation of W20. Once loaded, it will automatically parse your application configuration
+file <code>w20.app.json</code> to :</p>
+
+<ul>
+<li>detect which fragments to load</li>
+<li>detect which modules to load for each fragment</li>
+<li>validate configuration for each fragment and module (<code>w20.app.json</code>) against its schema
+(<code>fragment-identifier.w20.json</code>)</li>
+<li>load AMD modules using RequireJS</li>
+<li>load the home view from the application module of the W20 core fragment into the master page</li>
+</ul></li>
+</ol>
+
+<div class='pull-right margin-top-20'>
+    <a href='manual' class="btn btn-u">Next: start reading the manual...</a>
+</div>
+<div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+<div class="side-menu">
+    
+        
+    
+    
+    <div class="list-group">
+        <ul class="nav">
+            <li class="list-group-item"><div style="margin-bottom: 10px;"><i class="fa fa-tag"></i> Tags</div>
+                <div class="tags">
+                    
+                    <a class="label label-default" href="/tags/masterpage">Masterpage</a>
+                    
+                    <a class="label label-default" href="/tags/configuration">Configuration</a>
+                    
+                    <a class="label label-default" href="/tags/fragment">Fragment</a>
+                    
+                    <a class="label label-default" href="/tags/manifest">Manifest</a>
+                    
+                    <a class="label label-default" href="/tags/index">Index</a>
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="list-group">
+        <ul class="nav">
+            
+                <li><a class="list-group-item" href="https://github.com/w20-framework/website/edit/master/content/docs/index.md" target="_blank"><i class="fa fa-edit"></i> Contribute to this page</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+    <div id="footer">
+        <div class="footer-v3">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="headline"><h2>About</h2></div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">W20 is a Web framework to create modular and composable enterprise-ready applications.</p>
+                </div>
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><h2>License</h2></div>
+                        <p>
+                            Code licensed under the <a href="https://www.mozilla.org/MPL/2.0" target="_blank">Mozilla Public License 2.0</a>.
+                            <br/>
+                            Documentation licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 map-img">
+                    <div class="headline"><h2>Contact us</h2></div>
+                    <address>
+                        <p>
+                            StackOverflow <a href="https://stackoverflow.com/questions/tagged/w20">W20 on StackOverflow</a>
+                        </p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js"></script>
+<script src="/assets/unify/plugins/smoothScroll.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/w20.js"></script>
+<script>
+    $(document).ready(function () {
+        var $search = $('.search-btn');
+
+        $('.search').click(function () {
+            if ($search.hasClass('fa-search')) {
+                w20.ui.openSearch();
+            } else {
+                w20.ui.closeSearch();
+            }
+        });
+
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $('.side-menu').affix({
+            offset: {
+                top: $('#header').height() + 20,
+                bottom: $('#footer').height() + 40
+            }
+        });
+
+        Mousetrap.bind('/', function () {
+            w20.ui.openSearch();
+            return false;
+        });
+
+        Mousetrap.bind('alt+up', function () {
+            if (w20.state.previousPage) {
+                window.location = w20.state.previousPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('alt+down', function () {
+            if (w20.state.nextPage) {
+                window.location = w20.state.nextPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('esc', function () {
+            w20.ui.closeSearch();
+            return false;
+        });
+
+        var originalCallback = Mousetrap.stopCallback;
+        Mousetrap.stopCallback = function (e, element, combo) {
+            if (combo === 'esc') {
+                return false;
+            }
+
+            return originalCallback(e, element, combo);
+        };
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#hotkeys-modal, #versions-modal').bind('hidden.bs.modal', function () {
+            $("html").css("margin-right", "0px");
+        }).bind('show.bs.modal', function () {
+            $("html").css("margin-right", "-15px");
+        });
+
+        var query = w20.strings.parseQueryString(location);
+        if (query.h && query.h.length > 0) {
+            $('.doc-content').highlight(query.h);
+            if (query.scroll) {
+                $('html, body').animate({
+                    scrollTop: $('span[class=highlight]:first').offset().top - 20
+                }, 250);
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

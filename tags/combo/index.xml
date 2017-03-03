@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Combo on </title>
+    <link>http://w20-framework.github.io/tags/combo/index.xml</link>
+    <description>Recent content in Combo on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/combo/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>UI Select</title>
+      <link>http://w20-framework.github.io/addons/components/select/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/addons/components/select/</guid>
+      <description>
+
+&lt;h1 id=&#34;angular-ui-select&#34;&gt;Angular UI select&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/angular-ui/ui-select&#34;&gt;Angular UI select&lt;/a&gt; is an AngularJS-native version of &lt;a href=&#34;https://select2.github.io/&#34;&gt;Select2&lt;/a&gt;
+and &lt;a href=&#34;http://brianreavis.github.io/selectize.js/&#34;&gt;Selectize&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20-components/w20-components.w20.json&amp;quot;: {
+    &amp;quot;select&amp;quot;: {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

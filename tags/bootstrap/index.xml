@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bootstrap on </title>
+    <link>http://w20-framework.github.io/tags/bootstrap/index.xml</link>
+    <description>Recent content in Bootstrap on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/bootstrap/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Basics</title>
+      <link>http://w20-framework.github.io/addons/bootstrap-2/</link>
+      <pubDate>Wed, 20 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/addons/bootstrap-2/</guid>
+      <description>
+
+&lt;p&gt;The W20 Bootstrap 2 addon provides the Twitter Bootstrap framework in its &lt;code&gt;2.3.2&lt;/code&gt; version, the last version of the 2.0 branch.
+It also provides a compatible &lt;code&gt;angular-bootstrap&lt;/code&gt; library and a compatible &lt;code&gt;font-awesome&lt;/code&gt; set of icons.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bower install w20-bootstrap-2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;To include the addon, declare it in the application manifest:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20-bootstrap-2/w20-bootstrap-2.w20.json&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Basics</title>
+      <link>http://w20-framework.github.io/addons/bootstrap-3/</link>
+      <pubDate>Wed, 20 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/addons/bootstrap-3/</guid>
+      <description>
+
+&lt;p&gt;The W20 Bootstrap 3 addon provides the Twitter Bootstrap framework in its latest version.
+It also provides a compatible &lt;code&gt;angular-bootstrap&lt;/code&gt; library and a compatible &lt;code&gt;font-awesome&lt;/code&gt; set of icons.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bower install w20-bootstrap-3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;To include the addon, declare it in the application manifest:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20-bootstrap-3/w20-bootstrap-3.w20.json&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

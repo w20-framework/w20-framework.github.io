@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+
+
+
+<title>
+    Routing
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/unify/css/style.css">
+<link rel="stylesheet" href="/assets/unify/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLF968Z');</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "W20 framework",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "Open-Source Software"
+  },
+  "applicationCategory" : "web framework"
+}
+</script>
+
+
+
+<meta property="og:title" content="Routing" />
+<meta property="og:description" content="W20 provides a declarative syntax to register AngularJS routes in your application. It is done through the routes section
+of fragment manifests:" />
+<meta property="og:url" content="http://w20-framework.github.io/docs/manual/routing/" />
+<meta property="og:site_name" content="W20 framework" />
+<meta property="og:image" content="http://w20-framework.github.io/img/opengraph-default.png" />
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://w20-framework.github.io/opensearch.xml" title="W20 framework" />
+
+
+
+<script type="text/javascript">
+    window.w20 = {
+        state: {}
+    };
+</script>
+
+
+</head>
+<body class="homepage">
+    
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLF968Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div id="header">
+        <div class="header">
+    <div class="container">
+        <a class="logo" href="/">W20 framework</a>
+        <div class="topbar hidden-xs hidden-sm">
+            <ul class="loginbar pull-right">
+                <li><i class="fa fa-stack-overflow"></i> <a target="_blank" href="http://stackoverflow.com/questions/ask?tags=w20">Ask a question</a></li>
+                <li class="topbar-devider"></li>
+                <li><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></li>
+            </ul>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" data-role="navigation" style="pointer-events: none;">
+        <div class="container">
+            <ul class="nav navbar-nav" style="pointer-events: auto;">
+                <li>
+                    <a href="/docs">Documentation</a>
+                </li>
+                <li>
+                    <a href="/addons">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/themes">Themes</a>
+                </li>
+                <li>
+                    <a href="/posts">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/project/community">Community</a></li>
+                        <li><a href="/project/roadmap">Roadmap</a></li>
+                        <li><a href="/project/faq">FAQ</a></li>
+                        <li><a href="/tags">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <form method="GET" action="/search">
+                            <div class="input-group animated fadeInDown">
+                                <input id="search-field" type="text" class="form-control" placeholder="Search" name="q">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        
+<div class="title-header small">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h2>Documentation</h2>
+                <p class="hidden-xs">Introduction, reference manual and JSDoc of the W20 framework.</p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-image-wrapper">
+                    <img class="header-image" src="/img/logos/w20-logo.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="title-subheader">
+    <div class="container">
+        <ul>
+            <li><h3 class=''><i class="fa fa-play-circle"></i> <a href="/docs">Introduction</a></h3></li>
+            <li><h3 class='active'><i class="fa fa-book"></i> <a href="/docs/manual">Manual</a></h3></li>
+            <li><h3 class=''><i class="fa fa-cogs"></i> <a href="/docs/generator">Generator</a></h3></li>
+            <li><h3><i class="fa fa-info-circle"></i> <a href="/jsdoc" target="_blank">JSDoc</a></h3></li>
+            <li><h3><i class="fa fa-tag"></i> <a href="https://github.com/w20-framework/w20/releases" target="_blank">Releases</a></h3></li>
+            <li><h3><i class="fa fa-github"></i> <a href="https://github.com/w20-framework/w20" target="_blank">Source</a></h3></li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+    <div id="content" class="container">
+        <div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="doc-content">
+                <p>W20 provides a declarative syntax to register AngularJS routes in your application. It is done through the <code>routes</code> section
+of fragment manifests:</p>
+
+<pre><code>&quot;routes&quot;: {
+    &quot;/route1&quot;: {
+        ...
+    },
+    &quot;/route2&quot;: {
+        ...
+    }
+}
+</code></pre>
+
+<p>The <code>application</code> module will process the <code>routes</code> section of all fragments and register the valid routes in the AngularJS
+routing system. The two components of a W20 route definition are:</p>
+
+<ul>
+<li>The route paths which are specified by the keys of the <code>routes</code> object. To ensure route uniqueness in an application,
+the fragment identifier is used as a route path prefix. For example, if the fragment identifier is <code>fragment1</code> the full
+route path registered in AngularJS routing for <code>/route1</code> is <code>/fragment1/route1</code>.</li>
+<li>The route definitions which are specified as an object for each route path. Every options of the AngularJS route object
+can be configured, the most common one being the <code>templateUrl</code> and the <code>controller</code> associated to the view.</li>
+</ul>
+
+<pre><code> &quot;routes&quot;: {
+     &quot;/route1&quot;: {
+       &quot;templateUrl&quot;: &quot;{fragment-id}/views/route1Template.html&quot;,
+       &quot;controller&quot;: &quot;route1Controller&quot;
+     }
+ }
+</code></pre>
+
+<div class="callout callout-info">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+                <i class="fa fa-info-circle icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>The route definition object specifies the contents and behavior of the view that will be displayed inside the HTML tag
+containing the <code>ngView</code> attribute. To learn more about AngularJS routing, please check
+<a href="https://docs.angularjs.org/api/ngRoute/provider/$routeProvider">this documentation</a>.</p>
+
+        </div>
+    </div>
+</div>
+
+<h1 id="route-types">Route types</h1>
+
+<p>A route definition should contain a <code>type</code> attribute. If it is not present, a route type of <code>view</code> is assumed which is
+a standard AngularJS route. Two route types are available out-of-the-box:</p>
+
+<ul>
+<li>A <code>view</code> route is a standard AngularJS route, which is minimally processed by W20. If it contains a <code>templateUrl</code>, its
+value is resolved into a full URL by the RequireJS function <code>toUrl()</code>. As such, every fragment alias (like <code>{fragment1}</code>)
+is resolved.</li>
+<li>A <code>sandbox</code> route type is a W20-specific route type which encapsulate the page denoted by the <code>url</code> attribute into an
+iframe. It is useful to add any pre-existing HTML pages into a W20 application such as legacy application screens. The
+<code>url</code> attribute is resolved into a full URL by the RequireJS function <code>toUrl()</code>.</li>
+</ul>
+
+<p>Any custom route type can be registered by using the <code>registerRouteHandler()</code> function of the <code>application</code> module public
+definition:</p>
+
+<pre><code>define([
+    '{w20-core}/modules/application'
+], function(application) {
+    ...
+
+    application.registerRouteHandler('myCustomType', function (route) {
+        // analyze and transform the route object here        
+
+        return route;
+    });
+
+    ...
+});
+</code></pre>
+
+<p>The handler will be invoked for each detected route of type <code>myCustomType</code>. It is required that the returned route
+object is a valid AngularJS route definition.</p>
+
+<h1 id="hidden-routes">Hidden routes</h1>
+
+<p>You can hide a route from the menu by setting the <code>hidden</code> attribute to <code>true</code> in the route definition object:</p>
+
+<pre><code> &quot;routes&quot;: {
+     &quot;/route1&quot;: {
+         &quot;hidden&quot;: true
+     }
+ }
+</code></pre>
+
+<h1 id="categorizing-routes">Categorizing routes</h1>
+
+<p>The <code>category</code> attribute can be used to define a category for the route which will often be rendered as a section or folder in graphical themes. The category name supports hierarchical categories separated with dots:</p>
+
+<pre><code> &quot;routes&quot;: {
+     &quot;/route1&quot;: {
+         &quot;category&quot;: &quot;a.b.c&quot;
+     }
+ }
+</code></pre>
+
+<p>This will put the <code>route1</code> route in the <code>c</code> sub-category of <code>b</code> which is itself a sub-category of category <code>a</code>. The special category name <code>__top</code> define the route as a top-level route (without category). It is the default value of this attribute.</p>
+
+<h1 id="additional-route-metadata">Additional route metadata</h1>
+
+<p>Additional attributes can be attached to route definition and will be ignored by AngularJS. When retrieving the route through
+the AngularJS <code>$route</code> service, these attributes will be preserved, allow for further processing during the execution
+of the application.</p>
+
+<h2 id="w20-route-metadata">W20 route metadata</h2>
+
+<p>W20 adds a limited set of attributes on all routes:</p>
+
+<ul>
+<li><code>type</code>: the type attribute is automatically added if not present (with the <code>view</code> value),</li>
+<li><code>path</code>: the full path of the route,</li>
+<li><code>category</code>: the category of the route (which can be used to classify the routes for navigation) is added with a default value of <code>__top</code>.</li>
+<li><code>i18n</code>: the i18n key for the route name is added with a default value of <code>application.view.normalized.route.path</code>. Path
+normalization consists of replacing slashes with dots. As such, the <code>/fragment1/route1</code> fragments will have a default i18n
+key of <code>application.view.fragment1.route1</code>.</li>
+<li><code>resolve</code>: a resolve object will be added to check for route security and for any additional custom check defined by the
+<code>check</code> attribute on the route definition (which must reference by name a custom check function registered with AngularJS
+injector through a <code>module.value('myCheck', function checkFn() { ... });</code> and returning a promise). The routing is suspended
+until the promise is resolved (or rejected).</li>
+</ul>
+
+<h2 id="custom-metadata">Custom metadata</h2>
+
+<p>Any additional metadata can be added to the route for custom purposes, but be aware to not interfere with W20 route metadata
+as any custom attribute of the same name will be overwritten before any custom route handler is called.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+<div class="side-menu">
+    
+        
+        <div class="list-group">
+            <ul class="nav">
+                
+                
+                
+                    
+                    <li>
+                        <a href="/docs/manual/" class="list-group-item ">
+                            Web framework basics
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/routing/" class="list-group-item  active ">
+                            Routing
+                        </a>
+                        
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#route-types">Route types</a></li>
+<li><a href="#hidden-routes">Hidden routes</a></li>
+<li><a href="#categorizing-routes">Categorizing routes</a></li>
+<li><a href="#additional-route-metadata">Additional route metadata</a>
+<ul>
+<li><a href="#w20-route-metadata">W20 route metadata</a></li>
+<li><a href="#custom-metadata">Custom metadata</a></li>
+</ul></li>
+</ul>
+</nav>
+                            <script>
+                                w20.state.previousPage = '\/docs\/manual\/';
+                            </script>
+                            
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/security/" class="list-group-item ">
+                            Security
+                        </a>
+                        
+                            <script>
+                                w20.state.nextPage = '\/docs\/manual\/security\/';
+                            </script>
+                            
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/culture/" class="list-group-item ">
+                            Culture
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/hypermedia/" class="list-group-item ">
+                            Hypermedia
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/ui/" class="list-group-item ">
+                            UI
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/testing/" class="list-group-item ">
+                            Testing
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+            </ul>
+        </div>
+        
+    
+    
+    <div class="list-group">
+        <ul class="nav">
+            <li class="list-group-item"><div style="margin-bottom: 10px;"><i class="fa fa-tag"></i> Tags</div>
+                <div class="tags">
+                    
+                    <a class="label label-default" href="/tags/route">Route</a>
+                    
+                    <a class="label label-default" href="/tags/template">Template</a>
+                    
+                    <a class="label label-default" href="/tags/path">Path</a>
+                    
+                    <a class="label label-default" href="/tags/view">View</a>
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="list-group">
+        <ul class="nav">
+            
+                <li><a class="list-group-item" href="https://github.com/w20-framework/website/edit/master/content/docs/manual/routing.md" target="_blank"><i class="fa fa-edit"></i> Contribute to this page</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+    <div id="footer">
+        <div class="footer-v3">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="headline"><h2>About</h2></div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">W20 is a Web framework to create modular and composable enterprise-ready applications.</p>
+                </div>
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><h2>License</h2></div>
+                        <p>
+                            Code licensed under the <a href="https://www.mozilla.org/MPL/2.0" target="_blank">Mozilla Public License 2.0</a>.
+                            <br/>
+                            Documentation licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 map-img">
+                    <div class="headline"><h2>Contact us</h2></div>
+                    <address>
+                        <p>
+                            StackOverflow <a href="https://stackoverflow.com/questions/tagged/w20">W20 on StackOverflow</a>
+                        </p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js"></script>
+<script src="/assets/unify/plugins/smoothScroll.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/w20.js"></script>
+<script>
+    $(document).ready(function () {
+        var $search = $('.search-btn');
+
+        $('.search').click(function () {
+            if ($search.hasClass('fa-search')) {
+                w20.ui.openSearch();
+            } else {
+                w20.ui.closeSearch();
+            }
+        });
+
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $('.side-menu').affix({
+            offset: {
+                top: $('#header').height() + 20,
+                bottom: $('#footer').height() + 40
+            }
+        });
+
+        Mousetrap.bind('/', function () {
+            w20.ui.openSearch();
+            return false;
+        });
+
+        Mousetrap.bind('alt+up', function () {
+            if (w20.state.previousPage) {
+                window.location = w20.state.previousPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('alt+down', function () {
+            if (w20.state.nextPage) {
+                window.location = w20.state.nextPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('esc', function () {
+            w20.ui.closeSearch();
+            return false;
+        });
+
+        var originalCallback = Mousetrap.stopCallback;
+        Mousetrap.stopCallback = function (e, element, combo) {
+            if (combo === 'esc') {
+                return false;
+            }
+
+            return originalCallback(e, element, combo);
+        };
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#hotkeys-modal, #versions-modal').bind('hidden.bs.modal', function () {
+            $("html").css("margin-right", "0px");
+        }).bind('show.bs.modal', function () {
+            $("html").css("margin-right", "-15px");
+        });
+
+        var query = w20.strings.parseQueryString(location);
+        if (query.h && query.h.length > 0) {
+            $('.doc-content').highlight(query.h);
+            if (query.scroll) {
+                $('html, body').animate({
+                    scrollTop: $('span[class=highlight]:first').offset().top - 20
+                }, 250);
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

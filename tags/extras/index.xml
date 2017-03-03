@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Extras on </title>
+    <link>http://w20-framework.github.io/tags/extras/index.xml</link>
+    <description>Recent content in Extras on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/extras/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Basics</title>
+      <link>http://w20-framework.github.io/addons/extras/</link>
+      <pubDate>Wed, 20 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/addons/extras/</guid>
+      <description>
+
+&lt;p&gt;The W20 Extras addon provides various functionality such as website analytics.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bower install w20-extras
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;To include the addon, declare it in the application manifest:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20-extras/w20-extra.w20.json&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;analytics&#34;&gt;Analytics&lt;/h1&gt;
+
+&lt;p&gt;Analytical tools allow statistical reporting and data analysis for your web applications:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Counting and tracking visitor&amp;rsquo;s actions&lt;/li&gt;
+&lt;li&gt;Statistics on page viewed&lt;/li&gt;
+&lt;li&gt;Keyword searched&lt;/li&gt;
+&lt;li&gt;E-commerce specific report&lt;/li&gt;
+&lt;li&gt;Setting cookies for tracking visit&lt;/li&gt;
+&lt;li&gt;Displaying comprehensive and detailed reports&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Analytics providers generally requires a script inclusion in all web pages to track user actions based on the URL. However, in SPA, since the routing is done
+at the front end, this integration is a bit more tricky. W20 uses &lt;a href=&#34;http://luisfarzati.github.io/angulartics/&#34;&gt;Angulartics&lt;/a&gt; internally to provide an easy
+integration of a wide range of providers.&lt;/p&gt;
+
+&lt;h2 id=&#34;fragment-configuration&#34;&gt;Fragment configuration&lt;/h2&gt;
+
+&lt;p&gt;Include the &lt;strong&gt;extra&lt;/strong&gt; fragment configuration in your fragment manifest and enable its &lt;strong&gt;analytics&lt;/strong&gt; module. To configure
+you analytics provide, use the following properties:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;provider (string)&lt;/strong&gt;: The name of the analytic provider to use. Supported providers are given below:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;table-responsive&#34;&gt;
+    &lt;table class=&#34;table table-bordered table-striped&#34;&gt;
+      &lt;colgroup&gt;
+        &lt;col class=&#34;col-xs-1&#34;&gt;
+        &lt;col class=&#34;col-xs-7&#34;&gt;
+      &lt;/colgroup&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Class&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;adobe&#39;&lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt; Adobe analytics&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;chartbeat&#39;&lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt;Chartbeat analytics  &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;flurry&#39;&lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt;Flurry analytics &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;ga&#39;&lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt;Google Analytics&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;ga-cordova&#39;&lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt; Google Analytics for Cordova&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;gtm&#39;&lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt; Google Tag Manager &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;kissmetrics&#39; &lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt; Kissmetrics &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;mixpanel&#39;&lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt; Mix Panel analytics &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;piwik&#39;&lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt; Piwik analytics &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;segmentio&#39;&lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt; Segment.io analytics &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;splunk&#39;&lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt; Splunk &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;th scope=&#34;row&#34;&gt;
+            &lt;code&gt;&#39;woopra&#39;&lt;/code&gt;
+          &lt;/th&gt;
+          &lt;td&gt; Woopra &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+  
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;virtualPageViews (boolean)&lt;/strong&gt;: By default automatic virtual page view tracking is enabled, meaning the entire user navigation across the different routes
+of your application is tracked. You can turn it off with this property.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;settings (object)&lt;/strong&gt;: If the chosen provider has a supported default configuration in W20, you can use this property to configure it.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;piwik&#34;&gt;Piwik&lt;/h2&gt;
+
+&lt;p&gt;After deploying your Piwik server, you are provided with a site id for your registered website. Set it to the &lt;code&gt;siteId&lt;/code&gt; property and paste the URL to the
+javascript tracker (piwik.js) into the &lt;code&gt;jsUrl&lt;/code&gt; property and your Piwik PHP server address into the &lt;code&gt;trackerUrl&lt;/code&gt; property.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;quot;path/to/extra/w20-extra.w20.json&amp;quot;: {
+        &amp;quot;modules&amp;quot;: {
+            &amp;quot;analytics&amp;quot;: {
+                &amp;quot;provider&amp;quot;: &amp;quot;piwik&amp;quot;,
+                &amp;quot;virtualPageViews&amp;quot;: true,
+                &amp;quot;settings&amp;quot;: {
+                    &amp;quot;jsUrl&amp;quot;: &amp;quot;url/or/path/to/piwik/javascript/tracker&amp;quot;,
+                    &amp;quot;trackerUrl&amp;quot;: &amp;quot;url/to/piwik/javascript/tracker&amp;quot;,
+                    &amp;quot;siteId&amp;quot;: 1
+                }
+            }
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Your website visits should be monitored by Piwik. The &lt;code&gt;trackPageView&lt;/code&gt; and &lt;code&gt;enableLinkTracking&lt;/code&gt; options of Piwik are already applied.
+An angular service &lt;code&gt;PiwikService&lt;/code&gt; can now be injected to configure Piwik. This service provide the following methods:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;getAPI()&lt;/code&gt;: return the &lt;a href=&#34;http://developer.piwik.org/api-reference/tracking-javascript&#34;&gt;Piwik&lt;/a&gt; object&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;configure(settings)&lt;/code&gt;: Called initially to configure the provider with the &lt;code&gt;settings&lt;/code&gt; property configured in the manifest. It can be called programatically to
+change these settings later.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Form on </title>
+    <link>http://w20-framework.github.io/tags/form/index.xml</link>
+    <description>Recent content in Form on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/form/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Forms</title>
+      <link>http://w20-framework.github.io/addons/components/forms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/addons/components/forms/</guid>
+      <description>
+
+&lt;p&gt;Forms are one of the most common element in a web application. The web framework provides support for
+forms building through programmatic configuration. Internally it relies on &lt;a href=&#34;http://docs.angular-formly.com/&#34;&gt;Angular Formly&lt;/a&gt;,
+an advanced library for managing forms with AngularJS. This approach reduces the amount of HTML in favor
+of JavaScript to provide flexibility, reusability, maintainability and simplicity.&lt;/p&gt;
+
+&lt;h1 id=&#34;forms&#34;&gt;Forms&lt;/h1&gt;
+
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;To display a form, we declare a &lt;code&gt;form&lt;/code&gt; element with a unique child. The child element will itself declare:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;the &lt;code&gt;w20Form&lt;/code&gt; directive.&lt;/li&gt;
+&lt;li&gt;the &lt;code&gt;model&lt;/code&gt; attribute which binds the form data to its value on the scope.&lt;/li&gt;
+&lt;li&gt;the &lt;code&gt;fields&lt;/code&gt; attribute which reads the configuration object for the form fields on the scope.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;form data-ng-submit=&amp;quot;form.submit()&amp;quot; name=&amp;quot;form&amp;quot;&amp;gt;
+    &amp;lt;span data-w20-form data-model=&amp;quot;form.model&amp;quot; data-fields=&amp;quot;form.fields&amp;quot;&amp;gt;
+        &amp;lt;button class=&amp;quot;btn btn-primary&amp;quot; type=&amp;quot;submit&amp;quot;&amp;gt;Submit&amp;lt;/button&amp;gt;
+    &amp;lt;/span&amp;gt;
+&amp;lt;/form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;w20Form&lt;/code&gt; directive transcludes. Its child elements get appended to the end of the form. This allow to declare the submit button inside
+the directive element.&lt;/p&gt;
+
+&lt;p&gt;In the JavaScript we can configure the form elements:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$scope.form = {
+    model: {},
+    fields: [{ key: &#39;name&#39;, type: &#39;text&#39;, templateOptions: { label: &#39;Name&#39; }}],
+    submit: function () { ... }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The end result is an input element with a binding to $scope.model.name (&lt;code&gt;key&lt;/code&gt;), a type &amp;lsquo;text&amp;rsquo; (&lt;code&gt;type&lt;/code&gt;) and a label &amp;lsquo;Name&amp;rsquo; (&lt;code&gt;label&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h2 id=&#34;benefits&#34;&gt;Benefits&lt;/h2&gt;
+
+&lt;p&gt;Using this approach offer several benefits such as:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Simpler declaration.&lt;/li&gt;
+&lt;li&gt;CSS agnostic (no Bootstrap classes tightly linked to the form for instance).&lt;/li&gt;
+&lt;li&gt;Automatic validation.&lt;/li&gt;
+&lt;li&gt;Easier to declare conditional logic.&lt;/li&gt;
+&lt;li&gt;Creation of custom element types.&lt;/li&gt;
+&lt;li&gt;i18n capability.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;configuration&#34;&gt;Configuration&lt;/h1&gt;
+
+&lt;h2 id=&#34;fragment-declaration&#34;&gt;Fragment declaration&lt;/h2&gt;
+
+&lt;p&gt;To include the form support in your application, declare the form module in your w20-components addon fragment configuration
+of the application manifest.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;bower_components/w20-components/w20-components.w20.json&amp;quot;: {
+    &amp;quot;forms&amp;quot;: {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields&lt;/h2&gt;
+
+&lt;p&gt;A field is an object which can accept theses properties:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;template&lt;/code&gt;: (String) or &lt;code&gt;templateUrl&lt;/code&gt; (String) An HTML template or an URL to one. This is useful to declare a title in the middle of the form for instance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    template: &#39;&amp;lt;h1&amp;gt; Title &amp;lt;/h1&amp;gt;&#39;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;key&lt;/code&gt;: (String) The name of the property of the model to which this field NgModel will be binded.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;className&lt;/code&gt;: (String) The name of a css class to apply to the field. Useful for layout.,&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;type&lt;/code&gt;: (String) The type of the field. By default, several types are available:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;text&lt;/li&gt;
+&lt;li&gt;email&lt;/li&gt;
+&lt;li&gt;password&lt;/li&gt;
+&lt;li&gt;date&lt;/li&gt;
+&lt;li&gt;number&lt;/li&gt;
+&lt;li&gt;url&lt;/li&gt;
+&lt;li&gt;datetime-local&lt;/li&gt;
+&lt;li&gt;tel&lt;/li&gt;
+&lt;li&gt;search&lt;/li&gt;
+&lt;li&gt;color&lt;/li&gt;
+&lt;li&gt;time&lt;/li&gt;
+&lt;li&gt;week&lt;/li&gt;
+&lt;li&gt;month&lt;/li&gt;
+&lt;li&gt;checkbox&lt;/li&gt;
+&lt;li&gt;radio&lt;/li&gt;
+&lt;li&gt;textarea&lt;/li&gt;
+&lt;li&gt;select
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;templateOptions&lt;/code&gt;: (Object) This property allow setting different options on the field element template.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;label&lt;/code&gt;: (String) The label of the field.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;placeholder&lt;/code&gt;: (String) The placeholder of the field.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Any additional template options are set as attributes on the field element&lt;/strong&gt;. This allow the registration of validation
+properties such as:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;required&lt;/code&gt;: (Boolean) Specify if the field is mandatory.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;minlength&lt;/code&gt;: (Number) Specify the field minimum length input.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;min&lt;/code&gt;: (Number) Specify the field minimum value.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;maxlength&lt;/code&gt;: (Number) Specify the field maximum length input.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;max&lt;/code&gt;: (Number) Specify the field maximum value.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pattern&lt;/code&gt;: (String) A regular expression to which the input needs to validate against.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some properties of the &lt;code&gt;templateOptions&lt;/code&gt; only make sense for certain field type:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Select:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;options&lt;/code&gt;: (Array of Object with properties { name: &amp;lsquo;string&amp;rsquo;, value: &amp;lsquo;value&amp;rsquo;, group: &amp;lsquo;group&amp;rsquo; }) The list of options for the select element.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Textarea
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;rows&lt;/code&gt;: (Number) Number of rows.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cols&lt;/code&gt;: (Number) Number of columns.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;field-group&#34;&gt;Field group&lt;/h3&gt;
+
+&lt;p&gt;A field group is a way to group fields together, which is useful for advanced layout. It can also be used to group fields that are associated
+with the same model.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    key: &#39;person&#39;,
+    fieldGroup: [
+        {
+            key: &#39;sex&#39;,
+            type: &#39;radio&#39;,
+            className: &#39;col-md-4&#39;,
+            templateOptions: {
+                name: &#39;radioGroup&#39;,
+                label: &#39;Male&#39;,
+                value: &#39;M&#39;
+            }
+        },
+        {
+            key: &#39;sex&#39;,
+            type: &#39;radio&#39;,
+            className: &#39;col-md-4&#39;,
+            templateOptions: {
+                name: &#39;radioGroup&#39;,
+                label: &#39;Female&#39;,
+                value: &#39;F&#39;
+            }
+        },
+        {
+            key: &#39;married&#39;,
+            type: &#39;checkbox&#39;,
+            className: &#39;col-md-4&#39;,
+            templateOptions: {
+                label: &#39;Married (y/n)&#39;
+            }
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the above example the model will look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    person: {
+        sex: &#39;M&#39;,
+        married: true
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;internationalization&#34;&gt;Internationalization&lt;/h3&gt;
+
+&lt;p&gt;Strings used for label, placeholder, etc. can be replaced by i18n key. They are automatically localized.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;templateOptions: {
+    label: &#39;application.w20.label.to.localize&#39;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;expression-properties&#34;&gt;Expression properties&lt;/h3&gt;
+
+&lt;p&gt;Expression properties can be used to evaluate property on the field dynamically. For instance:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    key: &#39;myThing&#39;,
+    type: &#39;someType&#39;,
+    templateOptions: {
+        label: &#39;Label&#39;
+    }
+    expressionProperties: {
+        // this would make the label change to what the user has typed
+      &#39;templateOptions.label&#39;: &#39;$viewValue&#39;, 
+       // This sets data.someProp to be true or false
+      &#39;data.someProp&#39;: &#39;model.myThing.length &amp;gt; 5&#39;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;hide-expression&#34;&gt;Hide expression&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;hideExpression&lt;/code&gt; property is similar to the &lt;code&gt;expressionProperties&lt;/code&gt;, although it accepts both a string or a function. It allows to show/hide the
+corresponding field.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hideExpression: function($viewValue, $modelValue, scope) {
+      return scope.model.baz === &#39;foobar&#39;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;validation&#34;&gt;Validation&lt;/h2&gt;
+
+&lt;h3 id=&#34;validators&#34;&gt;Validators&lt;/h3&gt;
+
+&lt;p&gt;Form validation is an important part of the user experience while completing the form. You can add validation rule easily with the
+&lt;code&gt;validators&lt;/code&gt; property:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    type: &#39;text&#39;,
+    key: &#39;ip&#39;,
+    templateOptions: {
+        required: true, 
+        label: &#39;IP Address&#39;
+    },
+    validators: {
+          notLocalHost: &#39;$viewValue !== &amp;quot;127.0.0.1&amp;quot;&#39;,
+          ipAddress: {
+            expression: function ($viewValue, $modelValue, scope) {
+              var value = $modelValue || $viewValue;
+              return /(\d{1,3}\.){3}\d{1,3}/.test(value);
+            },
+            message: &#39;$viewValue + &amp;quot; is not a valid IP Address&amp;quot;&#39;
+          }         
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the above example we register two validators: &lt;code&gt;notLocalHost&lt;/code&gt; and &lt;code&gt;ipAddress&lt;/code&gt;. The first one will validate the field if and only if
+the &lt;code&gt;$viewValue&lt;/code&gt; (that is the value the user entered in the field) is different from the localhost ip address. The second validator demonstrate
+another way of declaring validators with more options. Here we test against an IP regex and register a validation message to be displayed if the field
+does not validate.&lt;/p&gt;
+
+&lt;h3 id=&#34;validation-1&#34;&gt;Validation&lt;/h3&gt;
+
+&lt;p&gt;We already saw how to register a message alongside a validator but you can also register messages for any property. For this you
+can use the &lt;code&gt;validation&lt;/code&gt; option.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    key: &#39;id&#39;,
+    type: &#39;text&#39;,
+    templateOptions: {
+        label: &#39;Id&#39;,
+        placeholder: &#39;Id&#39;,
+        required: true,
+        minlength: 6
+    },
+    validation: {
+        messages: {
+            required: &amp;quot;options.templateOptions.label + &#39; is mandatory&#39;&amp;quot;,
+            minlength: &amp;quot;&#39;Minimum length allowed is &#39; + options.templateOptions.minlength&amp;quot;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the above example, leaving the field empty will show &amp;laquo;Id is mandatory&amp;raquo; while providing an id with a length inferior to 6 will show &amp;laquo;Minimum length
+allowed is 6&amp;raquo;. The &lt;code&gt;options.templateOptions&lt;/code&gt; refer to the field templateOptions. You can also use a shortcut syntax: &lt;code&gt;to&lt;/code&gt; for &lt;code&gt;options.templateOptions&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;validation: {
+    messages: {
+        required: &amp;quot;to.label + &#39; is mandatory&#39;&amp;quot;,
+        minlength: &amp;quot;&#39;Minimum length allowed is &#39; + to.minlength&amp;quot;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;disabling-validation&#34;&gt;Disabling validation&lt;/h3&gt;
+
+&lt;p&gt;Default validation messages appear by the use of a wrapper around template. You can completely disable the wrapper with the &lt;code&gt;wrapper&lt;/code&gt;property or
+provide your own wrapper (see Registering wrapper below).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    key: &#39;id&#39;,
+    type: &#39;text&#39;,
+    wrapper: null,
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Please note that messages are strings which means they need to be between quotes. For instance, if you use an i18n key for the message, it needs to be
+declared as &lt;code&gt;&amp;quot;&#39;application.i18n.key&#39;&amp;quot;&lt;/code&gt;, not just &lt;code&gt;&amp;quot;application.i18n.key&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;There are common default validation messages already registered for the en and fr locales.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;See &lt;a href=&#34;http://docs.angular-formly.com/docs/field-configuration-object&#34;&gt;Angular-formly field configuration object&lt;/a&gt; for an exhaustive description of all
+options available.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;customization&#34;&gt;Customization&lt;/h1&gt;
+
+&lt;h2 id=&#34;formsservice&#34;&gt;FormsService&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;FormsService&lt;/code&gt; main goals are the registration of global validation messages, custom template types and custom wrappers.&lt;/p&gt;
+
+&lt;h3 id=&#34;global-validation-messages&#34;&gt;Global validation messages&lt;/h3&gt;
+
+&lt;p&gt;Although you can register a validation message for each field as we saw previously, most of the time you will like to register
+a message for a certain validation that apply to all fields that declare this validation rule. You can proceed in several ways:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Register a string message with &lt;code&gt;validation.addStringMessage(name, string)&lt;/code&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;formsService.validation.addStringMessage(&#39;required&#39;, &#39;This field is required&#39;);
+// You can also pass an i18n key
+formsService.validation.addStringMessage(&#39;maxlength&#39;, &#39;application.form.validation.maxlength&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Register a template option value message: sometime a string message is not enough because you need to display a variable
+value in the message. To accomplish this you can use the &lt;code&gt;validation.addTemplateOptionValueMessage(name, property, prefix, suffix, alternate)&lt;/code&gt;.
+This is easy to understand with an example:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$scope.form.fields = {
+    {
+        key: &#39;id&#39;,
+        type: &#39;text&#39;,
+        templateOptions: {
+            label: &#39;Id&#39;,
+            minlength: 6,
+            minlengthstring: &#39;six&#39;
+        }
+    },
+     {
+        key: &#39;other&#39;,
+        type: &#39;text&#39;,
+        templateOptions: {
+            label: &#39;Other&#39;,
+            minlength: 6
+        }
+     }
+}
+
+formsService.validation.addTemplateOptionValueMessage(&#39;minlength&#39;, &#39;minlengthstring&#39;, &#39;Minimum length is  &#39;, &#39; characters&#39;, &#39;Too short&#39;);
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the example above we register a validation message for the &lt;code&gt;minlength&lt;/code&gt; attribute (first parameter). The message displayed if the validation fail will be:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;laquo;Minimum length is six characters&amp;raquo; i.e prefix + property + suffix for the id field.&lt;/li&gt;
+&lt;li&gt;&amp;laquo;Too short&amp;raquo; for the other field because it uses the alternate message if the property does not exist.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;registering-type&#34;&gt;Registering type&lt;/h3&gt;
+
+&lt;p&gt;The forms module provide default template type listed in the Fields section of this page. However you can create your own type for maximum flexibility.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;formsService.config.setType({
+    name: &#39;customTitle&#39;,
+    // &#39;to&#39; is a shortcut for &#39;options.templateOptions&#39;
+    template: &#39;&amp;lt;h1&amp;gt; Custom title - {{ to.customSetting }} &amp;lt;/h1&amp;gt;&#39;
+});
+
+$scope.form.fields = {
+    {
+        key: &#39;id&#39;,
+        type: &#39;customTitle&#39;,
+        templateOptions: {
+            customSetting: &#39;Some value&#39;,
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;registering-wrapper&#34;&gt;Registering wrapper&lt;/h3&gt;
+
+&lt;p&gt;To set a wrapper use the &lt;code&gt;config.setWrapper(wrapper)&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;formsService.config.setWrapper({template: validationTemplate});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The validation template need to declare the &lt;code&gt;&amp;lt;formly-transclude&amp;gt;&amp;lt;/formly-transclude&amp;gt;&lt;/code&gt; element at the position where you want your field
+to be inserted inside the wrapper. For instance, this wrapper will add a &lt;code&gt;&amp;lt;hr /&amp;gt;&lt;/code&gt; above every field.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div&amp;gt;
+    &amp;lt;hr /&amp;gt;
+    &amp;lt;formly-transclude&amp;gt;&amp;lt;/formly-transclude&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;layout-and-styling&#34;&gt;Layout and styling&lt;/h2&gt;
+
+&lt;h3 id=&#34;layout&#34;&gt;Layout&lt;/h3&gt;
+
+&lt;p&gt;When using a grid framework like Bootstrap you can achieve the desired layout using the &lt;code&gt;className&lt;/code&gt; property of fields. You can also
+combine this with the &lt;code&gt;fieldGroup&lt;/code&gt; property for inner layout.&lt;/p&gt;
+
+&lt;h3 id=&#34;style&#34;&gt;Style&lt;/h3&gt;
+
+&lt;p&gt;The default validation wrapper have these CSS classes for the label, messages wrapper and message element.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;w20-form-error-label&lt;/code&gt; for the form element label.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w20-form-error-messages&lt;/code&gt; for the ng-messages div that wrap all the validation messages.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w20-form-error-message&lt;/code&gt; for each validation message.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

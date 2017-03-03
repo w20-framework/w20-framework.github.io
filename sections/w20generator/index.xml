@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>W20generator on </title>
+    <link>http://w20-framework.github.io/sections/w20generator/index.xml</link>
+    <description>Recent content in W20generator on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/sections/w20generator/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>W20 generator</title>
+      <link>http://w20-framework.github.io/docs/generator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/generator/</guid>
+      <description>
+
+&lt;p&gt;To create a new W20 project from scratch, you need to have &lt;a href=&#34;https://nodejs.org&#34;&gt;NodeJS&lt;/a&gt; installed.
+To create a W20 application, run the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-plain&#34;&gt;npm install -g yo bower grunt-cli gulp generator-w20
+yo w20
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;This will install the &lt;code&gt;yo&lt;/code&gt;, &lt;code&gt;bower&lt;/code&gt;, &lt;code&gt;grunt-cli&lt;/code&gt;, &lt;code&gt;gulp&lt;/code&gt; and &lt;code&gt;generator-w20&lt;/code&gt; NPM packages globally. You may prefer to
+install some locally (in the project directory) by removing the &lt;code&gt;-g&lt;/code&gt; option. The generator is based on &lt;a href=&#34;http://yeoman.io/&#34;&gt;Yeoman&lt;/a&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;result&#34;&gt;Result&lt;/h1&gt;
+
+&lt;p&gt;If the process is successful, you should see a structure similar to the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-plain&#34;&gt;- bower_components       &amp;lt;-- dependencies
+      
+- fragments              &amp;lt;-- application fragments (one per directory)
+    - ...
+    
+- bower.json
+- index.html             &amp;lt;-- application master page
+- w20.app.json           &amp;lt;-- application configuration
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;more-resources&#34;&gt;More resources&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://w20-framework.github.io/docs&#34;&gt;W20 documentation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/w20-framework/generator-w20&#34;&gt;Yeoman W20 generator&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

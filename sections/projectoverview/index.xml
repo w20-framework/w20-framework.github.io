@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projectoverview on </title>
+    <link>http://w20-framework.github.io/sections/projectoverview/index.xml</link>
+    <description>Recent content in Projectoverview on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/sections/projectoverview/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Overview</title>
+      <link>http://w20-framework.github.io/project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/project/</guid>
+      <description>&lt;p&gt;This section is about the W20 project itself. Find out more by browsing the menu sections above.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

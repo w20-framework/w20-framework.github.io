@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Content on </title>
+    <link>http://w20-framework.github.io/tags/content/index.xml</link>
+    <description>Recent content in Content on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/tags/content/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>UI</title>
+      <link>http://w20-framework.github.io/docs/manual/ui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/ui/</guid>
+      <description>&lt;p&gt;The user interface can be customized with the graphical framework of your choice along with services which helps in areas such as
+navigation, display and theming.&lt;/p&gt;
+
+&lt;h1 id=&#34;ui-framework&#34;&gt;UI Framework&lt;/h1&gt;
+
+&lt;p&gt;Application can use any CSS frameworks or your own custom styling. Two popular frameworks, &lt;a href=&#34;http://getbootstrap.com/&#34;&gt;Twitter Bootstrap&lt;/a&gt;
+and &lt;a href=&#34;https://material.angularjs.org/latest/&#34;&gt;Angular Material&lt;/a&gt; are available through dedicated fragments.
+To include these framework in the application, declare the fragment that you want in your application manifest.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;quot;bower_components/w20-bootstrap-3/w20-bootstrap-3.w20.json&amp;quot;: {}
+
+ &amp;quot;bower_components/w20-material/w20-material.w20.json&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The CSS framework loaded can be identified in the application logic by requiring the &lt;code&gt;{css-framework}/modules/css-framework&lt;/code&gt; module
+and evaluating its &lt;code&gt;name&lt;/code&gt; property.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;{css-framework}/modules/css-framework&#39;
+], function (cssFramework) {
+    console.log(cssFramework.name); // &amp;quot;bootstrap-3&amp;quot;
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;services&#34;&gt;Services&lt;/h1&gt;
+
+&lt;p&gt;Additionally, several services are available for different areas of the user interface.&lt;/p&gt;
+
+&lt;h2 id=&#34;displayservice&#34;&gt;DisplayService&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;DisplayService&lt;/code&gt; assists in presentation and positioning. It can request and exit fullscreen as well as registering callback
+for dynamic CSS classes.&lt;/p&gt;
+
+&lt;h3 id=&#34;fullscreen-mode&#34;&gt;Fullscreen mode&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;enterFullScreen()&lt;/code&gt; and &lt;code&gt;exitFullScreen()&lt;/code&gt; methods will request fullscreen mode according to the type of browser in use. Webkit browsers behave
+differently from MS browsers for instance. These methods allows to abstract the request of the fullscreen mode for every browser.&lt;/p&gt;
+
+&lt;h3 id=&#34;dynamic-positioning&#34;&gt;Dynamic positioning&lt;/h3&gt;
+
+&lt;p&gt;The following CSS classes can have dynamic values:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.w20-top-shift-padding&lt;/code&gt; (padding-top)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-top-shift-margin&lt;/code&gt; (margin-top)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-top-shift&lt;/code&gt; (top)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-right-shift-padding&lt;/code&gt; (padding-right)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-right-shift-margin&lt;/code&gt; (margin-right)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-right-shift&lt;/code&gt; (right)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-bottom-shift-padding&lt;/code&gt; (padding-bottom)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-bottom-shift-margin&lt;/code&gt; (margin-bottom)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-bottom-shift&lt;/code&gt; (bottom)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-left-shift-padding&lt;/code&gt; (padding-left)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-left-shift-margin&lt;/code&gt; (margin-left)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-left-shift&lt;/code&gt; (left)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Whenever a &lt;code&gt;function () { return [ a, b, c, d ]; }&lt;/code&gt; is registered through the &lt;code&gt;registerContentShiftCallback(fn)&lt;/code&gt; method, the value of theses classes
+ is summed with the value of a, b, c and d&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a increment the value of &lt;code&gt;.w20-top-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-top-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-top-shift&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;b increment the value of &lt;code&gt;.w20-right-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-right-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-right-shift&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;c increment the value of &lt;code&gt;.w20-bottom-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-bottom-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-bottom-shift&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;d increment the value of &lt;code&gt;.w20-left-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-left-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-left-shift&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can compute the &amp;laquo;shift&amp;raquo; in value by calling &lt;code&gt;computeContentShift()&lt;/code&gt;. The &lt;code&gt;registerContentShiftCallback(fn)&lt;/code&gt; will automatically call the &lt;code&gt;computeContentShift()&lt;/code&gt;
+ function but you might need to compute it again later if you used variables in the shift values for instance.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;module.controller(&#39;ExempleController&#39;, [&#39;DisplayService&#39;, &#39;EventService&#39;, 
+function (displayService, eventService) {
+
+    var show = true;
+    
+    function showElement () { 
+        return [show ? 100 : 0, 50, 0, 0]; 
+    }
+
+    displayService.registerContentShiftCallback(showElement);
+    
+    eventService.on(&#39;SomeEvent&#39;, function() {
+        show = !show;
+        displayService.computeContentShift();
+    });
+
+}]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the example above, initially:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;.w20-top-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-top-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-top-shift&lt;/code&gt; classes will have their value set to 100px.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;.w20-right-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-right-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-right-shift&lt;/code&gt; classes will have their value set to 50px.&lt;/li&gt;
+&lt;li&gt;the remaining one will have their value set to 0.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When &amp;lsquo;SomeEvent&amp;rsquo; happen,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;.w20-top-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-top-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-top-shift&lt;/code&gt; classes will have their value set to 0.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;.w20-right-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-right-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-right-shift&lt;/code&gt; classes will have their value set to 50px.&lt;/li&gt;
+&lt;li&gt;The remaining one will have their value set to 0.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;navigationservice&#34;&gt;NavigationService&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;NavigationService&lt;/code&gt; is mostly used internally to compute a hierarchical routes tree useful for displaying a menu of routes ordered
+by categories. You can call the &lt;code&gt;routeTree&lt;/code&gt; method to retrieve the routes tree of the application. For an exhaustive description of the API please
+consult the JSdoc.&lt;/p&gt;
+
+&lt;h2 id=&#34;menuservice&#34;&gt;MenuService&lt;/h2&gt;
+
+&lt;p&gt;The MenuService enable user to register custom action and section in themes.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;laquo;actions&amp;raquo; are element of the topbar.&lt;/li&gt;
+&lt;li&gt;&amp;laquo;sections&amp;raquo; are element of the sidebar.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note that some themes only allow &amp;laquo;actions&amp;raquo;.&lt;/p&gt;
+
+&lt;h3 id=&#34;registering-actions-sections&#34;&gt;Registering actions/sections&lt;/h3&gt;
+
+&lt;p&gt;Before an action or section is added it needs to be a member of an action type or section type. To register a
+new action/section type, use the &lt;code&gt;registerActionType(type, config)&lt;/code&gt; or &lt;code&gt;registerSectionType(type, config)&lt;/code&gt; methods of the service.&lt;/p&gt;
+
+&lt;p&gt;This is used to register the login and culture dropdown type action of themes for instance.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  menuService.registerActionType(&#39;w20-login&#39;, {
+       templateUrl: &#39;{css-framework}/templates/action-login.html&#39;,
+       showFn: function () {
+         return authenticationService.isAuthentifiable();
+       }
+   });
+
+  menuService.registerActionType(&#39;w20-culture&#39;, {
+       templateUrl: &#39;{css-framework}/templates/action-culture.html&#39;,
+       showFn: function () {
+         return cultureService.availableCultures().length &amp;gt; 0;
+       }
+   });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;showFn&lt;/code&gt; property specify on which condition should the action/section be shown.&lt;/p&gt;
+
+&lt;h3 id=&#34;adding-actions-sections&#34;&gt;Adding actions/sections&lt;/h3&gt;
+
+&lt;p&gt;To actually include an action or section, use the &lt;code&gt;addAction(&#39;name&#39;, &#39;type&#39;, configExtension)&lt;/code&gt; or &lt;code&gt;addSection(&#39;name&#39;, &#39;type&#39;, configExtension)&lt;/code&gt; methods of the service.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;menuService.addAction(&#39;login&#39;, &#39;w20-login&#39;, { sortKey: 100 });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The methods takes as argument the name of the action, the type of the action and a configuration object which extends
+the registered type configuration. The &lt;code&gt;sortKey&lt;/code&gt; property allow to order actions/sections.&lt;/p&gt;
+
+&lt;h2 id=&#34;bookmark-service&#34;&gt;Bookmark service&lt;/h2&gt;
+
+&lt;p&gt;The BookmarkService allow to store routes bookmarks. Use the &lt;code&gt;addBookmark(name, route)&lt;/code&gt; method with a name and an angular route object to store one.
+Use the &lt;code&gt;getBookmark(name)&lt;/code&gt; or &lt;code&gt;getAllBookmarks()&lt;/code&gt; methods to retrieve bookmarks. Additional methods are described in the API documentation.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+
+
+
+<title>
+    UI
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/unify/css/style.css">
+<link rel="stylesheet" href="/assets/unify/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLF968Z');</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "W20 framework",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "Open-Source Software"
+  },
+  "applicationCategory" : "web framework"
+}
+</script>
+
+
+
+<meta property="og:title" content="UI" />
+<meta property="og:description" content="The user interface can be customized with the graphical framework of your choice along with services which helps in areas such as
+navigation, display and theming." />
+<meta property="og:url" content="http://w20-framework.github.io/docs/manual/ui/" />
+<meta property="og:site_name" content="W20 framework" />
+<meta property="og:image" content="http://w20-framework.github.io/img/opengraph-default.png" />
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://w20-framework.github.io/opensearch.xml" title="W20 framework" />
+
+
+
+<script type="text/javascript">
+    window.w20 = {
+        state: {}
+    };
+</script>
+
+
+</head>
+<body class="homepage">
+    
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLF968Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div id="header">
+        <div class="header">
+    <div class="container">
+        <a class="logo" href="/">W20 framework</a>
+        <div class="topbar hidden-xs hidden-sm">
+            <ul class="loginbar pull-right">
+                <li><i class="fa fa-stack-overflow"></i> <a target="_blank" href="http://stackoverflow.com/questions/ask?tags=w20">Ask a question</a></li>
+                <li class="topbar-devider"></li>
+                <li><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></li>
+            </ul>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" data-role="navigation" style="pointer-events: none;">
+        <div class="container">
+            <ul class="nav navbar-nav" style="pointer-events: auto;">
+                <li>
+                    <a href="/docs">Documentation</a>
+                </li>
+                <li>
+                    <a href="/addons">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/themes">Themes</a>
+                </li>
+                <li>
+                    <a href="/posts">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/project/community">Community</a></li>
+                        <li><a href="/project/roadmap">Roadmap</a></li>
+                        <li><a href="/project/faq">FAQ</a></li>
+                        <li><a href="/tags">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <form method="GET" action="/search">
+                            <div class="input-group animated fadeInDown">
+                                <input id="search-field" type="text" class="form-control" placeholder="Search" name="q">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        
+<div class="title-header small">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h2>Documentation</h2>
+                <p class="hidden-xs">Introduction, reference manual and JSDoc of the W20 framework.</p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-image-wrapper">
+                    <img class="header-image" src="/img/logos/w20-logo.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="title-subheader">
+    <div class="container">
+        <ul>
+            <li><h3 class=''><i class="fa fa-play-circle"></i> <a href="/docs">Introduction</a></h3></li>
+            <li><h3 class='active'><i class="fa fa-book"></i> <a href="/docs/manual">Manual</a></h3></li>
+            <li><h3 class=''><i class="fa fa-cogs"></i> <a href="/docs/generator">Generator</a></h3></li>
+            <li><h3><i class="fa fa-info-circle"></i> <a href="/jsdoc" target="_blank">JSDoc</a></h3></li>
+            <li><h3><i class="fa fa-tag"></i> <a href="https://github.com/w20-framework/w20/releases" target="_blank">Releases</a></h3></li>
+            <li><h3><i class="fa fa-github"></i> <a href="https://github.com/w20-framework/w20" target="_blank">Source</a></h3></li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+    <div id="content" class="container">
+        <div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="doc-content">
+                <p>The user interface can be customized with the graphical framework of your choice along with services which helps in areas such as
+navigation, display and theming.</p>
+
+<h1 id="ui-framework">UI Framework</h1>
+
+<p>Application can use any CSS frameworks or your own custom styling. Two popular frameworks, <a href="http://getbootstrap.com/">Twitter Bootstrap</a>
+and <a href="https://material.angularjs.org/latest/">Angular Material</a> are available through dedicated fragments.
+To include these framework in the application, declare the fragment that you want in your application manifest.</p>
+
+<pre><code> &quot;bower_components/w20-bootstrap-3/w20-bootstrap-3.w20.json&quot;: {}
+
+ &quot;bower_components/w20-material/w20-material.w20.json&quot;: {}
+</code></pre>
+
+<p>The CSS framework loaded can be identified in the application logic by requiring the <code>{css-framework}/modules/css-framework</code> module
+and evaluating its <code>name</code> property.</p>
+
+<pre><code>define([
+    '{css-framework}/modules/css-framework'
+], function (cssFramework) {
+    console.log(cssFramework.name); // &quot;bootstrap-3&quot;
+});
+</code></pre>
+
+<h1 id="services">Services</h1>
+
+<p>Additionally, several services are available for different areas of the user interface.</p>
+
+<h2 id="displayservice">DisplayService</h2>
+
+<p>The <code>DisplayService</code> assists in presentation and positioning. It can request and exit fullscreen as well as registering callback
+for dynamic CSS classes.</p>
+
+<h3 id="fullscreen-mode">Fullscreen mode</h3>
+
+<p>The <code>enterFullScreen()</code> and <code>exitFullScreen()</code> methods will request fullscreen mode according to the type of browser in use. Webkit browsers behave
+differently from MS browsers for instance. These methods allows to abstract the request of the fullscreen mode for every browser.</p>
+
+<h3 id="dynamic-positioning">Dynamic positioning</h3>
+
+<p>The following CSS classes can have dynamic values:</p>
+
+<ul>
+<li><code>.w20-top-shift-padding</code> (padding-top)</li>
+<li><code>.w20-top-shift-margin</code> (margin-top)</li>
+<li><code>.w20-top-shift</code> (top)</li>
+<li><code>.w20-right-shift-padding</code> (padding-right)</li>
+<li><code>.w20-right-shift-margin</code> (margin-right)</li>
+<li><code>.w20-right-shift</code> (right)</li>
+<li><code>.w20-bottom-shift-padding</code> (padding-bottom)</li>
+<li><code>.w20-bottom-shift-margin</code> (margin-bottom)</li>
+<li><code>.w20-bottom-shift</code> (bottom)</li>
+<li><code>.w20-left-shift-padding</code> (padding-left)</li>
+<li><code>.w20-left-shift-margin</code> (margin-left)</li>
+<li><code>.w20-left-shift</code> (left)</li>
+</ul>
+
+<p>Whenever a <code>function () { return [ a, b, c, d ]; }</code> is registered through the <code>registerContentShiftCallback(fn)</code> method, the value of theses classes
+ is summed with the value of a, b, c and d</p>
+
+<ul>
+<li>a increment the value of <code>.w20-top-shift-padding</code>, <code>.w20-top-shift-margin</code>, <code>.w20-top-shift</code></li>
+<li>b increment the value of <code>.w20-right-shift-padding</code>, <code>.w20-right-shift-margin</code>, <code>.w20-right-shift</code></li>
+<li>c increment the value of <code>.w20-bottom-shift-padding</code>, <code>.w20-bottom-shift-margin</code>, <code>.w20-bottom-shift</code></li>
+<li>d increment the value of <code>.w20-left-shift-padding</code>, <code>.w20-left-shift-margin</code>, <code>.w20-left-shift</code></li>
+</ul>
+
+<p>You can compute the &laquo;shift&raquo; in value by calling <code>computeContentShift()</code>. The <code>registerContentShiftCallback(fn)</code> will automatically call the <code>computeContentShift()</code>
+ function but you might need to compute it again later if you used variables in the shift values for instance.</p>
+
+<pre><code>module.controller('ExempleController', ['DisplayService', 'EventService', 
+function (displayService, eventService) {
+
+    var show = true;
+    
+    function showElement () { 
+        return [show ? 100 : 0, 50, 0, 0]; 
+    }
+
+    displayService.registerContentShiftCallback(showElement);
+    
+    eventService.on('SomeEvent', function() {
+        show = !show;
+        displayService.computeContentShift();
+    });
+
+}]);
+</code></pre>
+
+<p>In the example above, initially:</p>
+
+<ul>
+<li>The <code>.w20-top-shift-padding</code>, <code>.w20-top-shift-margin</code>, <code>.w20-top-shift</code> classes will have their value set to 100px.</li>
+<li>The <code>.w20-right-shift-padding</code>, <code>.w20-right-shift-margin</code>, <code>.w20-right-shift</code> classes will have their value set to 50px.</li>
+<li>the remaining one will have their value set to 0.</li>
+</ul>
+
+<p>When &lsquo;SomeEvent&rsquo; happen,</p>
+
+<ul>
+<li>The <code>.w20-top-shift-padding</code>, <code>.w20-top-shift-margin</code>, <code>.w20-top-shift</code> classes will have their value set to 0.</li>
+<li>The <code>.w20-right-shift-padding</code>, <code>.w20-right-shift-margin</code>, <code>.w20-right-shift</code> classes will have their value set to 50px.</li>
+<li>The remaining one will have their value set to 0.</li>
+</ul>
+
+<h2 id="navigationservice">NavigationService</h2>
+
+<p>The <code>NavigationService</code> is mostly used internally to compute a hierarchical routes tree useful for displaying a menu of routes ordered
+by categories. You can call the <code>routeTree</code> method to retrieve the routes tree of the application. For an exhaustive description of the API please
+consult the JSdoc.</p>
+
+<h2 id="menuservice">MenuService</h2>
+
+<p>The MenuService enable user to register custom action and section in themes.</p>
+
+<ul>
+<li>&laquo;actions&raquo; are element of the topbar.</li>
+<li>&laquo;sections&raquo; are element of the sidebar.</li>
+</ul>
+
+<p>Note that some themes only allow &laquo;actions&raquo;.</p>
+
+<h3 id="registering-actions-sections">Registering actions/sections</h3>
+
+<p>Before an action or section is added it needs to be a member of an action type or section type. To register a
+new action/section type, use the <code>registerActionType(type, config)</code> or <code>registerSectionType(type, config)</code> methods of the service.</p>
+
+<p>This is used to register the login and culture dropdown type action of themes for instance.</p>
+
+<pre><code>  menuService.registerActionType('w20-login', {
+       templateUrl: '{css-framework}/templates/action-login.html',
+       showFn: function () {
+         return authenticationService.isAuthentifiable();
+       }
+   });
+
+  menuService.registerActionType('w20-culture', {
+       templateUrl: '{css-framework}/templates/action-culture.html',
+       showFn: function () {
+         return cultureService.availableCultures().length &gt; 0;
+       }
+   });
+</code></pre>
+
+<p>The <code>showFn</code> property specify on which condition should the action/section be shown.</p>
+
+<h3 id="adding-actions-sections">Adding actions/sections</h3>
+
+<p>To actually include an action or section, use the <code>addAction('name', 'type', configExtension)</code> or <code>addSection('name', 'type', configExtension)</code> methods of the service.</p>
+
+<pre><code>menuService.addAction('login', 'w20-login', { sortKey: 100 });
+</code></pre>
+
+<p>The methods takes as argument the name of the action, the type of the action and a configuration object which extends
+the registered type configuration. The <code>sortKey</code> property allow to order actions/sections.</p>
+
+<h2 id="bookmark-service">Bookmark service</h2>
+
+<p>The BookmarkService allow to store routes bookmarks. Use the <code>addBookmark(name, route)</code> method with a name and an angular route object to store one.
+Use the <code>getBookmark(name)</code> or <code>getAllBookmarks()</code> methods to retrieve bookmarks. Additional methods are described in the API documentation.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+<div class="side-menu">
+    
+        
+        <div class="list-group">
+            <ul class="nav">
+                
+                
+                
+                    
+                    <li>
+                        <a href="/docs/manual/" class="list-group-item ">
+                            Web framework basics
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/routing/" class="list-group-item ">
+                            Routing
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/security/" class="list-group-item ">
+                            Security
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/culture/" class="list-group-item ">
+                            Culture
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/hypermedia/" class="list-group-item ">
+                            Hypermedia
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/ui/" class="list-group-item  active ">
+                            UI
+                        </a>
+                        
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#ui-framework">UI Framework</a></li>
+<li><a href="#services">Services</a>
+<ul>
+<li><a href="#displayservice">DisplayService</a>
+<ul>
+<li><a href="#fullscreen-mode">Fullscreen mode</a></li>
+<li><a href="#dynamic-positioning">Dynamic positioning</a></li>
+</ul></li>
+<li><a href="#navigationservice">NavigationService</a></li>
+<li><a href="#menuservice">MenuService</a>
+<ul>
+<li><a href="#registering-actions-sections">Registering actions/sections</a></li>
+<li><a href="#adding-actions-sections">Adding actions/sections</a></li>
+</ul></li>
+<li><a href="#bookmark-service">Bookmark service</a></li>
+</ul></li>
+</ul>
+</nav>
+                            <script>
+                                w20.state.previousPage = '\/docs\/manual\/hypermedia\/';
+                            </script>
+                            
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/testing/" class="list-group-item ">
+                            Testing
+                        </a>
+                        
+                            <script>
+                                w20.state.nextPage = '\/docs\/manual\/testing\/';
+                            </script>
+                            
+                        
+                        
+                    </li>
+                    
+                
+            </ul>
+        </div>
+        
+    
+    
+    <div class="list-group">
+        <ul class="nav">
+            <li class="list-group-item"><div style="margin-bottom: 10px;"><i class="fa fa-tag"></i> Tags</div>
+                <div class="tags">
+                    
+                    <a class="label label-default" href="/tags/css">Css</a>
+                    
+                    <a class="label label-default" href="/tags/display">Display</a>
+                    
+                    <a class="label label-default" href="/tags/content">Content</a>
+                    
+                    <a class="label label-default" href="/tags/navigation">Navigation</a>
+                    
+                    <a class="label label-default" href="/tags/menu">Menu</a>
+                    
+                    <a class="label label-default" href="/tags/bookmark">Bookmark</a>
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="list-group">
+        <ul class="nav">
+            
+                <li><a class="list-group-item" href="https://github.com/w20-framework/website/edit/master/content/docs/manual/ui.md" target="_blank"><i class="fa fa-edit"></i> Contribute to this page</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+    <div id="footer">
+        <div class="footer-v3">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="headline"><h2>About</h2></div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">W20 is a Web framework to create modular and composable enterprise-ready applications.</p>
+                </div>
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><h2>License</h2></div>
+                        <p>
+                            Code licensed under the <a href="https://www.mozilla.org/MPL/2.0" target="_blank">Mozilla Public License 2.0</a>.
+                            <br/>
+                            Documentation licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 map-img">
+                    <div class="headline"><h2>Contact us</h2></div>
+                    <address>
+                        <p>
+                            StackOverflow <a href="https://stackoverflow.com/questions/tagged/w20">W20 on StackOverflow</a>
+                        </p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js"></script>
+<script src="/assets/unify/plugins/smoothScroll.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/w20.js"></script>
+<script>
+    $(document).ready(function () {
+        var $search = $('.search-btn');
+
+        $('.search').click(function () {
+            if ($search.hasClass('fa-search')) {
+                w20.ui.openSearch();
+            } else {
+                w20.ui.closeSearch();
+            }
+        });
+
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $('.side-menu').affix({
+            offset: {
+                top: $('#header').height() + 20,
+                bottom: $('#footer').height() + 40
+            }
+        });
+
+        Mousetrap.bind('/', function () {
+            w20.ui.openSearch();
+            return false;
+        });
+
+        Mousetrap.bind('alt+up', function () {
+            if (w20.state.previousPage) {
+                window.location = w20.state.previousPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('alt+down', function () {
+            if (w20.state.nextPage) {
+                window.location = w20.state.nextPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('esc', function () {
+            w20.ui.closeSearch();
+            return false;
+        });
+
+        var originalCallback = Mousetrap.stopCallback;
+        Mousetrap.stopCallback = function (e, element, combo) {
+            if (combo === 'esc') {
+                return false;
+            }
+
+            return originalCallback(e, element, combo);
+        };
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#hotkeys-modal, #versions-modal').bind('hidden.bs.modal', function () {
+            $("html").css("margin-right", "0px");
+        }).bind('show.bs.modal', function () {
+            $("html").css("margin-right", "-15px");
+        });
+
+        var query = w20.strings.parseQueryString(location);
+        if (query.h && query.h.length > 0) {
+            $('.doc-content').highlight(query.h);
+            if (query.scroll) {
+                $('html, body').animate({
+                    scrollTop: $('span[class=highlight]:first').offset().top - 20
+                }, 250);
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

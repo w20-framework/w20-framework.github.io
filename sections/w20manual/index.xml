@@ -1,0 +1,2065 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>W20manual on </title>
+    <link>http://w20-framework.github.io/sections/w20manual/index.xml</link>
+    <description>Recent content in W20manual on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://w20-framework.github.io/sections/w20manual/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Culture</title>
+      <link>http://w20-framework.github.io/docs/manual/culture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/culture/</guid>
+      <description>&lt;p&gt;W20 provides an extensive culture support through the jQuery Globalize library. It provides the developer tools to
+internationalize a W20 application which can then be localized via fragment manifests. As AngularJS
+also provides internalization support, W20 attempts to convert the active Globalize culture definition to an
+AngularJS locale, on a best-effort basis. This automatic conversion has limits, so it is recommended to stick to
+the W20 functions and services for internationalization.&lt;/p&gt;
+
+&lt;h1 id=&#34;cultures&#34;&gt;Cultures&lt;/h1&gt;
+
+&lt;p&gt;Cultures are defined as a combination of the language and the country speaking it. Each culture is given a unique code
+that is a combination of an ISO 639 two-letter lowercase culture code for the language, and a two-letter uppercase code
+for the country or region. For example, &amp;laquo;en-US&amp;raquo; is the culture code for English in the United States. Only one culture
+can be active at a time in the application but you can format values in any culture supported by the application,
+without switching the active one. This module handles:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Textual internationalization,&lt;/li&gt;
+&lt;li&gt;Date and time formatting,&lt;/li&gt;
+&lt;li&gt;Currency formatting,&lt;/li&gt;
+&lt;li&gt;Number formatting.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;W20 supports about 350 cultures but can also be extended to custom-defined ones. Here is the list of out-of-the-box
+supported cultures:&lt;/p&gt;
+
+&lt;h3 id=&#34;supported-cultures&#34;&gt;Supported cultures&lt;/h3&gt;
+
+&lt;p&gt;af-ZA, af, am-ET, am, ar-AE, ar-BH, ar-DZ, ar-EG, ar-IQ, ar-JO, ar-KW, ar-LB, ar-LY, ar-MA, ar-OM,
+ar-QA, ar-SA, ar-SY, ar-TN, ar-YE, ar, arn-CL, arn, as-IN, as, az-Cyrl-AZ, az-Cyrl, az-Latn-AZ,
+az-Latn, az, ba-RU, ba, be-BY, be, bg-BG, bg, bn-BD, bn-IN, bn, bo-CN, bo, br-FR, br,
+bs-Cyrl-BA, bs-Cyrl, bs-Latn-BA, bs-Latn, bs, ca-ES, ca, co-FR, co, cs-CZ, cs, cy-GB, cy, da-DK,
+da, de-AT, de-CH, de-DE, de-LI, de-LU, de,  dsb-DE, dsb, dv-MV, dv, el-GR, el, en-029, en-AU,
+en-BZ, en-CA, en-GB, en-IE, en-IN, en-JM, en-MY, en-NZ, en-PH, en-SG, en-TT, en-US, en-ZA,
+en-ZW, es-AR, es-BO, es-CL, es-CO, es-CR, es-DO, es-EC, es-ES, es-GT, es-HN, es-MX, es-NI,
+es-PA, es-PE, es-PR, es-PY, es-SV, es-US, es-UY, es-VE, es, et-EE, et, eu-ES, eu, fa-IR,
+fa, fi-FI, fi, fil-PH, fil, fo-FO, fo, fr-BE, fr-CA, fr-CH, fr-FR, fr-LU, fr-MC, fr, fy-NL,
+fy, ga-IE, ga, gd-GB, gd, gl-ES, gl, gsw-FR, gsw, gu-IN, gu, ha-Latn-NG, ha-Latn, ha, he-IL,
+he, hi-IN, hi, hr-BA, hr-HR, hr, hsb-DE, hsb, hu-HU, hu, hy-AM, hy, id-ID, id, ig-NG, ig,
+ii-CN, ii, is-IS, is, it-CH, it-IT, it, iu-Cans-CA, iu-Cans, iu-Latn-CA, iu-Latn, iu,
+ja-JP, ja, ka-GE, ka, kk-KZ, kk, kl-GL, kl, km-KH, km, kn-IN, kn, ko-KR, ko, kok-IN,
+kok, ky-KG, ky, lb-LU, lb, lo-LA, lo, lt-LT, lt, lv-LV, lv, mi-NZ, mi, mk-MK, mk,
+ml-IN, ml, mn-Cyrl, mn-MN, mn-Mong-CN, mn-Mong, mn, moh-CA, moh, mr-IN, mr, ms-BN,
+ms-MY, ms, mt-MT, mt, nb-NO, nb, ne-NP, ne, nl-BE, nl-NL, nl, nn-NO, nn, no, nso-ZA,
+nso, oc-FR, oc, or-IN, or, pa-IN, pa, pl-PL, pl, prs-AF, prs, ps-AF, ps, pt-BR, pt-PT, pt,
+qut-GT, qut, quz-BO, quz-EC, quz-PE, quz, rm-CH, rm, ro-RO, ro, ru-RU, ru, rw-RW, rw,
+sa-IN, sa, sah-RU, sah, se-FI, se-NO, se-SE, se, si-LK, si, sk-SK, sk, sl-SI, sl, sma-NO,
+sma-SE, sma, smj-NO, smj-SE, smj, smn-FI, smn, sms-FI, sms, sq-AL, sq, sr-Cyrl-BA, sr-Cyrl-CS,
+sr-Cyrl-ME, sr-Cyrl-RS, sr-Cyrl, sr-Latn-BA, sr-Latn-CS, sr-Latn-ME, sr-Latn-RS, sr-Latn, sr,
+sv-FI, sv-SE, sv, sw-KE, sw, syr-SY, syr, ta-IN, ta, te-IN, te, tg-Cyrl-TJ, tg-Cyrl, tg,
+th-TH, th, tk-TM, tk, tn-ZA, tn, tr-TR, tr, tt-RU, tt, tzm-Latn-DZ, tzm-Latn, tzm, ug-CN,
+ug, uk-UA, uk, ur-PK, ur, uz-Cyrl-UZ, uz-Cyrl, uz-Latn-UZ, uz-Latn, uz, vi-VN, vi, wo-SN,
+wo, xh-ZA, xh, yo-NG, yo, zh-CHS, zh-CHT, zh-CN, zh-Hans, zh-Hant, zh-HK, zh-MO,
+zh-SG, zh-TW, zh, zu-ZA, zu.&lt;/p&gt;
+
+&lt;h1 id=&#34;configuration&#34;&gt;Configuration&lt;/h1&gt;
+
+&lt;p&gt;The culture module of w20 core can be configured with the following attribute:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;available&lt;/code&gt; (array of string) which list the available culture in the application&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;default&lt;/code&gt; (string) which is the culture name of the default culture. It defaults to &amp;laquo;en&amp;raquo;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Example&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;path/w20-core.w20.json&amp;quot;: {
+    &amp;quot;culture&amp;quot;: {
+        &amp;quot;available&amp;quot;: [&amp;quot;en&amp;quot;, &amp;quot;fr&amp;quot;],
+        &amp;quot;default&amp;quot;: &amp;quot;en&amp;quot;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;fragment-declaration&#34;&gt;Fragment declaration&lt;/h1&gt;
+
+&lt;p&gt;The &amp;laquo;i18n&amp;raquo; section of a fragment manifest allows to declare culture localization bundles:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;i18n&amp;quot; : {
+    &amp;quot;&amp;quot; : [ &amp;quot;rest/i18n/bundle/:language&amp;quot; ]
+    &amp;quot;en&amp;quot; : [ &amp;quot;i18n/en-bundle-1.json&amp;quot;, &amp;quot;i18n/en-bundle-2.json&amp;quot;, ...  ],
+    &amp;quot;fr-FR&amp;quot; : [ &amp;quot;i18n/fr-FR-bundle-1.json&amp;quot;, &amp;quot;i18n/fr-FR-bundle-1.json&amp;quot;, ...  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bundles modules will be loaded as a text dependency and parsed as JSON. The empty string culture code can be used to
+point to remote bundle. In that case, two placeholders can be used in the URL:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;:language&lt;/code&gt; placeholder will be replaced by the actual language code,&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;:culture&lt;/code&gt; placeholder will be replaced by the actual culture code.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Dynamic bundles will always be loaded for any language. If no keys are available for a particular language an empty
+object can be returned.&lt;/p&gt;
+
+&lt;h1 id=&#34;usage&#34;&gt;Usage&lt;/h1&gt;
+
+&lt;p&gt;As an example if our bundle for en-EN culture contains the following entry:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;application.key&amp;quot;: &amp;quot;my translation&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Inside an html template use the localize filter.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt; {{ &#39;application.key&#39; | localize }} &amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also apply the localization programmatically by calling the CultureService.&lt;/p&gt;
+
+&lt;h1 id=&#34;formatting&#34;&gt;Formatting&lt;/h1&gt;
+
+&lt;p&gt;Numbers and dates can be formatted in various ways by using formatting patterns.&lt;/p&gt;
+
+&lt;h2 id=&#34;number-formatting&#34;&gt;Number formatting&lt;/h2&gt;
+
+&lt;p&gt;When formatting a number, the main purpose is to convert the number into a human readable string using the culture&amp;rsquo;s
+standard grouping and decimal rules. The rules between cultures can vary a lot. For example, in some cultures, the
+grouping of numbers is done unevenly. In the &amp;laquo;te-IN&amp;raquo; culture (Telugu in India), groups have 3 digits and then 2 digits.
+The number 1000000 (one million) is written as &amp;laquo;10,00,000&amp;raquo;. Some cultures do not group numbers at all. There are four
+main types of number formatting:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;n&lt;/strong&gt; for number&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;d&lt;/strong&gt; for decimal digits&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;p&lt;/strong&gt; for percentage&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;c&lt;/strong&gt; for currency&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Even within the same culture, the formatting rules can vary between these four types of numbers. For example, the expected
+number of decimal places may differ from the number format to the currency format. Each format token may also be
+followed by a number. The number determines how many decimal places to display for all the format types except decimal,
+for which it means the minimum number of digits to display, zero padding it if necessary. Also note that the way negative
+numbers are represented in each culture can vary, such as what the negative sign is, and whether the negative sign
+appears before or after the number. This is especially apparent with currency formatting, where many cultures use
+parentheses instead of a negative sign. For instance in the &amp;laquo;en-US&amp;raquo; culture:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;n&amp;raquo; will give &lt;strong&gt;123.45&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;n0&amp;raquo; will give &lt;strong&gt;123&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;n1&amp;raquo; will give &lt;strong&gt;123.5&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;d&amp;raquo; will give &lt;strong&gt;123&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;12 formatted with &amp;laquo;d3&amp;raquo; will give &lt;strong&gt;012&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;c&amp;raquo; will give &lt;strong&gt;$123.45&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;c0&amp;raquo; will give &lt;strong&gt;$123&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;123.45 formatted with &amp;laquo;c1&amp;raquo; will give &lt;strong&gt;$123.5&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;-123.45 formatted with &amp;laquo;c&amp;raquo; will give &lt;strong&gt;($123.45)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;0.12345 formatted with &amp;laquo;p&amp;raquo; will give &lt;strong&gt;12.35 %&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;0.12345 formatted with &amp;laquo;p0&amp;raquo; will give &lt;strong&gt;12 %&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;0.12345 formatted with &amp;laquo;p4&amp;raquo; will give &lt;strong&gt;12.3450 %&lt;/strong&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Parsing also accepts any of these formats.&lt;/p&gt;
+
+&lt;h2 id=&#34;date-formatting&#34;&gt;Date formatting&lt;/h2&gt;
+
+&lt;p&gt;Date formatting varies wildly by culture, not just in the spelling of month and day names, and the date separator, but
+by the expected order of the various date components, whether to use a 12 or 24 hour clock, and how months and days
+are abbreviated. Many cultures even include &amp;laquo;genitive&amp;raquo; month names, which are different from the typical names and are
+used only in certain cases. Also, each culture has a set of &amp;laquo;standard&amp;raquo; or &amp;laquo;typical&amp;raquo; formats. For example, in &amp;laquo;en-US&amp;raquo;,
+when displaying a date in its fullest form, it looks like &amp;laquo;Saturday, November 05, 1955&amp;raquo;. Note the non-abbreviated day
+and month name, the zero padded date, and four digit year.&lt;/p&gt;
+
+&lt;table class=&#34;table table-striped&#34;&gt;
+&lt;tr&gt;
+&lt;th&gt;Format&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;th&gt;&#34;en-US&#34;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;f&lt;/td&gt;
+&lt;td&gt;Long Date, Short Time&lt;/td&gt;
+&lt;td&gt;dddd, MMMM dd, yyyy h:mm tt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F&lt;/td&gt;
+&lt;td&gt;Long Date, Long Time&lt;/td&gt;
+&lt;td&gt;dddd, MMMM dd, yyyy h:mm:ss tt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;t&lt;/td&gt;
+&lt;td&gt;Short Time&lt;/td&gt;
+&lt;td&gt;h:mm tt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;T&lt;/td&gt;
+&lt;td&gt;Long Time&lt;/td&gt;
+&lt;td&gt;h:mm:ss tt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;d&lt;/td&gt;
+&lt;td&gt;Short Date&lt;/td&gt;
+&lt;td&gt;M/d/yyyy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td&gt;Long Date&lt;/td&gt;
+&lt;td&gt;dddd, MMMM dd, yyyy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Y&lt;/td&gt;
+&lt;td&gt;Month/Year&lt;/td&gt;
+&lt;td&gt;MMMM, yyyy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M&lt;/td&gt;
+&lt;td&gt;Month/Day&lt;/td&gt;
+&lt;td&gt;MMMM dd&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+In addition to these standard formats, there is the &#34;S&#34; format. This is a
+sortable format that is identical in every culture:
+&#34;&lt;strong&gt;yyyy&#39;-&#39;MM&#39;-&#39;dd&#39;T&#39;HH&#39;:&#39;mm&#39;:&#39;ss&lt;/strong&gt;&#34;.
+When more specific control is needed over the formatting, you may use any
+format you wish by specifying the following custom tokens:
+&lt;table class=&#34;table table-striped&#34;&gt;
+&lt;tr&gt;
+&lt;th&gt;Token&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;d&lt;/td&gt;
+&lt;td&gt;Day of month (no leading zero)&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;dd&lt;/td&gt;
+&lt;td&gt;Day of month (leading zero)&lt;/td&gt;
+&lt;td&gt;05&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ddd&lt;/td&gt;
+&lt;td&gt;Day name (abbreviated)&lt;/td&gt;
+&lt;td&gt;Sat&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;dddd&lt;/td&gt;
+&lt;td&gt;Day name (full)&lt;/td&gt;
+&lt;td&gt;Saturday&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;M&lt;/td&gt;
+&lt;td&gt;Month of year (no leading zero)&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MM&lt;/td&gt;
+&lt;td&gt;Month of year (leading zero)&lt;/td&gt;
+&lt;td&gt;09&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MMM&lt;/td&gt;
+&lt;td&gt;Month name (abbreviated)&lt;/td&gt;
+&lt;td&gt;Sep&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MMMM&lt;/td&gt;
+&lt;td&gt;Month name (full)&lt;/td&gt;
+&lt;td&gt;September&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;yy&lt;/td&gt;
+&lt;td&gt;Year (two digits)&lt;/td&gt;
+&lt;td&gt;55&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;yyyy&lt;/td&gt;
+&lt;td&gt;Year (four digits)&lt;/td&gt;
+&lt;td&gt;1955&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&#39;literal&#39;&lt;/td&gt;
+&lt;td&gt;Literal Text&lt;/td&gt;
+&lt;td&gt;&#39;of the clock&#39;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;\&#39;&lt;/td&gt;
+&lt;td&gt;Single Quote&lt;/td&gt;
+&lt;td&gt;&#39;o&#39;\&#39;&#39;clock&#39;&lt;/td&gt;&lt;!-- o&#39;clock --&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;m&lt;/td&gt;
+&lt;td&gt;Minutes (no leading zero)&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;mm&lt;/td&gt;
+&lt;td&gt;Minutes (leading zero)&lt;/td&gt;
+&lt;td&gt;09&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;h&lt;/td&gt;
+&lt;td&gt;Hours (12 hour time, no leading zero)&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;hh&lt;/td&gt;
+&lt;td&gt;Hours (12 hour time, leading zero)&lt;/td&gt;
+&lt;td&gt;06&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;H&lt;/td&gt;
+&lt;td&gt;Hours (24 hour time, no leading zero)&lt;/td&gt;
+&lt;td&gt;5 (5am) 15 (3pm)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HH&lt;/td&gt;
+&lt;td&gt;Hours (24 hour time, leading zero)&lt;/td&gt;
+&lt;td&gt;05 (5am) 15 (3pm)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;s&lt;/td&gt;
+&lt;td&gt;Seconds (no leading zero)&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ss&lt;/td&gt;
+&lt;td&gt;Seconds (leading zero)&lt;/td&gt;
+&lt;td&gt;09&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;f&lt;/td&gt;
+&lt;td&gt;Deciseconds&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ff&lt;/td&gt;
+&lt;td&gt;Centiseconds&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;fff&lt;/td&gt;
+&lt;td&gt;Milliseconds&lt;/td&gt;
+&lt;td&gt;111&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;t&lt;/td&gt;
+&lt;td&gt;AM/PM indicator (first letter)&lt;/td&gt;
+&lt;td&gt;A or P&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;tt&lt;/td&gt;
+&lt;td&gt;AM/PM indicator (full)&lt;/td&gt;
+&lt;td&gt;AM or PM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;z&lt;/td&gt;
+&lt;td&gt;Timezone offset (hours only, no leading zero)&lt;/td&gt;
+&lt;td&gt;-8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;zz&lt;/td&gt;
+&lt;td&gt;Timezone offset (hours only, leading zero)&lt;/td&gt;
+&lt;td&gt;-08&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;zzz&lt;/td&gt;
+&lt;td&gt;Timezone offset (full hours/minutes)&lt;/td&gt;
+&lt;td&gt;-08:00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;g or gg&lt;/td&gt;
+&lt;td&gt;Era name&lt;/td&gt;
+&lt;td&gt;A.D.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hypermedia</title>
+      <link>http://w20-framework.github.io/docs/manual/hypermedia/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/hypermedia/</guid>
+      <description>&lt;p&gt;Hypermedia is a powerful aspect of the REST architectural style. A client application can consume and navigate through
+REST resources via structured links relations. Navigation through APIs resemble web navigation: from a web page it is
+possible to follow links to new documents. In the same way, hypermedia provides a mechanism to interact with remote data
+with navigation and discovery in mind.&lt;/p&gt;
+
+&lt;p&gt;For an overview of this concept, please refer to the documentation of the Java framework &lt;a href=&#34;http://w20-framework.github.io/docs/seed/manual/rest#designing-restful-api&#34;&gt;Restful API&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;hypermedia-module&#34;&gt;Hypermedia module&lt;/h1&gt;
+
+&lt;p&gt;To enable the hypermedia module, declare it in the core fragment configuration.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;hypermedia&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Available configuration for this module is provided below along with short introductions to
+the hypermedia formats supported.&lt;/p&gt;
+
+&lt;h1 id=&#34;json-home&#34;&gt;JSON-HOME&lt;/h1&gt;
+
+&lt;p&gt;The MIME type &lt;a href=&#34;http://tools.ietf.org/html/draft-nottingham-json-home-03&#34;&gt;application/json-home&lt;/a&gt; specify a
+document &amp;laquo;map&amp;raquo; of resources  that can serve as entry points for clients into an hypermedia api.&lt;/p&gt;
+
+&lt;h2 id=&#34;json-home-sample-catalog-and-product&#34;&gt;Json-home sample: catalog and product&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;    {
+        &amp;quot;resources&amp;quot;: {
+            &amp;quot;catalog&amp;quot;: {
+                &amp;quot;href&amp;quot;: &amp;quot;api/products&amp;quot;
+            },
+            &amp;quot;product&amp;quot;: {
+                &amp;quot;href-template&amp;quot;: &amp;quot;api/product/{name}&amp;quot;,
+                &amp;quot;href-vars&amp;quot;: {
+                    &amp;quot;name&amp;quot;: &amp;quot;api/doc/param/name&amp;quot;
+                }
+            }
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this scenario a client can enter a commercial api by requesting the json home document which will provide it
+with two &lt;strong&gt;&lt;em&gt;relations&lt;/em&gt;&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;&amp;laquo;catalog&amp;raquo;&lt;/em&gt;&lt;/strong&gt; with an URI defined in the &lt;strong&gt;&lt;em&gt;href&lt;/em&gt;&lt;/strong&gt; property which, when queried, could for instance return a
+list of available products in the catalog.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;&amp;laquo;product&amp;raquo;&lt;/em&gt;&lt;/strong&gt; with an &lt;a href=&#34;https://tools.ietf.org/html/rfc6570&#34;&gt;URI template&lt;/a&gt; defined in the &lt;strong&gt;&lt;em&gt;href-template&lt;/em&gt;&lt;/strong&gt;
+property which uses the name of a product as a criteria for the query. Note that since we are using an
+URI template, the property is href-template instead of href. Now, how should this parameter be used ? Whether by
+implicit knowledge or through documentation for parameters that can be provided in a &lt;strong&gt;&lt;em&gt;href-vars&lt;/em&gt;&lt;/strong&gt; property.
+This allows client to discover the usability of an api by querying the URL at this location.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;More information can be provided in a json home document such as &lt;strong&gt;&lt;em&gt;hints&lt;/em&gt;&lt;/strong&gt; for available actions on the resource
+and/or accepted format. We advice you to take a look at the specification for an exhaustive documentation of the
+json home document type.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuring-json-home-endpoints&#34;&gt;Configuring Json home endpoints&lt;/h2&gt;
+
+&lt;p&gt;In your hypermedia module declaration of the core fragment, specify the api endpoint which exposes your json-home
+resources with the &lt;code&gt;api&lt;/code&gt; property:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;api&amp;quot;: {
+    &amp;quot;myFirstApi&amp;quot;: &amp;quot;http://domain:port/&amp;quot;,
+    &amp;quot;mySecondApi&amp;quot;: &amp;quot;/&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can specify a full absolute url (starting with the http/https protocol) or an absolute url (starting with &amp;laquo;/&amp;raquo;).
+In the last case, the domain and port from which the application is served will be used as the hostname of the api.&lt;/p&gt;
+
+&lt;h2 id=&#34;using-aliases&#34;&gt;Using aliases&lt;/h2&gt;
+
+&lt;p&gt;You can use alias for your api endpoint to refer to a previously declared api.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;api&amp;quot;: {
+    &amp;quot;namedAlias&amp;quot;: &amp;quot;http://domain:port/&amp;quot;,
+    &amp;quot;myApi&amp;quot;: &amp;quot;@namedAlias&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is one default alias &lt;code&gt;@home&lt;/code&gt; which resolve to &lt;strong&gt;&lt;em&gt;/&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;api&amp;quot;: {
+    &amp;quot;home&amp;quot;: &amp;quot;@home&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;homeservice&#34;&gt;HomeService&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;HomeService&lt;/code&gt; allows you to interact with the declared api endpoint(s). All endpoint declared in the manifest
+are automatically registered. To access an api use the following declaration:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;homeService(&#39;&amp;lt;api&amp;gt;&#39;); //&amp;lt;api&amp;gt; is the property used to reference the api URL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The service has 3 methods:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;enter(api, parameters, actions, options)&lt;/code&gt;: Provide a modified $resource object configured from a registered home
+resource. It signature is the same as the $resource service of AngularJS but instead of providing a url as the first
+parameter, you provide the name of the wanted relation provided in the Json home document. Another important difference
+is that only the get method is available by default on the returned object since it is used only for retrieving entry
+point resources.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;homeService(&#39;myApi&#39;).enter(&#39;catalog&#39;).get(function (products) {
+    ...
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;register(jsonHomeResource)&lt;/code&gt;: Programmatically register a new resource. The resource should respect the format for
+a Json-home document resource.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;homeService(&#39;myApi&#39;).register({
+    &amp;quot;someNewResource&amp;quot;: {
+        &amp;quot;href&amp;quot;: &amp;quot;/some/url/&amp;quot;
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;getDefinition(resourceNAme)&lt;/code&gt;: Return the definition of the resource.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;homeService(&#39;myApi&#39;).getDefinition(&#39;someNewResource&#39;); 
+// { &amp;quot;href&amp;quot;: &amp;quot;/some/url/&amp;quot; }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;hal-hypertext-application-language&#34;&gt;HAL (Hypertext Application Language)&lt;/h1&gt;
+
+&lt;p&gt;W20 provide support for &lt;a href=&#34;http://stateless.co/hal_specification.html&#34;&gt;application/hal+json&lt;/a&gt; resources. If Json home
+document constitute a &amp;laquo;map&amp;raquo; of the available entry points to the api, HAL is the format for these entry points and
+any subsequent resources obtained by following the links provided in these resources. Check the example below:&lt;/p&gt;
+
+&lt;h2 id=&#34;hal-sample-querying-products&#34;&gt;HAL sample: querying products&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;currentPage&amp;quot;: 1,
+  &amp;quot;totalProduct&amp;quot;: 20,
+  &amp;quot;_links&amp;quot;: {
+    &amp;quot;self&amp;quot;: {
+      &amp;quot;href&amp;quot;: &amp;quot;/api/products?page=1&amp;quot;
+    },
+    &amp;quot;next&amp;quot;: {
+      &amp;quot;href&amp;quot;: &amp;quot;/api/products?page=2&amp;quot;
+    },
+    &amp;quot;find&amp;quot;: {
+      &amp;quot;href&amp;quot;: &amp;quot;/api/products{?q}&amp;quot;,
+      &amp;quot;templated&amp;quot;: true
+    }
+  },
+  &amp;quot;_embedded&amp;quot;: {
+    &amp;quot;products&amp;quot;: [
+      {
+        &amp;quot;name&amp;quot;: &amp;quot;myProduct&amp;quot;,
+        &amp;quot;_links&amp;quot;: {
+          &amp;quot;self&amp;quot;: {
+            &amp;quot;href&amp;quot;: &amp;quot;/api/product/myProduct&amp;quot;
+          }
+        },
+        &amp;quot;_embedded&amp;quot;: {
+          &amp;quot;related&amp;quot;: [
+            {
+              &amp;quot;name&amp;quot;: &amp;quot;productRelatedToMyProduct&amp;quot;,
+              &amp;quot;_links&amp;quot;: {
+                &amp;quot;self&amp;quot;: {
+                  &amp;quot;href&amp;quot;: &amp;quot;/api/product/myProduct/related&amp;quot;
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;HAL document must validate against the JSON specification and contains two important recognizable fields:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;_links&lt;/em&gt;&lt;/strong&gt; which is mandatory and must contain at the very least a &lt;strong&gt;&lt;em&gt;&amp;laquo;self&amp;raquo;&lt;/em&gt;&lt;/strong&gt; property which reference
+the resource itself. Additional links constitute the actual power of hypermedia: they provide additional resources
+in the form of named actions/resources. In this example two actions are available: going to the next page by following
+the &amp;laquo;next&amp;raquo; links or finding a product through the &amp;laquo;find&amp;raquo; links. This last one uses URI template to define
+the available query parameter.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;_embedded&lt;/em&gt;&lt;/strong&gt; is not mandatory but allow to provide embedded resources directly in the response. In this example
+we embedded a list of products (with one element). Each embedded resources respect itself the HAL specification
+so it must contain a &amp;laquo;_links&amp;raquo; with a reference to itself and optional embedded resources.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+
+&lt;p&gt;When a resource is served with the application/hal+json MIME type, the hypermedia module will intercept the response
+and return a $resource object augmented with two additional methods:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$links(link, parameters, actions, options)&lt;/code&gt;: This method has the same signature as $resource but will use the name
+of the links instead of the url. Suppose we return the HAL document above when querying the catalog api. We can get
+the next page by following the &amp;laquo;next&amp;raquo; link.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;homeService(&#39;myApi&#39;).enter(&#39;catalog&#39;).get(function (products) {
+
+    var nextProductPage = products.$links(&#39;next&#39;).get();
+
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If the $links method is called without parameter, it returns a list of the available links on the resource.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$embedded(name)&lt;/code&gt;: If the resource contains embedded items, they can be accessed with this method. Suppose we
+return the HAL document above when querying the catalog api. We can get the embedded items with the following
+declaration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;homeService(&#39;myApi&#39;).enter(&#39;catalog&#39;).get(function (products) {
+
+    var embeddedProducts = products.$embedded(&#39;products&#39;);
+    console.info(embeddedProducts.name); // &amp;quot;myProduct&amp;quot;
+    
+    var relatedProducts = embeddedProducts.$embedded(&#39;related&#39;)[0].$links(&#39;self&#39;).get();
+    
+    // the last line will GET /api/product/myProduct/related
+
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note: Although we used the HomeService in these example to start querying the api, it is not an obligation. Provided
+that a resource is served with the MIME type application/hal+json, we could have used a simple $resource object to
+start querying the api with a url.&lt;/p&gt;
+
+&lt;h1 id=&#34;manual-interception&#34;&gt;Manual interception&lt;/h1&gt;
+
+&lt;p&gt;By default if the hypermedia module is configured and a resource is served with the MIME type application/hal+json, the
+response will automatically be intercepted and processed according to what we said above. If you want to disable this
+behavior and intercept response manually you need to set the &lt;code&gt;interceptAll&lt;/code&gt; property to false in the hypermedia module
+configuration.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;hypermedia&amp;quot;: {
+    &amp;quot;interceptAll&amp;quot;: false
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To do a manual interception you then need to inject the &lt;code&gt;HypermediaRestAdapter&lt;/code&gt; and use it as follow:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;HypermediaRestAdapter.process(response.data).then(function (processedResponse) {
+    ...
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;additional-configuration&#34;&gt;Additional configuration&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;hypermedia&amp;quot;: {
+    &amp;quot;api&amp;quot;: { // key-value pair of api endpoint name and url },
+    &amp;quot;interceptAll&amp;quot;: true, (default)  // Intercept all hal+json response automatically
+    &amp;quot;linksKey&amp;quot;: &amp;quot;_links&amp;quot;, (default) // Rename the links key
+    &amp;quot;linksHrefKey&amp;quot;: &amp;quot;href&amp;quot;, (default) // Rename the href key
+    &amp;quot;linksSelfLinkName&amp;quot;: &amp;quot;self&amp;quot;, (default) // Rename self link
+    &amp;quot;embeddedKey&amp;quot;: &amp;quot;_embedded&amp;quot;, (default) // Rename embedded key
+    &amp;quot;embeddedNewKey&amp;quot;: &amp;quot;$embedded&amp;quot;, (default) // Rename the embedded function
+    &amp;quot;resourcesKey&amp;quot;: &amp;quot;$links&amp;quot;, (default) // Rename the links function
+}
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Routing</title>
+      <link>http://w20-framework.github.io/docs/manual/routing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/routing/</guid>
+      <description>&lt;p&gt;W20 provides a declarative syntax to register AngularJS routes in your application. It is done through the &lt;code&gt;routes&lt;/code&gt; section
+of fragment manifests:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;routes&amp;quot;: {
+    &amp;quot;/route1&amp;quot;: {
+        ...
+    },
+    &amp;quot;/route2&amp;quot;: {
+        ...
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;application&lt;/code&gt; module will process the &lt;code&gt;routes&lt;/code&gt; section of all fragments and register the valid routes in the AngularJS
+routing system. The two components of a W20 route definition are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The route paths which are specified by the keys of the &lt;code&gt;routes&lt;/code&gt; object. To ensure route uniqueness in an application,
+the fragment identifier is used as a route path prefix. For example, if the fragment identifier is &lt;code&gt;fragment1&lt;/code&gt; the full
+route path registered in AngularJS routing for &lt;code&gt;/route1&lt;/code&gt; is &lt;code&gt;/fragment1/route1&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;The route definitions which are specified as an object for each route path. Every options of the AngularJS route object
+can be configured, the most common one being the &lt;code&gt;templateUrl&lt;/code&gt; and the &lt;code&gt;controller&lt;/code&gt; associated to the view.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;quot;routes&amp;quot;: {
+     &amp;quot;/route1&amp;quot;: {
+       &amp;quot;templateUrl&amp;quot;: &amp;quot;{fragment-id}/views/route1Template.html&amp;quot;,
+       &amp;quot;controller&amp;quot;: &amp;quot;route1Controller&amp;quot;
+     }
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;The route definition object specifies the contents and behavior of the view that will be displayed inside the HTML tag
+containing the &lt;code&gt;ngView&lt;/code&gt; attribute. To learn more about AngularJS routing, please check
+&lt;a href=&#34;https://docs.angularjs.org/api/ngRoute/provider/$routeProvider&#34;&gt;this documentation&lt;/a&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;route-types&#34;&gt;Route types&lt;/h1&gt;
+
+&lt;p&gt;A route definition should contain a &lt;code&gt;type&lt;/code&gt; attribute. If it is not present, a route type of &lt;code&gt;view&lt;/code&gt; is assumed which is
+a standard AngularJS route. Two route types are available out-of-the-box:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A &lt;code&gt;view&lt;/code&gt; route is a standard AngularJS route, which is minimally processed by W20. If it contains a &lt;code&gt;templateUrl&lt;/code&gt;, its
+value is resolved into a full URL by the RequireJS function &lt;code&gt;toUrl()&lt;/code&gt;. As such, every fragment alias (like &lt;code&gt;{fragment1}&lt;/code&gt;)
+is resolved.&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;sandbox&lt;/code&gt; route type is a W20-specific route type which encapsulate the page denoted by the &lt;code&gt;url&lt;/code&gt; attribute into an
+iframe. It is useful to add any pre-existing HTML pages into a W20 application such as legacy application screens. The
+&lt;code&gt;url&lt;/code&gt; attribute is resolved into a full URL by the RequireJS function &lt;code&gt;toUrl()&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Any custom route type can be registered by using the &lt;code&gt;registerRouteHandler()&lt;/code&gt; function of the &lt;code&gt;application&lt;/code&gt; module public
+definition:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;{w20-core}/modules/application&#39;
+], function(application) {
+    ...
+
+    application.registerRouteHandler(&#39;myCustomType&#39;, function (route) {
+        // analyze and transform the route object here        
+
+        return route;
+    });
+
+    ...
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The handler will be invoked for each detected route of type &lt;code&gt;myCustomType&lt;/code&gt;. It is required that the returned route
+object is a valid AngularJS route definition.&lt;/p&gt;
+
+&lt;h1 id=&#34;hidden-routes&#34;&gt;Hidden routes&lt;/h1&gt;
+
+&lt;p&gt;You can hide a route from the menu by setting the &lt;code&gt;hidden&lt;/code&gt; attribute to &lt;code&gt;true&lt;/code&gt; in the route definition object:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;quot;routes&amp;quot;: {
+     &amp;quot;/route1&amp;quot;: {
+         &amp;quot;hidden&amp;quot;: true
+     }
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;categorizing-routes&#34;&gt;Categorizing routes&lt;/h1&gt;
+
+&lt;p&gt;The &lt;code&gt;category&lt;/code&gt; attribute can be used to define a category for the route which will often be rendered as a section or folder in graphical themes. The category name supports hierarchical categories separated with dots:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;quot;routes&amp;quot;: {
+     &amp;quot;/route1&amp;quot;: {
+         &amp;quot;category&amp;quot;: &amp;quot;a.b.c&amp;quot;
+     }
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will put the &lt;code&gt;route1&lt;/code&gt; route in the &lt;code&gt;c&lt;/code&gt; sub-category of &lt;code&gt;b&lt;/code&gt; which is itself a sub-category of category &lt;code&gt;a&lt;/code&gt;. The special category name &lt;code&gt;__top&lt;/code&gt; define the route as a top-level route (without category). It is the default value of this attribute.&lt;/p&gt;
+
+&lt;h1 id=&#34;additional-route-metadata&#34;&gt;Additional route metadata&lt;/h1&gt;
+
+&lt;p&gt;Additional attributes can be attached to route definition and will be ignored by AngularJS. When retrieving the route through
+the AngularJS &lt;code&gt;$route&lt;/code&gt; service, these attributes will be preserved, allow for further processing during the execution
+of the application.&lt;/p&gt;
+
+&lt;h2 id=&#34;w20-route-metadata&#34;&gt;W20 route metadata&lt;/h2&gt;
+
+&lt;p&gt;W20 adds a limited set of attributes on all routes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;type&lt;/code&gt;: the type attribute is automatically added if not present (with the &lt;code&gt;view&lt;/code&gt; value),&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;path&lt;/code&gt;: the full path of the route,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;category&lt;/code&gt;: the category of the route (which can be used to classify the routes for navigation) is added with a default value of &lt;code&gt;__top&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;i18n&lt;/code&gt;: the i18n key for the route name is added with a default value of &lt;code&gt;application.view.normalized.route.path&lt;/code&gt;. Path
+normalization consists of replacing slashes with dots. As such, the &lt;code&gt;/fragment1/route1&lt;/code&gt; fragments will have a default i18n
+key of &lt;code&gt;application.view.fragment1.route1&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;resolve&lt;/code&gt;: a resolve object will be added to check for route security and for any additional custom check defined by the
+&lt;code&gt;check&lt;/code&gt; attribute on the route definition (which must reference by name a custom check function registered with AngularJS
+injector through a &lt;code&gt;module.value(&#39;myCheck&#39;, function checkFn() { ... });&lt;/code&gt; and returning a promise). The routing is suspended
+until the promise is resolved (or rejected).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;custom-metadata&#34;&gt;Custom metadata&lt;/h2&gt;
+
+&lt;p&gt;Any additional metadata can be added to the route for custom purposes, but be aware to not interfere with W20 route metadata
+as any custom attribute of the same name will be overwritten before any custom route handler is called.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>http://w20-framework.github.io/docs/manual/security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/security/</guid>
+      <description>&lt;p&gt;W20 applications can be integrated with security backends to authenticate users and display views that are consistent with
+the backend security model.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-danger&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Before going into details, &lt;strong&gt;it is crucial to understand that a client-side Web application such as a W20 one can almost
+never provide effective security&lt;/strong&gt;. It is only a frontend that will reflect the security enforced in the backend, but
+there is value in providing a consistent experience between what is possible in the UI and what is allowed by the
+backend and W20 provides such an integration.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;the-security-model&#34;&gt;The security model&lt;/h1&gt;
+
+&lt;h2 id=&#34;subject-and-principals&#34;&gt;Subject and principals&lt;/h2&gt;
+
+&lt;p&gt;The subject is the security term which refers to a security-centric view of an application user. It always have an
+identifier. A particular W20 application instance can only have zero or one subject connected at a time.
+Principals are key/value pairs associated to a subject and provide additional metadata about it, like its default culture,
+its full name, its avatar, etc.&lt;/p&gt;
+
+&lt;h2 id=&#34;security-providers&#34;&gt;Security providers&lt;/h2&gt;
+
+&lt;p&gt;Security providers are the bridge between the backend and the W20 security model. Authentication operations are
+done through security providers.&lt;/p&gt;
+
+&lt;h3 id=&#34;simple-authentication-provider&#34;&gt;Simple authentication provider&lt;/h3&gt;
+
+&lt;p&gt;W20 provides a &lt;code&gt;SimpleAuthenticationProvider&lt;/code&gt; which is configured with two URL:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;an authentication URL which will be requested with a GET upon authentication and a DELETE upon deauthentication.&lt;/li&gt;
+&lt;li&gt;an authorization URL which will be requested with a GET upon successful authentication to retrieve subject authorizations.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The credentials will be passed in clear as query parameters upon authentication so it is recommended that this provider
+is only used in the case of &lt;a href=&#34;https://tools.ietf.org/html/rfc2617&#34;&gt;basic authentication&lt;/a&gt; where credentials can be omitted as they are directly handled by the
+browser.&lt;/p&gt;
+
+&lt;h2 id=&#34;realms&#34;&gt;Realms&lt;/h2&gt;
+
+&lt;p&gt;Realms allow a W20 application to use several security backends at once. Security operations involving the backend(s)
+like authentication will be done on all security realms. The multiple responses are checked for coherence (they must
+all refer to the same subject id for instance) and are partially aggregated:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Subject identity (like its identifier, type and principals) are merged as one definition,&lt;/li&gt;
+&lt;li&gt;Subject authorizations are kept separate to avoid mixing backend security models.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;permissions&#34;&gt;Permissions&lt;/h2&gt;
+
+&lt;p&gt;W20 security model is permission-based. Permissions are arrays of strings which denote a specific right to do something
+in the application:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[ &#39;admin&#39;, &#39;restart&#39; ]
+[ &#39;admin&#39;, &#39;database&#39;, &#39;wipe&#39; ]
+[ &#39;users&#39;, &#39;list&#39;, &#39;create,read,update&#39; ]
+[ &#39;users&#39;, &#39;details&#39;, &#39;*&#39; ]
+[ &#39;printers&#39;, &#39;lp457&#39;, &#39;print&#39; ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Permission names are completely arbitrary and developer defined but it is recommended to start from the least-specific
+term (like a &amp;laquo;functional area&amp;raquo; of the application or a use case) to the most specific term (like an action or an entity
+identifier).&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-tips&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+                &lt;i class=&#34;fa fa-lightbulb-o icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Permission can also be expressed as colon-delimited strings: &lt;code&gt;users:details:*&lt;/code&gt; is equivalent to &lt;code&gt;[ &#39;users&#39;, &#39;details&#39;, &#39;*&#39; ]&lt;/code&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;roles&#34;&gt;Roles&lt;/h2&gt;
+
+&lt;p&gt;Roles are simply collections of permissions and, although they can be checked for explicitly, it is not recommended for
+the application security model maintainability. The recommendation is to design the permissions such as they express the
+intent of the associated use case or user action and to check for these permissions only. It is guaranteed that as long
+as the user action exists in the code the permission will remain semantically valid, whereas how it is given can change
+throughout application life.&lt;/p&gt;
+
+&lt;h2 id=&#34;attributes&#34;&gt;Attributes&lt;/h2&gt;
+
+&lt;p&gt;Attributes can be attached to roles and checked for during a permission or role check. It is mainly used to restrict
+a role scope to a geographic region or an organisational branch for instance.&lt;/p&gt;
+
+&lt;h1 id=&#34;configuration&#34;&gt;Configuration&lt;/h1&gt;
+
+&lt;p&gt;The security module can be configured with the following options:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;autoLogin&lt;/code&gt; will automatically trigger an authentication upon application startup. In this case, security providers
+will be called without credentials. They can ask for credentials at this points or let the browser handle credential
+entry (as it is the case in basic authentication for instance).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;redirectAfterLogin&lt;/code&gt; will redirect to the specified route path after a successful login.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;redirectAfterLogout&lt;/code&gt; will redirect to the specified route path after a logout.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;roleMapping&lt;/code&gt; will allow to map multiple backend roles to uniquely named unified frontend roles.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;role-mapping&#34;&gt;Role mapping&lt;/h2&gt;
+
+&lt;p&gt;W20 security allows to map several backend roles to a unified frontend role which can then be used for display or
+filtering purpose. It can be done through the &lt;code&gt;roleMapping&lt;/code&gt; configuration attribute:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;roleMapping&amp;quot;: {
+    &amp;quot;UNIFIED_ROLE&amp;quot;: {
+        &amp;quot;realm1&amp;quot;: &amp;quot;SOME_BACKEND_ROLE&amp;quot;,
+        &amp;quot;realm2&amp;quot;: &amp;quot;OTHER_BACKEND_ROLE&amp;quot;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This configuration enables to view the two backend roles, defined from two different realms as one frontend role
+called &lt;code&gt;UNIFIED_ROLE&lt;/code&gt;. If only one security realm is declared in the application, all backend roles of this realm will
+automatically be mapped to unified roles of the same name.&lt;/p&gt;
+
+&lt;h1 id=&#34;fragment-declaration&#34;&gt;Fragment declaration&lt;/h1&gt;
+
+&lt;p&gt;Security providers can be registered programatically with the authentication service but can also be declared in a fragment
+manifest:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+
+&amp;quot;security&amp;quot;: {
+    &amp;quot;provider&amp;quot;: &amp;quot;Simple&amp;quot;,
+    &amp;quot;config&amp;quot;: {
+        &amp;quot;authentication&amp;quot;: &amp;quot;...&amp;quot;,
+        &amp;quot;authorizations&amp;quot;: &amp;quot;...
+    }
+}
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will register a security realm with the name of the fragment identifier, using the &lt;code&gt;SimpleSecurityProvider&lt;/code&gt;
+service as the security provider configured with the &lt;code&gt;config&lt;/code&gt; section.&lt;/p&gt;
+
+&lt;h1 id=&#34;security-services&#34;&gt;Security services&lt;/h1&gt;
+
+&lt;h2 id=&#34;authentication-service&#34;&gt;Authentication service&lt;/h2&gt;
+
+&lt;p&gt;The authentication service can be used to alter the currently connected subject:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Authenticate a new subject with its credentials and define it as the globally active subject.&lt;/li&gt;
+&lt;li&gt;Deauthenticate the currently active subject.&lt;/li&gt;
+&lt;li&gt;Refresh the currently active subject.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The authentication service can also be used to query identity information about the subject, such as its identifier or
+its principals.&lt;/p&gt;
+
+&lt;h2 id=&#34;authorization-service&#34;&gt;Authorization service&lt;/h2&gt;
+
+&lt;p&gt;The authorization service can be used to verify specific authorizations on the currently active subject and on a specific
+realm:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If the subject has a specific role (with possibly specific attributes).&lt;/li&gt;
+&lt;li&gt;If the subject has a specific permission (with possibly specific attributes).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It can also be used to query the list of roles, although it is limited to the unified roles.&lt;/p&gt;
+
+&lt;h2 id=&#34;security-expression-service&#34;&gt;Security expression service&lt;/h2&gt;
+
+&lt;p&gt;Security expressions are a simple and effective way of checking the authentication and authorization status of the
+currently active subject. Inject the &lt;code&gt;SecurityExpressionService&lt;/code&gt; to evaluate them. Security expressions are normal
+AngularJS expressions with the following additional functions available:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;hasPermission(realm, permission, attributes)&lt;/code&gt; which checks a permission for the currently active subject,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hasRole(realm, role, attributes)&lt;/code&gt; which checks if the currently active subject has a specific role,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;isAuthenticated()&lt;/code&gt; which checks if there is a currently active subject,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;principal(name)&lt;/code&gt; which returns the value of a specific principal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The result of the security expression is evaluated as a boolean:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var result = securityExpressionService.evaluate(&amp;quot;hasPermission(&#39;someRealm&#39;, &#39;users:details:clear&#39;)&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;security-directive&#34;&gt;Security directive&lt;/h1&gt;
+
+&lt;p&gt;The &lt;code&gt;w20Security&lt;/code&gt; directive allows to evaluate a security expression in a view and display the element only if it
+evaluates to true. The expression is evaluated in its current scope, augmented with the security expression service operations described above:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div data-w20-security=&amp;quot;hasRole(&#39;someRealm&#39;, &#39;someRole&#39;)&amp;quot;&amp;gt;
+    ...
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div data-w20-security=&amp;quot;someLocalScopeVariable &amp;amp;&amp;amp; hasPermission(&#39;someRealm&#39;, &#39;users:details:clear&#39;)&amp;quot;&amp;gt;
+    ...
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;role-filtering&#34;&gt;Role filtering&lt;/h1&gt;
+
+&lt;p&gt;W20 security can narrow the authorizations of the currently active subject by setting up filters:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;role filter narrows the authorizations to the specified roles. Any permission or role not allowed by the filter will
+be denied until this filter is cancelled.&lt;/li&gt;
+&lt;li&gt;attribute filter narrows the authorizations on which the specified attribute values are attached. Any permission
+or role which don&amp;rsquo;t have the specified attribute values will be denied until this filter is cancelled.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Filtering is limited to unified roles.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Testing</title>
+      <link>http://w20-framework.github.io/docs/manual/testing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/testing/</guid>
+      <description>&lt;p&gt;As your application grows it becomes harder to assert that all your features are still working correctly.
+Whether you are doing some refactoring, upgrading a library version or adding new features, you want
+a mechanism to assert that thing are working correctly and protect yourself from regression.&lt;/p&gt;
+
+&lt;h1 id=&#34;testing&#34;&gt;Testing&lt;/h1&gt;
+
+&lt;h2 id=&#34;unit-tests&#34;&gt;Unit tests&lt;/h2&gt;
+
+&lt;p&gt;The web framework does not enforce a particular runner or test suite for unit testing but we found that
+a good combination is &lt;a href=&#34;http://karma-runner.github.io/0.13/index.html&#34;&gt;Karma&lt;/a&gt; as the runner and
+&lt;a href=&#34;http://jasmine.github.io/2.0/introduction.html&#34;&gt;Jasmine&lt;/a&gt; as the test suite language. This is probably the most
+popular combination for running tests and the one that the AngularJS team uses. Recommended lecture are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://karma-runner.github.io/0.13/index.html&#34;&gt;Karma documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jasmine.github.io/2.0/introduction.html&#34;&gt;Jasmine documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.angularjs.org/guide/unit-testing&#34;&gt;AngularJS guide on unit testing&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;installation-and-configuration&#34;&gt;Installation and configuration&lt;/h3&gt;
+
+&lt;p&gt;If you used the generator-w20, required packages will already be installed  in your node_modules folder.
+If you want to start from scratch, first install &lt;a href=&#34;https://nodejs.org/en/&#34;&gt;NodeJS&lt;/a&gt;, create a directory for your app
+if you do not already have one, cd into it and use the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ npm install karma karma-cli karma-jasmine karma-phantomjs-launcher karma-requirejs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You will need to configure a &lt;code&gt;karma.conf.js&lt;/code&gt; file at your project root to instruct Karma. You can use the following &lt;a href=&#34;http://karma-runner.github.io/0.12/intro/configuration.html&#34;&gt;guide&lt;/a&gt;
+to configure every options in cli mode. Please have a look at the &lt;a href=&#34;http://karma-runner.github.io/0.12/intro/configuration.html&#34;&gt;Karma documentation&lt;/a&gt;
+for a complete description of the options. The end result should look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;module.exports = function(config) {
+    &#39;use strict&#39;;
+
+    config.set({
+        frameworks: [ &#39;jasmine&#39;, &#39;requirejs&#39; ],
+        files: [
+            &#39;test-main.js&#39;,
+            { pattern: &#39;fragment/**/*.js&#39;, included: false },
+            { pattern: &#39;bower_components/**/*&#39;, included: false }
+        ],
+        port: 9876,
+        colors: true,
+        logLevel: &#39;INFO&#39;,
+        browsers: [ &#39;PhantomJS&#39; ]
+    });
+};
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This file instruct Karma about the file patterns to be served when running the tests.
+As you can see we will served the business modules of the fragment located in the &amp;laquo;fragment&amp;raquo; folder, along
+with the web dependencies of the &amp;laquo;bower_components&amp;raquo;.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;The PhantomJS browser will be used for loading the application. PhantomJS is
+a headless browser. It can run the application without rendering the HTML pages which we do not need since we are only interested in
+testing the application logic. This is useful for executing tests in an environment which does not support graphical interface such as a
+CI server for instance.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Since we are using RequireJS, we will need a main module for the tests. This module will be declared in a &lt;code&gt;test-main.js&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var tests = [];
+
+for (var file in window.__karma__.files) {
+    if (/.spec\.js$/.test(file)) {
+        tests.push(file);
+    }
+}
+
+window.w20 = {
+    configuration: {
+        &#39;/base/bower_components/w20/w20-core.w20.json&#39;: {
+            modules: {
+                application: {
+                    id: &#39;w20-test&#39;,
+                    home: &#39;/test&#39;
+                }
+            },
+            vars: {
+                &#39;components-path&#39;: &#39;/base/bower_components&#39;
+            }
+        }
+    },
+    deps: tests,
+    callback: window.__karma__.start
+};
+
+requirejs.config({
+    paths: {
+        &#39;{angular-mocks}&#39;: &#39;/base/bower_components/angular-mocks&#39;,
+        &#39;{fragment}&#39;: &#39;/base/fragment&#39;
+    },
+    shim: {
+        &#39;{angular-mocks}/angular-mocks&#39;: [ &#39;{angular}/angular&#39; ]
+    }
+});
+
+requirejs([ &#39;/base/bower_components/w20/modules/w20.js&#39; ]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is a lot going on in the &lt;code&gt;test-main.js&lt;/code&gt; file and we will explain what this configuration does. This module is the
+main entry point to the application under test.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Loaded files are listed in the global variable &lt;code&gt;window._karma_.files&lt;/code&gt;.
+We add all the &lt;code&gt;.spec.js&lt;/code&gt; files in a list, those files corresponding to the unit test modules (we will write one soon).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;We configure the application programmatically by editing the &lt;code&gt;w20&lt;/code&gt; global variable &lt;code&gt;configuration&lt;/code&gt; property. Normally, the loader will create this configuration
+by reading and parsing an application manifest but we can edit it directly for the need of bootstrapping a test environment. We declare the core fragment and configure
+the application module. Because Karma will serve files from &lt;code&gt;/base&lt;/code&gt; we need to specify the path to our web components (by default the components path is mapped to
+&lt;code&gt;bower_components&lt;/code&gt; but here we need to remap it to &lt;code&gt;/base/bower_components&lt;/code&gt;. This is possible using the &lt;code&gt;vars&lt;/code&gt; property. We add the unit test modules to the dependencies
+by using the &lt;code&gt;deps&lt;/code&gt; property and allow the start of Karma once the configuration has been processed using the &lt;code&gt;callback&lt;/code&gt; property.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Some additional RequireJS configuration are necessary to remap the &lt;code&gt;angular-mocks&lt;/code&gt; module and the business fragment alias to suit Karma base path.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Finally we start the application by requiring explicitely the &lt;code&gt;w20&lt;/code&gt; module.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;writing-unit-tests&#34;&gt;Writing unit tests&lt;/h3&gt;
+
+&lt;p&gt;We are ready to start unit testing a module. We will take the example of a simple AngularJS controller defined in &lt;code&gt;fragment/modules/module-to-test.js&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;{angular}/angular&#39;
+], function(angular) {
+    &#39;use strict&#39;;
+
+	 var module = angular.module(&#39;moduleToTest&#39;, []);
+
+     module.controller(&#39;ControllerToTest&#39;, [&#39;$scope&#39;, function ($scope) {
+        $scope.greeting = &#39;Hello World!&#39;;
+    }]);
+
+	return {
+		angularModules : [ &#39;moduleToTest&#39; ]
+	};
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This module does not do anything fancy. We declare an AngularJS module &lt;code&gt;moduleToTest&lt;/code&gt; and a controller with
+a scope property.&lt;/p&gt;
+
+&lt;p&gt;The &amp;lsquo;spec&amp;rsquo; (unit test module) for this module will be located in &lt;code&gt;fragment/specs/module-to-test.spec.js&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;{angular}/angular&#39;,
+    &#39;{angular-mocks}/angular-mocks&#39;,
+    &#39;{fragment}/modules/module-to-test&#39;  
+    ], function (angular) {
+        &#39;use strict&#39;;
+
+        describe(&#39;The module to test&#39;, function() {
+        
+            var scope;
+
+            beforeEach(angular.mock.module(&#39;moduleToTest&#39;));
+
+            beforeEach(inject(function ($rootScope, $controller) {
+                scope = $rootScope.$new();
+                $controller(&#39;ControllerToTest&#39;, {
+                    $scope: scope
+                });
+            }));
+
+            it(&#39;says hello world!&#39;, function () {
+                expect(scope.greeting).toEqual(&#39;Hello World!&#39;);
+            });
+
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;A test suite begins with a call to the global Jasmine function &lt;code&gt;describe&lt;/code&gt; with two parameters: a string and a function.
+The string is the title of the suite - usually what is under test. The function body implements the suite.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;beforeEach&lt;/code&gt; function executes before each unit test. Here we register a mocked version of the module &lt;code&gt;moduleToTest&lt;/code&gt;. This will allow us later to request
+the controller declared on this module without having to worry about the dependency of this module.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;We also request that before each test, the &lt;code&gt;scope&lt;/code&gt; variable be initialized with a new scope. The &lt;code&gt;$controller&lt;/code&gt; service allow us to retrieve our controller and provide
+it its dependency. Our newly created scope (with &lt;code&gt;$rootScope.$new()&lt;/code&gt;) will be passed to the constructor through dependency injection.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Finally the unit test can be written. A unit test in Jasmine takes the form of &lt;code&gt;it&lt;/code&gt; statement which reads like a sentence describing the expected result of the test.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>UI</title>
+      <link>http://w20-framework.github.io/docs/manual/ui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/ui/</guid>
+      <description>&lt;p&gt;The user interface can be customized with the graphical framework of your choice along with services which helps in areas such as
+navigation, display and theming.&lt;/p&gt;
+
+&lt;h1 id=&#34;ui-framework&#34;&gt;UI Framework&lt;/h1&gt;
+
+&lt;p&gt;Application can use any CSS frameworks or your own custom styling. Two popular frameworks, &lt;a href=&#34;http://getbootstrap.com/&#34;&gt;Twitter Bootstrap&lt;/a&gt;
+and &lt;a href=&#34;https://material.angularjs.org/latest/&#34;&gt;Angular Material&lt;/a&gt; are available through dedicated fragments.
+To include these framework in the application, declare the fragment that you want in your application manifest.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;quot;bower_components/w20-bootstrap-3/w20-bootstrap-3.w20.json&amp;quot;: {}
+
+ &amp;quot;bower_components/w20-material/w20-material.w20.json&amp;quot;: {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The CSS framework loaded can be identified in the application logic by requiring the &lt;code&gt;{css-framework}/modules/css-framework&lt;/code&gt; module
+and evaluating its &lt;code&gt;name&lt;/code&gt; property.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;{css-framework}/modules/css-framework&#39;
+], function (cssFramework) {
+    console.log(cssFramework.name); // &amp;quot;bootstrap-3&amp;quot;
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;services&#34;&gt;Services&lt;/h1&gt;
+
+&lt;p&gt;Additionally, several services are available for different areas of the user interface.&lt;/p&gt;
+
+&lt;h2 id=&#34;displayservice&#34;&gt;DisplayService&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;DisplayService&lt;/code&gt; assists in presentation and positioning. It can request and exit fullscreen as well as registering callback
+for dynamic CSS classes.&lt;/p&gt;
+
+&lt;h3 id=&#34;fullscreen-mode&#34;&gt;Fullscreen mode&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;enterFullScreen()&lt;/code&gt; and &lt;code&gt;exitFullScreen()&lt;/code&gt; methods will request fullscreen mode according to the type of browser in use. Webkit browsers behave
+differently from MS browsers for instance. These methods allows to abstract the request of the fullscreen mode for every browser.&lt;/p&gt;
+
+&lt;h3 id=&#34;dynamic-positioning&#34;&gt;Dynamic positioning&lt;/h3&gt;
+
+&lt;p&gt;The following CSS classes can have dynamic values:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.w20-top-shift-padding&lt;/code&gt; (padding-top)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-top-shift-margin&lt;/code&gt; (margin-top)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-top-shift&lt;/code&gt; (top)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-right-shift-padding&lt;/code&gt; (padding-right)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-right-shift-margin&lt;/code&gt; (margin-right)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-right-shift&lt;/code&gt; (right)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-bottom-shift-padding&lt;/code&gt; (padding-bottom)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-bottom-shift-margin&lt;/code&gt; (margin-bottom)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-bottom-shift&lt;/code&gt; (bottom)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-left-shift-padding&lt;/code&gt; (padding-left)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-left-shift-margin&lt;/code&gt; (margin-left)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.w20-left-shift&lt;/code&gt; (left)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Whenever a &lt;code&gt;function () { return [ a, b, c, d ]; }&lt;/code&gt; is registered through the &lt;code&gt;registerContentShiftCallback(fn)&lt;/code&gt; method, the value of theses classes
+ is summed with the value of a, b, c and d&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a increment the value of &lt;code&gt;.w20-top-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-top-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-top-shift&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;b increment the value of &lt;code&gt;.w20-right-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-right-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-right-shift&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;c increment the value of &lt;code&gt;.w20-bottom-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-bottom-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-bottom-shift&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;d increment the value of &lt;code&gt;.w20-left-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-left-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-left-shift&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can compute the &amp;laquo;shift&amp;raquo; in value by calling &lt;code&gt;computeContentShift()&lt;/code&gt;. The &lt;code&gt;registerContentShiftCallback(fn)&lt;/code&gt; will automatically call the &lt;code&gt;computeContentShift()&lt;/code&gt;
+ function but you might need to compute it again later if you used variables in the shift values for instance.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;module.controller(&#39;ExempleController&#39;, [&#39;DisplayService&#39;, &#39;EventService&#39;, 
+function (displayService, eventService) {
+
+    var show = true;
+    
+    function showElement () { 
+        return [show ? 100 : 0, 50, 0, 0]; 
+    }
+
+    displayService.registerContentShiftCallback(showElement);
+    
+    eventService.on(&#39;SomeEvent&#39;, function() {
+        show = !show;
+        displayService.computeContentShift();
+    });
+
+}]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the example above, initially:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;.w20-top-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-top-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-top-shift&lt;/code&gt; classes will have their value set to 100px.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;.w20-right-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-right-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-right-shift&lt;/code&gt; classes will have their value set to 50px.&lt;/li&gt;
+&lt;li&gt;the remaining one will have their value set to 0.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When &amp;lsquo;SomeEvent&amp;rsquo; happen,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;.w20-top-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-top-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-top-shift&lt;/code&gt; classes will have their value set to 0.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;.w20-right-shift-padding&lt;/code&gt;, &lt;code&gt;.w20-right-shift-margin&lt;/code&gt;, &lt;code&gt;.w20-right-shift&lt;/code&gt; classes will have their value set to 50px.&lt;/li&gt;
+&lt;li&gt;The remaining one will have their value set to 0.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;navigationservice&#34;&gt;NavigationService&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;NavigationService&lt;/code&gt; is mostly used internally to compute a hierarchical routes tree useful for displaying a menu of routes ordered
+by categories. You can call the &lt;code&gt;routeTree&lt;/code&gt; method to retrieve the routes tree of the application. For an exhaustive description of the API please
+consult the JSdoc.&lt;/p&gt;
+
+&lt;h2 id=&#34;menuservice&#34;&gt;MenuService&lt;/h2&gt;
+
+&lt;p&gt;The MenuService enable user to register custom action and section in themes.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;laquo;actions&amp;raquo; are element of the topbar.&lt;/li&gt;
+&lt;li&gt;&amp;laquo;sections&amp;raquo; are element of the sidebar.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note that some themes only allow &amp;laquo;actions&amp;raquo;.&lt;/p&gt;
+
+&lt;h3 id=&#34;registering-actions-sections&#34;&gt;Registering actions/sections&lt;/h3&gt;
+
+&lt;p&gt;Before an action or section is added it needs to be a member of an action type or section type. To register a
+new action/section type, use the &lt;code&gt;registerActionType(type, config)&lt;/code&gt; or &lt;code&gt;registerSectionType(type, config)&lt;/code&gt; methods of the service.&lt;/p&gt;
+
+&lt;p&gt;This is used to register the login and culture dropdown type action of themes for instance.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  menuService.registerActionType(&#39;w20-login&#39;, {
+       templateUrl: &#39;{css-framework}/templates/action-login.html&#39;,
+       showFn: function () {
+         return authenticationService.isAuthentifiable();
+       }
+   });
+
+  menuService.registerActionType(&#39;w20-culture&#39;, {
+       templateUrl: &#39;{css-framework}/templates/action-culture.html&#39;,
+       showFn: function () {
+         return cultureService.availableCultures().length &amp;gt; 0;
+       }
+   });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;showFn&lt;/code&gt; property specify on which condition should the action/section be shown.&lt;/p&gt;
+
+&lt;h3 id=&#34;adding-actions-sections&#34;&gt;Adding actions/sections&lt;/h3&gt;
+
+&lt;p&gt;To actually include an action or section, use the &lt;code&gt;addAction(&#39;name&#39;, &#39;type&#39;, configExtension)&lt;/code&gt; or &lt;code&gt;addSection(&#39;name&#39;, &#39;type&#39;, configExtension)&lt;/code&gt; methods of the service.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;menuService.addAction(&#39;login&#39;, &#39;w20-login&#39;, { sortKey: 100 });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The methods takes as argument the name of the action, the type of the action and a configuration object which extends
+the registered type configuration. The &lt;code&gt;sortKey&lt;/code&gt; property allow to order actions/sections.&lt;/p&gt;
+
+&lt;h2 id=&#34;bookmark-service&#34;&gt;Bookmark service&lt;/h2&gt;
+
+&lt;p&gt;The BookmarkService allow to store routes bookmarks. Use the &lt;code&gt;addBookmark(name, route)&lt;/code&gt; method with a name and an angular route object to store one.
+Use the &lt;code&gt;getBookmark(name)&lt;/code&gt; or &lt;code&gt;getAllBookmarks()&lt;/code&gt; methods to retrieve bookmarks. Additional methods are described in the API documentation.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Web framework basics</title>
+      <link>http://w20-framework.github.io/docs/manual/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://w20-framework.github.io/docs/manual/</guid>
+      <description>&lt;p&gt;W20 is an integration framework for the AngularJS-based Single Page Applications (SPA). It offers a modular programming
+model based on fragments and high-level services to accelerate your Web development.&lt;/p&gt;
+
+&lt;h1 id=&#34;fragments-and-configuration&#34;&gt;Fragments and configuration&lt;/h1&gt;
+
+&lt;p&gt;W20 and its applications are organized around the idea of &lt;strong&gt;fragments&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-is-a-fragment&#34;&gt;What is a fragment ?&lt;/h2&gt;
+
+&lt;p&gt;A W20 application is made of several fragments that brings different concerns to the application.
+A fragment is a collection of web resources (JavaScript &lt;a href=&#34;http://en.wikipedia.org/wiki/Asynchronous_module_definition&#34;&gt;AMD modules&lt;/a&gt;, stylesheets, HTML templates&amp;hellip;)
+that often but not necessarily depends on each other. The dependency between modules inside a fragment is orchestrated by the use of
+the &lt;a href=&#34;http://requirejs.org/&#34;&gt;RequireJS&lt;/a&gt; library.&lt;/p&gt;
+
+&lt;p&gt;Think of a fragment as a coherent set of resources linked together for the purpose of &lt;strong&gt;organization&lt;/strong&gt; and &lt;strong&gt;reusability&lt;/strong&gt;.
+By including and configuring a fragment you can bring the corresponding aspect and/or asset to your web application without having to worry about
+the intrinsic details of the fragment itself. Inside a fragment, the module dependency system guarantees that the dependencies of a module will be loaded before the module
+itself. This is especially important for large applications that often require an important number of JavaScript modules.&lt;/p&gt;
+
+&lt;h2 id=&#34;fragments-vs-modules&#34;&gt;Fragments vs modules&lt;/h2&gt;
+
+&lt;p&gt;When we talk about a module, we refer to a JavaScript AMD module, as used in the RequireJS library. That is, to say thing shortly, a .js file
+whose content is wrapped in a &lt;code&gt;define&lt;/code&gt; call (AMD modules are explained in greater detail further down). A fragment on the other hand is a collection of modules.
+It is described by a manifest which exposes configuration properties. When you include and configure a fragment in your application you can generally choose
+which modules to activate inside of it.&lt;/p&gt;
+
+&lt;h2 id=&#34;fragment-manifest&#34;&gt;Fragment manifest&lt;/h2&gt;
+
+&lt;p&gt;Each fragment contains a JSON manifest that serves as a descriptor for the fragment configuration possibilities. The fragment manifest has two main goals:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;To expose the available modules of the fragment and their available configuration options. It is important to understand that the fragment manifest does
+not configure the fragment. It exposes what configuration will be possible according to a configuration schema. In the next section we will see how to
+actually configure the fragment when you declare it inside your application manifest.&lt;/li&gt;
+&lt;li&gt;To allow the declaration of additional RequireJS configuration. On application start, each RequireJS configuration of each fragments, if present, are merged
+together.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The properties of a fragment manifest are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;id&lt;/code&gt;: a mandatory string with no space which identifies the fragment. No fragment with the same id can be included at the same time in an application.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;: an optional name for the fragment.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;description&lt;/code&gt;: an optional description of the fragment.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;requireConfig&lt;/code&gt;: an optional object with the properties of a RequireJS configuration object. In the example below we add a simple RequireJS configuration
+for module mapping (this allow to &amp;laquo;map&amp;raquo; a module to a name, which can be used for creating aliases or for module substitution). For an exhaustive list and
+description of the RequireJS configuration options, please have a look  at its &lt;a href=&#34;http://requirejs.org/docs/api.html&#34;&gt;API&lt;/a&gt;.
+Remember that this configuration will be merged with all the other declared fragment configuration on application start.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;id&amp;quot;: &amp;quot;demo-fragment&amp;quot;,
+    &amp;quot;requireConfig&amp;quot;: {
+        &amp;quot;map&amp;quot;: {
+           &amp;quot;*&amp;quot;: {
+             &amp;quot;mappedModule&amp;quot;: &amp;quot;path/to/module/to/map&amp;quot;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;modules&lt;/code&gt;: an optional object whose keys are the name of the exposed modules of the fragment. The value of those keys is an object with
+the module path and the configuration schema. The configuration schema contains the name of the configuration properties available for the module.
+In the example below we expose a module &amp;laquo;demoModule&amp;raquo; inside a fragment with id &amp;laquo;demo-fragment&amp;raquo; and a configuration property named &amp;laquo;demoConfig&amp;raquo;
+of type string for the module demoModule.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;id&amp;quot;: &amp;quot;demo-fragment&amp;quot;,
+    &amp;quot;modules&amp;quot;: {
+        &amp;quot;demoModule&amp;quot;: {
+             &amp;quot;path&amp;quot;: &amp;quot;{demo-fragment}/modules/demoModule&amp;quot;,
+             &amp;quot;autoload&amp;quot; : true,
+             &amp;quot;configSchema&amp;quot;: {
+                 &amp;quot;title&amp;quot;: &amp;quot;Demo module configuration&amp;quot;,
+                 &amp;quot;type&amp;quot;: &amp;quot;object&amp;quot;,
+                 &amp;quot;additionalProperties&amp;quot;: false,
+                 &amp;quot;properties&amp;quot;: {
+                     &amp;quot;demoConfig&amp;quot;: {
+                         &amp;quot;description&amp;quot;: &amp;quot;A description of the demoConfig property&amp;quot;,
+                         &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot;
+                     }
+                 }
+             }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is a few additional things to note in this last example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In the &lt;code&gt;path&lt;/code&gt; property we used the fragment id enclosed in curly braces (&lt;code&gt;{demo-fragment}&lt;/code&gt;). This alias is automatically registered based
+on the fragment id and points to the location of the fragment manifest (it is a RequireJS mapping). You can (and should for reusability consideration)
+use this alias in all other fragments
+and in the application to refer to the fragment location.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;autoload&lt;/code&gt; attribute specify if the module should be loaded automatically or only if required by another module. By &amp;laquo;required by another module&amp;raquo;, we refer
+to the AMD definition and the dependency management between modules as used in RequireJS (through the use of a &lt;code&gt;define&lt;/code&gt; or &lt;code&gt;require&lt;/code&gt; call). If not specified, the
+module will not be autoloaded.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;type&lt;/code&gt; property of the &amp;laquo;demoConfig&amp;raquo; option has been specified as a string. This means that when the property will be given its value in the application
+manifest, passing a type other than a string will raise an error. The other type available are object, array, boolean and number.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;additionalProperties&lt;/code&gt; property of the configuration schema specify if additional properties can be given when configuring this module in the application
+manifest. In this example, trying to configure any other property than a &amp;laquo;demoConfig&amp;raquo; one for this module in the application manifest will raise an error.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;The configuration schema is optional. You can simply declare the module along with its path and eventually ask for it to be autoloaded (false if not specified). This
+is often the case when you simply want to include a module that has no particular configuration in your business fragment.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;W20 is packaged and distributed as multiple fragments. Your application will then be composed of those fragments and your own business fragments.
+Now that we have a better understanding of the notion of fragment, we can proceed to the configuration step in which we actually include and configure those fragments
+in our application.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+
+&lt;p&gt;Application configuration happens in an application manifest. This manifest must be named &lt;strong&gt;w20.app.json&lt;/strong&gt; because, in the absence of
+a remote manifest, the framework will fall back to looking for a JSON file with this name at the application root.&lt;/p&gt;
+
+&lt;p&gt;The role of the application manifest is to reference fragments through their manifest URL and configure them specifically for the application.&lt;/p&gt;
+
+&lt;h3 id=&#34;fragment-declaration&#34;&gt;Fragment declaration&lt;/h3&gt;
+
+&lt;p&gt;To include a fragment in your application, specify the path of the fragment manifest as a key.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;bower_components/w20/w20-core.w20.json&amp;quot;: {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;w20-core&lt;/code&gt; fragment will be loaded with all its modules whose &lt;code&gt;autoload&lt;/code&gt; property is set to true. An alias &lt;code&gt;{w20-core}&lt;/code&gt; is now
+pointing to &lt;code&gt;bower_components/w20&lt;/code&gt;, the location of the fragment manifest.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;&lt;code&gt;bower_components&lt;/code&gt; is the default name of the folder in which &lt;a href=&#34;http://bower.io/&#34;&gt;Bower&lt;/a&gt; installs the web dependencies. Bower is one of the most popular
+package manager for web application. It should be installed to ease application development and/or use the w20 application generator. W20 fragments are available
+in the &lt;a href=&#34;http://bower.io/search/?q=w20&#34;&gt;Bower registry&lt;/a&gt; and will be installed to the bower_components folder if you choose this way of installation.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;fragment-configuration&#34;&gt;Fragment configuration&lt;/h3&gt;
+
+&lt;p&gt;Declaring a fragment like above can sometimes be enough. Autoloaded modules will be available and that may be sufficient.
+However, most of the time, you will configure the fragment&amp;rsquo;s modules according to your need or because an explicit configuration value is required.
+To configure the modules of the fragment add a &lt;code&gt;modules&lt;/code&gt; section:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;bower_components/w20/w20-core.w20.json&amp;quot; : {
+        &amp;quot;modules&amp;quot;: {
+            &amp;quot;application&amp;quot;: {
+                &amp;quot;id&amp;quot;: &amp;quot;my-app&amp;quot;
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the above configuration, the &lt;code&gt;application&lt;/code&gt; module of &lt;code&gt;w20-core&lt;/code&gt; will be configured with the corresponding object (defining
+the unique identifier of the application in this case). This module is normally defined as automatically loaded so this
+definition will only serve to configure it. To load a module that is not automatically loaded without configuration, just
+specify it with an empty object:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;bower_components/w20/w20-core.w20.json&amp;quot;: {
+        &amp;quot;modules&amp;quot;: {
+            &amp;quot;application&amp;quot;: {
+                &amp;quot;id&amp;quot;: &amp;quot;my-app&amp;quot;
+            }
+        }
+    },
+
+    &amp;quot;bower_components/other-fragment/other-fragment.w20.json&amp;quot;: {
+        &amp;quot;modules&amp;quot;: {
+            &amp;quot;my-module&amp;quot;: {}
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the example above &amp;laquo;my-module&amp;raquo; will be loaded without any configuration. If it was not declared and the module was not set to be autoloaded, &amp;laquo;my-module&amp;raquo;
+would not be loaded on application start even if it belongs to the &amp;laquo;other-fragment&amp;raquo; fragment.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;If a configuration JSON schema is provided for a specific module in the fragment manifest, the configuration specified
+here will be validated against it. Also, if a default configuration is provided for a specific module in the fragment manifest, the configuration specified here
+will be merged with it, overriding it. If no default configuration is provided, the configuration is provided as-is to the module.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/fragments.png&#34; alt=&#34;fragments-overview&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;masterpage&#34;&gt;Masterpage&lt;/h1&gt;
+
+&lt;p&gt;W20 uses &lt;a href=&#34;https://angularjs.org/&#34;&gt;AngularJS&lt;/a&gt; as a core framework for application development.
+Thus, its applications are &lt;a href=&#34;https://en.wikipedia.org/wiki/Single-page_application&#34;&gt;Single Page Application (SPA)&lt;/a&gt;.
+Only one HTML page is served with an outermost html doctype and a root tag &lt;code&gt;&amp;lt;html&amp;gt;&amp;lt;/html&amp;gt;&lt;/code&gt;. This page is called the &lt;strong&gt;masterpage&lt;/strong&gt;.
+The masterpage serves two roles:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Instruct the browser to load the RequireJS library with the w20 loader as the main module. The w20 loader is a module of the core fragment and
+referenced in the &lt;code&gt;main&lt;/code&gt; attribute of the script which loads RequireJS and who will take care of bootstrapping the application. A &lt;code&gt;w20-app&lt;/code&gt; attribute is mandatory on the root
+element of the masterpage. Application loading is explained in further details
+in the following section.&lt;/li&gt;
+&lt;li&gt;Declare the unique &lt;code&gt;ng-view&lt;/code&gt; element of the application which will include view templates. View change is handled through client-side
+routing which associates an URL to a template. This template is rendered in the &lt;code&gt;ng-view&lt;/code&gt; tag.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
+&amp;lt;!-- Sample masterpage for a W20 app --&amp;gt;
+&amp;lt;html data-w20-app&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Application title&amp;lt;/title&amp;gt;
+    &amp;lt;script type=&amp;quot;text/javascript&amp;quot; 
+            data-main=&amp;quot;bower_components/w20/modules/w20&amp;quot; 
+            src=&amp;quot;bower_components/requirejs/require.js&amp;quot;&amp;gt;
+    &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;div data-ng-view&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;You can notice that HTML attributes that are not part of the HTML specification (such as &lt;code&gt;w20-app&lt;/code&gt; or &lt;code&gt;ng-view&lt;/code&gt;) are prefixed with
+&amp;laquo;data-&amp;raquo;. This allow to keep templates valid against HTML validator by defining those attributes as &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*&#34;&gt;custom attributes&lt;/a&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;callout callout-warning&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+            
+                &lt;i class=&#34;fa fa-exclamation-triangle icon-2x&#34;&gt;&lt;/i&gt;
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Note that the w20 module is referenced without the .js extension. It is a common mistake to include the .js extension while referring to module but this
+is not accepted by RequireJS. The module file name is &amp;laquo;w20.js&amp;raquo; but it must be referenced by &amp;laquo;w20&amp;raquo; only.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Additional configuration can be provided:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;w20-app&lt;/code&gt; attribute can be provided with the URL of the application manifest as the value:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;html data-w20-app=&amp;quot;/resources/configuration&amp;quot;&amp;gt; ... &amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In that case, a request is made for retrieving the remote configuration. Without any value provided, the w20 loader will look
+for a &lt;code&gt;w20.app.json&lt;/code&gt; at the same level as the masterpage.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;w20-app-version&lt;/code&gt; attribute, when provided a value, will append this value as an extra query string to URLs of resources.
+This is useful for cache busting.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;html data-w20-app data-w20-app-version=&amp;quot;1.0.0&amp;quot;&amp;gt; ... &amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;w20-timeout&lt;/code&gt; attribute specify the number of seconds to wait before giving up on loading a script.
+Setting it to 0 disables the timeout. The default if not specified is 7 seconds.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;html data-w20-app data-w20-timeout=&amp;quot;3&amp;quot;&amp;gt; ... &amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The &lt;code&gt;w20-cors-with-credentials&lt;/code&gt; attribute accept a boolean that specify if whether or not cross-site Access-Control requests should be made using credentials
+such as cookies or authorization headers. By default the value is false.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;html data-w20-app data-w20-cors-with-credentials=&amp;quot;true&amp;quot;&amp;gt; ... &amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;core-fragment&#34;&gt;Core fragment&lt;/h1&gt;
+
+&lt;p&gt;The core fragment of W20 is the most important fragment of the framework and the only one that is mandatory.
+It provides the fundamental aspect of the framework, mainly:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;An &lt;a href=&#34;http://en.wikipedia.org/wiki/Asynchronous_module_definition&#34;&gt;AMD&lt;/a&gt; infrastructure through &lt;a href=&#34;http://requirejs.org/&#34;&gt;RequireJS&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;An MVC runtime through &lt;a href=&#34;https://angularjs.org/&#34;&gt;AngularJS&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;Application loading and initialization through the &lt;code&gt;w20&lt;/code&gt; module referenced in the masterpage,&lt;/li&gt;
+&lt;li&gt;A permission model which enables to reflect backend security,&lt;/li&gt;
+&lt;li&gt;Extensive culture support.&lt;/li&gt;
+&lt;li&gt;Support for HATEOAS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;No CSS framework is provided in the core fragment to let you free of this choice. However, you can simply add
+an appropriate fragment of W20 to bring frameworks such as &lt;a href=&#34;http://getbootstrap.com/&#34;&gt;Twitter Bootstrap&lt;/a&gt; (w20-bootstrap-3)
+or &lt;a href=&#34;https://material.angularjs.org/latest/&#34;&gt;Angular Material&lt;/a&gt; (w20-material). For additional information,
+please consult the &lt;a href=&#34;http://w20-framework.github.io/docs/manual/ui/&#34;&gt;UI&lt;/a&gt; section.&lt;/p&gt;
+
+&lt;p&gt;The rest of this manual will focus mainly on the core fragment. Additional fragments documentation can be found in the corresponding
+section of the documentation.&lt;/p&gt;
+
+&lt;p&gt;The core fragment provides the &lt;code&gt;w20&lt;/code&gt; module which is responsible for application initialization. Let&amp;rsquo;s look at how a W20 application load
+itself.&lt;/p&gt;
+
+&lt;h1 id=&#34;application-loading&#34;&gt;Application loading&lt;/h1&gt;
+
+&lt;p&gt;Once RequireJS is loaded, the &lt;code&gt;w20&lt;/code&gt; module becomes the entry point of a W20 application as the main module.
+Think of it as a &amp;laquo;fragment loader&amp;raquo;. Its initialization sequence is as follow:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Loading and parsing of the application configuration (&lt;code&gt;w20.app.json&lt;/code&gt; or remote configuration).&lt;/li&gt;
+&lt;li&gt;Loading and parsing of all the declared fragment manifests.&lt;/li&gt;
+&lt;li&gt;Computing of a global RequireJS configuration along with the list of all modules to load.&lt;/li&gt;
+&lt;li&gt;Loading of all modules needed at startup time at once.&lt;/li&gt;
+&lt;li&gt;Initialization of each loaded modules through their lifecycle callbacks (pre -&amp;gt; run -&amp;gt; post).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The last phase should be a little bit unclear at this point because we did not introduce modules lifecycle yet.
+We included it here to give you the full initialization sequence for future reference. Modules are documented in the next section.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://w20-framework.github.io/img/w20-loading.png&#34; alt=&#34;w20loading&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;modules&#34;&gt;Modules&lt;/h1&gt;
+
+&lt;h2 id=&#34;amd&#34;&gt;AMD&lt;/h2&gt;
+
+&lt;p&gt;JavaScript logic in W20 are defined in AMD modules. An AMD module is defined using the global function &lt;code&gt;define&lt;/code&gt; exposed by RequireJS.
+AMD module can be named but it is strongly recommended that you use anonymous AMD modules, each one living in its own JavaScript file.
+They have the following form:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+        // (1) list of the dependencies of this module
+], function(/* (2) list of injected dependencies (in the same order as (1)) */) {
+    
+    // (3) module factory function body (private scope of the module)
+
+    return {
+        // (4) public signature of the module that can be injected 
+        // when requested as a dependency of another module
+    };
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let us expand a little bit on each part of this module definition:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(1) The list of dependencies is composed of path to dependencies of this module, which are often themselves AMD modules.
+The path can be an absolute path or a map key if a RequireJS mapping has been defined. Remember that fragments manifest location are
+automatically aliased by their fragment id enclosed in curly braces. This means that you can reference a W20 fragment or your own one as
+a dependency like this:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+&#39;{w20-core}/modules/application&#39;, 
+&#39;{your-fragment}/modules/your-module&#39;
+], ... );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Please note that modules are referenced without their .js extension.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Third party libraries location are also aliased. For instance AngularJS distribution location is aliased by &lt;code&gt;{angular}&lt;/code&gt;.
+This means that you can reference a dependency to angular.js with &lt;code&gt;{angular}/angular&lt;/code&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(2) The last parameter to the &lt;code&gt;define&lt;/code&gt; function is the factory function. Its parameters are the public value returned by the dependencies defined in (1) in
+the same order. That is, if we take the example above, the public value of the &amp;laquo;application&amp;raquo; module as first argument and the public value of &amp;laquo;your-module&amp;raquo; as
+second argument.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;(3) The body of the factory function constitute the private part of the module. This part is not available to other modules.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;(4) The return value of a module is the public part it exposes to the world. The value of this return will be what will be injected
+in other modules factory function if that module is a dependency of them.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+&#39;{w20-core}/modules/application&#39;,
+&#39;{yourFragment}/modules/yourModule&#39;
+], function (applicationPublic, yourModulePublic) {
+ 
+ var privateValue = &#39;I am a private string&#39;;
+ 
+ return {
+    publicValue: &#39;I am a public string&#39;
+ }
+
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, if we suppose the module above to be named &amp;laquo;demo.js&amp;raquo; inside a fragment with id &amp;laquo;example&amp;raquo;, if this module is defined as a dependency of another,
+the last one can access the publicValue property of the object.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;{example}/modules/demo&#39;,
+], function (demo) {
+
+    console.info(demo.publicValue); // &amp;quot;I am a public string&amp;quot;
+
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;module-configuration&#34;&gt;Module configuration&lt;/h2&gt;
+
+&lt;p&gt;To access the configuration of a module it needs to depend on the &lt;code&gt;module&lt;/code&gt; module. This special module is used to retrieve the module id, its location
+and the value of its configuration options (those declared in the application manifest).
+If we suppose a module &amp;laquo;sample&amp;raquo; with the following configuration:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;some-fragment/path/some-fragment.w20.json&amp;quot;: {
+    &amp;quot;modules&amp;quot;: {
+        &amp;quot;sample&amp;quot;: {
+            &amp;quot;prop&amp;quot;: &amp;quot;Value of property one&amp;quot;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The configuration is retrieved inside the &amp;laquo;sample&amp;raquo; module like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;define([
+    &#39;module&#39;,
+], function (module) {
+
+    var config = module &amp;amp;&amp;amp; module.config() || {};
+    
+    console.log(config.prop); // &amp;quot;Value of property&amp;quot;
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The statement &lt;code&gt;module &amp;amp;&amp;amp; module.config() || {}&lt;/code&gt; is the idiomatic way of safely retrieving the module configuration.&lt;/p&gt;
+
+&lt;h2 id=&#34;lifecycle-callbacks&#34;&gt;Lifecycle callbacks&lt;/h2&gt;
+
+&lt;p&gt;In the &amp;laquo;Application loading&amp;raquo; section we have seen that the initialization sequence ended with each loaded modules going
+through their &amp;laquo;lifecycle callbacks&amp;raquo;. Actually this is only the case for modules that declares lifecycle callbacks. If a module does
+not declare any lifecycle callback then it is simply loaded.&lt;/p&gt;
+
+&lt;p&gt;Lifecycle callbacks happens when all fragments have been collected and the RequireJS
+configuration has been merged. There are 3 lifecycle callbacks which runs in the order: &lt;code&gt;pre&lt;/code&gt;, &lt;code&gt;run&lt;/code&gt; and &lt;code&gt;post&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All of them are optional.&lt;/li&gt;
+&lt;li&gt;It is guaranteed that every modules will run their &lt;code&gt;pre&lt;/code&gt; callback before any other modules run their &lt;code&gt;run&lt;/code&gt; callback.&lt;/li&gt;
+&lt;li&gt;It is guaranteed that every modules will run their &lt;code&gt;run&lt;/code&gt; callback before any other modules run their &lt;code&gt;post&lt;/code&gt; callback.&lt;/li&gt;
+&lt;li&gt;A module dependency will have its callback called before the module requiring it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To integrate a module into the lifecycle management of the application, you must add the following code to the public
+signature of the module (i.e the return value of the factory function):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;return {
+    ...
+
+    lifecycle: {
+        pre: function (modules, fragments, callback) {},
+        run: function (modules, fragments, callback) {},
+        post: function (modules, fragments, callback) {}
+    }
+
+    ...
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can omit the unsupported callbacks (for instance, just leaving the &lt;code&gt;pre&lt;/code&gt; one). If the loader recognize one or more
+lifecycle callbacks, they will be invoked during W20 initialization with the following arguments:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;modules&lt;/code&gt; is an array of all public modules definitions,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fragments&lt;/code&gt; an array of all loaded fragment manifests,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;callback&lt;/code&gt; is a function that &lt;strong&gt;MUST&lt;/strong&gt; be called to notify the loader that any processing in this phase is done for
+this module (including asynchronous processing). If a module do not call its callback, the whole initialization process
+is blocked for a specified amount of time. After that, it is cancelled and a timeout error message is displayed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lifecycle callbacks are useful hooks for application initialization. The &lt;code&gt;pre&lt;/code&gt; callback for instance will run before AngularJS
+initialization, the subject of the next section.&lt;/p&gt;
+
+&lt;h1 id=&#34;angularjs-initialization&#34;&gt;AngularJS initialization&lt;/h1&gt;
+
+&lt;p&gt;Before AngularJS initialization, it is guaranteed that:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All AMD modules needed at startup are loaded,&lt;/li&gt;
+&lt;li&gt;Their factory functions have been run in the correct order,&lt;/li&gt;
+&lt;li&gt;Their &lt;code&gt;pre&lt;/code&gt; lifecycle callbacks have been run and all modules have notified the loader that they have finished loading
+their asynchronous resources if any.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;AngularJS initialization is done explicitly with the &lt;code&gt;angular.bootstrap()&lt;/code&gt; function on the document element. It occurs
+in the &lt;code&gt;run&lt;/code&gt; lifecycle callback of the &lt;code&gt;application&lt;/code&gt; module. From this moment AngularJS initialize normally; you can read more
+about the initialization process &lt;a href=&#34;https://docs.angularjs.org/guide/bootstrap&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;angularjs-modules&#34;&gt;AngularJS modules&lt;/h1&gt;
+
+&lt;h2 id=&#34;amd-vs-angularjs-modules&#34;&gt;AMD vs AngularJS modules&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.angularjs.org/guide/module&#34;&gt;AngularJS modules&lt;/a&gt; are not to be confused with AMD modules. We said at the
+begining of this guide that when we refer to a &amp;laquo;module&amp;raquo;, it is an AMD module. We will continue to do so and use the term &amp;laquo;AngularJS module&amp;raquo;
+to refer to the notion of module in AngularJS.&lt;/p&gt;
+
+&lt;p&gt;From the AMD point of view, AngularJS modules have no meaning. However, AngularJS modules are fundamental for
+structuring an application correctly.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-is-an-angularjs-module&#34;&gt;What is an AngularJS module ?&lt;/h2&gt;
+
+&lt;p&gt;AngularJS modules allow to register services, factories, controllers, directives, providers and other concepts
+such as configuration or run block. AngularJS modules are also fundamental for unit testing. Each AngularJS module can only be loaded once per injector.
+Usually an AngularJS app has only one injector and AngularJS modules are only loaded once. Each test has its own injector and AngularJS modules are loaded multiple times.&lt;/p&gt;
+
+&lt;h2 id=&#34;angularjs-module-dependencies&#34;&gt;AngularJS module dependencies&lt;/h2&gt;
+
+&lt;p&gt;Wait a minute. Did we not already talk about dependencies between modules ? Yes, we did. We talked of dependencies between AMD modules.
+But AngularJs modules can also list other AngularJS modules as their dependencies. Depending on an AngularJS module implies that the required AngularJS module
+needs to be loaded before the requiring AngularJS module is loaded.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// firstModule.js
+define([&#39;{angular}/angular&#39;], function (angular) {
+  var firstAngularModule = angular.module(&#39;first&#39;, []);
+});
+
+// secondModule.js
+define([&#39;{angular}/angular&#39;, &#39;firstModule&#39;], function(angular) {
+  var secondAngularModule = angular.module(&#39;second&#39;, [&#39;first&#39;]);
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the example above the dependency between AngularJS modules is declared as an array in the second argument to the &lt;code&gt;angular.module&lt;/code&gt; function. AngularJS maintains an injector
+with a list of names and corresponding objects. An entry is added to the injector when a component is created and the object is returned whenever it is referenced using the registered name.&lt;/p&gt;
+
+&lt;p&gt;How does that fit with the dependency system between AMD modules ?  It is important to remember that the purpose of AMD modules and AngularJS modules is totally different.
+The dependency injection system built into AngularJS deals with the objects needed in a component while dependency management in RequireJS deals with JavaScript files. In other word,
+if an AngularJS modules depends on another AngularJS modules, this means that they must be loaded in the correct order. The &lt;code&gt;secondModule&lt;/code&gt; depend on the &lt;code&gt;firstModule&lt;/code&gt; to be loaded first.&lt;/p&gt;
+
+&lt;h2 id=&#34;angularjs-modules-and-w20&#34;&gt;AngularJS modules and W20&lt;/h2&gt;
+
+&lt;p&gt;To correctly initialize AngularJS, the &lt;code&gt;application&lt;/code&gt; module must know all the top-level declared
+AngularJS modules. To expose them properly, you must add the following code to the public signature of modules that
+declare AngularJS modules:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;return {
+    ...
+
+    angularModules: [ &#39;angularModule1&#39;, &#39;angularModule2&#39;, ... ]
+
+    ...
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All &lt;code&gt;angularModules&lt;/code&gt; arrays of AMD public signature modules are concatenated and the resulting array is passed to
+the &lt;code&gt;angular.bootstrap()&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;div class=&#34;callout callout-info&#34;&gt;
+    &lt;div style=&#34;display:table; width: 100%&#34;&gt;
+        &lt;div style=&#34;display:table-cell; width: 50px; vertical-align: middle;&#34;&gt;
+            
+            
+                &lt;i class=&#34;fa fa-info-circle icon-2x&#34; style=&#34;line-height: 30px;&#34;&gt;&lt;/i&gt;
+            
+            
+            
+        &lt;/div&gt;
+        &lt;div style=&#34;display:table-cell; vertical-align: middle;&#34;&gt;
+            &lt;p&gt;Note that you don&amp;rsquo;t need to add the transitive AngularJS modules.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

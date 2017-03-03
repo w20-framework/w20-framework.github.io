@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+
+
+
+<title>
+    Web framework basics
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,700,300,400" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Bitter:700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/unify/css/style.css">
+<link rel="stylesheet" href="/assets/unify/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TLF968Z');</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "W20 framework",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "Open-Source Software"
+  },
+  "applicationCategory" : "web framework"
+}
+</script>
+
+
+
+<meta property="og:title" content="Web framework basics" />
+<meta property="og:description" content="W20 is an integration framework for the AngularJS-based Single Page Applications (SPA). It offers a modular programming
+model based on fragments and high-level services to accelerate your Web development." />
+<meta property="og:url" content="http://w20-framework.github.io/docs/manual/" />
+<meta property="og:site_name" content="W20 framework" />
+<meta property="og:image" content="http://w20-framework.github.io/img/opengraph-default.png" />
+
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://w20-framework.github.io/opensearch.xml" title="W20 framework" />
+
+
+
+<script type="text/javascript">
+    window.w20 = {
+        state: {}
+    };
+</script>
+
+
+</head>
+<body class="homepage">
+    
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLF968Z"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div id="header">
+        <div class="header">
+    <div class="container">
+        <a class="logo" href="/">W20 framework</a>
+        <div class="topbar hidden-xs hidden-sm">
+            <ul class="loginbar pull-right">
+                <li><i class="fa fa-stack-overflow"></i> <a target="_blank" href="http://stackoverflow.com/questions/ask?tags=w20">Ask a question</a></li>
+                <li class="topbar-devider"></li>
+                <li><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></li>
+            </ul>
+        </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" data-role="navigation" style="pointer-events: none;">
+        <div class="container">
+            <ul class="nav navbar-nav" style="pointer-events: auto;">
+                <li>
+                    <a href="/docs">Documentation</a>
+                </li>
+                <li>
+                    <a href="/addons">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/themes">Themes</a>
+                </li>
+                <li>
+                    <a href="/posts">Blog</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/project/community">Community</a></li>
+                        <li><a href="/project/roadmap">Roadmap</a></li>
+                        <li><a href="/project/faq">FAQ</a></li>
+                        <li><a href="/tags">Tags</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="search fa fa-search search-btn"></i>
+                    <div class="search-open">
+                        <form method="GET" action="/search">
+                            <div class="input-group animated fadeInDown">
+                                <input id="search-field" type="text" class="form-control" placeholder="Search" name="q">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="submit">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        
+<div class="title-header small">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <h2>Documentation</h2>
+                <p class="hidden-xs">Introduction, reference manual and JSDoc of the W20 framework.</p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs">
+                <div class="header-image-wrapper">
+                    <img class="header-image" src="/img/logos/w20-logo.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="title-subheader">
+    <div class="container">
+        <ul>
+            <li><h3 class=''><i class="fa fa-play-circle"></i> <a href="/docs">Introduction</a></h3></li>
+            <li><h3 class='active'><i class="fa fa-book"></i> <a href="/docs/manual">Manual</a></h3></li>
+            <li><h3 class=''><i class="fa fa-cogs"></i> <a href="/docs/generator">Generator</a></h3></li>
+            <li><h3><i class="fa fa-info-circle"></i> <a href="/jsdoc" target="_blank">JSDoc</a></h3></li>
+            <li><h3><i class="fa fa-tag"></i> <a href="https://github.com/w20-framework/w20/releases" target="_blank">Releases</a></h3></li>
+            <li><h3><i class="fa fa-github"></i> <a href="https://github.com/w20-framework/w20" target="_blank">Source</a></h3></li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+    <div id="content" class="container">
+        <div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="doc-content">
+                <p>W20 is an integration framework for the AngularJS-based Single Page Applications (SPA). It offers a modular programming
+model based on fragments and high-level services to accelerate your Web development.</p>
+
+<h1 id="fragments-and-configuration">Fragments and configuration</h1>
+
+<p>W20 and its applications are organized around the idea of <strong>fragments</strong>.</p>
+
+<h2 id="what-is-a-fragment">What is a fragment ?</h2>
+
+<p>A W20 application is made of several fragments that brings different concerns to the application.
+A fragment is a collection of web resources (JavaScript <a href="http://en.wikipedia.org/wiki/Asynchronous_module_definition">AMD modules</a>, stylesheets, HTML templates&hellip;)
+that often but not necessarily depends on each other. The dependency between modules inside a fragment is orchestrated by the use of
+the <a href="http://requirejs.org/">RequireJS</a> library.</p>
+
+<p>Think of a fragment as a coherent set of resources linked together for the purpose of <strong>organization</strong> and <strong>reusability</strong>.
+By including and configuring a fragment you can bring the corresponding aspect and/or asset to your web application without having to worry about
+the intrinsic details of the fragment itself. Inside a fragment, the module dependency system guarantees that the dependencies of a module will be loaded before the module
+itself. This is especially important for large applications that often require an important number of JavaScript modules.</p>
+
+<h2 id="fragments-vs-modules">Fragments vs modules</h2>
+
+<p>When we talk about a module, we refer to a JavaScript AMD module, as used in the RequireJS library. That is, to say thing shortly, a .js file
+whose content is wrapped in a <code>define</code> call (AMD modules are explained in greater detail further down). A fragment on the other hand is a collection of modules.
+It is described by a manifest which exposes configuration properties. When you include and configure a fragment in your application you can generally choose
+which modules to activate inside of it.</p>
+
+<h2 id="fragment-manifest">Fragment manifest</h2>
+
+<p>Each fragment contains a JSON manifest that serves as a descriptor for the fragment configuration possibilities. The fragment manifest has two main goals:</p>
+
+<ol>
+<li>To expose the available modules of the fragment and their available configuration options. It is important to understand that the fragment manifest does
+not configure the fragment. It exposes what configuration will be possible according to a configuration schema. In the next section we will see how to
+actually configure the fragment when you declare it inside your application manifest.</li>
+<li>To allow the declaration of additional RequireJS configuration. On application start, each RequireJS configuration of each fragments, if present, are merged
+together.</li>
+</ol>
+
+<p>The properties of a fragment manifest are:</p>
+
+<ul>
+<li><code>id</code>: a mandatory string with no space which identifies the fragment. No fragment with the same id can be included at the same time in an application.</li>
+<li><code>name</code>: an optional name for the fragment.</li>
+<li><code>description</code>: an optional description of the fragment.</li>
+<li><code>requireConfig</code>: an optional object with the properties of a RequireJS configuration object. In the example below we add a simple RequireJS configuration
+for module mapping (this allow to &laquo;map&raquo; a module to a name, which can be used for creating aliases or for module substitution). For an exhaustive list and
+description of the RequireJS configuration options, please have a look  at its <a href="http://requirejs.org/docs/api.html">API</a>.
+Remember that this configuration will be merged with all the other declared fragment configuration on application start.</li>
+</ul>
+
+<pre><code>{
+    &quot;id&quot;: &quot;demo-fragment&quot;,
+    &quot;requireConfig&quot;: {
+        &quot;map&quot;: {
+           &quot;*&quot;: {
+             &quot;mappedModule&quot;: &quot;path/to/module/to/map&quot;
+        }
+    }
+}
+</code></pre>
+
+<ul>
+<li><code>modules</code>: an optional object whose keys are the name of the exposed modules of the fragment. The value of those keys is an object with
+the module path and the configuration schema. The configuration schema contains the name of the configuration properties available for the module.
+In the example below we expose a module &laquo;demoModule&raquo; inside a fragment with id &laquo;demo-fragment&raquo; and a configuration property named &laquo;demoConfig&raquo;
+of type string for the module demoModule.</li>
+</ul>
+
+<pre><code>{
+    &quot;id&quot;: &quot;demo-fragment&quot;,
+    &quot;modules&quot;: {
+        &quot;demoModule&quot;: {
+             &quot;path&quot;: &quot;{demo-fragment}/modules/demoModule&quot;,
+             &quot;autoload&quot; : true,
+             &quot;configSchema&quot;: {
+                 &quot;title&quot;: &quot;Demo module configuration&quot;,
+                 &quot;type&quot;: &quot;object&quot;,
+                 &quot;additionalProperties&quot;: false,
+                 &quot;properties&quot;: {
+                     &quot;demoConfig&quot;: {
+                         &quot;description&quot;: &quot;A description of the demoConfig property&quot;,
+                         &quot;type&quot;: &quot;string&quot;
+                     }
+                 }
+             }
+        }
+    }
+}
+</code></pre>
+
+<p>There is a few additional things to note in this last example:</p>
+
+<ul>
+<li>In the <code>path</code> property we used the fragment id enclosed in curly braces (<code>{demo-fragment}</code>). This alias is automatically registered based
+on the fragment id and points to the location of the fragment manifest (it is a RequireJS mapping). You can (and should for reusability consideration)
+use this alias in all other fragments
+and in the application to refer to the fragment location.</li>
+<li>The <code>autoload</code> attribute specify if the module should be loaded automatically or only if required by another module. By &laquo;required by another module&raquo;, we refer
+to the AMD definition and the dependency management between modules as used in RequireJS (through the use of a <code>define</code> or <code>require</code> call). If not specified, the
+module will not be autoloaded.</li>
+<li>The <code>type</code> property of the &laquo;demoConfig&raquo; option has been specified as a string. This means that when the property will be given its value in the application
+manifest, passing a type other than a string will raise an error. The other type available are object, array, boolean and number.</li>
+<li>The <code>additionalProperties</code> property of the configuration schema specify if additional properties can be given when configuring this module in the application
+manifest. In this example, trying to configure any other property than a &laquo;demoConfig&raquo; one for this module in the application manifest will raise an error.</li>
+</ul>
+
+<div class="callout callout-info">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+                <i class="fa fa-info-circle icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>The configuration schema is optional. You can simply declare the module along with its path and eventually ask for it to be autoloaded (false if not specified). This
+is often the case when you simply want to include a module that has no particular configuration in your business fragment.</p>
+
+        </div>
+    </div>
+</div>
+
+<p>W20 is packaged and distributed as multiple fragments. Your application will then be composed of those fragments and your own business fragments.
+Now that we have a better understanding of the notion of fragment, we can proceed to the configuration step in which we actually include and configure those fragments
+in our application.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Application configuration happens in an application manifest. This manifest must be named <strong>w20.app.json</strong> because, in the absence of
+a remote manifest, the framework will fall back to looking for a JSON file with this name at the application root.</p>
+
+<p>The role of the application manifest is to reference fragments through their manifest URL and configure them specifically for the application.</p>
+
+<h3 id="fragment-declaration">Fragment declaration</h3>
+
+<p>To include a fragment in your application, specify the path of the fragment manifest as a key.</p>
+
+<pre><code>{
+    &quot;bower_components/w20/w20-core.w20.json&quot;: {}
+}
+</code></pre>
+
+<p>The <code>w20-core</code> fragment will be loaded with all its modules whose <code>autoload</code> property is set to true. An alias <code>{w20-core}</code> is now
+pointing to <code>bower_components/w20</code>, the location of the fragment manifest.</p>
+
+<div class="callout callout-info">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+                <i class="fa fa-info-circle icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p><code>bower_components</code> is the default name of the folder in which <a href="http://bower.io/">Bower</a> installs the web dependencies. Bower is one of the most popular
+package manager for web application. It should be installed to ease application development and/or use the w20 application generator. W20 fragments are available
+in the <a href="http://bower.io/search/?q=w20">Bower registry</a> and will be installed to the bower_components folder if you choose this way of installation.</p>
+
+        </div>
+    </div>
+</div>
+
+<h3 id="fragment-configuration">Fragment configuration</h3>
+
+<p>Declaring a fragment like above can sometimes be enough. Autoloaded modules will be available and that may be sufficient.
+However, most of the time, you will configure the fragment&rsquo;s modules according to your need or because an explicit configuration value is required.
+To configure the modules of the fragment add a <code>modules</code> section:</p>
+
+<pre><code>{
+    &quot;bower_components/w20/w20-core.w20.json&quot; : {
+        &quot;modules&quot;: {
+            &quot;application&quot;: {
+                &quot;id&quot;: &quot;my-app&quot;
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>In the above configuration, the <code>application</code> module of <code>w20-core</code> will be configured with the corresponding object (defining
+the unique identifier of the application in this case). This module is normally defined as automatically loaded so this
+definition will only serve to configure it. To load a module that is not automatically loaded without configuration, just
+specify it with an empty object:</p>
+
+<pre><code>{
+    &quot;bower_components/w20/w20-core.w20.json&quot;: {
+        &quot;modules&quot;: {
+            &quot;application&quot;: {
+                &quot;id&quot;: &quot;my-app&quot;
+            }
+        }
+    },
+
+    &quot;bower_components/other-fragment/other-fragment.w20.json&quot;: {
+        &quot;modules&quot;: {
+            &quot;my-module&quot;: {}
+        }
+    }
+}
+</code></pre>
+
+<p>In the example above &laquo;my-module&raquo; will be loaded without any configuration. If it was not declared and the module was not set to be autoloaded, &laquo;my-module&raquo;
+would not be loaded on application start even if it belongs to the &laquo;other-fragment&raquo; fragment.</p>
+
+<div class="callout callout-info">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+                <i class="fa fa-info-circle icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>If a configuration JSON schema is provided for a specific module in the fragment manifest, the configuration specified
+here will be validated against it. Also, if a default configuration is provided for a specific module in the fragment manifest, the configuration specified here
+will be merged with it, overriding it. If no default configuration is provided, the configuration is provided as-is to the module.</p>
+
+        </div>
+    </div>
+</div>
+
+<h2 id="summary">Summary</h2>
+
+<p><img src="img/fragments.png" alt="fragments-overview" /></p>
+
+<h1 id="masterpage">Masterpage</h1>
+
+<p>W20 uses <a href="https://angularjs.org/">AngularJS</a> as a core framework for application development.
+Thus, its applications are <a href="https://en.wikipedia.org/wiki/Single-page_application">Single Page Application (SPA)</a>.
+Only one HTML page is served with an outermost html doctype and a root tag <code>&lt;html&gt;&lt;/html&gt;</code>. This page is called the <strong>masterpage</strong>.
+The masterpage serves two roles:</p>
+
+<ol>
+<li>Instruct the browser to load the RequireJS library with the w20 loader as the main module. The w20 loader is a module of the core fragment and
+referenced in the <code>main</code> attribute of the script which loads RequireJS and who will take care of bootstrapping the application. A <code>w20-app</code> attribute is mandatory on the root
+element of the masterpage. Application loading is explained in further details
+in the following section.</li>
+<li>Declare the unique <code>ng-view</code> element of the application which will include view templates. View change is handled through client-side
+routing which associates an URL to a template. This template is rendered in the <code>ng-view</code> tag.</li>
+</ol>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;!-- Sample masterpage for a W20 app --&gt;
+&lt;html data-w20-app&gt;
+&lt;head&gt;
+    &lt;title&gt;Application title&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; 
+            data-main=&quot;bower_components/w20/modules/w20&quot; 
+            src=&quot;bower_components/requirejs/require.js&quot;&gt;
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div data-ng-view&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><div class="callout callout-info">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+                <i class="fa fa-info-circle icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>You can notice that HTML attributes that are not part of the HTML specification (such as <code>w20-app</code> or <code>ng-view</code>) are prefixed with
+&laquo;data-&raquo;. This allow to keep templates valid against HTML validator by defining those attributes as <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*">custom attributes</a>.</p>
+
+        </div>
+    </div>
+</div>
+<div class="callout callout-warning">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+            
+                <i class="fa fa-exclamation-triangle icon-2x"></i>
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>Note that the w20 module is referenced without the .js extension. It is a common mistake to include the .js extension while referring to module but this
+is not accepted by RequireJS. The module file name is &laquo;w20.js&raquo; but it must be referenced by &laquo;w20&raquo; only.</p>
+
+        </div>
+    </div>
+</div></p>
+
+<p>Additional configuration can be provided:</p>
+
+<ul>
+<li><p>The <code>w20-app</code> attribute can be provided with the URL of the application manifest as the value:</p>
+
+<pre><code>&lt;html data-w20-app=&quot;/resources/configuration&quot;&gt; ... &lt;/html&gt;
+</code></pre>
+
+<p>In that case, a request is made for retrieving the remote configuration. Without any value provided, the w20 loader will look
+for a <code>w20.app.json</code> at the same level as the masterpage.</p></li>
+
+<li><p>The <code>w20-app-version</code> attribute, when provided a value, will append this value as an extra query string to URLs of resources.
+This is useful for cache busting.</p>
+
+<pre><code>&lt;html data-w20-app data-w20-app-version=&quot;1.0.0&quot;&gt; ... &lt;/html&gt;
+</code></pre></li>
+
+<li><p>The <code>w20-timeout</code> attribute specify the number of seconds to wait before giving up on loading a script.
+Setting it to 0 disables the timeout. The default if not specified is 7 seconds.</p>
+
+<pre><code>&lt;html data-w20-app data-w20-timeout=&quot;3&quot;&gt; ... &lt;/html&gt;
+</code></pre></li>
+
+<li><p>The <code>w20-cors-with-credentials</code> attribute accept a boolean that specify if whether or not cross-site Access-Control requests should be made using credentials
+such as cookies or authorization headers. By default the value is false.</p>
+
+<pre><code>&lt;html data-w20-app data-w20-cors-with-credentials=&quot;true&quot;&gt; ... &lt;/html&gt;
+</code></pre></li>
+</ul>
+
+<h1 id="core-fragment">Core fragment</h1>
+
+<p>The core fragment of W20 is the most important fragment of the framework and the only one that is mandatory.
+It provides the fundamental aspect of the framework, mainly:</p>
+
+<ul>
+<li>An <a href="http://en.wikipedia.org/wiki/Asynchronous_module_definition">AMD</a> infrastructure through <a href="http://requirejs.org/">RequireJS</a>,</li>
+<li>An MVC runtime through <a href="https://angularjs.org/">AngularJS</a>,</li>
+<li>Application loading and initialization through the <code>w20</code> module referenced in the masterpage,</li>
+<li>A permission model which enables to reflect backend security,</li>
+<li>Extensive culture support.</li>
+<li>Support for HATEOAS</li>
+</ul>
+
+<p>No CSS framework is provided in the core fragment to let you free of this choice. However, you can simply add
+an appropriate fragment of W20 to bring frameworks such as <a href="http://getbootstrap.com/">Twitter Bootstrap</a> (w20-bootstrap-3)
+or <a href="https://material.angularjs.org/latest/">Angular Material</a> (w20-material). For additional information,
+please consult the <a href="http://w20-framework.github.io/docs/manual/ui/">UI</a> section.</p>
+
+<p>The rest of this manual will focus mainly on the core fragment. Additional fragments documentation can be found in the corresponding
+section of the documentation.</p>
+
+<p>The core fragment provides the <code>w20</code> module which is responsible for application initialization. Let&rsquo;s look at how a W20 application load
+itself.</p>
+
+<h1 id="application-loading">Application loading</h1>
+
+<p>Once RequireJS is loaded, the <code>w20</code> module becomes the entry point of a W20 application as the main module.
+Think of it as a &laquo;fragment loader&raquo;. Its initialization sequence is as follow:</p>
+
+<ol>
+<li>Loading and parsing of the application configuration (<code>w20.app.json</code> or remote configuration).</li>
+<li>Loading and parsing of all the declared fragment manifests.</li>
+<li>Computing of a global RequireJS configuration along with the list of all modules to load.</li>
+<li>Loading of all modules needed at startup time at once.</li>
+<li>Initialization of each loaded modules through their lifecycle callbacks (pre -&gt; run -&gt; post).</li>
+</ol>
+
+<p>The last phase should be a little bit unclear at this point because we did not introduce modules lifecycle yet.
+We included it here to give you the full initialization sequence for future reference. Modules are documented in the next section.</p>
+
+<p><img src="/img/w20-loading.png" alt="w20loading" /></p>
+
+<h1 id="modules">Modules</h1>
+
+<h2 id="amd">AMD</h2>
+
+<p>JavaScript logic in W20 are defined in AMD modules. An AMD module is defined using the global function <code>define</code> exposed by RequireJS.
+AMD module can be named but it is strongly recommended that you use anonymous AMD modules, each one living in its own JavaScript file.
+They have the following form:</p>
+
+<pre><code>define([
+        // (1) list of the dependencies of this module
+], function(/* (2) list of injected dependencies (in the same order as (1)) */) {
+    
+    // (3) module factory function body (private scope of the module)
+
+    return {
+        // (4) public signature of the module that can be injected 
+        // when requested as a dependency of another module
+    };
+});
+</code></pre>
+
+<p>Let us expand a little bit on each part of this module definition:</p>
+
+<ul>
+<li>(1) The list of dependencies is composed of path to dependencies of this module, which are often themselves AMD modules.
+The path can be an absolute path or a map key if a RequireJS mapping has been defined. Remember that fragments manifest location are
+automatically aliased by their fragment id enclosed in curly braces. This means that you can reference a W20 fragment or your own one as
+a dependency like this:</li>
+</ul>
+
+<pre><code>define([
+'{w20-core}/modules/application', 
+'{your-fragment}/modules/your-module'
+], ... );
+</code></pre>
+
+<p>Please note that modules are referenced without their .js extension.</p>
+
+<div class="callout callout-info">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+                <i class="fa fa-info-circle icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>Third party libraries location are also aliased. For instance AngularJS distribution location is aliased by <code>{angular}</code>.
+This means that you can reference a dependency to angular.js with <code>{angular}/angular</code>.</p>
+
+        </div>
+    </div>
+</div>
+
+<ul>
+<li><p>(2) The last parameter to the <code>define</code> function is the factory function. Its parameters are the public value returned by the dependencies defined in (1) in
+the same order. That is, if we take the example above, the public value of the &laquo;application&raquo; module as first argument and the public value of &laquo;your-module&raquo; as
+second argument.</p></li>
+
+<li><p>(3) The body of the factory function constitute the private part of the module. This part is not available to other modules.</p></li>
+
+<li><p>(4) The return value of a module is the public part it exposes to the world. The value of this return will be what will be injected
+in other modules factory function if that module is a dependency of them.</p></li>
+</ul>
+
+<pre><code>define([
+'{w20-core}/modules/application',
+'{yourFragment}/modules/yourModule'
+], function (applicationPublic, yourModulePublic) {
+ 
+ var privateValue = 'I am a private string';
+ 
+ return {
+    publicValue: 'I am a public string'
+ }
+
+});
+</code></pre>
+
+<p>Now, if we suppose the module above to be named &laquo;demo.js&raquo; inside a fragment with id &laquo;example&raquo;, if this module is defined as a dependency of another,
+the last one can access the publicValue property of the object.</p>
+
+<pre><code>define([
+    '{example}/modules/demo',
+], function (demo) {
+
+    console.info(demo.publicValue); // &quot;I am a public string&quot;
+
+});
+</code></pre>
+
+<h2 id="module-configuration">Module configuration</h2>
+
+<p>To access the configuration of a module it needs to depend on the <code>module</code> module. This special module is used to retrieve the module id, its location
+and the value of its configuration options (those declared in the application manifest).
+If we suppose a module &laquo;sample&raquo; with the following configuration:</p>
+
+<pre><code>&quot;some-fragment/path/some-fragment.w20.json&quot;: {
+    &quot;modules&quot;: {
+        &quot;sample&quot;: {
+            &quot;prop&quot;: &quot;Value of property one&quot;
+        }
+    }
+}
+</code></pre>
+
+<p>The configuration is retrieved inside the &laquo;sample&raquo; module like this:</p>
+
+<pre><code>define([
+    'module',
+], function (module) {
+
+    var config = module &amp;&amp; module.config() || {};
+    
+    console.log(config.prop); // &quot;Value of property&quot;
+});
+</code></pre>
+
+<p>The statement <code>module &amp;&amp; module.config() || {}</code> is the idiomatic way of safely retrieving the module configuration.</p>
+
+<h2 id="lifecycle-callbacks">Lifecycle callbacks</h2>
+
+<p>In the &laquo;Application loading&raquo; section we have seen that the initialization sequence ended with each loaded modules going
+through their &laquo;lifecycle callbacks&raquo;. Actually this is only the case for modules that declares lifecycle callbacks. If a module does
+not declare any lifecycle callback then it is simply loaded.</p>
+
+<p>Lifecycle callbacks happens when all fragments have been collected and the RequireJS
+configuration has been merged. There are 3 lifecycle callbacks which runs in the order: <code>pre</code>, <code>run</code> and <code>post</code>.</p>
+
+<ul>
+<li>All of them are optional.</li>
+<li>It is guaranteed that every modules will run their <code>pre</code> callback before any other modules run their <code>run</code> callback.</li>
+<li>It is guaranteed that every modules will run their <code>run</code> callback before any other modules run their <code>post</code> callback.</li>
+<li>A module dependency will have its callback called before the module requiring it.</li>
+</ul>
+
+<p>To integrate a module into the lifecycle management of the application, you must add the following code to the public
+signature of the module (i.e the return value of the factory function):</p>
+
+<pre><code>return {
+    ...
+
+    lifecycle: {
+        pre: function (modules, fragments, callback) {},
+        run: function (modules, fragments, callback) {},
+        post: function (modules, fragments, callback) {}
+    }
+
+    ...
+};
+</code></pre>
+
+<p>You can omit the unsupported callbacks (for instance, just leaving the <code>pre</code> one). If the loader recognize one or more
+lifecycle callbacks, they will be invoked during W20 initialization with the following arguments:</p>
+
+<ul>
+<li><code>modules</code> is an array of all public modules definitions,</li>
+<li><code>fragments</code> an array of all loaded fragment manifests,</li>
+<li><code>callback</code> is a function that <strong>MUST</strong> be called to notify the loader that any processing in this phase is done for
+this module (including asynchronous processing). If a module do not call its callback, the whole initialization process
+is blocked for a specified amount of time. After that, it is cancelled and a timeout error message is displayed.</li>
+</ul>
+
+<p>Lifecycle callbacks are useful hooks for application initialization. The <code>pre</code> callback for instance will run before AngularJS
+initialization, the subject of the next section.</p>
+
+<h1 id="angularjs-initialization">AngularJS initialization</h1>
+
+<p>Before AngularJS initialization, it is guaranteed that:</p>
+
+<ul>
+<li>All AMD modules needed at startup are loaded,</li>
+<li>Their factory functions have been run in the correct order,</li>
+<li>Their <code>pre</code> lifecycle callbacks have been run and all modules have notified the loader that they have finished loading
+their asynchronous resources if any.
+<br /></li>
+</ul>
+
+<p>AngularJS initialization is done explicitly with the <code>angular.bootstrap()</code> function on the document element. It occurs
+in the <code>run</code> lifecycle callback of the <code>application</code> module. From this moment AngularJS initialize normally; you can read more
+about the initialization process <a href="https://docs.angularjs.org/guide/bootstrap">here</a>.</p>
+
+<h1 id="angularjs-modules">AngularJS modules</h1>
+
+<h2 id="amd-vs-angularjs-modules">AMD vs AngularJS modules</h2>
+
+<p><a href="https://docs.angularjs.org/guide/module">AngularJS modules</a> are not to be confused with AMD modules. We said at the
+begining of this guide that when we refer to a &laquo;module&raquo;, it is an AMD module. We will continue to do so and use the term &laquo;AngularJS module&raquo;
+to refer to the notion of module in AngularJS.</p>
+
+<p>From the AMD point of view, AngularJS modules have no meaning. However, AngularJS modules are fundamental for
+structuring an application correctly.</p>
+
+<h2 id="what-is-an-angularjs-module">What is an AngularJS module ?</h2>
+
+<p>AngularJS modules allow to register services, factories, controllers, directives, providers and other concepts
+such as configuration or run block. AngularJS modules are also fundamental for unit testing. Each AngularJS module can only be loaded once per injector.
+Usually an AngularJS app has only one injector and AngularJS modules are only loaded once. Each test has its own injector and AngularJS modules are loaded multiple times.</p>
+
+<h2 id="angularjs-module-dependencies">AngularJS module dependencies</h2>
+
+<p>Wait a minute. Did we not already talk about dependencies between modules ? Yes, we did. We talked of dependencies between AMD modules.
+But AngularJs modules can also list other AngularJS modules as their dependencies. Depending on an AngularJS module implies that the required AngularJS module
+needs to be loaded before the requiring AngularJS module is loaded.</p>
+
+<pre><code>// firstModule.js
+define(['{angular}/angular'], function (angular) {
+  var firstAngularModule = angular.module('first', []);
+});
+
+// secondModule.js
+define(['{angular}/angular', 'firstModule'], function(angular) {
+  var secondAngularModule = angular.module('second', ['first']);
+});
+
+</code></pre>
+
+<p>In the example above the dependency between AngularJS modules is declared as an array in the second argument to the <code>angular.module</code> function. AngularJS maintains an injector
+with a list of names and corresponding objects. An entry is added to the injector when a component is created and the object is returned whenever it is referenced using the registered name.</p>
+
+<p>How does that fit with the dependency system between AMD modules ?  It is important to remember that the purpose of AMD modules and AngularJS modules is totally different.
+The dependency injection system built into AngularJS deals with the objects needed in a component while dependency management in RequireJS deals with JavaScript files. In other word,
+if an AngularJS modules depends on another AngularJS modules, this means that they must be loaded in the correct order. The <code>secondModule</code> depend on the <code>firstModule</code> to be loaded first.</p>
+
+<h2 id="angularjs-modules-and-w20">AngularJS modules and W20</h2>
+
+<p>To correctly initialize AngularJS, the <code>application</code> module must know all the top-level declared
+AngularJS modules. To expose them properly, you must add the following code to the public signature of modules that
+declare AngularJS modules:</p>
+
+<pre><code>return {
+    ...
+
+    angularModules: [ 'angularModule1', 'angularModule2', ... ]
+
+    ...
+};
+</code></pre>
+
+<p>All <code>angularModules</code> arrays of AMD public signature modules are concatenated and the resulting array is passed to
+the <code>angular.bootstrap()</code> function.</p>
+
+<div class="callout callout-info">
+    <div style="display:table; width: 100%">
+        <div style="display:table-cell; width: 50px; vertical-align: middle;">
+            
+            
+                <i class="fa fa-info-circle icon-2x" style="line-height: 30px;"></i>
+            
+            
+            
+        </div>
+        <div style="display:table-cell; vertical-align: middle;">
+            <p>Note that you don&rsquo;t need to add the transitive AngularJS modules.</p>
+
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        
+<div class="side-menu">
+    
+        
+        <div class="list-group">
+            <ul class="nav">
+                
+                
+                
+                    
+                    <li>
+                        <a href="/docs/manual/" class="list-group-item  active ">
+                            Web framework basics
+                        </a>
+                        
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#fragments-and-configuration">Fragments and configuration</a>
+<ul>
+<li><a href="#what-is-a-fragment">What is a fragment ?</a></li>
+<li><a href="#fragments-vs-modules">Fragments vs modules</a></li>
+<li><a href="#fragment-manifest">Fragment manifest</a></li>
+<li><a href="#configuration">Configuration</a>
+<ul>
+<li><a href="#fragment-declaration">Fragment declaration</a></li>
+<li><a href="#fragment-configuration">Fragment configuration</a></li>
+</ul></li>
+<li><a href="#summary">Summary</a></li>
+</ul></li>
+<li><a href="#masterpage">Masterpage</a></li>
+<li><a href="#core-fragment">Core fragment</a></li>
+<li><a href="#application-loading">Application loading</a></li>
+<li><a href="#modules">Modules</a>
+<ul>
+<li><a href="#amd">AMD</a></li>
+<li><a href="#module-configuration">Module configuration</a></li>
+<li><a href="#lifecycle-callbacks">Lifecycle callbacks</a></li>
+</ul></li>
+<li><a href="#angularjs-initialization">AngularJS initialization</a></li>
+<li><a href="#angularjs-modules">AngularJS modules</a>
+<ul>
+<li><a href="#amd-vs-angularjs-modules">AMD vs AngularJS modules</a></li>
+<li><a href="#what-is-an-angularjs-module">What is an AngularJS module ?</a></li>
+<li><a href="#angularjs-module-dependencies">AngularJS module dependencies</a></li>
+<li><a href="#angularjs-modules-and-w20">AngularJS modules and W20</a></li>
+</ul></li>
+</ul>
+</nav>
+                            <script>
+                                w20.state.previousPage = '';
+                            </script>
+                            
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/routing/" class="list-group-item ">
+                            Routing
+                        </a>
+                        
+                            <script>
+                                w20.state.nextPage = '\/docs\/manual\/routing\/';
+                            </script>
+                            
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/security/" class="list-group-item ">
+                            Security
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/culture/" class="list-group-item ">
+                            Culture
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/hypermedia/" class="list-group-item ">
+                            Hypermedia
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/ui/" class="list-group-item ">
+                            UI
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/docs/manual/testing/" class="list-group-item ">
+                            Testing
+                        </a>
+                        
+                        
+                    </li>
+                    
+                
+            </ul>
+        </div>
+        
+    
+    
+    <div class="list-group">
+        <ul class="nav">
+            <li class="list-group-item"><div style="margin-bottom: 10px;"><i class="fa fa-tag"></i> Tags</div>
+                <div class="tags">
+                    
+                    <a class="label label-default" href="/tags/configuration">Configuration</a>
+                    
+                    <a class="label label-default" href="/tags/fragment">Fragment</a>
+                    
+                    <a class="label label-default" href="/tags/manifest">Manifest</a>
+                    
+                    <a class="label label-default" href="/tags/lifecycle">Lifecycle</a>
+                    
+                    <a class="label label-default" href="/tags/module">Module</a>
+                    
+                    <a class="label label-default" href="/tags/startup">Startup</a>
+                    
+                    <a class="label label-default" href="/tags/angular">Angular</a>
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="list-group">
+        <ul class="nav">
+            
+                <li><a class="list-group-item" href="https://github.com/w20-framework/website/edit/master/content/docs/manual/index.md" target="_blank"><i class="fa fa-edit"></i> Contribute to this page</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+    <div id="footer">
+        <div class="footer-v3">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="headline"><h2>About</h2></div>
+                    <p class="margin-bottom-25 md-margin-bottom-40">W20 is a Web framework to create modular and composable enterprise-ready applications.</p>
+                </div>
+
+                <div class="col-md-4 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><h2>License</h2></div>
+                        <p>
+                            Code licensed under the <a href="https://www.mozilla.org/MPL/2.0" target="_blank">Mozilla Public License 2.0</a>.
+                            <br/>
+                            Documentation licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 map-img">
+                    <div class="headline"><h2>Contact us</h2></div>
+                    <address>
+                        <p>
+                            StackOverflow <a href="https://stackoverflow.com/questions/tagged/w20">W20 on StackOverflow</a>
+                        </p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.5.9/lunr.min.js"></script>
+<script src="/assets/unify/plugins/smoothScroll.js"></script>
+<script src="/js/jquery.highlight.js"></script>
+<script src="/js/w20.js"></script>
+<script>
+    $(document).ready(function () {
+        var $search = $('.search-btn');
+
+        $('.search').click(function () {
+            if ($search.hasClass('fa-search')) {
+                w20.ui.openSearch();
+            } else {
+                w20.ui.closeSearch();
+            }
+        });
+
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $('.side-menu').affix({
+            offset: {
+                top: $('#header').height() + 20,
+                bottom: $('#footer').height() + 40
+            }
+        });
+
+        Mousetrap.bind('/', function () {
+            w20.ui.openSearch();
+            return false;
+        });
+
+        Mousetrap.bind('alt+up', function () {
+            if (w20.state.previousPage) {
+                window.location = w20.state.previousPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('alt+down', function () {
+            if (w20.state.nextPage) {
+                window.location = w20.state.nextPage;
+            }
+            return false;
+        });
+
+        Mousetrap.bind('esc', function () {
+            w20.ui.closeSearch();
+            return false;
+        });
+
+        var originalCallback = Mousetrap.stopCallback;
+        Mousetrap.stopCallback = function (e, element, combo) {
+            if (combo === 'esc') {
+                return false;
+            }
+
+            return originalCallback(e, element, combo);
+        };
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('#hotkeys-modal, #versions-modal').bind('hidden.bs.modal', function () {
+            $("html").css("margin-right", "0px");
+        }).bind('show.bs.modal', function () {
+            $("html").css("margin-right", "-15px");
+        });
+
+        var query = w20.strings.parseQueryString(location);
+        if (query.h && query.h.length > 0) {
+            $('.doc-content').highlight(query.h);
+            if (query.scroll) {
+                $('html, body').animate({
+                    scrollTop: $('span[class=highlight]:first').offset().top - 20
+                }, 250);
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>
